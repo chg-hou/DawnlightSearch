@@ -16,7 +16,7 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
         if index.column() > 0:
             return
         m = index.model()
-        ui = m.parent().ui
+        ui = m.parent().parent().parent()
         row = index.row()  # TODO: check proxy, hidden row
 
         filename = m.data(m.index(row, 0), HACKED_QT_EDITROLE)
@@ -295,15 +295,8 @@ class FileSizeDelegate(QtWidgets.QStyledItemDelegate):
     #     doc.setTextWidth(option.rect.width())
     #     return QtCore.QSize(doc.idealWidth(), doc.size().height())
     def displayText(self, value, locale):
-        value = int(value)
-        if value == 0: return '0 B'
-        suffixes = [' B', 'KB', 'MB', 'GB', 'TB', 'PB']
-        i = 0
-        while value >= 1024 and i < len(suffixes) - 1:
-            value /= 1024.
-            i += 1
-        f = ('%.2f' % value).rstrip('0').rstrip('.')
-        return '%s %s' % (f, suffixes[i])
+        # return value
+        return size_to_str(value)
 
         # http://pyqt.sourceforge.net/Docs/PyQt4/qstyleditemdelegate.html
 

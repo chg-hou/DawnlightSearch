@@ -3,6 +3,7 @@
 
 # https://developer.gnome.org/pygobject/stable/
 # http://www.pygtk.org/docs/pygobject/gio-class-reference.html
+from __future__ import absolute_import
 from functools import partial
 
 from .._Global_Qt_import import *
@@ -125,7 +126,7 @@ def set_qicon(qstandarditem, filename, isPath, size=32):
 
 
 def size_to_str(value, unit='KB'):
-    if not value:
+    if (not value) and (value != 0) and (value != '0'):
         return ''
     suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
     if not unit in suffixes:
