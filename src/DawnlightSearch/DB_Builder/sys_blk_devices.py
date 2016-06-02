@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os, json, sys
+
 '''
 blockdevices_id:
 
@@ -135,7 +136,9 @@ class LinuxDevices_old:
 
 
 import collections, threading
-import os, json
+import os, json, time
+
+
 class LinuxDevices(object):
     mount_target_path = set()
     blockdevices_id = {}
@@ -143,29 +146,35 @@ class LinuxDevices(object):
 
     lsblk_history = ''
     df_history = ''
+    timestamp = 0
 
     mutex = threading.Lock()
 
     def __init__(self):
         def default_factory_1():
             return set()
+
         self.device_id_path = collections.defaultdict(default_factory_1)
         # self.refresh()
+
     def refresh(self):
         self.refresh_state()
 
     @staticmethod
     def refresh_state():
         LinuxDevices.mutex.acquire()
-        blockinfo = json.load(os.popen('lsblk -o name,MAJ:MIN,UUID,LABEL,FSTYPE,MOUNTPOINT -J'))
-        df_all = os.popen('df -a --output=source,target,fstype').readlines()[1:]
+        blockinfo = os.popen('lsblk -o name,MAJ:MIN,UUID,LABEL,FSTYPE,MOUNTPOINT -J').read()
+        df_all = os.popen('df -a --output=source,target,fstype').read()
+
         if blockinfo == LinuxDevices.lsblk_history and df_all == LinuxDevices.df_history:
             LinuxDevices.mutex.release()
             return False
         else:
-            LinuxDevices.lsblk_history  = blockinfo
-            LinuxDevices.df_history     = df_all
+            LinuxDevices.lsblk_history = blockinfo
+            LinuxDevices.df_history = df_all
+            LinuxDevices.timestamp = time.time()
 
+        blockinfo = json.loads(blockinfo)
         df_source = os.popen('df -a --output=source').readlines()[1:]
         df_target = os.popen('df -a --output=target').readlines()[1:]
         df_fstype = os.popen('df -a --output=fstype').readlines()[1:]
@@ -179,9 +188,14 @@ class LinuxDevices(object):
         df_fstype = [x[:-1] for x in df_fstype]
 
         for row in range(len(df_target)):
-            target, source, fstype  = df_target[row], df_source[row], df_fstype[row]
 
-            l_stat = os.lstat(target)
+            target, source, fstype = df_target[row], df_source[row], df_fstype[row]
+            try:
+                l_stat = os.lstat(target)
+            except Exception as e:
+                print("Fail to stat: " + target)
+                print(e.message)
+                continue
             major_dnum = os.major(l_stat.st_dev)
             minor_dnum = os.minor(l_stat.st_dev)
 
@@ -224,7 +238,7 @@ class LinuxDevices(object):
         return [self.blockdevices_name[dev]['uuid'] \
                 for dev in self.mountPath_dev]
 
-    def deviceID_to_UUID(self,device_id):
+    def deviceID_to_UUID(self, device_id):
         if device_id in self.blockdevices_id:
             return self.blockdevices_id[device_id]['uuid']
         else:
@@ -238,6 +252,6 @@ elif os.name == 'nt':
 elif os.name == 'posix':
     SystemDevices = LinuxDevices
 
-if __name__ =='__main__':
-    a=SystemDevices()
+if __name__ == '__main__':
+    a = SystemDevices()
     # print(a.mounted_uuid())

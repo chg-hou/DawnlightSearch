@@ -11,9 +11,7 @@ from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWidgets import QDateTimeEdit
 from PyQt5.QtCore import QDateTime
 from PyQt5.QtWidgets import QDialogButtonBox, QListWidget, QListWidgetItem, QFileDialog
-from PyQt5.QtWidgets import QDialog, QMessageBox
+from PyQt5.QtWidgets import QDialog, QMessageBox, QWidget
 from PyQt5.QtCore import QSettings
-
-
 
 HACKED_QT_EDITROLE = QtCore.Qt.UserRole  # qt bug: cannot set different values for display and user roles.

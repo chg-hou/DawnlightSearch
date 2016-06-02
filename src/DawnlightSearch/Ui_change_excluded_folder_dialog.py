@@ -1,15 +1,15 @@
 from __future__ import absolute_import
+
 from DawnlightSearch._Global_Qt_import import *
-
-
-
 # from Ui_edit_exclued_folder import Ui_Dialog
 import os
+
 # EditFolderDialog_base_class, _ = uic.loadUiType(
 #     os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ui_edit_exclued_folder.ui"))
 EditFolderDialog_base_class, _ = uic.loadUiType("Ui_edit_exclued_folder.ui")
-class EditFolderDialog(QDialog, EditFolderDialog_base_class):
 
+
+class EditFolderDialog(QDialog, EditFolderDialog_base_class):
     def __init__(self, folder_list, parent=None):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
@@ -50,10 +50,10 @@ class EditFolderDialog(QDialog, EditFolderDialog_base_class):
             a.setText(folder)
             a.setFlags(a.flags() | QtCore.Qt.ItemIsEditable)
             self.folder_listWidget.addItem(a)
+
     def action_remove_folders(self):
         for SelectedItem in self.folder_listWidget.selectedItems():
             self.folder_listWidget.takeItem(self.folder_listWidget.row(SelectedItem))
-
 
     # static method to create the dialog and return (date, time, accepted)
     @staticmethod
@@ -73,4 +73,3 @@ if __name__ == '__main__':
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
-

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>940</width>
+    <width>863</width>
     <height>737</height>
    </rect>
   </property>
@@ -17,6 +17,33 @@
    <iconset>
     <normaloff>ui/icon/document-preview.png</normaloff>ui/icon/document-preview.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow::separator {
+    background: rgb(170, 170,170);
+    width: 2px; /* when vertical */
+    height: 2px; /* when horizontal */
+}
+
+QMainWindow::separator:hover {
+    background:rgb(0, 0, 0);
+}
+
+QDockWidget::title {       text-align: left;       
+											padding-top: 3px;                                   
+                                            padding-left: 10px; }
+
+/*QDockWidget::title { font-family: &quot;Roboto Lt&quot;; font-size: 18pt;
+                                            text-align: left; 
+                                            background: red; 
+                                            padding-left: 10px; }
+QDockWidget { font-family: &quot;Roboto Lt&quot;; font-size:10pt;
+                                            text-align: left; 
+                                            background: red; 
+                                            padding-left: 10px; }*/</string>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -26,46 +53,19 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLineEdit" name="lineEdit_search"/>
-    </item>
-    <item>
-     <widget class="QTableView" name="tableView">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>6</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="editTriggers">
-       <set>QAbstractItemView::NoEditTriggers</set>
-      </property>
-      <property name="alternatingRowColors">
+     <widget class="QComboBox" name="comboBox_search">
+      <property name="editable">
        <bool>true</bool>
       </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::ExtendedSelection</enum>
+      <property name="maxCount">
+       <number>20</number>
       </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+      <property name="insertPolicy">
+       <enum>QComboBox::InsertAtTop</enum>
       </property>
-      <property name="showGrid">
+      <property name="frame">
        <bool>true</bool>
       </property>
-      <property name="gridStyle">
-       <enum>Qt::NoPen</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>false</bool>
-      </property>
-      <attribute name="horizontalHeaderHighlightSections">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
-      </attribute>
      </widget>
     </item>
     <item>
@@ -85,44 +85,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="Line" name="line">
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <property name="lineWidth">
-       <number>4</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QTableWidget" name="tableWidget_uuid">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>6</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="alternatingRowColors">
-       <bool>true</bool>
-      </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-      <attribute name="horizontalHeaderHighlightSections">
-       <bool>false</bool>
-      </attribute>
-     </widget>
     </item>
     <item>
      <widget class="QTableView" name="tableView_uuid">
@@ -201,7 +163,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>940</width>
+     <width>863</width>
      <height>27</height>
     </rect>
    </property>
@@ -230,7 +192,9 @@
     <addaction name="separator"/>
     <addaction name="actionAdvanced_settings"/>
     <addaction name="separator"/>
-    <addaction name="actionOpen_setting_db_path"/>
+    <addaction name="actionOpen_setting_path"/>
+    <addaction name="actionOpen_db_path"/>
+    <addaction name="actionOpen_temp_db_path"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -244,14 +208,127 @@
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle">
+    <string>Toolbar</string>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <property name="floatable">
+    <bool>true</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="separator"/>
+   <addaction name="actionShow_Location_Table"/>
+   <addaction name="separator"/>
+   <addaction name="actionUpdatedb"/>
+   <addaction name="actionStop_Updating"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockWidget_uuid">
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::AllDockWidgetAreas</set>
+   </property>
+   <property name="windowTitle">
+    <string>Path Info</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QTableWidget" name="tableWidget_uuid">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>6</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_result">
+   <property name="styleSheet">
+    <string notr="true">/*border: 5px solid purple;*/
+</string>
+   </property>
+   <property name="windowTitle">
+    <string>Query Resluts</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTableView" name="tableView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>6</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::NoPen</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>false</bool>
+       </property>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <action name="actionAbout">
    <property name="text">
     <string>About...</string>
@@ -297,6 +374,9 @@
    <property name="text">
     <string>Exit...</string>
    </property>
+   <property name="toolTip">
+    <string>Exit application.</string>
+   </property>
   </action>
   <action name="actionUse_MFT_parser">
    <property name="checkable">
@@ -314,13 +394,83 @@
     <string>Advanced settings</string>
    </property>
   </action>
-  <action name="actionOpen_setting_db_path">
+  <action name="actionOpen_setting_path">
    <property name="text">
     <string>Open setting/db path</string>
+   </property>
+  </action>
+  <action name="actionShow_Location_Table">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/dashboard-show.png</normaloff>ui/icon/dashboard-show.png</iconset>
+   </property>
+   <property name="text">
+    <string>Show Location Table</string>
+   </property>
+  </action>
+  <action name="actionUpdatedb">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/system-reboot.png</normaloff>ui/icon/system-reboot.png</iconset>
+   </property>
+   <property name="text">
+    <string>Update DB</string>
+   </property>
+  </action>
+  <action name="actionStop_Updating">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/system-suspend.png</normaloff>ui/icon/system-suspend.png</iconset>
+   </property>
+   <property name="text">
+    <string>Stop Updating</string>
+   </property>
+  </action>
+  <action name="actionOpen_db_path">
+   <property name="text">
+    <string>Open db path</string>
+   </property>
+  </action>
+  <action name="actionOpen_temp_db_path">
+   <property name="text">
+    <string>Open temp db path</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionShow_Location_Table</sender>
+   <signal>triggered()</signal>
+   <receiver>dockWidget_uuid</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>469</x>
+     <y>596</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>431</x>
+     <y>368</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

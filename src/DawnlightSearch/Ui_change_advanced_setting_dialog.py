@@ -6,11 +6,13 @@ from DawnlightSearch._Global_Qt_import import *
 
 # from Ui_Ui_advanced_setting_dialog import Ui_Dialog as EditSettingDialog_base_class
 import os
+
 EditSettingDialog_base_class, _ = uic.loadUiType(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "Ui_advanced_setting_dialog.ui"))
+
+
 # EditSettingDialog_base_class, _ = uic.loadUiType("Ui_advanced_setting_dialog.ui")
 class EditSettingDialog(QDialog, EditSettingDialog_base_class):
-
     def __init__(self, ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, parent=None):
         self.ORGANIZATION_NAME = ORGANIZATION_NAME
         self.ALLICATION_NAME = ALLICATION_NAME
@@ -31,6 +33,10 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.spinBox_query_limit.setValue(
             settings.value('Query_limit', type=int, defaultValue=100)
         )
+        self.spinBox_mount_state_update_interval.setValue(
+            settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
+        )
+
         self.lineEdit_Database_File_Name.setText(DATABASE_FILE_NAME)
         self.lineEdit_Temp_Database_File_Name.setText(TEMP_DB_NAME)
         self.lineEdit_Database_File_Name.textEdited.connect(self.on_lineEdit_Database_File_Name_edited)
@@ -40,7 +46,7 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.toolButton_Temp_Database_File_Name.released.connect(self.on_change_Temp_Database_File)
 
     @pyqtSlot(str)
-    def on_lineEdit_Database_File_Name_edited(self,path):
+    def on_lineEdit_Database_File_Name_edited(self, path):
         if os.path.exists(os.path.dirname(path)):
             self.lineEdit_Database_File_Name.setStyleSheet(
                 "");
@@ -56,6 +62,7 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         else:
             self.lineEdit_Temp_Database_File_Name.setStyleSheet(
                 "QLineEdit { color: red;  }");
+
     @pyqtSlot()
     def on_change_Database_File(self):
         folder = str(QFileDialog.getExistingDirectory(self, "Select Directory of Database File",
@@ -91,10 +98,13 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
             settings.setValue('Max_Items_in_List', dialog.spinBox_model_max_items.value())
             settings.setValue('Query_limit', dialog.spinBox_query_limit.value())
 
-            settings.setValue('Database_File_Name',         dialog.lineEdit_Database_File_Name.text())
-            settings.setValue('Temp_Database_File_Name',    dialog.lineEdit_Temp_Database_File_Name.text())
+            settings.setValue('Database_File_Name', dialog.lineEdit_Database_File_Name.text())
+            settings.setValue('Temp_Database_File_Name', dialog.lineEdit_Temp_Database_File_Name.text())
+            settings.setValue('Mount_State_Update_Interval', dialog.spinBox_mount_state_update_interval.value())
+
             settings.sync()
         return (new_settings, result == QDialog.Accepted)
+
 
 if __name__ == '__main__':
     import sys
@@ -105,4 +115,3 @@ if __name__ == '__main__':
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
-

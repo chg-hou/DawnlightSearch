@@ -10,7 +10,6 @@ import sqlite3
 import stat
 import time
 
-
 from .._Global_DawnlightSearch import *
 from .._Global_Qt_import import *
 from .._Global_logger import *
@@ -18,10 +17,12 @@ from ..MFT_parser.mft_cpp_parser_wrapper import mft_parser_cpp
 from ..MFT_parser.mftsession_thread import *
 from .sys_blk_devices import SystemDevices
 
+
 class FLAG_class:
     __slots__ = ('quit_flag', 'restart_flag')
     quit_flag = False
     restart_flag = False
+
 
 def estimate_num_of_files(root_path):
     import sys
@@ -49,6 +50,7 @@ def estimate_num_of_files(root_path):
         else:
             return -1
 
+
 def os_listdir_walk(root_path, BFS=True):
     dir_queue = collections.deque([root_path])
     while dir_queue:
@@ -71,16 +73,17 @@ def os_listdir_walk(root_path, BFS=True):
 
 class Insert_db_thread(QtCore.QThread):
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int, str)
+
     # TODO: insert into tmp db and then merge
 
-    def __init__(self, uuid,  db_path=TEMP_DB_NAME,
+    def __init__(self, uuid, db_path=TEMP_DB_NAME,
                  parent=None, sql_insert_queue=None, sql_insert_mutex=None,
-                 sql_insert_condition=None ):
+                 sql_insert_condition=None):
         super(self.__class__, self).__init__(parent)
 
         self.uuid = uuid
         self.db_path = db_path
-        self.tmp_db_path = db_path +".tmp"
+        self.tmp_db_path = db_path + ".tmp"
 
         self.con_tmp_db = sqlite3.connect(self.tmp_db_path, check_same_thread=False)
         self.cur_tmp_db = self.con_tmp_db.cursor()
@@ -110,9 +113,9 @@ class Insert_db_thread(QtCore.QThread):
         self.commit_flag = False
         self.running_flag = False
 
-        self.sql_insert_queue       = sql_insert_queue
-        self.sql_insert_mutex       = sql_insert_mutex
-        self.sql_insert_condition   = sql_insert_condition
+        self.sql_insert_queue = sql_insert_queue
+        self.sql_insert_mutex = sql_insert_mutex
+        self.sql_insert_condition = sql_insert_condition
 
     def run(self):
         self.update_progress_SIGNAL.emit(-1, -1, self.uuid)  # start
@@ -132,8 +135,8 @@ class Insert_db_thread(QtCore.QThread):
 
             self.running_flag = True
 
-            if (num_records % (max(mftsize / 100, 1)) == 0 and num_records > 0 )or \
-                (num_records == mftsize-1):
+            if (num_records % (max(mftsize / 100, 1)) == 0 and num_records > 0) or \
+                    (num_records == mftsize - 1):
                 logger.info('Building Filepaths: {0:.0f}'.format(100.0 * num_records / mftsize) + '%')
                 self.update_progress_SIGNAL.emit(num_records, mftsize, uuid)
             # print "--table_name: ", table_name
@@ -144,7 +147,7 @@ class Insert_db_thread(QtCore.QThread):
                                    `atime`,`mtime`,`ctime`)
                                 values (?,  ?,  ?, ?, ?, ?, ?)''' % (table_name),
                                     (unicode(data_list[0]), unicode(data_list[1]), data_list[2], data_list[3],
-                              data_list[4], data_list[5], data_list[6]))#tuple(data_list)
+                                     data_list[4], data_list[5], data_list[6]))  # tuple(data_list)
             if self.quit_flag:
                 return
             # self.cur.execute('''insert into `%s` (`entry_id`,`name`)
@@ -166,7 +169,7 @@ class Insert_db_thread(QtCore.QThread):
         else:
             self.con.commit()
 
-    def pre_quit(self, commit_progress_flag = True):
+    def pre_quit(self, commit_progress_flag=True):
         if not self.quit_already_flag:
             self.quit_flag = True
 
@@ -196,11 +199,12 @@ class Update_DB_Thread(QtCore.QThread):
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int, str)
     get_table_uuid_sendback_SIGNAL = QtCore.pyqtSignal(list)
     show_statusbar_warning_msg_SIGNAL = QtCore.pyqtSignal(str)
-    def __init__(self, parent= None, mainwindows=None):  # , *args, **kwargs
+
+    def __init__(self, parent=None, mainwindows=None):  # , *args, **kwargs
         super(self.__class__, self).__init__(parent)  # *args, **kwargs
 
         logger.info("update db init: ")
-        logger.info("\tThread:"+ str(QtCore.QThread.currentThreadId()))
+        logger.info("\tThread:" + str(QtCore.QThread.currentThreadId()))
         self.mainwindows = mainwindows
 
         from PyQt5.QtCore import QSettings
@@ -237,7 +241,6 @@ class Update_DB_Thread(QtCore.QThread):
         self.update_uuid()  # TODO: OPT
         logger.info("update db init: 4")
 
-
     def run(self):
         # logger.info("update db init: 1")
         # logger.info("update db init: 2")
@@ -267,7 +270,7 @@ class Update_DB_Thread(QtCore.QThread):
                 # self.con.commit()
                 # TODO: try catch
                 root_path = _item['path']
-                uuid      = _item['uuid']
+                uuid = _item['uuid']
 
                 if self.flag.quit_flag:
                     break
@@ -278,7 +281,7 @@ class Update_DB_Thread(QtCore.QThread):
                     print ('Dir %s skipped.' % root_path)
                     continue
                 if (not os.path.exists(root_path)):
-                    logger.warning ("Dir %s does not exists." % root_path)
+                    logger.warning("Dir %s does not exists." % root_path)
                     self.show_statusbar_warning_msg_SIGNAL.emit("Dir %s does not exists." % root_path)
                     continue
                 # try:
@@ -294,10 +297,10 @@ class Update_DB_Thread(QtCore.QThread):
                 self.init_table(table_name, clear_table=False)
 
                 insert_db_thread = Insert_db_thread(uuid, parent=self, sql_insert_queue=self.sql_insert_queue,
-                                                         sql_insert_mutex=self.sql_insert_mutex,
-                                                         sql_insert_condition=self.sql_insert_condition)
+                                                    sql_insert_mutex=self.sql_insert_mutex,
+                                                    sql_insert_condition=self.sql_insert_condition)
                 insert_db_thread.update_progress_SIGNAL.connect(self.mainwindows.on_db_progress_update,
-                                                                     QtCore.Qt.QueuedConnection)
+                                                                QtCore.Qt.QueuedConnection)
                 insert_db_thread.start()
                 from PyQt5.QtCore import QSettings
 
@@ -305,7 +308,7 @@ class Update_DB_Thread(QtCore.QThread):
 
                 # self.update_progress_SIGNAL.emit(-1, -1, uuid)  # start
                 MFT_parser_successful_flag = False
-                if fstype == "ntfs"  and enable_MFT_parser:
+                if fstype == "ntfs" and enable_MFT_parser:
                     try:
                         MFT_file_path = os.path.join(root_path, "$MFT")
                         logger.info("Enter NTFS folder: %s" % root_path)
@@ -318,7 +321,7 @@ class Update_DB_Thread(QtCore.QThread):
                         # settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
                         enable_C_MFT_parser = GlobalVar.USE_MFT_PARSER_CPP
 
-                        logger.info("enable_C_MFT_parser: " +str(enable_C_MFT_parser))
+                        logger.info("enable_C_MFT_parser: " + str(enable_C_MFT_parser))
                         if enable_C_MFT_parser:
                             insert_db_thread.pre_quit(commit_progress_flag=False)
                             pass
@@ -328,7 +331,8 @@ class Update_DB_Thread(QtCore.QThread):
 
                         else:
                             session = MftSession(MFT_file_path)
-                            session.start(table_name, self.sql_insert_queue, self.sql_insert_mutex, self.sql_insert_condition)
+                            session.start(table_name, self.sql_insert_queue, self.sql_insert_mutex,
+                                          self.sql_insert_condition)
                             while session.isRunning():
                                 session.wait(timeout_ms=1000)
                                 logger.info("Waiting... Running...")
@@ -342,7 +346,7 @@ class Update_DB_Thread(QtCore.QThread):
                         logger.error(e.message)
                         self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
 
-                if not MFT_parser_successful_flag :
+                if not MFT_parser_successful_flag:
                     num_records = 0
                     mftsize = estimate_num_of_files(root_path)
                     for root, subfiles in os_listdir_walk(root_path):
@@ -375,8 +379,6 @@ class Update_DB_Thread(QtCore.QThread):
                             else:
                                 major_dnum = minor_dnum = 0
 
-
-
                             if (device_maj_num != major_dnum) or (device_min_num != minor_dnum):
                                 print("In different device: %s vs. %s" % (full_file_or_dir, root_path))
                                 # self.UUID_class.device_id_path[(major_dnum, minor_dnum)].add(full_file_or_dir)
@@ -402,7 +404,7 @@ class Update_DB_Thread(QtCore.QThread):
                                                             int(l_stat.st_atime), int(l_stat.st_mtime),
                                                             int(l_stat.st_ctime)],
                                                            num_records, mftsize, uuid]
-                                                           )
+                                                          )
                                 self.sql_insert_condition.wakeOne()
                                 self.sql_insert_mutex.unlock()
 
@@ -418,7 +420,7 @@ class Update_DB_Thread(QtCore.QThread):
                                                             int(l_stat.st_atime), int(l_stat.st_mtime),
                                                             int(l_stat.st_ctime)],
                                                            num_records, mftsize, uuid]
-                                                           )
+                                                          )
                                 self.sql_insert_condition.wakeOne()
                                 self.sql_insert_mutex.unlock()
 
@@ -452,14 +454,13 @@ class Update_DB_Thread(QtCore.QThread):
 
             self.mutex.lock()
             if not self.flag.restart_flag:
-                self.queue_condition.wait(self.mutex)   # timeout
+                self.queue_condition.wait(self.mutex)  # timeout
             self.flag.restart_flag = False
             self.mutex.unlock()
 
             if self.flag.quit_flag:
                 return
-            # self.db_commit_SIGNAL.emit()
-
+                # self.db_commit_SIGNAL.emit()
 
     def _open_db(self):
         # db_path = DATABASE_FILE_NAME
@@ -526,7 +527,7 @@ class Update_DB_Thread(QtCore.QThread):
                             )
             self.init_table(uuid, clear_table=False)
 
-        # self.con.commit()  # commit
+            # self.con.commit()  # commit
 
     def init_table(self, table_name, clear_table=True):
         con = MainCon.con
@@ -592,9 +593,9 @@ class Update_DB_Thread(QtCore.QThread):
         print "update db slot: ", path_lists
         print "\tThread:", int(QtCore.QThread.currentThreadId())
 
-        tmp_mutexlocker  = QtCore.QMutexLocker(self.mutex)
+        tmp_mutexlocker = QtCore.QMutexLocker(self.mutex)
         tmp_mutexlocker2 = QtCore.QMutexLocker(self.sql_insert_mutex)
-        while not  self.qqueue.empty():
+        while not self.qqueue.empty():
             self.qqueue.get()
         while not self.sql_insert_queue.empty():
             self.sql_insert_queue.get()
@@ -602,7 +603,7 @@ class Update_DB_Thread(QtCore.QThread):
         for _item in path_lists:
             self.qqueue.put(_item)
         if (not self.isRunning()):
-            self.start()        # just test
+            self.start()  # just test
         else:
             self.flag.restart_flag = True
             self.queue_condition.wakeOne()
@@ -649,9 +650,11 @@ class Update_DB_Thread(QtCore.QThread):
             except Exception as e:
                 msgBox = QMessageBox(self.parent())
                 msgBox.setIcon(QMessageBox.Critical)
-                msgBox.setText("Fail to merge temp databse into main database:\n%s\n\nError message:\n%s" % ( TEMP_DB_NAME, e.message))
-                msgBox.setInformativeText("Do you want to retry?\nPress \"Abort\" to quit and KEEP the temp database.\nPress \"Cancel\" or close this message to quit and DELETE the temp database.")
-                msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Abort | QMessageBox.Cancel )
+                msgBox.setText("Fail to merge temp databse into main database:\n%s\n\nError message:\n%s" % (
+                TEMP_DB_NAME, e.message))
+                msgBox.setInformativeText(
+                    "Do you want to retry?\nPress \"Abort\" to quit and KEEP the temp database.\nPress \"Cancel\" or close this message to quit and DELETE the temp database.")
+                msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Abort | QMessageBox.Cancel)
                 msgBox.setDefaultButton(QMessageBox.Retry)
                 ret = msgBox.exec_()
                 if (ret == msgBox.Retry):
@@ -699,7 +702,7 @@ class Update_DB_Thread(QtCore.QThread):
         self.wait()
         # self.con.close()  # TODO: find a better place to close con
         super(self.__class__, self).quit()
- 
+
     def __del__(self):
         s = super(self.__class__, self)
         try:

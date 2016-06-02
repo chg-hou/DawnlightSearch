@@ -4,6 +4,7 @@ from .._Global_Qt_import import *
 from .._Global_DawnlightSearch import *
 from .._Global_logger import *
 
+
 class QueryThread(QtCore.QThread):
     add_row_to_model_SIGNAL = QtCore.pyqtSignal(int, list)
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int)
@@ -122,8 +123,6 @@ class DistributeQueryWorker(QtCore.QObject):
         tmp_mutexlocker = QtCore.QMutexLocker(self.mutex)
         while not self.qqueue.empty():
             self.qqueue.get()
-
-
 
         tmp_q = []
         for table in uuid_path_list:  # {'uuid':uuid,'path':path,'rows':rows}

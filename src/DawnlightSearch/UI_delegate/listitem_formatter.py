@@ -37,14 +37,15 @@ def get_app_icon_filename(app_info, size=DEFAULT_ICON_SIZE):
 
     return icon_info.get_filename()
 
+
 def app_launch_files(launch, filename_list):
     try:
-        launch(map(gio.File, filename_list),None)
+        launch(map(gio.File, filename_list), None)
     except:
-        print ("Fail to launch: "+str(filename_list))
+        print ("Fail to launch: " + str(filename_list))
+
 
 def get_default_app(file_type):
-
     default_app_info = gio.app_info_get_default_for_type(file_type, False)
     if not default_app_info:
         return None, None, None, None, None
@@ -60,6 +61,7 @@ def get_default_app(file_type):
     # app_launch = test_print
     return icon_filename, app_name, app_tooltip, app_launch_fun, default_app_info.launch
 
+
 def get_open_with_app(file_type):
     default_app_info = gio.app_info_get_default_for_type(file_type, False)
     if not default_app_info:
@@ -74,6 +76,7 @@ def get_open_with_app(file_type):
             app_tooltip = app_info.get_description()
             app_launch_fun = app_launch_files
             yield icon_filename, app_name, app_tooltip, app_launch_fun, app_info.launch
+
 
 def get_default_app_old(filename, isPath):
     file_type = get_file_type(filename, isPath)
@@ -98,10 +101,12 @@ def get_default_app_old(filename, isPath):
         print "\t\t", get_app_icon_filename(i)
     print "file_type:", file_type
 
+
 def get_QIcon_object(filename):
     if not (filename in _qicon_cache_for_build_qicon):
         _qicon_cache_for_build_qicon[filename] = QtGui.QIcon(filename)
     return _qicon_cache_for_build_qicon[filename]
+
 
 def build_qicon(filename, isPath, size=32):
     # print "-------------------------------------------" + str(_qicon_cache_for_build_qicon)

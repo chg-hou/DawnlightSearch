@@ -4,6 +4,8 @@
 from .._Global_Qt_import import *
 from .._Global_DawnlightSearch import *
 from .listitem_formatter import *
+
+
 # CUSTOM DELEGATE TO GET HTML RICH TEXT IN LISTVIEW
 # ALLOWS USE OF <b></b> TAGS TO HIGHLIGHT SEARCHED PHRASE IN RESULTS
 class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
@@ -16,7 +18,7 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
         if index.column() > 0:
             return
         m = index.model()
-        ui = m.parent().parent().parent()
+        ui = m.parent().parent().parent().parent()
         row = index.row()  # TODO: check proxy, hidden row
 
         filename = m.data(m.index(row, 0), HACKED_QT_EDITROLE)
@@ -302,4 +304,3 @@ class FileSizeDelegate(QtWidgets.QStyledItemDelegate):
 
         # def sizeHint(self, option, index):
         #    return QtCore.QSize(self.doc.idealWidth(), self.doc.size().height())
-

@@ -5,20 +5,21 @@ ALLICATION_NAME = "Dawnligh_Search"
 from PyQt5.QtCore import QSettings
 import os
 import sqlite3
-PATH_OF_SETTING_FILE = os.path.dirname(  QSettings(      QSettings.IniFormat,       QSettings.UserScope,    ORGANIZATION_NAME,
-        ALLICATION_NAME).fileName())
+
+PATH_OF_SETTING_FILE = os.path.dirname(QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME,
+                                                 ALLICATION_NAME).fileName())
 
 DATABASE_FILE_NAME = QSettings(QSettings.IniFormat, QSettings.UserScope,
                                ORGANIZATION_NAME, ALLICATION_NAME).value('Database_File_Name',
-                                                                         type=str, defaultValue=os.path.join(PATH_OF_SETTING_FILE,
-                                                                                                  'files.db'))
+                                                                         type=str,
+                                                                         defaultValue=os.path.join(PATH_OF_SETTING_FILE,
+                                                                                                   'files.db'))
 
 TEMP_DB_NAME = QSettings(QSettings.IniFormat, QSettings.UserScope,
-                               ORGANIZATION_NAME, ALLICATION_NAME).value('Temp_Database_File_Name',
-                                                                         type=str, defaultValue=os.path.join(
-                                                                             PATH_OF_SETTING_FILE,
-                                                                             'temp_db.db'))
-
+                         ORGANIZATION_NAME, ALLICATION_NAME).value('Temp_Database_File_Name',
+                                                                   type=str, defaultValue=os.path.join(
+        PATH_OF_SETTING_FILE,
+        'temp_db.db'))
 
 
 class GlobalVar(object):
@@ -32,8 +33,6 @@ class GlobalVar(object):
     USE_MFT_PARSER_CPP = True
 
 
-
 class MainCon(object):
     con = None
     cur = None
-
