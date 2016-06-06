@@ -5,8 +5,39 @@ from .._Global_Qt_import import *
 from .._Global_DawnlightSearch import *
 from .listitem_formatter import *
 
+def highlight_html(html,word_list):
+    def html_highlight(html):
+        html = html.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;")
+        return '<b>' + html + '</b>'
 
-# CUSTOM DELEGATE TO GET HTML RICH TEXT IN LISTVIEW
+    html_UPPER =html.upper()
+    seg_list = []
+    for case,word in word_list:
+        len_word = len(word)
+        if case:    #case sensitive
+            idx = html.find(word, 0)
+            while idx>=0:
+                seg_list.append([idx, len_word])
+                idx = html.find(word, idx+1)
+        else:
+            word_UPPER = word.upper()
+            idx = html_UPPER.find(word_UPPER, 0)
+            while idx >= 0:
+                seg_list.append([idx, len_word])
+                idx = html_UPPER.find(word_UPPER, idx + 1)
+    i = 0
+    seg_list.sort(reverse=True)
+    last_begin = len(html)
+    for i,seg in enumerate(seg_list):
+        if seg[0]+seg[1]>last_begin:
+            continue
+        html = html[:seg[0]] + html_highlight(html[seg[0]:seg[0]+seg[1]]) +html[seg[0]+seg[1]:]
+        last_begin = seg[0]
+
+    return html
+
+
+            # CUSTOM DELEGATE TO GET HTML RICH TEXT IN LISTVIEW
 # ALLOWS USE OF <b></b> TAGS TO HIGHLIGHT SEARCHED PHRASE IN RESULTS
 class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
     # http://www.qtcentre.org/threads/65246-Use-of-QStyledItemDelegate-prevents-certain-Stylesheets-from-working-gif
@@ -18,7 +49,103 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
         if index.column() > 0:
             return
         m = index.model()
-        ui = m.parent().parent().parent().parent()
+        ui = m.parent().parent().parent().parent()  # TODO: Ugly, unsafe
+        row = index.row()  # TODO: check proxy, hidden row
+
+        filename = m.data(m.index(row, 0), HACKED_QT_EDITROLE)
+        # logger.warning(m.data(m.index(row, 0), HACKED_QT_EDITROLE))
+        # logger.warning(m.data(m.index(row, 0), QtCore.Qt.DisplayRole))
+
+        new_highlight_words = GlobalVar.Query_Text_ID
+        old_highlight_words = m.data(m.index(row, 0), QtCore.Qt.AccessibleDescriptionRole)
+        if (new_highlight_words != old_highlight_words):
+            m.setData(m.index(row, 0), new_highlight_words, QtCore.Qt.AccessibleDescriptionRole)
+            new_display_role = highlight_html(filename, GlobalVar.HIGHLIGHT_WORDS['Name'])
+            m.setData(m.index(row, 0), new_display_role, QtCore.Qt.DisplayRole)
+
+            path = m.data(m.index(row, 1), HACKED_QT_EDITROLE)
+            new_display_role = highlight_html(path, GlobalVar.HIGHLIGHT_WORDS['Path'])
+            m.setData(m.index(row, 1), new_display_role, QtCore.Qt.DisplayRole)
+
+        itemdata = m.itemData(m.index(row, 0))
+        if (QtCore.Qt.DecorationRole in itemdata or not (filename)):
+            pass
+        else:
+            m.setData(m.index(row, 0), filename, QtCore.Qt.ToolTipRole)
+            m.setData(m.index(row, 0), filename, QtCore.Qt.AccessibleDescriptionRole)
+
+            isPath = m.data(m.index(row, 3)) == '1'
+            newicon = build_qicon(filename, isPath, size=32)
+
+            m.setData(m.index(row, 0), newicon, QtCore.Qt.DecorationRole)
+
+
+            size_data = m.data(m.index(row, 2), HACKED_QT_EDITROLE)
+            size_data = size_to_str(size_data)
+
+            m.setData(m.index(row, 2), size_data, QtCore.Qt.DisplayRole)
+            m.setData(m.index(row, 2), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
+
+            for col in [4, 5, 6]:
+                date = QtCore.QDateTime()
+                date.setTime_t(int(m.data(m.index(row, col), HACKED_QT_EDITROLE)))
+                m.setData(m.index(row, col), date.toString(), QtCore.Qt.DisplayRole)
+                # logger.debug(str(m.itemData(m.index(row, 0))))
+
+    def paint(self, painter, option, index):
+
+        if index.column()>1:
+            return super(self.__class__, self).paint(painter, option, index)
+
+        self.update_item_icon(index)
+        options = QtWidgets.QStyleOptionViewItem(option)
+
+        self.initStyleOption(options, index)
+        self.doc.setHtml(options.text)
+        options.text = ''
+
+        style = QtWidgets.QApplication.style() if options.widget is None  else options.widget.style()
+
+        style.drawControl(QtWidgets.QStyle.CE_ItemViewItem, options, painter)  # QtWidgets.QStyle.CT_ItemViewItem
+
+        ctx = QtGui.QAbstractTextDocumentLayout.PaintContext()
+
+        if option.state & QtWidgets.QStyle.State_Selected:
+            ctx.palette.setColor(QtGui.QPalette.Text, option.palette.color(
+                QtGui.QPalette.Active, QtGui.QPalette.HighlightedText))
+        else:
+            ctx.palette.setColor(QtGui.QPalette.Text, option.palette.color(
+                QtGui.QPalette.Active, QtGui.QPalette.Text))
+
+        textRect = style.subElementRect(
+            QtWidgets.QStyle.SE_ItemViewItemText, options)
+
+        thefuckyourshitup_constant = 4
+        margin = (option.rect.height() - options.fontMetrics.height()) // 2  #
+        margin = margin - thefuckyourshitup_constant
+        textRect.setTop(textRect.top() + margin)
+
+        painter.save()
+        painter.translate(textRect.topLeft())
+        painter.setClipRect(textRect.translated(-textRect.topLeft()))
+        self.doc.documentLayout().draw(painter, ctx)
+
+        painter.restore()
+
+
+# CUSTOM DELEGATE TO GET HTML RICH TEXT IN LISTVIEW
+# ALLOWS USE OF <b></b> TAGS TO HIGHLIGHT SEARCHED PHRASE IN RESULTS
+class HTMLDelegate_VC_HL_bak(QtWidgets.QStyledItemDelegate):
+    # http://www.qtcentre.org/threads/65246-Use-of-QStyledItemDelegate-prevents-certain-Stylesheets-from-working-gif
+    def __init__(self, parent=None):
+        super(self.__class__, self).__init__()
+        self.doc = QtGui.QTextDocument(self)
+
+    def update_item_icon(self, index):
+        if index.column() > 0:
+            return
+        m = index.model()
+        ui = m.parent().parent().parent().parent()      # TODO: Ugly, unsafe
         row = index.row()  # TODO: check proxy, hidden row
 
         filename = m.data(m.index(row, 0), HACKED_QT_EDITROLE)

@@ -5,7 +5,7 @@
 from __future__ import absolute_import
 
 import collections
-import os
+import os, subprocess
 import sqlite3
 import stat
 import time
@@ -33,11 +33,7 @@ def estimate_num_of_files(root_path):
         return -1
         pass  # TODO: handle in windows
     elif os.name == 'posix':
-        root_path = '"' + root_path.replace('\\', '\\\\') \
-            .replace('"', '\\"') \
-            .replace('$', '\\$') \
-            .replace('`', '\\`') + '"'
-        tmp = os.popen('df --inodes ' + root_path).read().split('\n')
+        tmp = subprocess.check_output(["df", '--inodes', root_path]).split('\n')
         tmp = tmp[-1] if tmp[-1] else tmp[-2]
         # Filesystem      Inodes  IUsed   IFree IUse% Mounted on
         # /dev/sda10     4808704 541245 4267459   12% /
@@ -234,20 +230,19 @@ class Update_DB_Thread(QtCore.QThread):
         #
         # self.insert_db_thread.start()
 
-        logger.info("update db init: 1")
-        logger.info("update db init: 2")
-        self._init_db()  # TODO: OPT
-        logger.info("update db init: 3")
-        self.update_uuid()  # TODO: OPT
-        logger.info("update db init: 4")
-
-    def run(self):
         # logger.info("update db init: 1")
         # logger.info("update db init: 2")
         # self._init_db()  # TODO: OPT
         # logger.info("update db init: 3")
-        # self.update_uuid()  # TODO: OPT
-        # logger.info("update db init: 4")
+
+
+
+    def run(self):
+        logger.info("update db init: 1")
+        logger.info("update db init: 2")
+        self._init_db()  # TODO: OPT
+        logger.info("update db init: 3")
+
 
         # follow the same structure of http://doc.qt.io/qt-5/qtcore-threads-mandelbrot-example.html
         while (1):
@@ -474,7 +469,7 @@ class Update_DB_Thread(QtCore.QThread):
         pass
 
     def _init_db(self):
-
+        self.mutex.lock()
         cur = MainCon.cur
 
         cur.execute('''
@@ -494,92 +489,114 @@ class Update_DB_Thread(QtCore.QThread):
                             `rows` INTEGER DEFAULT 0,
                             `updatable` BLOB DEFAULT 0
                         )''')
+        self.mutex.unlock()
         self.update_uuid()
 
     def update_uuid(self):
-
-        cur = MainCon.cur
-        cur.execute('''
-            SELECT uuid FROM `UUID` ;
-            ''')
-        uuid_in_db = cur.fetchall()
-        uuids = [x[0] for x in uuid_in_db]
-        SystemDevices.refresh_state()
-        deviceDict = SystemDevices.deviceDict
-
-        for dev_id, dev in deviceDict.items():
-            uuid = dev['uuid']
-            fstype = dev['fstype']
-            label = dev['label']
-            major_dnum, minor_dnum = dev_id
-
-            if not uuid in uuids:
-                cur.execute('''INSERT INTO UUID (included, uuid,fstype,name,label,major_dnum,minor_dnum, path)
-                             VALUES (?, ?,   ?,     ?,    ?,    ?,   ?, ?)''',
-                            (False, dev['uuid'], dev['fstype'], dev['name'], dev['label'],
-                             major_dnum, minor_dnum, dev['mountpoint']))
-            else:
-                cur.execute('''UPDATE  UUID SET fstype=?,name=?,label=?,major_dnum=?,minor_dnum=?,path=?
-                    WHERE uuid=?''',
-                            (dev['fstype'], dev['name'], dev['label'],
-                             major_dnum, minor_dnum, dev['mountpoint'],
-                             dev['uuid'])
-                            )
+        self.mutex.lock()
+        while 1:
+            # https://docs.python.org/2/library/sqlite3.html
+            try:
+                cur = MainCon.cur
+                cur.execute('''
+                    SELECT uuid FROM `UUID` ;
+                    ''')
+                uuid_in_db = cur.fetchall()
+                self.mutex.unlock()
+                uuids = [x[0] for x in uuid_in_db]
+                SystemDevices.refresh_state()
+                deviceDict = SystemDevices.deviceDict
+                uuid_list = []
+                for dev_id, dev in deviceDict.items():
+                    uuid = dev['uuid']
+                    fstype = dev['fstype']
+                    label = dev['label']
+                    major_dnum, minor_dnum = dev_id
+                    uuid_list.append(uuid)
+                    if not uuid in uuids:
+                        cur.execute('''INSERT INTO UUID (included, uuid,fstype,name,label,major_dnum,minor_dnum, path)
+                                     VALUES (?, ?,   ?,     ?,    ?,    ?,   ?, ?)''',
+                                    (False, dev['uuid'], dev['fstype'], dev['name'], dev['label'],
+                                     major_dnum, minor_dnum, dev['mountpoint']))
+                    else:
+                        cur.execute('''UPDATE  UUID SET fstype=?,name=?,label=?,major_dnum=?,minor_dnum=?,path=?
+                            WHERE uuid=?''',
+                                    (dev['fstype'], dev['name'], dev['label'],
+                                     major_dnum, minor_dnum, dev['mountpoint'],
+                                     dev['uuid'])
+                                    )
+                MainCon.con.commit()
+                break
+            except Exception as e:
+                self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
+                logger.error(e.message)
+        self.mutex.unlock()
+        for uuid in uuid_list:
             self.init_table(uuid, clear_table=False)
 
             # self.con.commit()  # commit
 
     def init_table(self, table_name, clear_table=True):
+        self.mutex.lock()
         con = MainCon.con
         cur = MainCon.cur
-        cur.execute('''
-            SELECT count(*) FROM sqlite_master WHERE type='table' AND name='%s';
-            ''' % (table_name))
-        if cur.fetchall()[0][0] == 0:
-            # unique file_id
-            # http://stackoverflow.com/questions/9342249/how-to-insert-a-unique-id-into-each-sqlite-row
-            cur.execute('''CREATE TABLE "%s" (
-                            `file_id` INTEGER,
-                            `Filename`	TEXT,
-                            `Path`	TEXT,
-                            `Size`	INTEGER,
-                            `IsFolder`	BLOB,
-                            `atime`	INTEGER,
-                            `mtime`	INTEGER,
-                            `ctime`	INTEGER,
-                            PRIMARY KEY(`file_id`)
-                        )'''
-                        % (table_name)
-                        )
-            cur.execute('''CREATE INDEX `%s` ON `%s` (Filename, Size, atime, mtime, ctime) '''
-                        % (table_name + '_idx', table_name)
-                        )
+        count =0
+        # TODO: better way
+        while count <3:
+            count += 1
+            try:
+                cur.execute('''
+                    SELECT count(*) FROM sqlite_master WHERE type='table' AND name='%s';
+                    ''' % (table_name))
+                if cur.fetchall()[0][0] == 0:
+                    # unique file_id
+                    # http://stackoverflow.com/questions/9342249/how-to-insert-a-unique-id-into-each-sqlite-row
+                    cur.execute('''CREATE TABLE "%s" (
+                                    `file_id` INTEGER,
+                                    `Filename`	TEXT,
+                                    `Path`	TEXT,
+                                    `Size`	INTEGER,
+                                    `IsFolder`	BLOB,
+                                    `atime`	INTEGER,
+                                    `mtime`	INTEGER,
+                                    `ctime`	INTEGER,
+                                    PRIMARY KEY(`file_id`)
+                                )'''
+                                % (table_name)
+                                )
+                    cur.execute('''CREATE INDEX `%s` ON `%s` (Filename, Size, atime, mtime, ctime) '''
+                                % (table_name + '_idx', table_name)
+                                )
 
-            # cur.execute('''CREATE VIRTUAL TABLE "%s" USING fts4(
-            #                 `entry_id` INTEGER,
-            #                 `name`	TEXT,
-            #             )'''
-            #             % (table_name + '_fts')
-            #             )
+                    # cur.execute('''CREATE VIRTUAL TABLE "%s" USING fts4(
+                    #                 `entry_id` INTEGER,
+                    #                 `name`	TEXT,
+                    #             )'''
+                    #             % (table_name + '_fts')
+                    #             )
 
-        elif clear_table:
-            cur.execute('''DELETE FROM `%s`'''
-                        % (table_name)
-                        )
-        cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (table_name))
-        maxrowid = MainCon.cur.fetchall()[0][0]  # max(rowid)
+                elif clear_table:
+                    cur.execute('''DELETE FROM `%s`'''
+                                % (table_name)
+                                )
+                cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (table_name))
+                maxrowid = MainCon.cur.fetchall()[0][0]  # max(rowid)
 
-        # Need Max-rowid rather than no. of rows. Rowid maybe larger than seq num.
-        # cur.execute('''select Count(*) from `%s` limit 1;'''
-        #             % (table_name)
-        #             )
-        # table_item_count = int(cur.fetchall()[0][0])
-        cur.execute('''UPDATE  UUID SET rows=?
-            WHERE uuid=?''',
-                    (maxrowid, table_name)
-                    )
-        con.commit()
+                # Need Max-rowid rather than no. of rows. Rowid maybe larger than seq num.
+                # cur.execute('''select Count(*) from `%s` limit 1;'''
+                #             % (table_name)
+                #             )
+                # table_item_count = int(cur.fetchall()[0][0])
+                cur.execute('''UPDATE  UUID SET rows=?
+                    WHERE uuid=?''',
+                            (maxrowid, table_name)
+                            )
+                con.commit()
+                break
+            except Exception as e:
+                logger.error('Error!' + e.message)
 
+        self.mutex.unlock()
         # self.con.commit()
         #  `UUID_ID`	INTEGER,
         #  FOREIGN KEY(`UUID_ID`) REFERENCES UUID(ID)
@@ -610,6 +627,7 @@ class Update_DB_Thread(QtCore.QThread):
 
     @pyqtSlot(list)
     def update_uuid_slot(self, uuid_list):
+        self.mutex.lock()
         for row in uuid_list:
             uuid = row[0]
             included = row[1]
@@ -625,11 +643,13 @@ class Update_DB_Thread(QtCore.QThread):
             except Exception as e:
                 self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
                 logger.error(e.message)
+        self.mutex.unlock()
         self.update_uuid()
 
     @pyqtSlot()
     def merge_db_slot(self):
         logger.debug("Merge temp db.")
+        self.mutex.lock()
         while 1:
             try:
                 MainCon.cur.execute('''ATTACH "%s" AS SecondaryDB''' % TEMP_DB_NAME)
@@ -680,13 +700,16 @@ class Update_DB_Thread(QtCore.QThread):
                 ret = msgBox.exec_()
                 if (ret != msgBox.Retry):
                     break
-
+        self.mutex.unlock()
     @pyqtSlot(list)
     def get_table_uuid_slot(self, header_list):
         # logger.info("update table uuid." + str(header_list))
         logger.info("get_table_uuid_slot.  gettable uuid." + str(header_list))
+        self.mutex.lock()
+
         MainCon.cur.execute("select  " + ",".join(header_list) + ' from `UUID`')
         self.get_table_uuid_sendback_SIGNAL.emit(MainCon.cur.fetchall())
+        self.mutex.unlock()
 
     @pyqtSlot()
     def refresh_table_uuid_mount_state_slot_sender(self):

@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from .._Global_Qt_import import *
 from .._Global_DawnlightSearch import *
 from .._Global_logger import *
-
+from .sql_formatter import format_sql_cmd
 
 class QueryThread(QtCore.QThread):
     add_row_to_model_SIGNAL = QtCore.pyqtSignal(int, list)
@@ -34,6 +34,8 @@ class QueryThread(QtCore.QThread):
 
     def run(self):
         cur = self.cur
+        cur.execute("PRAGMA case_sensitive_like=ON;")
+
         while (1):
             if self.quit_flag:
                 break
@@ -63,37 +65,51 @@ class QueryThread(QtCore.QThread):
                 # print "self.Query_Text_ID_list: ", self.Query_Text_ID_list
                 query_id = q['query_id']
                 sql_comm = q['sql_comm']
+                case_sensitive_like_flag_ON = q['case_sensitive_like_flag']
                 if (query_id < self.Query_Text_ID_list[0]):
                     continue
-
-                cur.execute(sql_comm)
-                for query_row in cur:
-                    if self.quit_flag:
-                        break
-                    if (query_id < self.Query_Text_ID_list[0]):
-                        break
-                    row = []
-                    for idx, col in enumerate(query_row):
-                        newitem = QtGui.QStandardItem(str(col))
-                        newitem.setData(str(col), HACKED_QT_EDITROLE)
-                        if idx in [0]:
+                try:
+                    if case_sensitive_like_flag_ON:
+                        cur.execute('PRAGMA case_sensitive_like=ON;')
+                    else:
+                        cur.execute('PRAGMA case_sensitive_like=OFF;')
+                    cur.execute(sql_comm)
+                    for query_row in cur:
+                        if self.quit_flag:
+                            break
+                        if (query_id < self.Query_Text_ID_list[0]):
+                            break
+                        row = []
+                        for idx, col in enumerate(query_row):
+                            newitem = QtGui.QStandardItem(str(col))
                             newitem.setData(str(col), HACKED_QT_EDITROLE)
-                        if idx in [2]:
-                            newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
-                        if idx in [4, 5, 6]:
-                            newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
-                        row.append(newitem)
-                    self.add_row_to_model_SIGNAL.emit(query_id, row)
-                    # self.model.appendRow(row)
+                            if idx in [0]:
+                                newitem.setData(str(col), HACKED_QT_EDITROLE)
+                            if idx in [2]:
+                                newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
+                            if idx in [4, 5, 6]:
+                                newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
+                            row.append(newitem)
+                        self.add_row_to_model_SIGNAL.emit(query_id, row)
+                        # self.model.appendRow(row)
+                except Exception as e:
+                    logger.error(e.message)
                 if (not self.quit_flag) and (query_id == self.Query_Text_ID_list[0]):
                     self.update_progress_SIGNAL.emit(self.qqueue.qsize(), q['LEN'])
+    def quit(self):
+        self.quit_flag = True
+        super(self.__class__, self).quit()
 
-
-class DistributeQueryWorker(QtCore.QObject):
-    def __init__(self, *args, **kwargs):
-        super(self.__class__, self).__init__(*args)  # , **kwargs
+class DistributeQueryWorker(QtCore.QThread):
+    def __init__(self, parent, **kwargs):  # *args, **kwargs
+        super(self.__class__, self).__init__(parent)  # , **kwargs
         self.mutex = QtCore.QMutex()
+        self.condition = QtCore.QWaitCondition()
+
+        self.queue_mutex = QtCore.QMutex()
         self.queue_condition = QtCore.QWaitCondition()
+        self.quit_flag = False
+
         import Queue
         self.qqueue = Queue.Queue()
         # In python, we don't need mutex. Queue is thread-safe.
@@ -101,64 +117,138 @@ class DistributeQueryWorker(QtCore.QObject):
         self.update_progress_slot = kwargs['progress_slot']
         self.Query_Text_ID_list = kwargs['Query_Text_ID_list']
         self.thread_no = max(1, QtCore.QThread.idealThreadCount())
-        self.thread_pool = [QueryThread(self.mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list,
+        self.thread_pool = [QueryThread(self.queue_mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list,
                                         parent=self) \
                             for _ in range(self.thread_no)]
         # Single thread
-        # self.thread_pool = [QueryThread(self.mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list) ]
+        # self.thread_pool = [QueryThread(self.queue_mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list) ]
         for thread in self.thread_pool:
             thread.add_row_to_model_SIGNAL.connect(self.target_slot)
             thread.update_progress_SIGNAL.connect(self.update_progress_slot)
             thread.start()
 
-    @pyqtSlot(int, list, str, list, QMainWindow)
-    def distribute_new_query(self, query_id, uuid_path_list, sql_mask, cur_query_id_list, ui_thread):
-        # print 'distribute_new_query slot received: ', query_id, uuid_path_list, sql_mask, cur_query_id_list, ui_thread
-        logger.info(
-            'distribute_new_query slot received: ' + str([query_id, uuid_path_list, sql_mask, cur_query_id_list,
-                                                          ui_thread]))
-        for thread in self.thread_pool:
-            thread.quit_previous_query()
+    def run(self):
+        while 1:
+            if self.quit_flag:
+                break
+            self.mutex.lock()
+            self.condition.wait(self.mutex)
+            self.mutex.unlock()
+            if self.quit_flag:
+                break
+
+            self.mutex.lock()
+            [query_id, uuid_path_list, sql_text, cur_query_id_list] = self.new_query_list
+            self.mutex.unlock()
+
+            # # ======================================
+            # header_list = DB_HEADER_LIST
+            # sql_mask = " SELECT " + ",".join(header_list) + ' FROM `%s` '
+            # sql_mask = sql_mask.replace("Path", '''"%s"||Path''')
+            # sql_where = []
+            # for i in sql_text.split(' '):
+            #     if i:
+            #         sql_where.append(''' (`Filename` LIKE "%%%%%s%%%%") ''' % i)  # FIXME: ugly sql cmd
+            # sql_where = " WHERE " + " AND ".join(sql_where)
+            # sql_mask = sql_mask + sql_where
+            # logger.debug("SQL mask: " + sql_mask)
+            # # ======================================
+            # logger.info(
+            #     'distribute_new_query slot received: ' + str([query_id, uuid_path_list, sql_mask, cur_query_id_list
+            #                                                   ]))
+            # for thread in self.thread_pool:
+            #     thread.quit_previous_query()
+            #
+            # self.queue_mutex.lock()
+            # while not self.qqueue.empty():
+            #     self.qqueue.get()
+            # tmp_q = []
+            # for table in uuid_path_list:  # {'uuid':uuid,'path':path,'rows':rows}
+            #     table['path'] = "" if table['path'] == "/" else table['path']  # avoid "//dir/file"
+            #     sql_comm = sql_mask % (table['path'], table['uuid'])  # path, uuid
+            #     rowid_low = 0
+            #     while rowid_low <= table['rows']:
+            #         rowid_high = rowid_low + GlobalVar.QUERY_CHUNK_SIZE
+            #         if "WHERE" in sql_comm.upper():
+            #             sql_comm_2 = sql_comm + '  AND  (ROWID BETWEEN %s AND %s) ' % (rowid_low, rowid_high)
+            #         else:
+            #             sql_comm_2 = sql_comm + ' WHERE (ROWID BETWEEN %s AND %s) ' % (rowid_low, rowid_high)
+            #         sql_comm_2 += " LIMIT %d" % GlobalVar.QUERY_LIMIT
+            #         tmp_q.append({'query_id': query_id, 'sql_comm': sql_comm_2})
+            #         rowid_low = rowid_high + 1
+            # for idx, item in enumerate(tmp_q):
+            #     item['SN'] = idx
+            #     item['LEN'] = len(tmp_q)
+            #     self.qqueue.put(item)
+            # # ======================
+
+
+
+            logger.info(
+                'distribute_new_query slot received: ' + str([query_id, uuid_path_list, sql_text, cur_query_id_list
+                                                              ]))
+            for thread in self.thread_pool:
+                thread.quit_previous_query()
+
+            self.queue_mutex.lock()
+            while not self.qqueue.empty():
+                self.qqueue.get()
+            tmp_q = []
+            for table in uuid_path_list:  # {'uuid':uuid,'path':path,'rows':rows}
+                if not table['path']:
+                    table['path'] = table['uuid']+'::'
+                table['path'] = "" if table['path'] == "/" else table['path']  # avoid "//dir/file"
+
+                (table['path'], table['uuid'])  # path, uuid
+
+                rowid_low = 0
+                while rowid_low <= table['rows']:
+                    rowid_high = rowid_low + GlobalVar.QUERY_CHUNK_SIZE
+                    OK_flag, _ ,_ , sql_cmd, case_sensitive_like_flag_ON,_ = format_sql_cmd(
+                        {
+                            'path': table['path'],
+                            'uuid': table['uuid'],
+                            'sql_text': sql_text,
+                            'rowid_low': rowid_low,
+                            'rowid_high': rowid_high,
+                        }
+                    )
+                    if OK_flag:
+                        tmp_q.append({'query_id': query_id, 'sql_comm': sql_cmd, 'case_sensitive_like_flag': case_sensitive_like_flag_ON})
+                    rowid_low = rowid_high + 1
+            for idx, item in enumerate(tmp_q):
+                item['SN'] = idx
+                item['LEN'] = len(tmp_q)
+                self.qqueue.put(item)
+
+
+            self.queue_condition.wakeAll()
+
+            self.queue_mutex.unlock()
+
+    @pyqtSlot(list)
+    def distribute_new_query(self, new_query_list):
 
         tmp_mutexlocker = QtCore.QMutexLocker(self.mutex)
-        while not self.qqueue.empty():
-            self.qqueue.get()
+        self.new_query_list = new_query_list
+        self.condition.wakeOne()
 
-        tmp_q = []
-        for table in uuid_path_list:  # {'uuid':uuid,'path':path,'rows':rows}
-            table['path'] = "" if table['path'] == "/" else table['path']  # avoid "//dir/file"
-            sql_comm = sql_mask % (table['path'], table['uuid'])  # path, uuid
-            rowid_low = 0
-            while rowid_low <= table['rows']:
-                rowid_high = rowid_low + GlobalVar.QUERY_CHUNK_SIZE
-                if "WHERE" in sql_comm.upper():
-                    sql_comm_2 = sql_comm + '  AND  (ROWID BETWEEN %s AND %s) ' % (rowid_low, rowid_high)
-                else:
-                    sql_comm_2 = sql_comm + ' WHERE (ROWID BETWEEN %s AND %s) ' % (rowid_low, rowid_high)
-                sql_comm_2 += " LIMIT %d" % GlobalVar.QUERY_LIMIT
-                tmp_q.append({'query_id': query_id, 'sql_comm': sql_comm_2})
-                rowid_low = rowid_high + 1
-        for idx, item in enumerate(tmp_q):
-            item['SN'] = idx
-            item['LEN'] = len(tmp_q)
-            self.qqueue.put(item)
-        # ======================
-        self.queue_condition.wakeAll()
-
-    def __del__(self):
+    def quit(self):
+        self.quit_flag = True
         for thread in self.thread_pool:
             thread.quit_flag = True
             thread.quit_previous_query()
             thread.quit()
-        self.mutex.lock()
+
+        self.queue_mutex.lock()
         self.queue_condition.wakeAll()
+        self.queue_mutex.unlock()
+
+        self.mutex.lock()
+        self.condition.wakeOne()
         self.mutex.unlock()
+
         for thread in self.thread_pool:
-            thread.wait()
-        s = super(self.__class__, self)
-        try:
-            s.__del__
-        except AttributeError:
-            pass
-        else:
-            s.__del__(self)
+            thread.wait(5000)
+
+        super(self.__class__, self).quit()

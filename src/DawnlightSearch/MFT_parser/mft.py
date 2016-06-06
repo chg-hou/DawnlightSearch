@@ -424,7 +424,6 @@ def decodeAttributeList(s, record):
 
     return d
 
-
 # def decodeVolumeInfo(s, options):
 #     d = {}
 #     # d['f1'] = struct.unpack("<d",s[:8])[0]                  # 8

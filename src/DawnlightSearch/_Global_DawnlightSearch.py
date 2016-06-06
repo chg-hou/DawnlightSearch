@@ -21,6 +21,8 @@ TEMP_DB_NAME = QSettings(QSettings.IniFormat, QSettings.UserScope,
         PATH_OF_SETTING_FILE,
         'temp_db.db'))
 
+DB_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
+                  'atime', 'mtime', 'ctime']
 
 class GlobalVar(object):
     QUERY_CHUNK_SIZE = 10000
@@ -32,6 +34,14 @@ class GlobalVar(object):
     USE_MFT_PARSER = True
     USE_MFT_PARSER_CPP = True
 
+    CASE_SENSTITIVE = False
+    MATCH_OPTION = 1
+
+    # http://doc.qt.io/qt-5/qdatetime.html#fromString-1
+    DATETIME_FORMAT = 'd/M/yyyy h:m:s'
+    HIGHLIGHT_WORDS = {'Name':[],'Path':[]}
+
+    Query_Text_ID = 0
 
 class MainCon(object):
     con = None

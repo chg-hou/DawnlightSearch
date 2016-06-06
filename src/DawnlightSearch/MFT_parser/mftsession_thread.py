@@ -312,7 +312,6 @@ class MftSession(object):
         else:
             s.__del__(self)
 
-
 # class MftSession_test(object):
 #     def __init__(self, filename, parent=None):
 #         super(self.__class__, self).__init__()

@@ -13,7 +13,7 @@ EditSettingDialog_base_class, _ = uic.loadUiType(
 
 # EditSettingDialog_base_class, _ = uic.loadUiType("Ui_advanced_setting_dialog.ui")
 class EditSettingDialog(QDialog, EditSettingDialog_base_class):
-    def __init__(self, ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, parent=None):
+    def __init__(self, ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, DATETIME_FORMAT, parent=None):
         self.ORGANIZATION_NAME = ORGANIZATION_NAME
         self.ALLICATION_NAME = ALLICATION_NAME
 
@@ -36,6 +36,9 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.spinBox_mount_state_update_interval.setValue(
             settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
         )
+        self.spinBox_lazy_query_interval.setValue(
+            settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=400)
+        )
 
         self.lineEdit_Database_File_Name.setText(DATABASE_FILE_NAME)
         self.lineEdit_Temp_Database_File_Name.setText(TEMP_DB_NAME)
@@ -44,6 +47,8 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
         self.toolButton_Database_File_Name.released.connect(self.on_change_Database_File)
         self.toolButton_Temp_Database_File_Name.released.connect(self.on_change_Temp_Database_File)
+
+        self.lineEdit_datetime_format.setText(DATETIME_FORMAT)
 
     @pyqtSlot(str)
     def on_lineEdit_Database_File_Name_edited(self, path):
@@ -86,8 +91,8 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
     # static method to create the dialog and return (date, time, accepted)
     @staticmethod
-    def getSetting(ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, parent=None):
-        dialog = EditSettingDialog(ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, parent=parent)
+    def getSetting(ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, DATETIME_FORMAT, parent=None):
+        dialog = EditSettingDialog(ORGANIZATION_NAME, ALLICATION_NAME, DATABASE_FILE_NAME, TEMP_DB_NAME, DATETIME_FORMAT, parent=parent)
         result = dialog.exec_()
         new_settings = dialog._getSettings()
         # print dialog.spinBox_label_query_chunk_size.value(), dialog.spinBox_model_max_items.value(), result
@@ -101,6 +106,11 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
             settings.setValue('Database_File_Name', dialog.lineEdit_Database_File_Name.text())
             settings.setValue('Temp_Database_File_Name', dialog.lineEdit_Temp_Database_File_Name.text())
             settings.setValue('Mount_State_Update_Interval', dialog.spinBox_mount_state_update_interval.value())
+            settings.setValue("Start_Querying_after_Typing_Finished",
+                              dialog.spinBox_lazy_query_interval.value())
+
+            settings.setValue("Search/Date_Format",
+                              dialog.lineEdit_datetime_format.text())
 
             settings.sync()
         return (new_settings, result == QDialog.Accepted)
