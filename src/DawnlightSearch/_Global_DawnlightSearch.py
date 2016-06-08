@@ -43,6 +43,12 @@ class GlobalVar(object):
 
     Query_Text_ID = 0
 
+    EXCLUDED_UUID = set()
+
+    GET_ICON_PROCRESS = None
+    SKIP_DIFF_DEV = False
+
+
 class MainCon(object):
     con = None
     cur = None

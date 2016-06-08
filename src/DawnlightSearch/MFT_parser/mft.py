@@ -9,12 +9,20 @@
 # Date: May 2013
 #
 
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
 import binascii
 import struct
 from optparse import OptionParser
 
-import mftutils
-
+try:
+    import mftutils
+except:
+    from ..MFT_parser import mftutils
 
 def set_default_options():
     parser = OptionParser()
@@ -53,13 +61,13 @@ def parse_record(record, raw_record, options):
 
     if record['magic'] == 0x44414142:
         if options.debug:
-            print "BAAD MFT Record"
+            print("BAAD MFT Record")
         record['baad'] = True
         return record
 
     if record['magic'] != 0x454c4946:
         if options.debug:
-            print "Corrupt MFT Record"
+            print("Corrupt MFT Record")
         record['corrupt'] = True
         return record
 
@@ -80,7 +88,7 @@ def parse_record(record, raw_record, options):
             ATRrecord['name'] = ''
 
         if options.debug:
-            print "Attribute type: %x Length: %d Res: %x" % (ATRrecord['type'], ATRrecord['len'], ATRrecord['res'])
+            print("Attribute type: %x Length: %d Res: %x" % (ATRrecord['type'], ATRrecord['len'], ATRrecord['res']))
 
             # if ATRrecord['type'] == 0x10:                   # Standard Information
             # if options.debug:
@@ -106,10 +114,10 @@ def parse_record(record, raw_record, options):
         #         record['al'] = None
 
         if ATRrecord['type'] == 0x30:  # File name
-            if options.debug: print "File name record"
+            if options.debug: print("File name record")
             FNrecord = decodeFNAttribute(raw_record[read_ptr + ATRrecord['soff']:], options.localtz, record)
             record['fn', record['fncnt']] = FNrecord
-            if options.debug: print "Name: %s (%d)" % (FNrecord['name'], record['fncnt'])
+            if options.debug: print("Name: %s (%d)" % (FNrecord['name'], record['fncnt']))
             record['fncnt'] += + 1
             # if FNrecord['crtime'] != 0:
             #     if options.debug: print "\tCRTime: %s MTime: %s ATime: %s EntryTime: %s" % (FNrecord['crtime'].dtstr,
@@ -187,7 +195,7 @@ def parse_record(record, raw_record, options):
         if ATRrecord['len'] > 0:
             read_ptr = read_ptr + ATRrecord['len']
         else:
-            if options.debug: print "ATRrecord->len < 0, exiting loop"
+            if options.debug: print("ATRrecord->len < 0, exiting loop")
             break
 
     # if options.anomaly:

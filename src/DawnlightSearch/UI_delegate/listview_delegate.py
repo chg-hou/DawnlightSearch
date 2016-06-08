@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+from __future__ import absolute_import
 from .._Global_Qt_import import *
 from .._Global_DawnlightSearch import *
 from .listitem_formatter import *
@@ -319,7 +321,7 @@ class HTMLDelegate22(QtWidgets.QStyledItemDelegate):
         self.initStyleOption(options, index)
         doc.setHtml(options.text)
 
-        print "options: ", options, options.text
+        print("options: ", options, options.text)
 
         style = QtWidgets.QApplication.style() if options.widget is None else options.widget.style()
 

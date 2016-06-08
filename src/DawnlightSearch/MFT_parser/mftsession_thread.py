@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import struct
 from PyQt5 import QtCore
 
-import mft
-
+try:
+    import mft
+except:
+    from ..MFT_parser import mft
 
 class MftWorkerThread(QtCore.QThread):
     def __init__(self, mft_var, mft_seqs_flag_list, mftsize, filename, rw_lock,
@@ -85,7 +88,7 @@ class MftWorkerThread(QtCore.QThread):
         if seqnum not in self.mft:
             self.build_seq(seqnum)
             if seqnum not in self.mft:
-                print "Bad sernum: ", seqnum
+                print("Bad sernum: ", seqnum)
                 self.mft[seqnum] = {'name': "BAD_NAME",
                                     'path': "/",
                                     'par_ref': 5}
@@ -259,7 +262,7 @@ class MftSession(object):
 
         self.rw_lock = QtCore.QReadWriteLock()
 
-        mftsize = long(os.path.getsize(self.options.filename)) / 1024
+        mftsize = (os.path.getsize(self.options.filename)) / 1024
         self.mftsize = mftsize
         filename = self.options.filename
 
@@ -269,7 +272,7 @@ class MftSession(object):
         self.thread_no = max(1, QtCore.QThread.idealThreadCount())
         self.thread_no = 10  # 1'26''
         self.thread_no = 1  # 1'12''
-        print self.thread_no
+        printself.thread_no
         self.thread_pool = [MftWorkerThread(self.mft, self.mft_seqs_flag_list, mftsize, filename, self.rw_lock,
                                             sql_insert_queue, sql_insert_mutex, sql_insert_condition,
                                             table_name, self.options,
@@ -299,7 +302,7 @@ class MftSession(object):
         for thread in self.thread_pool:
             if thread.isRunning():
                 _tmp_running = True
-        print "_tmp_running: ", _tmp_running
+        print("_tmp_running: ", _tmp_running)
         return _tmp_running
 
     def __del__(self):

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from __future__ import absolute_import
 
 from DawnlightSearch._Global_Qt_import import *
@@ -21,7 +22,7 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.setupUi(self)
 
         settings = QSettings(QSettings.IniFormat, QSettings.UserScope, self.ORGANIZATION_NAME, self.ALLICATION_NAME)
-        print settings.fileName()
+        print(settings.fileName())
         # print settings.value('Query_Chunk_Size', type=int, defaultValue=10000)
 
         self.spinBox_label_query_chunk_size.setValue(
@@ -49,6 +50,9 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.toolButton_Temp_Database_File_Name.released.connect(self.on_change_Temp_Database_File)
 
         self.lineEdit_datetime_format.setText(DATETIME_FORMAT)
+
+        self.checkBox_skip_diff_dev.setChecked(
+            settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True))
 
     @pyqtSlot(str)
     def on_lineEdit_Database_File_Name_edited(self, path):
@@ -112,6 +116,8 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
             settings.setValue("Search/Date_Format",
                               dialog.lineEdit_datetime_format.text())
 
+            settings.setValue('Database/Skip_Different_Device',
+                              dialog.checkBox_skip_diff_dev.isChecked())
             settings.sync()
         return (new_settings, result == QDialog.Accepted)
 

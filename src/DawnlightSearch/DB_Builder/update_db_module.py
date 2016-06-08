@@ -17,9 +17,21 @@ from ..MFT_parser.mft_cpp_parser_wrapper import mft_parser_cpp
 from ..MFT_parser.mftsession_thread import *
 from .sys_blk_devices import SystemDevices
 
+try:
+    unicode('')     # python 2
+except:
+    def unicode(text):
+        if type(text) == str:
+            return text
+        else:
+            return str(text, 'utf-8')   # python 3
+
+try:
+    import Queue
+except:
+    import queue as Queue
 
 class FLAG_class:
-    __slots__ = ('quit_flag', 'restart_flag')
     quit_flag = False
     restart_flag = False
 
@@ -33,7 +45,7 @@ def estimate_num_of_files(root_path):
         return -1
         pass  # TODO: handle in windows
     elif os.name == 'posix':
-        tmp = subprocess.check_output(["df", '--inodes', root_path]).split('\n')
+        tmp = subprocess.check_output(["df", '--inodes', root_path]).decode().split('\n')
         tmp = tmp[-1] if tmp[-1] else tmp[-2]
         # Filesystem      Inodes  IUsed   IFree IUse% Mounted on
         # /dev/sda10     4808704 541245 4267459   12% /
@@ -211,7 +223,7 @@ class Update_DB_Thread(QtCore.QThread):
 
         self.mutex = QtCore.QMutex()
         self.queue_condition = QtCore.QWaitCondition()
-        import Queue
+
         self.qqueue = Queue.Queue()
         self.sql_insert_queue = Queue.Queue()
         self.sql_insert_mutex = QtCore.QMutex()
@@ -246,8 +258,8 @@ class Update_DB_Thread(QtCore.QThread):
 
         # follow the same structure of http://doc.qt.io/qt-5/qtcore-threads-mandelbrot-example.html
         while (1):
-            print "Update db run: "
-            print "\tThread:", int(QtCore.QThread.currentThreadId())
+            print( "Update db run: ")
+            print("\tThread:", int(QtCore.QThread.currentThreadId()))
 
             while not self.qqueue.empty():
                 if self.flag.restart_flag:
@@ -338,8 +350,8 @@ class Update_DB_Thread(QtCore.QThread):
                             del session
                         MFT_parser_successful_flag = True
                     except Exception as e:
-                        logger.error(e.message)
-                        self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
+                        logger.error(str(e))
+                        self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
 
                 if not MFT_parser_successful_flag:
                     num_records = 0
@@ -358,7 +370,7 @@ class Update_DB_Thread(QtCore.QThread):
                             try:
                                 l_stat = os.lstat(full_file_or_dir)
                             except OSError as e:
-                                print e
+                                print(e)
                                 continue
 
                             mode = l_stat.st_mode
@@ -374,18 +386,15 @@ class Update_DB_Thread(QtCore.QThread):
                             else:
                                 major_dnum = minor_dnum = 0
 
-                            if (device_maj_num != major_dnum) or (device_min_num != minor_dnum):
+                            if GlobalVar.SKIP_DIFF_DEV and ((device_maj_num != major_dnum) or (device_min_num != minor_dnum)):
                                 print("In different device: %s vs. %s" % (full_file_or_dir, root_path))
-                                # self.UUID_class.device_id_path[(major_dnum, minor_dnum)].add(full_file_or_dir)
-                                # TODO: skip different device
-                                # path_lists.append(full_file_or_dir)
                                 continue
 
                             if stat.S_ISDIR(mode):
                                 # https://docs.python.org/2/library/stat.html
                                 # It's a directory, recurse into it
                                 if full_file_or_dir in self.skip_dir:
-                                    print ('Dir %s skipped.' % full_file_or_dir)
+                                    print('Dir %s skipped.' % full_file_or_dir)
                                     continue
                                 subdirs.append(full_file_or_dir)
                                 #
@@ -528,8 +537,9 @@ class Update_DB_Thread(QtCore.QThread):
                 MainCon.con.commit()
                 break
             except Exception as e:
-                self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
-                logger.error(e.message)
+                self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
+                logger.error(str(e))
+                break
         self.mutex.unlock()
         for uuid in uuid_list:
             self.init_table(uuid, clear_table=False)
@@ -594,7 +604,7 @@ class Update_DB_Thread(QtCore.QThread):
                 con.commit()
                 break
             except Exception as e:
-                logger.error('Error!' + e.message)
+                logger.error('Error!' + str(e))
 
         self.mutex.unlock()
         # self.con.commit()
@@ -607,8 +617,8 @@ class Update_DB_Thread(QtCore.QThread):
         # self.con.commit()
         self.db_commit_SIGNAL.emit()
         # self.con.close()
-        print "update db slot: ", path_lists
-        print "\tThread:", int(QtCore.QThread.currentThreadId())
+        print("update db slot: ", path_lists)
+        print("\tThread:", int(QtCore.QThread.currentThreadId()))
 
         tmp_mutexlocker = QtCore.QMutexLocker(self.mutex)
         tmp_mutexlocker2 = QtCore.QMutexLocker(self.sql_insert_mutex)
@@ -641,8 +651,8 @@ class Update_DB_Thread(QtCore.QThread):
                                     (included, updatable, uuid))
 
             except Exception as e:
-                self.show_statusbar_warning_msg_SIGNAL.emit(e.message)
-                logger.error(e.message)
+                self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
+                logger.error(str(e))
         self.mutex.unlock()
         self.update_uuid()
 
@@ -671,7 +681,7 @@ class Update_DB_Thread(QtCore.QThread):
                 msgBox = QMessageBox(self.parent())
                 msgBox.setIcon(QMessageBox.Critical)
                 msgBox.setText("Fail to merge temp databse into main database:\n%s\n\nError message:\n%s" % (
-                TEMP_DB_NAME, e.message))
+                TEMP_DB_NAME, str(e)))
                 msgBox.setInformativeText(
                     "Do you want to retry?\nPress \"Abort\" to quit and KEEP the temp database.\nPress \"Cancel\" or close this message to quit and DELETE the temp database.")
                 msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Abort | QMessageBox.Cancel)
@@ -693,7 +703,7 @@ class Update_DB_Thread(QtCore.QThread):
             except Exception as e:
                 msgBox = QMessageBox(self.parent())
                 msgBox.setIcon(QMessageBox.Critical)
-                msgBox.setText("Fail to delete temp databse:\n%s\n\nError message:\n%s" % (TEMP_DB_NAME, e.message))
+                msgBox.setText("Fail to delete temp databse:\n%s\n\nError message:\n%s" % (TEMP_DB_NAME, str(e)))
                 msgBox.setInformativeText("Do you want to retry?")
                 msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Cancel)
                 msgBox.setDefaultButton(QMessageBox.Retry)
@@ -744,6 +754,6 @@ if __name__ == '__main__':
     # update_db_thread.update_whole_filesdb('/')
     update_db_thread.update_whole_filesdb('/media')
 
-    print update_db_thread.UUID_class.device_id_path
-    print update_db_thread.UUID_class.device_id_path.keys()
-    print update_db_thread.UUID_class.device_id_path.values()
+    print(update_db_thread.UUID_class.device_id_path)
+    print(update_db_thread.UUID_class.device_id_path.keys())
+    print(update_db_thread.UUID_class.device_id_path.values())

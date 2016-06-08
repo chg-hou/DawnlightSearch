@@ -81,7 +81,7 @@ class LinuxDevices(object):
                 l_stat = os.lstat(target)
             except Exception as e:
                 print("Fail to stat: " + target)
-                print(e.message)
+                print(str(e))
                 continue
             major_dnum = os.major(l_stat.st_dev)
             minor_dnum = os.minor(l_stat.st_dev)
@@ -141,4 +141,5 @@ elif os.name == 'posix':
 
 if __name__ == '__main__':
     a = SystemDevices()
+    a.refresh_state()
     # print(a.mounted_uuid())

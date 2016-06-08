@@ -1,4 +1,7 @@
 # DevelNote: need to pass in localtz now
+from __future__ import print_function
+
+
 def WindowsTime(low, high, localtz):
     "Convert the Windows time in 100 nanosecond intervals since Jan 1, 1601 to time in seconds since Jan 1, 1970"
     # Windows NT time is specified as the number of 100 nanosecond intervals since January 1, 1601.
@@ -22,8 +25,8 @@ def hexdump(chars, sep, width):
         line = chars[:width]
         chars = chars[width:]
         line = line.ljust(width, '\000')
-        print "%s%s%s" % (sep.join("%02x" % ord(c) for c in line),
-                          sep, quotechars(line))
+        print("%s%s%s" % (sep.join("%02x" % ord(c) for c in line),
+                          sep, quotechars(line)))
 
 
 def quotechars(chars):

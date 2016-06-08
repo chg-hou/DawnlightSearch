@@ -5,6 +5,11 @@ from .._Global_DawnlightSearch import *
 from .._Global_logger import *
 from .sql_formatter import format_sql_cmd
 
+try:
+    import Queue
+except:
+    import queue as Queue
+
 class QueryThread(QtCore.QThread):
     add_row_to_model_SIGNAL = QtCore.pyqtSignal(int, list)
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int)
@@ -77,8 +82,6 @@ class QueryThread(QtCore.QThread):
                     for query_row in cur:
                         if self.quit_flag:
                             break
-                        if (query_id < self.Query_Text_ID_list[0]):
-                            break
                         row = []
                         for idx, col in enumerate(query_row):
                             newitem = QtGui.QStandardItem(str(col))
@@ -90,10 +93,12 @@ class QueryThread(QtCore.QThread):
                             if idx in [4, 5, 6]:
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
                             row.append(newitem)
+                        if (query_id < self.Query_Text_ID_list[0]):
+                            break
                         self.add_row_to_model_SIGNAL.emit(query_id, row)
                         # self.model.appendRow(row)
                 except Exception as e:
-                    logger.error(e.message)
+                    logger.error(str(e))
                 if (not self.quit_flag) and (query_id == self.Query_Text_ID_list[0]):
                     self.update_progress_SIGNAL.emit(self.qqueue.qsize(), q['LEN'])
     def quit(self):
@@ -110,7 +115,6 @@ class DistributeQueryWorker(QtCore.QThread):
         self.queue_condition = QtCore.QWaitCondition()
         self.quit_flag = False
 
-        import Queue
         self.qqueue = Queue.Queue()
         # In python, we don't need mutex. Queue is thread-safe.
         self.target_slot = kwargs['target_slot']

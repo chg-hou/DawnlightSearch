@@ -3,13 +3,25 @@
 
 # https://developer.gnome.org/pygobject/stable/
 # http://www.pygtk.org/docs/pygobject/gio-class-reference.html
+
+# https://developer.gnome.org/gtk3/stable/GtkIconTheme.html#gtk-icon-theme-lookup-icon
+# http://lazka.github.io/pgi-docs/
+from __future__ import print_function
 from __future__ import absolute_import
 from functools import partial
+from gi.repository import Gio
+try:
+    from .._Global_Qt_import import *
+    from .._Global_DawnlightSearch import *
+except:
+    class ddd:
+        pass
+    GlobalVar = ddd()
+    GlobalVar.GET_ICON_PROCRESS = None
 
-from .._Global_Qt_import import *
-import gtk
 import mimetypes
-import gio
+import sys, os
+import subprocess
 
 _qicon_cache_for_build_qicon = {}
 DEFAULT_ICON_SIZE = 32
@@ -23,36 +35,53 @@ def get_file_type(filename, isPath):
         type_ = 'unknown' if not type_ else type_  # 'empty'
     return type_
 
+def _get_icon_filename(icon_name):
+    if not GlobalVar.GET_ICON_PROCRESS:
+        python_exe = sys.executable
+        py_path = os.path.dirname(os.path.abspath(__file__))
+        subprocess_path = os.path.join(py_path, 'subprocess_get_icon_filename.py')
+        GlobalVar.GET_ICON_PROCRESS = subprocess.Popen([python_exe, subprocess_path],
+                                                       stdin=subprocess.PIPE,
+                                                       stdout=subprocess.PIPE)
+    GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes(icon_name + '\n', 'utf8'))
+    GlobalVar.GET_ICON_PROCRESS.stdin.flush()
+    return GlobalVar.GET_ICON_PROCRESS.stdout.readline()[:-1].decode(encoding='UTF-8')  # end with '\n'
 
 def get_app_icon_filename(app_info, size=DEFAULT_ICON_SIZE):
+
     if not app_info:
         return None
     themed_icon = app_info.get_icon()
     if not themed_icon:
         return None
-    ICON_THEME = gtk.icon_theme_get_default()
-    if not themed_icon:
-        return None
-    icon_info = ICON_THEME.choose_icon(themed_icon.get_names(), size, 0)
+    icon_name = themed_icon.get_names()[0]
 
-    return icon_info.get_filename()
-
+    return _get_icon_filename(icon_name)
 
 def app_launch_files(launch, filename_list):
+    from gi.repository import Gio
     try:
-        launch(map(gio.File, filename_list), None)
+        filename_list = [x for x in filename_list if os.path.exists(x)]
+        if filename_list:
+            launch(list(map(Gio.File.new_for_path, filename_list)), None)
     except:
         print ("Fail to launch: " + str(filename_list))
 
-
 def get_default_app(file_type):
-    default_app_info = gio.app_info_get_default_for_type(file_type, False)
+    default_app_info = Gio.app_info_get_default_for_type(file_type, False)
     if not default_app_info:
         return None, None, None, None, None
     icon_filename = get_app_icon_filename(default_app_info)
     app_name = default_app_info.get_name()
     app_tooltip = default_app_info.get_description()
     app_launch_fun = app_launch_files
+
+    # https://developer.gnome.org/pygobject/stable/class-gioappinfo.html#method-gioappinfo--get-commandline
+    cmd_line = default_app_info.get_commandline()       # mousepad %F'
+    # %f %F
+    # https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+    executable = default_app_info.get_executable()      # 'mousepad'
+
     # app_launch =  lambda filename_list: default_app_info.launch(
     #                     map(gio.File, filename_list),None)
 
@@ -63,12 +92,13 @@ def get_default_app(file_type):
 
 
 def get_open_with_app(file_type):
-    default_app_info = gio.app_info_get_default_for_type(file_type, False)
+    from gi.repository import Gio
+    default_app_info = Gio.app_info_get_default_for_type(file_type, False)
     if not default_app_info:
         return
     app_name = default_app_info.get_name()
 
-    app_infos = gio.app_info_get_all_for_type(file_type)
+    app_infos = Gio.app_info_get_all_for_type(file_type)
     for app_info in app_infos:
         if app_info.get_name() != app_name:
             icon_filename = get_app_icon_filename(app_info)
@@ -78,52 +108,26 @@ def get_open_with_app(file_type):
             yield icon_filename, app_name, app_tooltip, app_launch_fun, app_info.launch
 
 
-def get_default_app_old(filename, isPath):
-    file_type = get_file_type(filename, isPath)
-    # http://www.pygtk.org/docs/pygobject/class-gioappinfo.html
-    default_app_info = gio.app_info_get_default_for_type(file_type, False)
-    app_infos = gio.app_info_get_all_for_type(file_type)
-
-    # print "default_app_info: ", default_app_info.get_display_name(), default_app_info.get_filename()
-    print "default_app_info: ", default_app_info.get_commandline()
-    print default_app_info.get_description()
-    print default_app_info.get_executable()
-    print default_app_info.get_icon()
-    print default_app_info.get_name()
-    # menu_item.connect('activate', lambda *args: do_launch_app(app_info))
-
-    # Open file
-    # gfile = gio.File.new_for_path(filename)
-    # default_app_info.launch([gfile, ], None)
-
-    for i in app_infos:
-        print "app_infos: ", i.get_name()
-        print "\t\t", get_app_icon_filename(i)
-    print "file_type:", file_type
-
-
 def get_QIcon_object(filename):
     if not (filename in _qicon_cache_for_build_qicon):
         _qicon_cache_for_build_qicon[filename] = QtGui.QIcon(filename)
     return _qicon_cache_for_build_qicon[filename]
 
 
-def build_qicon(filename, isPath, size=32):
+def build_qicon(filename, isPath, size=DEFAULT_ICON_SIZE):
+
+    from gi.repository import Gio
     # print "-------------------------------------------" + str(_qicon_cache_for_build_qicon)
     if isPath:
         type_ = 'folder'
     else:
         type_, encoding = mimetypes.guess_type(filename)
         type_ = 'unknown' if not type_ else type_  # 'empty'
-    icon = gio.content_type_get_icon(type_)
-    ICON_THEME = gtk.icon_theme_get_default()
-    info = ICON_THEME.choose_icon(icon.get_names(), size, 0)
-    if not info:
-        type_ = 'unknown'
-        icon = gio.content_type_get_icon(type_)
-        info = ICON_THEME.choose_icon(icon.get_names(), size, 0)
+    icon = Gio.content_type_get_icon(type_)
 
-    return get_QIcon_object(info.get_filename())
+    icon_filename = _get_icon_filename(icon.get_names()[0])
+
+    return get_QIcon_object(icon_filename)
 
 
 def set_qicon(qstandarditem, filename, isPath, size=32):
@@ -139,7 +143,7 @@ def size_to_str(value, unit='KB'):
     try:
         value = int(value)
     except:
-        print 'aaa'
+        print('aaa')
 
     if unit is 'B': return '%d B' % value
     if value == 0 and not (unit is None):
@@ -153,18 +157,42 @@ def size_to_str(value, unit='KB'):
         f = ('%.2f' % value).rstrip('0').rstrip('.')
         return '%s %s' % (f, suffixes[i])
     except:
-        print "***************************** Error in format size: ", value
+        print("***************************** Error in format size: ", value)
 
         return value
 
-# def pop_select_app_dialog():
-#
-#     from gi.repository import Gtk
-#
-#     file_type = "image/jpeg"
-#     print file_type
-#     dialog = Gtk.AppChooserDialog.new_for_content_type(None,
-#                                                        Gtk.DialogFlags.MODAL, file_type)
-#     response = dialog.run()
-#     app_info = dialog.get_app_info()
-#     dialog.destroy()
+def pop_select_app_dialog_and_open(file_type,filename_list):
+    python_exe = sys.executable
+    py_path = os.path.dirname(os.path.abspath(__file__))
+    subprocess_path = os.path.join(py_path, 'subprocess_pop_select_app_dialog.py')
+
+    app_executable = subprocess.check_output( [python_exe, subprocess_path, file_type] ,
+            stderr = subprocess.PIPE)
+    if app_executable:
+        for filename in filename_list:
+            try:
+                if os.path.exists(filename):
+                    subprocess.Popen([app_executable, filename])
+            except Exception as e:
+                print(str(e))
+
+if __name__ == '__main__':
+    pass
+    file_type = get_file_type('a.txt', False)
+    print(file_type)
+
+    print(get_default_app(file_type))
+
+    # build_qicon('a.txt', False, size=DEFAULT_ICON_SIZE)
+    # print(build_qicon('a.txt',False))
+
+    file_type = get_file_type('a.txt', False)
+    print(file_type)
+
+    pop_select_app_dialog_and_open(file_type, ['/home/cg/Desktop/test.txt'])
+    try:
+        GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes('EXIT\n', 'utf8'))
+        GlobalVar.GET_ICON_PROCRESS.stdin.flush()
+        GlobalVar.GET_ICON_PROCRESS.terminate()
+    except:
+        pass

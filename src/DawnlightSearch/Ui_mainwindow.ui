@@ -348,7 +348,7 @@
         </sizepolicy>
        </property>
        <property name="alternatingRowColors">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
@@ -600,6 +600,36 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </action>
+  <action name="actionHide_UUID">
+   <property name="text">
+    <string>Hide</string>
+   </property>
+  </action>
+  <action name="actionShow_UUID">
+   <property name="text">
+    <string>Show</string>
+   </property>
+  </action>
+  <action name="actionShow_All">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show All</string>
+   </property>
+  </action>
+  <action name="actionUpdatedb_onlyselected">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/system-reboot.png</normaloff>ui/icon/system-reboot.png</iconset>
+   </property>
+   <property name="text">
+    <string>Update DB (only selected)</string>
+   </property>
+   <property name="toolTip">
+    <string>Update DB (only selected)</string>
    </property>
   </action>
  </widget>

@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
+from __future__ import print_function
 from __future__ import absolute_import
 from PyQt5.QtCore import QDateTime
 try:
@@ -464,7 +470,7 @@ def format_sql_cmd(sql_dict):
         # OK_flag
         return True, sql_mask, sql_cmd,sql , case_sensitive_like_flag_ON, highlight_words
     except Exception as e:
-        return False, None, e.message, None, case_sensitive_like_flag_ON, highlight_words
+        return False, None, str(e), None, case_sensitive_like_flag_ON, highlight_words
 
     # sql_where = []
     # for i in sql_text.split(' '):
@@ -518,12 +524,12 @@ if __name__ == '__main__':
             'rowid_high': 2,
         }
     )
-    print a
-    print b
-    print c
-    print d
-    print e
-    print f
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+    print(e)
+    print(f)
     # a      Like "%a%"
     # "a"     =  "a"
     # "a*b"  Like "a%b"
