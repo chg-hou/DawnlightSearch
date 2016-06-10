@@ -11,11 +11,6 @@ import time
 
 if __name__ == "__main__" and __package__ is None:
     # https://github.com/arruda/relative_import_example
-
-    # print os.path.dirname(sys.argv[0])
-    # print os.path.dirname(os.path.abspath(__file__))
-    # os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
     parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     os.sys.path.insert(1, parent_dir)
 
@@ -148,7 +143,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.query_error_icon.addPixmap(QtGui.QPixmap("./ui/icon/hint.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
 
         self.comboBox_search.installEventFilter(self)
-
+        self.comboBox_search.lineEdit().returnPressed.connect(self.on_lineedit_enter_pressed)
         # search setting
         self.actionCase_Sensitive.toggled.connect(self.on_toolbutton_casesensitive_toggled)
         self.toolButton_casesensitive.setChecked(settings.value('Search/Case_Sensitive', type=bool, defaultValue=False))
@@ -171,6 +166,12 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # skip diff dev
         GlobalVar.SKIP_DIFF_DEV = settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True)
 
+        # size unit
+        GlobalVar.SIZE_UNIT = settings.value('Size_Unit', type=str, defaultValue='KB')
+
+        # instant search
+        GlobalVar.INSTANT_SEARCH = settings.value('Search/Instant_Search', type=bool, defaultValue=True)
+
         # load excluded UUID
         try:
             GlobalVar.EXCLUDED_UUID = set(settings.value('Excluded_UUID',type=str, defaultValue=[]))
@@ -183,7 +184,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                         source is self.comboBox_search:
             # http://doc.qt.io/qt-5/qevent.html
             if (event.type() == QtCore.QEvent.FocusOut):
-                print("focus")
+                print("focus out")
                 self.comboBox_search.lineEdit().returnPressed.emit()
         return QtWidgets.QWidget.eventFilter(self, source, event)
 
@@ -437,7 +438,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
             GlobalVar.DATETIME_FORMAT = settings.value('Search/Date_Format', type=str, defaultValue="d/M/yyyy h:m:s")
             GlobalVar.SKIP_DIFF_DEV = settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True)
-
+            GlobalVar.SIZE_UNIT = settings.value('Size_Unit', type=str, defaultValue='KB')
+            GlobalVar.INSTANT_SEARCH = settings.value('Search/Instant_Search', type=bool, defaultValue=True)
             logger.info(
                 "Advanced Setting updated. " + str(GlobalVar.QUERY_CHUNK_SIZE) + " " + str(GlobalVar.MODEL_MAX_ITEMS))
             logger.info("{}  {}".format(new_settings, ok))
@@ -483,8 +485,6 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
         logger.info('on_push_button_clicked')
         # a = self.saveGeometry()
-
-
         self.statusBar.setStyleSheet(
             "QStatusBar{color:red;font-weight:bold;}")
 
@@ -631,9 +631,17 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         #                 (item.checkState()==QtCore.Qt.Checked,uuid))
         #     MainCon.con.commit()
 
+    @pyqtSlot()
+    def on_lineedit_enter_pressed(self):
+        self._query_text_changed()
+
     @pyqtSlot(str)
     def on_lineedit_text_changed(self, text):
         print('Text changerd.')
+        if GlobalVar.INSTANT_SEARCH:
+            self._query_text_changed()
+
+    def _query_text_changed(self):
         text = self.lineEdit_search.text().strip()
         if self._Former_search_text == text:  # or (not text)
             return
@@ -695,17 +703,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             tmp.setIcon(get_QIcon_object(icon_filename))
             tmp.setToolTip(app_tooltip)
 
-            open_with_menu_flag = False
+            open_with_menu = menu.addMenu("Open with")
             for icon_filename, app_name, app_tooltip, app_launch_fun, app_launcher in get_open_with_app(file_type):
-                if not open_with_menu_flag:
-                    open_with_menu = menu.addMenu("Open with")
-                    open_with_menu_flag = True
                 tmp = open_with_menu.addAction('''Open with "%s"''' % app_name,
                                                partial(app_launch_fun, app_launcher, filename_list))
                 tmp.setIcon(get_QIcon_object(icon_filename))
                 tmp.setToolTip(app_tooltip)
-            if open_with_menu_flag:
-                open_with_menu.addAction('''Open With Other Application...''' ,
+            open_with_menu.addAction('''Open With Other Application...''' ,
                                          partial(pop_select_app_dialog_and_open, file_type, filename_list))
 
         menu.addAction("Open path", self.on_tableview_context_menu_open_path)
@@ -755,7 +759,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             file_type_set.add(get_file_type(Filename, IsFolder))
             if len(file_type_set) != 1:
                 return "folder"
-        return file_type_set.pop()
+        if len(file_type_set)>0:
+            return file_type_set.pop()
+        else:
+            return ''
 
     def get_tableview_selected(self):
         import os
@@ -973,6 +980,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         #     self._clear_model()
         #     # TODO: highlight former selected rows
         row = self.model.rowCount()
+        GlobalVar.CURRENT_MODEL_ITEMS = row
         if row < GlobalVar.MODEL_MAX_ITEMS:
             #  method 2
             for col, item in enumerate(insert_row):
@@ -1044,6 +1052,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
     def _clear_model(self):
         self.model.setRowCount(0)
+        GlobalVar.CURRENT_MODEL_ITEMS = 0
         # self.model.clear()    # will clear header too.
 
     @pyqtSlot()
@@ -1081,15 +1090,15 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.model.setColumnCount(len(header_list))
         self.model.setHorizontalHeaderLabels(header_list)
 
-        self.proxy = QtCore.QSortFilterProxyModel(self)
-        self.proxy.setSourceModel(self.model)
-        self.proxy.setFilterKeyColumn(
-            0)  # The default value is 0. If the value is -1, the keys will be read from all columns.
-        # self.proxy.setFilterWildcard("*.zip*")
-        # https://deptinfo-ensip.univ-poitiers.fr/ENS/pyside-docs/PySide/QtGui/QSortFilterProxyModel.html
-        self.proxy.setDynamicSortFilter(
-            True)  # This property holds whether the proxy model is dynamically sorted and filtered whenever the contents of the source model change.
-        self.proxy.setFilterRole(HACKED_QT_EDITROLE)
+        # self.proxy = QtCore.QSortFilterProxyModel(self)
+        # self.proxy.setSourceModel(self.model)
+        # self.proxy.setFilterKeyColumn(
+        #     0)  # The default value is 0. If the value is -1, the keys will be read from all columns.
+        # # self.proxy.setFilterWildcard("*.zip*")
+        # # https://deptinfo-ensip.univ-poitiers.fr/ENS/pyside-docs/PySide/QtGui/QSortFilterProxyModel.html
+        # self.proxy.setDynamicSortFilter(
+        #     True)  # This property holds whether the proxy model is dynamically sorted and filtered whenever the contents of the source model change.
+        # self.proxy.setFilterRole(HACKED_QT_EDITROLE)
 
     @pyqtSlot(str)
     def show_statusbar_warning_msg_slot(self, msg):

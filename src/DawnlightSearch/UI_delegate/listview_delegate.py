@@ -83,7 +83,7 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
 
 
             size_data = m.data(m.index(row, 2), HACKED_QT_EDITROLE)
-            size_data = size_to_str(size_data)
+            size_data = size_to_str(size_data, unit=GlobalVar.SIZE_UNIT)
 
             m.setData(m.index(row, 2), size_data, QtCore.Qt.DisplayRole)
             m.setData(m.index(row, 2), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
@@ -190,7 +190,7 @@ class HTMLDelegate_VC_HL_bak(QtWidgets.QStyledItemDelegate):
             # print 'Updated icon row:', row
 
             size_data = m.data(m.index(row, 2), HACKED_QT_EDITROLE)
-            size_data = size_to_str(size_data)
+            size_data = size_to_str(size_data, unit=GlobalVar.SIZE_UNIT)
             # print 'size_data: ', size_data
             m.setData(m.index(row, 2), size_data, QtCore.Qt.DisplayRole)
             m.setData(m.index(row, 2), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
@@ -427,7 +427,7 @@ class FileSizeDelegate(QtWidgets.QStyledItemDelegate):
     #     return QtCore.QSize(doc.idealWidth(), doc.size().height())
     def displayText(self, value, locale):
         # return value
-        return size_to_str(value)
+        return size_to_str(value, unit=GlobalVar.SIZE_UNIT)
 
         # http://pyqt.sourceforge.net/Docs/PyQt4/qstyleditemdelegate.html
 

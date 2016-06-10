@@ -54,6 +54,22 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.checkBox_skip_diff_dev.setChecked(
             settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True))
 
+        unit = settings.value('Size_Unit', type=str, defaultValue='KB')
+        unit_list = ['Auto','B', 'KB', 'MB', 'GB', 'TB', 'PB']
+        if not (unit in unit_list):
+            idx = 0
+        else:
+            idx = unit_list.index(unit)
+
+        self.comboBox_size_unit.setCurrentIndex(idx)
+
+        if settings.value('Search/Instant_Search', type=bool, defaultValue=True):
+            self.radioButton_instant_search.setChecked(True)
+        else:
+            self.radioButton_enter_to_search.setChecked(True)
+
+
+
     @pyqtSlot(str)
     def on_lineEdit_Database_File_Name_edited(self, path):
         if os.path.exists(os.path.dirname(path)):
@@ -118,6 +134,14 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
             settings.setValue('Database/Skip_Different_Device',
                               dialog.checkBox_skip_diff_dev.isChecked())
+
+            unit_list = ['Auto', 'B', 'KB', 'MB', 'GB', 'TB', 'PB']
+            unit = unit_list[dialog.comboBox_size_unit.currentIndex()]
+            settings.setValue('Size_Unit',
+                              unit)
+
+            settings.setValue('Search/Instant_Search', dialog.radioButton_instant_search.isChecked())
+
             settings.sync()
         return (new_settings, result == QDialog.Accepted)
 

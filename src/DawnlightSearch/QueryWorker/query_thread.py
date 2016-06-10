@@ -71,7 +71,7 @@ class QueryThread(QtCore.QThread):
                 query_id = q['query_id']
                 sql_comm = q['sql_comm']
                 case_sensitive_like_flag_ON = q['case_sensitive_like_flag']
-                if (query_id < self.Query_Text_ID_list[0]):
+                if (query_id < self.Query_Text_ID_list[0] or GlobalVar.CURRENT_MODEL_ITEMS>=GlobalVar.MODEL_MAX_ITEMS):
                     continue
                 try:
                     if case_sensitive_like_flag_ON:
@@ -93,8 +93,9 @@ class QueryThread(QtCore.QThread):
                             if idx in [4, 5, 6]:
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
                             row.append(newitem)
-                        if (query_id < self.Query_Text_ID_list[0]):
+                        if (query_id < self.Query_Text_ID_list[0] or GlobalVar.CURRENT_MODEL_ITEMS >= GlobalVar.MODEL_MAX_ITEMS):
                             break
+
                         self.add_row_to_model_SIGNAL.emit(query_id, row)
                         # self.model.appendRow(row)
                 except Exception as e:

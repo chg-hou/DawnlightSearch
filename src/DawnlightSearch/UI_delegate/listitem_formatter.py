@@ -24,6 +24,7 @@ import sys, os
 import subprocess
 
 _qicon_cache_for_build_qicon = {}
+_iconfilename_cache_for_get_icon_filename = {}
 DEFAULT_ICON_SIZE = 32
 
 
@@ -36,16 +37,25 @@ def get_file_type(filename, isPath):
     return type_
 
 def _get_icon_filename(icon_name):
-    if not GlobalVar.GET_ICON_PROCRESS:
-        python_exe = sys.executable
-        py_path = os.path.dirname(os.path.abspath(__file__))
-        subprocess_path = os.path.join(py_path, 'subprocess_get_icon_filename.py')
-        GlobalVar.GET_ICON_PROCRESS = subprocess.Popen([python_exe, subprocess_path],
-                                                       stdin=subprocess.PIPE,
-                                                       stdout=subprocess.PIPE)
-    GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes(icon_name + '\n', 'utf8'))
-    GlobalVar.GET_ICON_PROCRESS.stdin.flush()
-    return GlobalVar.GET_ICON_PROCRESS.stdout.readline()[:-1].decode(encoding='UTF-8')  # end with '\n'
+    if not (icon_name in _iconfilename_cache_for_get_icon_filename):
+        try:
+            try:
+                if not(GlobalVar.GET_ICON_PROCRESS.poll() is None):
+                    raise Exception('Sub process is terminated.')
+            except:
+                python_exe = sys.executable
+                py_path = os.path.dirname(os.path.abspath(__file__))
+                subprocess_path = os.path.join(py_path, 'subprocess_get_icon_filename.py')
+                GlobalVar.GET_ICON_PROCRESS = subprocess.Popen([python_exe, subprocess_path],
+                                                               stdin=subprocess.PIPE,
+                                                               stdout=subprocess.PIPE)
+            GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes(icon_name + '\n', 'utf8'))
+            GlobalVar.GET_ICON_PROCRESS.stdin.flush()
+            _iconfilename_cache_for_get_icon_filename[icon_name] = GlobalVar.GET_ICON_PROCRESS.stdout.readline()[:-1].decode(encoding='UTF-8')  # end with '\n'
+        except Exception as e:
+            print('Error in _get_icon_filename',str(e))
+            return ''
+    return _iconfilename_cache_for_get_icon_filename[icon_name]
 
 def get_app_icon_filename(app_info, size=DEFAULT_ICON_SIZE):
 
@@ -135,6 +145,8 @@ def set_qicon(qstandarditem, filename, isPath, size=32):
 
 
 def size_to_str(value, unit='KB'):
+    print(value, unit)
+    print(type(value),type(unit))
     if (not value) and (value != 0) and (value != '0'):
         return ''
     suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
@@ -145,7 +157,7 @@ def size_to_str(value, unit='KB'):
     except:
         print('aaa')
 
-    if unit is 'B': return '%d B' % value
+    if unit == 'B': return '%d B' % value
     if value == 0 and not (unit is None):
         return '0 B'
     try:
@@ -153,7 +165,7 @@ def size_to_str(value, unit='KB'):
         while (value >= 1024 and i < len(suffixes) - 1) or not (unit is None):
             value /= 1024.
             i += 1
-            if unit is suffixes[i]:    break
+            if unit == suffixes[i]:    break
         f = ('%.2f' % value).rstrip('0').rstrip('.')
         return '%s %s' % (f, suffixes[i])
     except:

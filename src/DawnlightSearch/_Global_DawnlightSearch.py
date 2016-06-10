@@ -28,6 +28,7 @@ class GlobalVar(object):
     QUERY_CHUNK_SIZE = 10000
     MODEL_MAX_ITEMS = 3000
     QUERY_LIMIT = 100
+    CURRENT_MODEL_ITEMS = 0
     # settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
     # query_limit = settings.value('Query_limit', type=int, defaultValue=100)
 
@@ -48,6 +49,9 @@ class GlobalVar(object):
     GET_ICON_PROCRESS = None
     SKIP_DIFF_DEV = False
 
+    SIZE_UNIT = 'KB'
+
+    INSTANT_SEARCH = True
 
 class MainCon(object):
     con = None
