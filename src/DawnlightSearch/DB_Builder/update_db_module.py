@@ -143,7 +143,7 @@ class Insert_db_thread(QtCore.QThread):
 
             self.running_flag = True
 
-            if (num_records % (max(mftsize / 100, 1)) == 0 and num_records > 0) or \
+            if (num_records % (max(mftsize // 100, 1)) == 0 and num_records > 0) or \
                     (num_records == mftsize - 1):
                 logger.info('Building Filepaths: {0:.0f}'.format(100.0 * num_records / mftsize) + '%')
                 self.update_progress_SIGNAL.emit(num_records, mftsize, uuid)
@@ -231,29 +231,20 @@ class Update_DB_Thread(QtCore.QThread):
 
         self.get_table_uuid_sendback_SIGNAL.connect(parent.get_table_widget_uuid_back_slot)
         self.show_statusbar_warning_msg_SIGNAL.connect(parent.show_statusbar_warning_msg_slot)
-        # self.insert_db_thread = Insert_db_thread(parent=self, sql_insert_queue=self.sql_insert_queue,
-        #                                          sql_insert_mutex=self.sql_insert_mutex,
-        #                                          sql_insert_condition=self.sql_insert_condition)
-        # self.db_commit_SIGNAL.connect(self.insert_db_thread.commit_slot)
-        #
-        # self.update_progress_SIGNAL.connect(mainwindows.on_db_progress_update, QtCore.Qt.QueuedConnection)
-        # self.insert_db_thread.update_progress_SIGNAL.connect(mainwindows.on_db_progress_update,
-        #                                                      QtCore.Qt.QueuedConnection)
-        #
-        # self.insert_db_thread.start()
-
-        # logger.info("update db init: 1")
-        # logger.info("update db init: 2")
-        # self._init_db()  # TODO: OPT
-        # logger.info("update db init: 3")
 
 
-
-    def run(self):
         logger.info("update db init: 1")
         logger.info("update db init: 2")
         self._init_db()  # TODO: OPT
         logger.info("update db init: 3")
+
+
+
+    def run(self):
+        # logger.info("update db init: 1")
+        # logger.info("update db init: 2")
+        # self._init_db()  # TODO: OPT
+        # logger.info("update db init: 3")
 
 
         # follow the same structure of http://doc.qt.io/qt-5/qtcore-threads-mandelbrot-example.html

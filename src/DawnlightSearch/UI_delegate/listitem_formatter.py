@@ -39,22 +39,14 @@ def get_file_type(filename, isPath):
 def _get_icon_filename(icon_name):
     if not (icon_name in _iconfilename_cache_for_get_icon_filename):
         try:
-            try:
-                if not(GlobalVar.GET_ICON_PROCRESS.poll() is None):
-                    raise Exception('Sub process is terminated.')
-            except:
-                python_exe = sys.executable
-                py_path = os.path.dirname(os.path.abspath(__file__))
-                subprocess_path = os.path.join(py_path, 'subprocess_get_icon_filename.py')
-                GlobalVar.GET_ICON_PROCRESS = subprocess.Popen([python_exe, subprocess_path],
-                                                               stdin=subprocess.PIPE,
-                                                               stdout=subprocess.PIPE)
-            GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes(icon_name + '\n', 'utf8'))
-            GlobalVar.GET_ICON_PROCRESS.stdin.flush()
-            _iconfilename_cache_for_get_icon_filename[icon_name] = GlobalVar.GET_ICON_PROCRESS.stdout.readline()[:-1].decode(encoding='UTF-8')  # end with '\n'
+            python_exe = sys.executable
+            py_path = os.path.dirname(os.path.abspath(__file__))
+            subprocess_path = os.path.join(py_path, 'subprocess_get_icon_filename.py')
+            icon_path = subprocess.check_output([python_exe, subprocess_path, icon_name])
+            _iconfilename_cache_for_get_icon_filename[icon_name] = icon_path.decode(encoding='UTF-8')
         except Exception as e:
-            print('Error in _get_icon_filename',str(e))
-            return ''
+            _iconfilename_cache_for_get_icon_filename[icon_name] = ''
+            print('_get_icon_filename ERROR: '+str(e))
     return _iconfilename_cache_for_get_icon_filename[icon_name]
 
 def get_app_icon_filename(app_info, size=DEFAULT_ICON_SIZE):
@@ -145,8 +137,6 @@ def set_qicon(qstandarditem, filename, isPath, size=32):
 
 
 def size_to_str(value, unit='KB'):
-    print(value, unit)
-    print(type(value),type(unit))
     if (not value) and (value != 0) and (value != '0'):
         return ''
     suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']

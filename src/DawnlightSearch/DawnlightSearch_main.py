@@ -1195,12 +1195,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         if self.tableWidget_uuid.rowCount() == 0:
             return -1
         for row in range(self.tableWidget_uuid.rowCount()):
-            if uuid == self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole):
+            if self.tableWidget_uuid.item(row, 3) and uuid == self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole):
                 return row
         return -1
 
     @pyqtSlot()
     def refresh_table_uuid_mount_state_slot(self):
+
         if (not SystemDevices.refresh_state()) and \
                 (SystemDevices.timestamp == self.mount_state_timestamp):
             logger.debug('Same, will not refresh.')
@@ -1293,16 +1294,19 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # save uuid state
         uuid_list = []
         for row in range(self.tableWidget_uuid.rowCount()):
-            uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
-            included = self.tableWidget_uuid.item(row, 0).data(QtCore.Qt.CheckStateRole) \
-                       == QtCore.Qt.Checked
-            updatable = self.tableWidget_uuid.item(row, 9).data(QtCore.Qt.CheckStateRole) \
-                        == QtCore.Qt.Checked
-            logger.info("uuid: %s, included: %s" % (uuid, included))
-            # MainCon.cur.execute(''' UPDATE  UUID SET included=?, updatable=?
-            #             WHERE uuid=? ''',
-            #             (included, updatable, uuid))
-            uuid_list.append([uuid, included, updatable])
+            try:
+                uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
+                included = self.tableWidget_uuid.item(row, 0).data(QtCore.Qt.CheckStateRole) \
+                           == QtCore.Qt.Checked
+                updatable = self.tableWidget_uuid.item(row, 9).data(QtCore.Qt.CheckStateRole) \
+                            == QtCore.Qt.Checked
+                logger.info("uuid: %s, included: %s" % (uuid, included))
+                # MainCon.cur.execute(''' UPDATE  UUID SET included=?, updatable=?
+                #             WHERE uuid=? ''',
+                #             (included, updatable, uuid))
+                uuid_list.append([uuid, included, updatable])
+            except Exception as e:
+                logger.error(str(e))
         self.update_uuid_SIGNAL.emit(uuid_list)
 
         # save excluded UUID
