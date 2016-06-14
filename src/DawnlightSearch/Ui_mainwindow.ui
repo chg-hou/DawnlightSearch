@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>ui/icon/document-preview.png</normaloff>ui/icon/document-preview.png</iconset>
+    <normaloff>ui/icon/DawnlightSearch.png</normaloff>ui/icon/DawnlightSearch.png</iconset>
   </property>
   <property name="dockOptions">
    <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>

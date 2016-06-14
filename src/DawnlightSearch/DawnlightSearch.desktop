@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DawnlightSearch
+Comment=DawnlightSearch
+Exec=python3 /usr/lib/python3/dist-packages/DawnlightSearch/DawnlightSearch_main.py
+Icon=/usr/share/pixmaps/DawnlightSearch.png
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Utility;
+Path=/usr/lib/python3/dist-packages/DawnlightSearch
