@@ -8,6 +8,13 @@ import os
 import sys
 import time
 
+# TODO:
+# refresh_table_uuid_mount_state_slot
+# refresh_table_uuid_row_id_slot
+
+# friendly name
+#
+# context menu search	toggle include, toggle updatable
 
 if __name__ == "__main__" and __package__ is None:
     # https://github.com/arruda/relative_import_example
@@ -45,8 +52,8 @@ MainWindow_base_class, _ = uic.loadUiType("Ui_mainwindow.ui")
 class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     send_query_to_worker_SIGNAL = QtCore.pyqtSignal(list)
     update_db_SIGNAL = QtCore.pyqtSignal(list)
-    update_uuid_SIGNAL = QtCore.pyqtSignal(list)
-    get_uuid_SIGNAL = QtCore.pyqtSignal(list)
+    save_uuid_flag_SIGNAL = QtCore.pyqtSignal(list)
+    get_uuid_SIGNAL = QtCore.pyqtSignal()
     merge_db_SIGNAL = QtCore.pyqtSignal()
 
     def __init__(self):
@@ -86,7 +93,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.lazy_query_timer = QtCore.QTimer(self)
         self.lazy_query_timer.setSingleShot(True)
         self.lazy_query_timer.timeout.connect(self.update_query_result)
-        self.lazy_query_timer.setInterval(settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=400))
+        self.lazy_query_timer.setInterval(settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=50))
 
         self.hide_tooltip_timer = QtCore.QTimer(self)
         self.hide_tooltip_timer.setSingleShot(True)
@@ -98,10 +105,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.restore_statusbar_timer.timeout.connect(self._restore_statusbar_style)
         self.restore_statusbar_timer.setInterval(2000)
 
-        self.refresh_mount_state_timer = QtCore.QTimer(self)
-        self.refresh_mount_state_timer.setSingleShot(False)
-        self.refresh_mount_state_timer.timeout.connect(self.refresh_table_uuid_mount_state_slot)
-        self.mount_state_timestamp = 0
+        # self.refresh_mount_state_timer = QtCore.QTimer(self)
+        # self.refresh_mount_state_timer.setSingleShot(False)
+        # self.refresh_mount_state_timer.timeout.connect(self.refresh_table_uuid_mount_state_slot)
+        # self.mount_state_timestamp = 0
 
         self.Query_Text_ID_list = [1]  # hack: make the ID accessible from other threads
         self.Query_Model_ID = 0
@@ -119,8 +126,9 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         w = settings.value("Main_Window/width", type=int, defaultValue=-1)
         h = settings.value("Main_Window/height", type=int, defaultValue=-1)
 
-        self.refresh_mount_state_timer.setInterval(
-            settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000))
+        GlobalVar.MOUNT_STATE_UPDATE_INTERVAL = settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
+        GlobalVar.ROWID_UPDATE_INTERVAL = settings.value('Rowid_Update_Interval', type=int, defaultValue=3000)
+        GlobalVar.DB_UPDATE_INTERVAL = settings.value('Database_Update_Interval', type=int, defaultValue=1000)
 
         if w > 0:
             self.resize(w, h)
@@ -180,6 +188,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             logger.error('Fail to load excluded: '+ str(e))
 
     def eventFilter(self, source, event):
+        # auto save search text when focus lost
         if source is self.comboBox_search.lineEdit() or \
                         source is self.comboBox_search:
             # http://doc.qt.io/qt-5/qevent.html
@@ -205,11 +214,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.actionUse_MFT_parser.setChecked(GlobalVar.USE_MFT_PARSER)
         self.actionEnable_C_MFT_parser.setEnabled(GlobalVar.USE_MFT_PARSER)
 
-        self.actionAbout.setStatusTip('About...')
         self.actionAbout.triggered.connect(self._show_dialog_about)
-
-        self.actionAbout_Qt.setStatusTip('About Qt...')
         self.actionAbout_Qt.triggered.connect(self._show_dialog_about_qt)
+        self.actionOpen_Project_Homepage.triggered.connect(self._about_open_homepage)
+        self.actionLatest_Version.triggered.connect(self._about_open_latest_version)
 
         self.actionAdvanced_settings.triggered.connect(self._show_dialog_advanced_setting)
 
@@ -218,10 +226,11 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.actionOpen_temp_db_path.triggered.connect(self._open_temp_db_path)
 
     def ini_after_show(self):
+        logger.info('ini table.')
+        self.statusBar.showMessage("Loading...")
+        self.ini_table()
         logger.info('ini subthread.')
         self.ini_subthread()
-        logger.info('ini table.')
-        self.ini_table()
         logger.info('ini done.')
 
         settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
@@ -238,10 +247,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # Calling heavy-work function through fun() and signal-slot, will block gui event loop.
         # Only thread.run solve.
         logger.info('ini_subthread 1')
-        update_db_Thread = Update_DB_Thread(mainwindows=self, parent=self)
+        update_db_Thread = Update_DB_Thread(parent=self)
         logger.info('ini_subthread 2')
         self.update_db_SIGNAL.connect(update_db_Thread.update_db_slot, QtCore.Qt.QueuedConnection)
-        self.update_uuid_SIGNAL.connect(update_db_Thread.update_uuid_slot, QtCore.Qt.QueuedConnection)
+        self.save_uuid_flag_SIGNAL.connect(update_db_Thread.save_uuid_flag_slot, QtCore.Qt.QueuedConnection)
         self.get_uuid_SIGNAL.connect(update_db_Thread.get_table_uuid_slot, QtCore.Qt.QueuedConnection)
         self.merge_db_SIGNAL.connect(update_db_Thread.merge_db_slot, QtCore.Qt.QueuedConnection)
 
@@ -260,16 +269,18 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def ini_table(self):
         self.build_table_model()
         # self.build_table_model_uuid()
-        self.build_table_widget_uuid()
+
+        # self.build_table_widget_uuid()
+        self.header_list_uuid = UUID_HEADER_LIST
+        self.header_name_uuid = UUID_HEADER_LABEL
+        self.tableWidget_uuid.setColumnCount(len(UUID_HEADER_LIST))
+        self.tableWidget_uuid.setHorizontalHeaderLabels(UUID_HEADER_LABEL)
+
         # self.tableView.setModel(self.model)
 
         HTMLDelegate = HTMLDelegate_VC_HL
-        # HTMLDelegate = HTMLDelegate_VU_HL
         self.tableView.setItemDelegate( HTMLDelegate())
-        # self.tableView.setItemDelegateForColumn(0, HTMLDelegate())
         # self.tableView.setItemDelegateForColumn(0, HTMLDelegate_VC_HL_display_only()) # crash when using multi delegates.
-        # self.tableView.setItemDelegateForColumn(1, HTMLDelegate_VC_HL_display_only())
-
 
         # self.tableView.setModel(self.proxy)
         self.tableView.setModel(self.model)
@@ -288,7 +299,6 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.tableView_uuid.resizeColumnsToContents()
         self.tableWidget_uuid.horizontalHeader().setSectionsMovable(True)
         # self.tableWidget_uuid.resizeColumnsToContents()
-
 
         self.tableWidget_uuid.horizontalHeader().setSectionsMovable(True)
 
@@ -390,6 +400,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         msgBox = QtWidgets.QMessageBox()
         msgBox.aboutQt(self, 'cccc')
 
+    def _about_open_homepage(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/chg-hou/DawnlightSearch"))
+
+    def _about_open_latest_version(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/chg-hou/DawnlightSearch/wiki/Latest-Version"))
+
+
     @pyqtSlot()
     def _hide_tooltip_slot(self):
         QtWidgets.QToolTip.hideText()
@@ -430,16 +447,21 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             GlobalVar.QUERY_CHUNK_SIZE = settings.value('Query_Chunk_Size', type=int, defaultValue=10000)
             GlobalVar.MODEL_MAX_ITEMS = settings.value('Max_Items_in_List', type=int, defaultValue=3000)
             GlobalVar.QUERY_LIMIT = settings.value('Query_limit', type=int, defaultValue=100)
-            self.refresh_mount_state_timer.setInterval(
-                settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000))
+            # self.refresh_mount_state_timer.setInterval(
+            #     settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000))
 
             self.lazy_query_timer.setInterval(
-                settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=400))
+                settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=50))
 
             GlobalVar.DATETIME_FORMAT = settings.value('Search/Date_Format', type=str, defaultValue="d/M/yyyy h:m:s")
             GlobalVar.SKIP_DIFF_DEV = settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True)
             GlobalVar.SIZE_UNIT = settings.value('Size_Unit', type=str, defaultValue='KB')
             GlobalVar.INSTANT_SEARCH = settings.value('Search/Instant_Search', type=bool, defaultValue=True)
+
+            GlobalVar.MOUNT_STATE_UPDATE_INTERVAL = settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
+            GlobalVar.ROWID_UPDATE_INTERVAL = settings.value('Rowid_Update_Interval', type=int, defaultValue=3000)
+            GlobalVar.DB_UPDATE_INTERVAL = settings.value('Database_Update_Interval', type=int, defaultValue=1000)
+
             logger.info(
                 "Advanced Setting updated. " + str(GlobalVar.QUERY_CHUNK_SIZE) + " " + str(GlobalVar.MODEL_MAX_ITEMS))
             logger.info("{}  {}".format(new_settings, ok))
@@ -804,12 +826,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             self.restore_statusbar_timer.start()
             return
         try:
-            if sys.platform.startswith('darwin'):
-                subprocess.call(('open', path))
-            elif os.name == 'nt':
-                os.startfile(path)
-            elif os.name == 'posix':
-                subprocess.call(('xdg-open', path))
+            QDesktopServices.openUrl(QUrl.fromLocalFile(path))
+            # if sys.platform.startswith('darwin'):
+            #     subprocess.call(('open', path))
+            # elif os.name == 'nt':
+            #     os.startfile(path)
+            # elif os.name == 'posix':
+            #     subprocess.call(('xdg-open', path))
         except:
             logger.warning("Cannot open file: %s" % path)
 
@@ -1030,11 +1053,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     progressbar.setMaximum(100)
                     progressbar.setMinimum(0)
                     progressbar.setValue(100)
-                    # progressbar.setFormat("Done")
                     progressbar.setFormat("Merging...")
-                    self.tableWidget_uuid.item(row, 8).setData(1, HACKED_QT_EDITROLE)
-                    self.tableWidget_uuid.item(row, 8).setData(1, QtCore.Qt.DisplayRole)
-                    self.tableWidget_uuid.item(row, 8).setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+                    QApplication.processEvents()    #
                 else:
                     if mftsize < 0:
                         progressbar.setMinimum(0)
@@ -1085,10 +1105,9 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.model.setSortRole(HACKED_QT_EDITROLE)
         header_list = DB_HEADER_LIST
         self.header_list = header_list
-        # self.model.setRowCount(17)
         print(len(header_list))
         self.model.setColumnCount(len(header_list))
-        self.model.setHorizontalHeaderLabels(header_list)
+        self.model.setHorizontalHeaderLabels(DB_HEADER_LABEL)
 
         # self.proxy = QtCore.QSortFilterProxyModel(self)
         # self.proxy.setSourceModel(self.model)
@@ -1109,19 +1128,6 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.statusBar.showMessage(msg, 3000)
         self.restore_statusbar_timer.setInterval(3000)
         self.restore_statusbar_timer.start()
-
-    def build_table_widget_uuid(self):
-        header_list = ['included', 'path', 'label', 'uuid', 'fstype', 'name',
-                       'major_dnum', 'minor_dnum', 'rows', 'updatable']
-        h_header = ['', 'Path', 'Label', 'UUID', 'FS type', 'Dev name',
-                    '', '', 'rows', 'updatable', 'progress']
-        self.header_list_uuid = header_list
-        self.header_name_uuid = h_header
-        self.tableWidget_uuid.setColumnCount(len(h_header))
-        self.tableWidget_uuid.setHorizontalHeaderLabels(h_header)
-
-        self.get_uuid_SIGNAL.emit(header_list)
-        # self.tableWidget_uuid = QtWidgets.QTableWidget()
 
     @pyqtSlot(list)
     def get_table_widget_uuid_back_slot(self, cur_result_list):
@@ -1187,9 +1193,11 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 self.tableWidget_uuid.setRowHidden(row, True)
 
                 # self.model_uuid.appendRow(row)
-        self.refresh_table_uuid_mount_state_slot()
-        self.refresh_mount_state_timer.start()
+        # self.refresh_table_uuid_mount_state_slot()
+        # self.refresh_mount_state_timer.start()
         self.tableWidget_uuid.setSortingEnabled(True)
+        self.statusBar.showMessage("Done.",2000)
+
 
     def _find_row_of_uuid(self, uuid):
         if self.tableWidget_uuid.rowCount() == 0:
@@ -1201,11 +1209,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
     @pyqtSlot()
     def refresh_table_uuid_mount_state_slot(self):
-
-        if (not SystemDevices.refresh_state()) and \
-                (SystemDevices.timestamp == self.mount_state_timestamp):
-            logger.debug('Same, will not refresh.')
-            return
+        # if (not SystemDevices.refresh_state()) and \
+        #         (SystemDevices.timestamp == self.mount_state_timestamp):
+        #     logger.debug('Same, will not refresh.')
+        #     return
         self.tableWidget_uuid.setSortingEnabled(False)
         # Note that if sorting is enabled (see sortingEnabled) and column is the current sort column, the row
         # will be moved to the sorted position determined by item.
@@ -1215,6 +1222,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         for id, device in deviceDict.items():
             uuid = device['uuid']
             row = self._find_row_of_uuid(uuid)
+            uuid_excluded_flag = uuid in GlobalVar.EXCLUDED_UUID
 
             if row < 0:  # uuid does not exist, insert now row
                 self.tableWidget_uuid.insertRow(self.tableWidget_uuid.rowCount())
@@ -1234,12 +1242,21 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 self.tableWidget_uuid.setItem(row, 9, newitem)
 
                 newitem = QtWidgets.QTableWidgetItem(device['uuid'])
-                newitem.setCheckState(QtCore.Qt.Unchecked)
-                # self.tableWidget_uuid.setItem(row, 3, newitem)
+                self.tableWidget_uuid.setItem(row, 3, newitem)
 
                 for col in [1, 2, 4, 5, 6, 7, 8]:
                     newitem = QtWidgets.QTableWidgetItem()
                     self.tableWidget_uuid.setItem(row, col, newitem)
+
+                if uuid_excluded_flag:
+                    for col in range(10):
+                        newitem = self.tableWidget_uuid.item(row, col)
+                        newitem.setForeground(QtCore.Qt.gray)
+                        temp_font = newitem.font()
+                        temp_font.setItalic(True)
+                        newitem.setFont(temp_font)
+                    if not (self.actionShow_All.isChecked()):
+                        self.tableWidget_uuid.setRowHidden(row, True)
 
             if device['mountpoint']:
                 self.tableWidget_uuid.item(row, 0).setIcon(get_QIcon_object('./ui/icon/dev-harddisk.png'))
@@ -1255,6 +1272,16 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
             self.tableWidget_uuid.item(row, 6).setData(QtCore.Qt.DisplayRole, int(id[0]))
             self.tableWidget_uuid.item(row, 7).setData(QtCore.Qt.DisplayRole, int(id[1]))
+        self.tableWidget_uuid.setSortingEnabled(True)
+
+    @pyqtSlot(list)
+    def refresh_table_uuid_row_id_slot(self,resulit_list):
+        self.tableWidget_uuid.setSortingEnabled(False)
+        for uuid, rowid in resulit_list:
+            row = self._find_row_of_uuid(uuid)
+            if row < 0:  # uuid does not exist, continue
+               continue
+            self.tableWidget_uuid.item(row, 8).setData(QtCore.Qt.DisplayRole, int(rowid))
         self.tableWidget_uuid.setSortingEnabled(True)
 
     def get_search_included_uuid(self):
@@ -1307,7 +1334,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 uuid_list.append([uuid, included, updatable])
             except Exception as e:
                 logger.error(str(e))
-        self.update_uuid_SIGNAL.emit(uuid_list)
+        self.save_uuid_flag_SIGNAL.emit(uuid_list)
 
         # save excluded UUID
         settings.setValue('Excluded_UUID', list(GlobalVar.EXCLUDED_UUID))

@@ -203,259 +203,339 @@ class Insert_db_thread(QtCore.QThread):
 
 class Update_DB_Thread(QtCore.QThread):
     insert_db_SIGNAL = QtCore.pyqtSignal(str, list, int, int, str)
-    db_commit_SIGNAL = QtCore.pyqtSignal()
+    # db_commit_SIGNAL = QtCore.pyqtSignal()
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int, str)
+    update_mount_state_SIGNAL = QtCore.pyqtSignal()
+    update_rowid_SIGNAL = QtCore.pyqtSignal(list)
     get_table_uuid_sendback_SIGNAL = QtCore.pyqtSignal(list)
     show_statusbar_warning_msg_SIGNAL = QtCore.pyqtSignal(str)
 
     def __init__(self, parent=None, mainwindows=None):  # , *args, **kwargs
         super(self.__class__, self).__init__(parent)  # *args, **kwargs
 
-        logger.info("update db init: ")
-        logger.info("\tThread:" + str(QtCore.QThread.currentThreadId()))
-        self.mainwindows = mainwindows
 
-        from PyQt5.QtCore import QSettings
+    @pyqtSlot()
+    def refresh_mount_state_timer_slot(self):
+        if self.flag.quit_flag:
+            self.refresh_mount_state_timer.stop()
+            return
+
+        if self.refresh_mount_state_timer.interval()!= GlobalVar.MOUNT_STATE_UPDATE_INTERVAL:
+            self.refresh_mount_state_timer.setInterval(GlobalVar.MOUNT_STATE_UPDATE_INTERVAL)
+
+        if (not SystemDevices.refresh_state()) and \
+                (SystemDevices.timestamp == self.mount_state_timestamp):
+            logger.debug('Same, will not refresh.')
+            return
+        logger.debug('New state.')
+        self.mount_state_timestamp = SystemDevices.timestamp
+        self.update_mount_state_SIGNAL.emit()
+
+    @pyqtSlot()
+    def refresh_rowid_timer_slot(self):
+        if self.flag.quit_flag:
+            self.refresh_rowid_timer.stop()
+            return
+        if self.refresh_rowid_timer.interval() != GlobalVar.ROWID_UPDATE_INTERVAL:
+            self.refresh_rowid_timer.setInterval(GlobalVar.ROWID_UPDATE_INTERVAL)
+
+        db_mtime = os.path.getmtime(DATABASE_FILE_NAME)
+
+        if (db_mtime == self.rowid_timestamp):
+            logger.debug('Same, will not refresh.')
+            return
+        logger.debug('New state.')
+        self.rowid_timestamp = db_mtime
+        resulit_list = []
+        self.mutex.lock()
+        cur = MainCon.cur
+        cur.execute('''
+            SELECT uuid FROM `UUID` ;
+            ''')
+        uuid_in_db = cur.fetchall()
+        uuids = [x[0] for x in uuid_in_db]
+
+        for uuid in uuids:
+            cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (uuid))
+            maxrowid = cur.fetchall()[0][0]  # max(rowid)
+            resulit_list.append([uuid, maxrowid])
+        self.mutex.unlock()
+        self.update_rowid_SIGNAL.emit(resulit_list)
+
+    def ini_timer(self):
+        parent = self.parent()
+        self.refresh_mount_state_timer = QtCore.QTimer()
+        self.refresh_mount_state_timer.setSingleShot(False)
+        # QtCore.Qt.QueuedConnection will bolck the main GUI thread
+        self.refresh_mount_state_timer.timeout.connect(self.refresh_mount_state_timer_slot, QtCore.Qt.DirectConnection)
+        self.mount_state_timestamp = 0
+        self.refresh_mount_state_timer.setInterval(GlobalVar.MOUNT_STATE_UPDATE_INTERVAL)
+        self.update_mount_state_SIGNAL.connect(parent.refresh_table_uuid_mount_state_slot)
+        # self.refresh_mount_state_timer.moveToThread(self)
+
+        self.refresh_rowid_timer = QtCore.QTimer()
+        self.refresh_rowid_timer.setSingleShot(False)
+        self.refresh_rowid_timer.timeout.connect(self.refresh_rowid_timer_slot, QtCore.Qt.DirectConnection)
+        self.rowid_timestamp = 0
+        self.update_rowid_SIGNAL.connect(parent.refresh_table_uuid_row_id_slot)
+        self.refresh_rowid_timer.setInterval(GlobalVar.ROWID_UPDATE_INTERVAL)
+
+        self.update_db_timer = QtCore.QTimer()
+        self.update_db_timer.setSingleShot(True)
+        self.update_db_timer.timeout.connect(self.update_db_timer_slot, QtCore.Qt.DirectConnection)
+        self.update_db_timer.setInterval(GlobalVar.DB_UPDATE_INTERVAL)
+
+        # self.refresh_rowid_timer.moveToThread(self)   # unnecessary
+        print('ini timer')
+
+    @pyqtSlot()
+    def update_db_timer_slot(self):
+        if self.update_db_timer.interval() != GlobalVar.DB_UPDATE_INTERVAL:
+            self.update_db_timer.setInterval(GlobalVar.DB_UPDATE_INTERVAL)
+
+        self.flag.restart_flag = False
+
+        if self.flag.quit_flag:
+            return
+        if self.qqueue.empty():
+            self.update_db_timer.start()
+            return
+
         settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
         excluded_folders = settings.value('Excluded_folders', type=str, defaultValue='')
-        self.skip_dir = excluded_folders
+        try:
+            self.skip_dir = list(excluded_folders)
+        except Exception as e:
+            logger.error('Wrong format: Excluded folders, '+ str(e))
+            self.skip_dir = []
+
+        while not self.qqueue.empty():
+
+
+            if self.flag.restart_flag:
+                break
+            if self.flag.quit_flag:
+                return
+
+            self.mutex.lock()
+            if self.qqueue.empty():
+                self.mutex.unlock()
+                continue  # break
+            _item = self.qqueue.get()
+            self.mutex.unlock()
+
+            # self.con.commit()
+            # TODO: try catch
+            root_path = _item['path']
+            uuid = _item['uuid']
+
+            if self.flag.quit_flag:
+                break
+            root_path = unicode(root_path)
+            root_path_len = len(root_path) if len(root_path) > 1 else 0
+            print ('Enter root_path: %s' % root_path)
+            if root_path in self.skip_dir:
+                print ('Dir %s skipped.' % root_path)
+                continue
+            if (not os.path.exists(root_path)):
+                logger.warning("Dir %s does not exists." % root_path)
+                self.show_statusbar_warning_msg_SIGNAL.emit("Dir %s does not exists." % root_path)
+                continue
+            # try:
+            if os.lstat(root_path).st_dev != 0:
+                device_maj_num = os.major(os.lstat(root_path).st_dev)
+                device_min_num = os.minor(os.lstat(root_path).st_dev)
+            else:
+                device_maj_num = device_min_num = 0
+
+            # uuid = self.UUID_class.deviceID_to_UUID((device_maj_num, device_min_num))
+            fstype = SystemDevices.deviceDict[(device_maj_num, device_min_num)]['fstype']
+            table_name = uuid
+            self.init_table(table_name, clear_table=False)
+
+            insert_db_thread = Insert_db_thread(uuid, parent=self, sql_insert_queue=self.sql_insert_queue,
+                                                sql_insert_mutex=self.sql_insert_mutex,
+                                                sql_insert_condition=self.sql_insert_condition)
+            insert_db_thread.update_progress_SIGNAL.connect(self.parent().on_db_progress_update,
+                                                            QtCore.Qt.QueuedConnection)
+            insert_db_thread.start()
+
+            enable_MFT_parser = GlobalVar.USE_MFT_PARSER
+
+            # self.update_progress_SIGNAL.emit(-1, -1, uuid)  # start
+            MFT_parser_successful_flag = False
+            if fstype == "ntfs" and enable_MFT_parser:
+                try:
+                    MFT_file_path = os.path.join(root_path, "$MFT")
+                    logger.info("Enter NTFS folder: %s" % root_path)
+                    if not os.path.exists(MFT_file_path):
+                        logger.warning("$MFT file does not exists." % MFT_file_path)
+                        raise Exception("$MFT file does not exists." % MFT_file_path)
+
+                    # FIXME: In linux, cannot get the latest MFT; "sync" does not work. Linux cache?
+
+                    # settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+                    enable_C_MFT_parser = GlobalVar.USE_MFT_PARSER_CPP
+
+                    logger.info("enable_C_MFT_parser: " + str(enable_C_MFT_parser))
+                    if enable_C_MFT_parser:
+                        insert_db_thread.pre_quit(commit_progress_flag=False)
+                        pass
+                        insert_db_thread.update_progress_SIGNAL.emit(1, -3, uuid)
+                        mft_parser_cpp(MFT_file_path, TEMP_DB_NAME, table_name)
+                        insert_db_thread.update_progress_SIGNAL.emit(-2, -2, uuid)
+
+                    else:
+                        session = MftSession(MFT_file_path)
+                        session.start(table_name, self.sql_insert_queue, self.sql_insert_mutex,
+                                      self.sql_insert_condition)
+                        while session.isRunning():
+                            session.wait(timeout_ms=1000)
+                            logger.info("Waiting... Running...")
+
+                            if self.flag.quit_flag or self.flag.restart_flag:
+                                break
+                        session.quit()
+                        del session
+                    MFT_parser_successful_flag = True
+                except Exception as e:
+                    logger.error(str(e))
+                    self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
+
+            if not MFT_parser_successful_flag:
+                num_records = 0
+                mftsize = estimate_num_of_files(root_path)
+                for root, subfiles in os_listdir_walk(root_path):
+                    if self.flag.quit_flag or self.flag.restart_flag:
+                        break
+                    subdirs = []
+                    for file_or_dir in subfiles:
+                        if self.flag.quit_flag or self.flag.restart_flag:
+                            break
+                        num_records += 1
+                        full_file_or_dir = os.path.join(root, file_or_dir)
+
+                        # os.lstat   returns the information about a file, but do not follow symbolic links.
+                        try:
+                            l_stat = os.lstat(full_file_or_dir)
+                        except OSError as e:
+                            print(e)
+                            continue
+
+                        mode = l_stat.st_mode
+
+                        if stat.S_ISLNK(mode):
+                            # symbolic link
+                            # TODO: handle symbolic link
+                            continue
+
+                        if l_stat.st_dev != 0:
+                            major_dnum = os.major(l_stat.st_dev)
+                            minor_dnum = os.minor(l_stat.st_dev)
+                        else:
+                            major_dnum = minor_dnum = 0
+
+                        if GlobalVar.SKIP_DIFF_DEV and ((device_maj_num != major_dnum) or (device_min_num != minor_dnum)):
+                            print("In different device: %s vs. %s" % (full_file_or_dir, root_path))
+                            continue
+
+                        if stat.S_ISDIR(mode):
+                            # https://docs.python.org/2/library/stat.html
+                            # It's a directory, recurse into it
+                            if full_file_or_dir in self.skip_dir:
+                                print('Dir %s skipped.' % full_file_or_dir)
+                                continue
+                            subdirs.append(full_file_or_dir)
+                            #
+                            self.sql_insert_mutex.lock()
+                            self.sql_insert_queue.put([table_name,
+                                                       [file_or_dir,
+                                                        root[root_path_len:] if root[
+                                                                                root_path_len:] else '/' + root[
+                                                                                                           root_path_len:],
+                                                        None, True,
+                                                        int(l_stat.st_atime), int(l_stat.st_mtime),
+                                                        int(l_stat.st_ctime)],
+                                                       num_records, mftsize, uuid]
+                                                      )
+                            self.sql_insert_condition.wakeOne()
+                            self.sql_insert_mutex.unlock()
+
+                        elif stat.S_ISREG(mode):
+                            # regular file
+                            self.sql_insert_mutex.lock()
+                            self.sql_insert_queue.put([table_name,
+                                                       [file_or_dir,
+                                                        root[root_path_len:] if root[
+                                                                                root_path_len:] else '/' + root[
+                                                                                                           root_path_len:],
+                                                        l_stat.st_size, False,
+                                                        int(l_stat.st_atime), int(l_stat.st_mtime),
+                                                        int(l_stat.st_ctime)],
+                                                       num_records, mftsize, uuid]
+                                                      )
+                            self.sql_insert_condition.wakeOne()
+                            self.sql_insert_mutex.unlock()
+
+                        elif stat.S_ISSOCK(mode):
+                            # print('Found socket: %s' % full_file_or_dir)
+                            continue
+                        elif stat.S_ISFIFO(mode):
+                            # print('Found FIFO (named pipe): %s' % full_file_or_dir)
+                            continue
+                        else:
+                            # raise Exception("Unkown file type: " + full_file_or_dir)
+                            # print ("Unkown file type: " + full_file_or_dir)
+                            continue
+                            # write back to 'shared_dir_content' in os_listdir_walk(root_path, BFS = True)
+                    subfiles[:] = subdirs
+                # self.db_commit_SIGNAL.emit()
+            # self.update_progress_SIGNAL.emit(-2, -2, uuid)  # end
+            logger.info("ALl sql_insert queued.")
+            while not self.sql_insert_queue.empty():
+                if self.flag.quit_flag or self.flag.restart_flag:
+                    break
+                time.sleep(0.1)
+            logger.info(" sql_insert queue empty.. or quit/restart" + str(self.flag.quit_flag) + str(
+                self.flag.restart_flag))
+            insert_db_thread.quit()
+            # except Exception as e:
+            #     print "Error when updating db: ", e
+
+        self.update_db_timer.start()
+
+    def run(self):
+        logger.info("update db init: ")
+        logger.info("\tThread:" + str(QtCore.QThread.currentThreadId()))
         self.flag = FLAG_class()
 
         self.mutex = QtCore.QMutex()
-        self.queue_condition = QtCore.QWaitCondition()
+        # self.queue_condition = QtCore.QWaitCondition()
 
         self.qqueue = Queue.Queue()
         self.sql_insert_queue = Queue.Queue()
         self.sql_insert_mutex = QtCore.QMutex()
         self.sql_insert_condition = QtCore.QWaitCondition()
 
-        self.get_table_uuid_sendback_SIGNAL.connect(parent.get_table_widget_uuid_back_slot)
-        self.show_statusbar_warning_msg_SIGNAL.connect(parent.show_statusbar_warning_msg_slot)
+        self.get_table_uuid_sendback_SIGNAL.connect(self.parent().get_table_widget_uuid_back_slot)
+        self.show_statusbar_warning_msg_SIGNAL.connect(self.parent().show_statusbar_warning_msg_slot)
 
 
         logger.info("update db init: 1")
+        self._init_db()
         logger.info("update db init: 2")
-        self._init_db()  # TODO: OPT
+        self.get_table_uuid_slot()
         logger.info("update db init: 3")
 
+        self.ini_timer()
+        logger.info('ini timer end')
 
+        self.refresh_mount_state_timer.start(500)
+        self.refresh_rowid_timer.start(500)
+        self.update_db_timer.start()
 
-    def run(self):
-        # logger.info("update db init: 1")
-        # logger.info("update db init: 2")
-        # self._init_db()  # TODO: OPT
-        # logger.info("update db init: 3")
-
-
-        # follow the same structure of http://doc.qt.io/qt-5/qtcore-threads-mandelbrot-example.html
-        while (1):
-            print( "Update db run: ")
-            print("\tThread:", int(QtCore.QThread.currentThreadId()))
-
-            while not self.qqueue.empty():
-                if self.flag.restart_flag:
-                    break
-                if self.flag.quit_flag:
-                    return
-
-                self.mutex.lock()
-                if self.qqueue.empty():
-                    self.mutex.unlock()
-                    continue  # break
-                _item = self.qqueue.get()
-                self.mutex.unlock()
-
-                # self.con.commit()
-                # TODO: try catch
-                root_path = _item['path']
-                uuid = _item['uuid']
-
-                if self.flag.quit_flag:
-                    break
-                root_path = unicode(root_path)
-                root_path_len = len(root_path) if len(root_path) > 1 else 0
-                print ('Enter root_path: %s' % root_path)
-                if root_path in self.skip_dir:
-                    print ('Dir %s skipped.' % root_path)
-                    continue
-                if (not os.path.exists(root_path)):
-                    logger.warning("Dir %s does not exists." % root_path)
-                    self.show_statusbar_warning_msg_SIGNAL.emit("Dir %s does not exists." % root_path)
-                    continue
-                # try:
-                if os.lstat(root_path).st_dev != 0:
-                    device_maj_num = os.major(os.lstat(root_path).st_dev)
-                    device_min_num = os.minor(os.lstat(root_path).st_dev)
-                else:
-                    device_maj_num = device_min_num = 0
-
-                # uuid = self.UUID_class.deviceID_to_UUID((device_maj_num, device_min_num))
-                fstype = SystemDevices.deviceDict[(device_maj_num, device_min_num)]['fstype']
-                table_name = uuid
-                self.init_table(table_name, clear_table=False)
-
-                insert_db_thread = Insert_db_thread(uuid, parent=self, sql_insert_queue=self.sql_insert_queue,
-                                                    sql_insert_mutex=self.sql_insert_mutex,
-                                                    sql_insert_condition=self.sql_insert_condition)
-                insert_db_thread.update_progress_SIGNAL.connect(self.mainwindows.on_db_progress_update,
-                                                                QtCore.Qt.QueuedConnection)
-                insert_db_thread.start()
-                from PyQt5.QtCore import QSettings
-
-                enable_MFT_parser = GlobalVar.USE_MFT_PARSER
-
-                # self.update_progress_SIGNAL.emit(-1, -1, uuid)  # start
-                MFT_parser_successful_flag = False
-                if fstype == "ntfs" and enable_MFT_parser:
-                    try:
-                        MFT_file_path = os.path.join(root_path, "$MFT")
-                        logger.info("Enter NTFS folder: %s" % root_path)
-                        if not os.path.exists(MFT_file_path):
-                            logger.warning("$MFT file does not exists." % MFT_file_path)
-                            raise Exception("$MFT file does not exists." % MFT_file_path)
-
-                        # FIXME: In linux, cannot get the latest MFT; "sync" does not work. Linux cache?
-
-                        # settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
-                        enable_C_MFT_parser = GlobalVar.USE_MFT_PARSER_CPP
-
-                        logger.info("enable_C_MFT_parser: " + str(enable_C_MFT_parser))
-                        if enable_C_MFT_parser:
-                            insert_db_thread.pre_quit(commit_progress_flag=False)
-                            pass
-                            insert_db_thread.update_progress_SIGNAL.emit(1, -3, uuid)
-                            mft_parser_cpp(MFT_file_path, TEMP_DB_NAME, table_name)
-                            insert_db_thread.update_progress_SIGNAL.emit(-2, -2, uuid)
-
-                        else:
-                            session = MftSession(MFT_file_path)
-                            session.start(table_name, self.sql_insert_queue, self.sql_insert_mutex,
-                                          self.sql_insert_condition)
-                            while session.isRunning():
-                                session.wait(timeout_ms=1000)
-                                logger.info("Waiting... Running...")
-
-                                if self.flag.quit_flag or self.flag.restart_flag:
-                                    break
-                            session.quit()
-                            del session
-                        MFT_parser_successful_flag = True
-                    except Exception as e:
-                        logger.error(str(e))
-                        self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
-
-                if not MFT_parser_successful_flag:
-                    num_records = 0
-                    mftsize = estimate_num_of_files(root_path)
-                    for root, subfiles in os_listdir_walk(root_path):
-                        if self.flag.quit_flag or self.flag.restart_flag:
-                            break
-                        subdirs = []
-                        for file_or_dir in subfiles:
-                            if self.flag.quit_flag or self.flag.restart_flag:
-                                break
-                            num_records += 1
-                            full_file_or_dir = os.path.join(root, file_or_dir)
-
-                            # os.lstat   returns the information about a file, but do not follow symbolic links.
-                            try:
-                                l_stat = os.lstat(full_file_or_dir)
-                            except OSError as e:
-                                print(e)
-                                continue
-
-                            mode = l_stat.st_mode
-
-                            if stat.S_ISLNK(mode):
-                                # symbolic link
-                                # TODO: handle symbolic link
-                                continue
-
-                            if l_stat.st_dev != 0:
-                                major_dnum = os.major(l_stat.st_dev)
-                                minor_dnum = os.minor(l_stat.st_dev)
-                            else:
-                                major_dnum = minor_dnum = 0
-
-                            if GlobalVar.SKIP_DIFF_DEV and ((device_maj_num != major_dnum) or (device_min_num != minor_dnum)):
-                                print("In different device: %s vs. %s" % (full_file_or_dir, root_path))
-                                continue
-
-                            if stat.S_ISDIR(mode):
-                                # https://docs.python.org/2/library/stat.html
-                                # It's a directory, recurse into it
-                                if full_file_or_dir in self.skip_dir:
-                                    print('Dir %s skipped.' % full_file_or_dir)
-                                    continue
-                                subdirs.append(full_file_or_dir)
-                                #
-                                self.sql_insert_mutex.lock()
-                                self.sql_insert_queue.put([table_name,
-                                                           [file_or_dir,
-                                                            root[root_path_len:] if root[
-                                                                                    root_path_len:] else '/' + root[
-                                                                                                               root_path_len:],
-                                                            None, True,
-                                                            int(l_stat.st_atime), int(l_stat.st_mtime),
-                                                            int(l_stat.st_ctime)],
-                                                           num_records, mftsize, uuid]
-                                                          )
-                                self.sql_insert_condition.wakeOne()
-                                self.sql_insert_mutex.unlock()
-
-                            elif stat.S_ISREG(mode):
-                                # regular file
-                                self.sql_insert_mutex.lock()
-                                self.sql_insert_queue.put([table_name,
-                                                           [file_or_dir,
-                                                            root[root_path_len:] if root[
-                                                                                    root_path_len:] else '/' + root[
-                                                                                                               root_path_len:],
-                                                            l_stat.st_size, False,
-                                                            int(l_stat.st_atime), int(l_stat.st_mtime),
-                                                            int(l_stat.st_ctime)],
-                                                           num_records, mftsize, uuid]
-                                                          )
-                                self.sql_insert_condition.wakeOne()
-                                self.sql_insert_mutex.unlock()
-
-                            elif stat.S_ISSOCK(mode):
-                                # print('Found socket: %s' % full_file_or_dir)
-                                continue
-                            elif stat.S_ISFIFO(mode):
-                                # print('Found FIFO (named pipe): %s' % full_file_or_dir)
-                                continue
-                            else:
-                                # raise Exception("Unkown file type: " + full_file_or_dir)
-                                # print ("Unkown file type: " + full_file_or_dir)
-                                continue
-                                # write back to 'shared_dir_content' in os_listdir_walk(root_path, BFS = True)
-                        subfiles[:] = subdirs
-                    self.db_commit_SIGNAL.emit()
-                # self.update_progress_SIGNAL.emit(-2, -2, uuid)  # end
-                logger.info("ALl sql_insert queued.")
-                while not self.sql_insert_queue.empty():
-                    if self.flag.quit_flag or self.flag.restart_flag:
-                        break
-                    time.sleep(0.1)
-                logger.info(" sql_insert queue empty.. or quit/restart" + str(self.flag.quit_flag) + str(
-                    self.flag.restart_flag))
-                insert_db_thread.quit()
-                # except Exception as e:
-                #     print "Error when updating db: ", e
-
-            if self.flag.quit_flag:
-                return
-
-            self.mutex.lock()
-            if not self.flag.restart_flag:
-                self.queue_condition.wait(self.mutex)  # timeout
-            self.flag.restart_flag = False
-            self.mutex.unlock()
-
-            if self.flag.quit_flag:
-                return
-                # self.db_commit_SIGNAL.emit()
+        self.exec()
+        return
 
     def _open_db(self):
         # db_path = DATABASE_FILE_NAME
@@ -494,43 +574,43 @@ class Update_DB_Thread(QtCore.QThread):
 
     def update_uuid(self):
         self.mutex.lock()
-        while 1:
-            # https://docs.python.org/2/library/sqlite3.html
-            try:
-                cur = MainCon.cur
-                cur.execute('''
-                    SELECT uuid FROM `UUID` ;
-                    ''')
-                uuid_in_db = cur.fetchall()
-                self.mutex.unlock()
-                uuids = [x[0] for x in uuid_in_db]
-                SystemDevices.refresh_state()
-                deviceDict = SystemDevices.deviceDict
-                uuid_list = []
-                for dev_id, dev in deviceDict.items():
-                    uuid = dev['uuid']
-                    fstype = dev['fstype']
-                    label = dev['label']
-                    major_dnum, minor_dnum = dev_id
-                    uuid_list.append(uuid)
-                    if not uuid in uuids:
-                        cur.execute('''INSERT INTO UUID (included, uuid,fstype,name,label,major_dnum,minor_dnum, path)
-                                     VALUES (?, ?,   ?,     ?,    ?,    ?,   ?, ?)''',
-                                    (False, dev['uuid'], dev['fstype'], dev['name'], dev['label'],
-                                     major_dnum, minor_dnum, dev['mountpoint']))
-                    else:
-                        cur.execute('''UPDATE  UUID SET fstype=?,name=?,label=?,major_dnum=?,minor_dnum=?,path=?
-                            WHERE uuid=?''',
-                                    (dev['fstype'], dev['name'], dev['label'],
-                                     major_dnum, minor_dnum, dev['mountpoint'],
-                                     dev['uuid'])
-                                    )
-                MainCon.con.commit()
-                break
-            except Exception as e:
-                self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
-                logger.error(str(e))
-                break
+
+        # https://docs.python.org/2/library/sqlite3.html
+        try:
+            cur = MainCon.cur
+            cur.execute('''
+                SELECT uuid FROM `UUID` ;
+                ''')
+            uuid_in_db = cur.fetchall()
+            self.mutex.unlock()
+            uuids = [x[0] for x in uuid_in_db]
+            SystemDevices.refresh_state()
+            deviceDict = SystemDevices.deviceDict
+            uuid_list = []
+            for dev_id, dev in deviceDict.items():
+                uuid = dev['uuid']
+                fstype = dev['fstype']
+                label = dev['label']
+                major_dnum, minor_dnum = dev_id
+                uuid_list.append(uuid)
+                if not uuid in uuids:
+                    cur.execute('''INSERT INTO UUID (included, uuid,fstype,name,label,major_dnum,minor_dnum, path)
+                                 VALUES (?, ?,   ?,     ?,    ?,    ?,   ?, ?)''',
+                                (False, dev['uuid'], dev['fstype'], dev['name'], dev['label'],
+                                 major_dnum, minor_dnum, dev['mountpoint']))
+                else:
+                    cur.execute('''UPDATE  UUID SET fstype=?,name=?,label=?,major_dnum=?,minor_dnum=?,path=?
+                        WHERE uuid=?''',
+                                (dev['fstype'], dev['name'], dev['label'],
+                                 major_dnum, minor_dnum, dev['mountpoint'],
+                                 dev['uuid'])
+                                )
+            MainCon.con.commit()
+
+        except Exception as e:
+            self.show_statusbar_warning_msg_SIGNAL.emit(str(e))
+            logger.error(str(e))
+
         self.mutex.unlock()
         for uuid in uuid_list:
             self.init_table(uuid, clear_table=False)
@@ -581,9 +661,9 @@ class Update_DB_Thread(QtCore.QThread):
                                 % (table_name)
                                 )
                 cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (table_name))
-                maxrowid = MainCon.cur.fetchall()[0][0]  # max(rowid)
+                maxrowid = cur.fetchall()[0][0]  # max(rowid)
 
-                # Need Max-rowid rather than no. of rows. Rowid maybe larger than seq num.
+                ## Need Max-rowid rather than no. of rows. Rowid maybe larger than seq num.
                 # cur.execute('''select Count(*) from `%s` limit 1;'''
                 #             % (table_name)
                 #             )
@@ -606,7 +686,7 @@ class Update_DB_Thread(QtCore.QThread):
     def update_db_slot(self, path_lists):
         pass
         # self.con.commit()
-        self.db_commit_SIGNAL.emit()
+        # self.db_commit_SIGNAL.emit()
         # self.con.close()
         print("update db slot: ", path_lists)
         print("\tThread:", int(QtCore.QThread.currentThreadId()))
@@ -624,10 +704,10 @@ class Update_DB_Thread(QtCore.QThread):
             self.start()  # just test
         else:
             self.flag.restart_flag = True
-            self.queue_condition.wakeOne()
+            # self.queue_condition.wakeOne()
 
-    @pyqtSlot(list)
-    def update_uuid_slot(self, uuid_list):
+    @pyqtSlot(list)     # uuid_list: ['uuid','included','updatable']
+    def save_uuid_flag_slot(self, uuid_list):
         self.mutex.lock()
         for row in uuid_list:
             uuid = row[0]
@@ -702,8 +782,9 @@ class Update_DB_Thread(QtCore.QThread):
                 if (ret != msgBox.Retry):
                     break
         self.mutex.unlock()
-    @pyqtSlot(list)
-    def get_table_uuid_slot(self, header_list):
+    @pyqtSlot()
+    def get_table_uuid_slot(self):
+        header_list = UUID_HEADER_LIST
         # logger.info("update table uuid." + str(header_list))
         logger.info("get_table_uuid_slot.  gettable uuid." + str(header_list))
         self.mutex.lock()
@@ -717,13 +798,13 @@ class Update_DB_Thread(QtCore.QThread):
         pass
 
     def quit(self):
+
         self.mutex.lock()
         self.flag.quit_flag = True
-        self.queue_condition.wakeOne()
+        # self.queue_condition.wakeOne()
         self.mutex.unlock()
 
         # self.con.commit()
-        self.wait()
         # self.con.close()  # TODO: find a better place to close con
         super(self.__class__, self).quit()
 

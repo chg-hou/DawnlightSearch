@@ -92,6 +92,9 @@ class QueryThread(QtCore.QThread):
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
                             if idx in [4, 5, 6]:
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
+                            if idx in [3]:
+                                newitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+
                             row.append(newitem)
                         if (query_id < self.Query_Text_ID_list[0] or GlobalVar.CURRENT_MODEL_ITEMS >= GlobalVar.MODEL_MAX_ITEMS):
                             break

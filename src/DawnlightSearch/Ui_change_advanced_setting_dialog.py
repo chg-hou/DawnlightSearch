@@ -34,11 +34,19 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.spinBox_query_limit.setValue(
             settings.value('Query_limit', type=int, defaultValue=100)
         )
+
         self.spinBox_mount_state_update_interval.setValue(
             settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
         )
+        self.spinBox_rowid_update_interval.setValue(
+            settings.value('Rowid_Update_Interval', type=int, defaultValue=3000)
+        )
+        self.spinBox_db_update_interval.setValue(
+            settings.value('Database_Update_Interval', type=int, defaultValue=1000)
+        )
+
         self.spinBox_lazy_query_interval.setValue(
-            settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=400)
+            settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=50)
         )
 
         self.lineEdit_Database_File_Name.setText(DATABASE_FILE_NAME)
@@ -125,7 +133,11 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
             settings.setValue('Database_File_Name', dialog.lineEdit_Database_File_Name.text())
             settings.setValue('Temp_Database_File_Name', dialog.lineEdit_Temp_Database_File_Name.text())
+
             settings.setValue('Mount_State_Update_Interval', dialog.spinBox_mount_state_update_interval.value())
+            settings.setValue('Rowid_Update_Interval', dialog.spinBox_rowid_update_interval.value())
+            settings.setValue('Database_Update_Interval', dialog.spinBox_db_update_interval.value())
+
             settings.setValue("Start_Querying_after_Typing_Finished",
                               dialog.spinBox_lazy_query_interval.value())
 

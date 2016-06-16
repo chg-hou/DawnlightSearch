@@ -21,10 +21,20 @@ TEMP_DB_NAME = QSettings(QSettings.IniFormat, QSettings.UserScope,
         PATH_OF_SETTING_FILE,
         'temp_db.db'))
 
+# The following two lists MUST be be consistent with those in sql query.
 DB_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
                   'atime', 'mtime', 'ctime']
+UUID_HEADER_LIST = ['included', 'path', 'label', 'uuid', 'fstype', 'name',
+                    'major_dnum', 'minor_dnum', 'rows', 'updatable']
+
+DB_HEADER_LABEL= ['Filename', 'Path', 'Size', 'Is Folder',
+                  'Access Time', 'Modify Time', 'Change Time']
+UUID_HEADER_LABEL = ['Search', 'Mount Path', 'Label', 'UUID', 'FS Type', 'Dev name',
+                    'Major Device Num', 'Minor Device Num', 'Items', 'Update']
 
 class GlobalVar(object):
+
+
     QUERY_CHUNK_SIZE = 10000
     MODEL_MAX_ITEMS = 3000
     QUERY_LIMIT = 100
@@ -52,6 +62,14 @@ class GlobalVar(object):
     SIZE_UNIT = 'KB'
 
     INSTANT_SEARCH = True
+
+    MOUNT_STATE_UPDATE_INTERVAL = 3000
+    ROWID_UPDATE_INTERVAL = 3000
+    DB_UPDATE_INTERVAL = 1000
+
+    # GlobalVar.MOUNT_STATE_UPDATE_INTERVAL = settings.value('Mount_State_Update_Interval', type=int, defaultValue=3000)
+    # GlobalVar.ROWID_UPDATE_INTERVAL = settings.value('Rowid_Update_Interval', type=int, defaultValue=3000)
+    # GlobalVar.DB_UPDATE_INTERVAL = settings.value('Database_Update_Interval', type=int, defaultValue=1000)
 
 class MainCon(object):
     con = None
