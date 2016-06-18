@@ -9,12 +9,7 @@ import sys
 import time
 
 # TODO:
-# refresh_table_uuid_mount_state_slot
-# refresh_table_uuid_row_id_slot
-
-# friendly name
-#
-# context menu search	toggle include, toggle updatable
+# save sort state
 
 if __name__ == "__main__" and __package__ is None:
     # https://github.com/arruda/relative_import_example
@@ -110,7 +105,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.refresh_mount_state_timer.timeout.connect(self.refresh_table_uuid_mount_state_slot)
         # self.mount_state_timestamp = 0
 
-        self.Query_Text_ID_list = [1]  # hack: make the ID accessible from other threads
+        # self.Query_Text_ID_list = [1]  # hack: make the ID accessible from other threads
         self.Query_Model_ID = 0
 
         self.elapsedtimer = QtCore.QElapsedTimer()
@@ -259,8 +254,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
         self.distribute_query_thread = DistributeQueryWorker(self,
                                        target_slot=self.on_model_receive_new_row,
-                                       progress_slot=self.on_update_progress_bar,
-                                       Query_Text_ID_list=self.Query_Text_ID_list)
+                                       progress_slot=self.on_update_progress_bar)
         self.send_query_to_worker_SIGNAL.connect(self.distribute_query_thread.distribute_new_query)
 
         self.distribute_query_thread.start()
@@ -273,7 +267,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.build_table_widget_uuid()
         self.header_list_uuid = UUID_HEADER_LIST
         self.header_name_uuid = UUID_HEADER_LABEL
-        self.tableWidget_uuid.setColumnCount(len(UUID_HEADER_LIST))
+        self.tableWidget_uuid.setColumnCount(len(UUID_HEADER_LABEL))
         self.tableWidget_uuid.setHorizontalHeaderLabels(UUID_HEADER_LABEL)
 
         # self.tableView.setModel(self.model)
@@ -316,10 +310,22 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.tableWidget_uuid_menu.addAction(self.actionUpdatedb)
         self.tableWidget_uuid_menu.addAction(self.actionStop_Updating)
 
+        self.tableWidget_uuid_menu.addSeparator()
+        self.tableWidget_uuid_menu.addAction(self.actionCheck_Included)
+        self.tableWidget_uuid_menu.addAction(self.actionUncheck_Included)
+        self.tableWidget_uuid_menu.addSeparator()
+        self.tableWidget_uuid_menu.addAction(self.actionCheck_Updatable)
+        self.tableWidget_uuid_menu.addAction(self.actionUncheck_Updatable)
 
         self.actionShow_All.triggered.connect(self.action_uuid_show_all)
         self.actionShow_UUID.triggered.connect(self.action_uuid_show_uuid)
         self.actionHide_UUID.triggered.connect(self.action_uuid_hide_uuid)
+
+        self.actionCheck_Included.triggered.connect(self.action_uuid_check_included)
+        self.actionUncheck_Included.triggered.connect(self.action_uuid_uncheck_included)
+        self.actionCheck_Updatable.triggered.connect(self.action_uuid_check_updatable)
+        self.actionUncheck_Updatable.triggered.connect(self.action_uuid_uncheck_updatable)
+
 
         self.actionUpdatedb_onlyselected.triggered.connect(self.on_push_button_updatedb_only_selected_clicked)
         # Recovery column width
@@ -345,7 +351,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             if checked:
                 self.tableWidget_uuid.setRowHidden(row, False)
             else:
-                uuid = self.tableWidget_uuid.item(row, 3).text()
+                uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).text()
                 if uuid in GlobalVar.EXCLUDED_UUID:
                     self.tableWidget_uuid.setRowHidden(row, True)
 
@@ -378,6 +384,31 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 GlobalVar.EXCLUDED_UUID.add(uuid)
                 if not (self.actionShow_All.isChecked()):
                     self.tableWidget_uuid.setRowHidden(item.row(), True)
+
+    @pyqtSlot()
+    def action_uuid_check_included(self):
+        for i in self.tableWidget_uuid.selectedRanges():
+            for row in range(i.topRow(), i.bottomRow() + 1):
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setCheckState(QtCore.Qt.Checked)
+
+    @pyqtSlot()
+    def action_uuid_uncheck_included(self):
+        for i in self.tableWidget_uuid.selectedRanges():
+            for row in range(i.topRow(), i.bottomRow() + 1):
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setCheckState(QtCore.Qt.Unchecked)
+
+    @pyqtSlot()
+    def action_uuid_check_updatable(self):
+        for i in self.tableWidget_uuid.selectedRanges():
+            for row in range(i.topRow(), i.bottomRow() + 1):
+                self.tableWidget_uuid.item(row, UUID_HEADER.updatable).setCheckState(QtCore.Qt.Checked)
+
+    @pyqtSlot()
+    def action_uuid_uncheck_updatable(self):
+        for i in self.tableWidget_uuid.selectedRanges():
+            for row in range(i.topRow(), i.bottomRow() + 1):
+                self.tableWidget_uuid.item(row, UUID_HEADER.updatable).setCheckState(QtCore.Qt.Unchecked)
+
 
     def _show_dialog_about(self):
         print("About dialog...")
@@ -514,7 +545,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.restore_statusbar_timer.setInterval(4000)
         self.restore_statusbar_timer.start()
         for row in range(self.tableWidget_uuid.rowCount()):
-            progressbar = self.tableWidget_uuid.cellWidget(row, 10)
+            progressbar = self.tableWidget_uuid.cellWidget(row, UUID_HEADER.processbar)
             if not progressbar:
                 print("empty progress bar")
             else:
@@ -582,11 +613,11 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def on_push_button_updatedb_clicked(self):
         update_path_list = []
         for row in range(self.tableWidget_uuid.rowCount()):
-            uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
-            path = self.tableWidget_uuid.item(row, 1).data(QtCore.Qt.DisplayRole)
-            included = self.tableWidget_uuid.item(row, 0).data(QtCore.Qt.CheckStateRole) \
+            uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
+            path = self.tableWidget_uuid.item(row, UUID_HEADER.path).data(QtCore.Qt.DisplayRole)
+            included = self.tableWidget_uuid.item(row, UUID_HEADER.included).data(QtCore.Qt.CheckStateRole) \
                        == QtCore.Qt.Checked
-            updatable = self.tableWidget_uuid.item(row, 9).data(QtCore.Qt.CheckStateRole) \
+            updatable = self.tableWidget_uuid.item(row, UUID_HEADER.updatable).data(QtCore.Qt.CheckStateRole) \
                         == QtCore.Qt.Checked
             if not updatable:
                 continue
@@ -610,10 +641,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def on_push_button_updatedb_only_selected_clicked(self):
         update_path_list = []
         for i in self.tableWidget_uuid.selectedRanges():
-            row = i.topRow()
-            uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
-            path = self.tableWidget_uuid.item(row, 1).data(QtCore.Qt.DisplayRole)
-            update_path_list.append({'path': path, 'uuid': uuid})
+            for row in range(i.topRow(), i.bottomRow() + 1):
+                uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
+                path = self.tableWidget_uuid.item(row, UUID_HEADER.path).data(QtCore.Qt.DisplayRole)
+                update_path_list.append({'path': path, 'uuid': uuid})
         print("Updatedb clicked.", update_path_list)
         print("main Thread:", int(QtCore.QThread.currentThreadId()))
         self.update_db_SIGNAL.emit(update_path_list)
@@ -667,10 +698,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         text = self.lineEdit_search.text().strip()
         if self._Former_search_text == text:  # or (not text)
             return
-        cur_query_id_list = self.Query_Text_ID_list
-        cur_query_id_list[0] += 1  # TODO: Global var
-        query_id = cur_query_id_list[0]
-        GlobalVar.Query_Text_ID = query_id
+        GlobalVar.Query_Text_ID += 1
 
         self._Former_search_text = text
 
@@ -993,7 +1021,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def on_model_receive_new_row(self, query_id, insert_row):
         # QApplication.processEvents()
         # self.parent_application.processEvents()
-        if query_id < self.Query_Text_ID_list[0]:
+        if query_id < GlobalVar.Query_Text_ID:
             # old query, ignore
             return
 
@@ -1011,8 +1039,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     # Safe, even sorting is enabled.
                     row = insert_row[0].row()
                 self.model.setItem(row, col, item)
-                #  method 1, XXX, memory leak!
-                # self.model.appendRow(insert_row)
+            #  method 1, XXX, memory leak!
+            # self.model.appendRow(insert_row)
 
     @pyqtSlot(int, int, str)
     def on_db_progress_update(self, num_records, mftsize, uuid_updating):
@@ -1028,13 +1056,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.parent_application.processEvents()
 
         for row in range(self.tableWidget_uuid.rowCount()):
-            uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
+            uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
             if uuid == uuid_updating:
-                progressbar = self.tableWidget_uuid.cellWidget(row, 10)
+                progressbar = self.tableWidget_uuid.cellWidget(row, UUID_HEADER.processbar)
                 if not progressbar:
                     progressbar = QtWidgets.QProgressBar()
                     progressbar.setMaximum(100)
-                    self.tableWidget_uuid.setCellWidget(row, 10, progressbar)
+                    self.tableWidget_uuid.setCellWidget(row, UUID_HEADER.processbar, progressbar)
                     progressbar.hide()
                 # progressbar = QtWidgets.QProgressBar()
                 if num_records == -1:
@@ -1079,8 +1107,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def update_query_result(self):
         sql_text = self.lineEdit_search.text().strip()
 
-        cur_query_id_list = self.Query_Text_ID_list
-        query_id = cur_query_id_list[0]
+        query_id = GlobalVar.Query_Text_ID
 
         uuid_path_list = self.get_search_included_uuid()
 
@@ -1094,11 +1121,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self._clear_model()
         self.progressBar.setVisible(True)
         self.progressBar.setValue(0)
-        self.send_query_to_worker_SIGNAL.emit([query_id, uuid_path_list, sql_text, cur_query_id_list])
+        self.send_query_to_worker_SIGNAL.emit([query_id, uuid_path_list, sql_text])
 
-                        # (query_id, uuid_path_list, sql_mask, cur_query_id_list)
-        # self.distribute_query_worker.distribute_new_query(query_id, uuid_path_list, sql_mask, cur_query_id_list,
-        #                                                   self)  # (query_id, uuid_path_list, sql_mask, cur_query_id_list)
 
     def build_table_model(self):
         self.model = QtGui.QStandardItemModel(self.tableView)
@@ -1128,6 +1152,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.statusBar.showMessage(msg, 3000)
         self.restore_statusbar_timer.setInterval(3000)
         self.restore_statusbar_timer.start()
+        QApplication.processEvents()
 
     @pyqtSlot(list)
     def get_table_widget_uuid_back_slot(self, cur_result_list):
@@ -1137,19 +1162,19 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             row = self.tableWidget_uuid.rowCount() - 1
             logger.info(str(query_row))
 
-            uuid_excluded_flag = query_row[3] in GlobalVar.EXCLUDED_UUID
+            uuid_excluded_flag = query_row[UUID_HEADER.uuid] in GlobalVar.EXCLUDED_UUID
 
             for idx, col in enumerate(query_row):
                 # print col
                 if col is None:
                     col = ''
                 newitem = QtWidgets.QTableWidgetItem(str(col))
-                if idx in [6, 7,8]:
+                if idx in [UUID_HEADER.major_dnum, UUID_HEADER.minor_dnum, UUID_HEADER.rows]:
                     if not (col == ''):
                         newitem = QtWidgets.QTableWidgetItem(col)
                         newitem.setData(QtCore.Qt.DisplayRole, int(col))
 
-                elif idx in [0]:
+                elif idx in [UUID_HEADER.included]:
                     # newitem.setData(HACKED_QT_EDITROLE, '')
                     newitem.setData(QtCore.Qt.DisplayRole, '')
                     if int(col) > 0:
@@ -1162,7 +1187,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     temp_font = newitem.font()
                     temp_font.setPointSizeF(0.1)
                     newitem.setFont(temp_font)
-                elif idx in [9]:
+                elif idx in [UUID_HEADER.updatable]:
                     # newitem.setData(HACKED_QT_EDITROLE, '')
                     newitem.setData(QtCore.Qt.DisplayRole, '')
                     if col and int(col) > 0:
@@ -1170,7 +1195,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     else:
                         newitem.setCheckState(QtCore.Qt.Unchecked)
 
-                if idx > 3:
+                if idx > UUID_HEADER.fstype:
                     newitem.setTextAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
                 # Excluded
@@ -1179,7 +1204,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     temp_font = newitem.font()
                     temp_font.setItalic(True)
                     newitem.setFont(temp_font)
-
+                if not idx in[UUID_HEADER.alias]:
+                    newitem.setFlags(newitem.flags() ^ QtCore.Qt.ItemIsEditable)
                 # row.append(newitem)
                 self.tableWidget_uuid.setItem(row, idx, newitem)
 
@@ -1196,14 +1222,14 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.refresh_table_uuid_mount_state_slot()
         # self.refresh_mount_state_timer.start()
         self.tableWidget_uuid.setSortingEnabled(True)
-        self.statusBar.showMessage("Done.",2000)
+        self.statusBar.showMessage("Almost done.",1000)
 
 
     def _find_row_of_uuid(self, uuid):
         if self.tableWidget_uuid.rowCount() == 0:
             return -1
         for row in range(self.tableWidget_uuid.rowCount()):
-            if self.tableWidget_uuid.item(row, 3) and uuid == self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole):
+            if self.tableWidget_uuid.item(row, UUID_HEADER.uuid) and uuid == self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole):
                 return row
         return -1
 
@@ -1230,26 +1256,27 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
                 newitem = QtWidgets.QTableWidgetItem('')
                 newitem.setCheckState(QtCore.Qt.Unchecked)
-                newitem.setData(QtCore.Qt.DisplayRole, 0)
+                newitem.setData(QtCore.Qt.DisplayRole, UUID_HEADER.included)
                 # Hack: hide text
                 temp_font = newitem.font()
                 temp_font.setPointSizeF(0.1)
                 newitem.setFont(temp_font)
-                self.tableWidget_uuid.setItem(row, 0, newitem)
+                self.tableWidget_uuid.setItem(row, UUID_HEADER.included, newitem)
 
                 newitem = QtWidgets.QTableWidgetItem('')
                 newitem.setCheckState(QtCore.Qt.Unchecked)
-                self.tableWidget_uuid.setItem(row, 9, newitem)
+                self.tableWidget_uuid.setItem(row, UUID_HEADER.updatable, newitem)
 
                 newitem = QtWidgets.QTableWidgetItem(device['uuid'])
-                self.tableWidget_uuid.setItem(row, 3, newitem)
+                self.tableWidget_uuid.setItem(row, UUID_HEADER.uuid, newitem)
 
-                for col in [1, 2, 4, 5, 6, 7, 8]:
+                for col in [UUID_HEADER.path, UUID_HEADER.alias, UUID_HEADER.name, UUID_HEADER.label, UUID_HEADER.fstype,
+                     UUID_HEADER.major_dnum, UUID_HEADER.minor_dnum, UUID_HEADER.rows]:
                     newitem = QtWidgets.QTableWidgetItem()
                     self.tableWidget_uuid.setItem(row, col, newitem)
 
                 if uuid_excluded_flag:
-                    for col in range(10):
+                    for col in range(len(UUID_HEADER_LIST)):
                         newitem = self.tableWidget_uuid.item(row, col)
                         newitem.setForeground(QtCore.Qt.gray)
                         temp_font = newitem.font()
@@ -1259,19 +1286,19 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                         self.tableWidget_uuid.setRowHidden(row, True)
 
             if device['mountpoint']:
-                self.tableWidget_uuid.item(row, 0).setIcon(get_QIcon_object('./ui/icon/dev-harddisk.png'))
-                self.tableWidget_uuid.item(row, 0).setData(QtCore.Qt.DisplayRole, 1)
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setIcon(get_QIcon_object('./ui/icon/dev-harddisk.png'))
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setData(QtCore.Qt.DisplayRole, 1)
             else:
-                self.tableWidget_uuid.item(row, 0).setIcon(get_QIcon_object('./ui/icon/tab-close-other.png'))
-                self.tableWidget_uuid.item(row, 0).setData(QtCore.Qt.DisplayRole, 0)
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setIcon(get_QIcon_object('./ui/icon/tab-close-other.png'))
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setData(QtCore.Qt.DisplayRole, 0)
 
-            self.tableWidget_uuid.item(row, 1).setData(QtCore.Qt.DisplayRole, device['mountpoint'])
-            self.tableWidget_uuid.item(row, 2).setData(QtCore.Qt.DisplayRole, device['label'])
-            self.tableWidget_uuid.item(row, 4).setData(QtCore.Qt.DisplayRole, device['fstype'])
-            self.tableWidget_uuid.item(row, 5).setData(QtCore.Qt.DisplayRole, device['name'])
+            self.tableWidget_uuid.item(row, UUID_HEADER.path).setData(QtCore.Qt.DisplayRole, device['mountpoint'])
+            self.tableWidget_uuid.item(row, UUID_HEADER.label).setData(QtCore.Qt.DisplayRole, device['label'])
+            self.tableWidget_uuid.item(row, UUID_HEADER.fstype).setData(QtCore.Qt.DisplayRole, device['fstype'])
+            self.tableWidget_uuid.item(row, UUID_HEADER.name).setData(QtCore.Qt.DisplayRole, device['name'])
 
-            self.tableWidget_uuid.item(row, 6).setData(QtCore.Qt.DisplayRole, int(id[0]))
-            self.tableWidget_uuid.item(row, 7).setData(QtCore.Qt.DisplayRole, int(id[1]))
+            self.tableWidget_uuid.item(row, UUID_HEADER.major_dnum).setData(QtCore.Qt.DisplayRole, int(id[0]))
+            self.tableWidget_uuid.item(row, UUID_HEADER.minor_dnum).setData(QtCore.Qt.DisplayRole, int(id[1]))
         self.tableWidget_uuid.setSortingEnabled(True)
 
     @pyqtSlot(list)
@@ -1281,21 +1308,21 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             row = self._find_row_of_uuid(uuid)
             if row < 0:  # uuid does not exist, continue
                continue
-            self.tableWidget_uuid.item(row, 8).setData(QtCore.Qt.DisplayRole, int(rowid))
+            self.tableWidget_uuid.item(row, UUID_HEADER.rows).setData(QtCore.Qt.DisplayRole, int(rowid))
         self.tableWidget_uuid.setSortingEnabled(True)
 
     def get_search_included_uuid(self):
         r = []
         for row in range(self.tableWidget_uuid.rowCount()):
-            included = self.tableWidget_uuid.item(row, 0).data(QtCore.Qt.CheckStateRole) \
+            included = self.tableWidget_uuid.item(row, UUID_HEADER.included).data(QtCore.Qt.CheckStateRole) \
                        == QtCore.Qt.Checked
             if not included:
                 continue
-            uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
-            path = self.tableWidget_uuid.item(row, 1).data(QtCore.Qt.DisplayRole)
+            uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
+            path = self.tableWidget_uuid.item(row, UUID_HEADER.path).data(QtCore.Qt.DisplayRole)
             # MainCon.cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (uuid))
             # rows = MainCon.cur.fetchall()[0][0]  # max(rowid)
-            rows = int(self.tableWidget_uuid.item(row, 8).data(QtCore.Qt.DisplayRole))
+            rows = int(self.tableWidget_uuid.item(row, UUID_HEADER.rows).data(QtCore.Qt.DisplayRole))
             # TODO: move rows into query thread
             r.append({'uuid': uuid, 'path': path, 'rows': rows})
         return r
@@ -1322,16 +1349,17 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         uuid_list = []
         for row in range(self.tableWidget_uuid.rowCount()):
             try:
-                uuid = self.tableWidget_uuid.item(row, 3).data(QtCore.Qt.DisplayRole)
-                included = self.tableWidget_uuid.item(row, 0).data(QtCore.Qt.CheckStateRole) \
+                uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
+                included = self.tableWidget_uuid.item(row, UUID_HEADER.included).data(QtCore.Qt.CheckStateRole) \
                            == QtCore.Qt.Checked
-                updatable = self.tableWidget_uuid.item(row, 9).data(QtCore.Qt.CheckStateRole) \
+                updatable = self.tableWidget_uuid.item(row, UUID_HEADER.updatable).data(QtCore.Qt.CheckStateRole) \
                             == QtCore.Qt.Checked
-                logger.info("uuid: %s, included: %s" % (uuid, included))
+                alias = self.tableWidget_uuid.item(row, UUID_HEADER.alias).data(QtCore.Qt.DisplayRole)
+                logger.info("uuid: %s, included: %s, alias: %s" % (uuid, included, alias))
                 # MainCon.cur.execute(''' UPDATE  UUID SET included=?, updatable=?
                 #             WHERE uuid=? ''',
                 #             (included, updatable, uuid))
-                uuid_list.append([uuid, included, updatable])
+                uuid_list.append([uuid, included, updatable, alias])
             except Exception as e:
                 logger.error(str(e))
         self.save_uuid_flag_SIGNAL.emit(uuid_list)
@@ -1404,13 +1432,14 @@ if __name__ == '__main__':
         logger.error(str(e))
         print(str(e))
     finally:
-        try:
-            GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes('EXIT\n', 'utf8'))
-            GlobalVar.GET_ICON_PROCRESS.stdin.flush()
-            GlobalVar.GET_ICON_PROCRESS.terminate()
-        except:
-            pass
+
         logger.info("Close db.")
+        logger.info("Vacuum db.")
+        try:
+            MainCon.cur.execute("VACUUM;")
+        except Exception as e:
+            logger.error('Fail to vacuum db.')
+            logger.error(str(e))
 
         while 1:
             try:
@@ -1427,3 +1456,4 @@ if __name__ == '__main__':
                 ret = msgBox.exec_()
                 if (ret != msgBox.Retry):
                     sys.exit(exit_code)
+        logger.error('Exit...')

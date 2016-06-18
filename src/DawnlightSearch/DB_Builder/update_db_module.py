@@ -143,7 +143,7 @@ class Insert_db_thread(QtCore.QThread):
 
             self.running_flag = True
 
-            if (num_records % (max(mftsize // 100, 1)) == 0 and num_records > 0) or \
+            if (mftsize > 0 and num_records % (max(mftsize // 100, 1)) == 0 and num_records > 0) or \
                     (num_records == mftsize - 1):
                 logger.info('Building Filepaths: {0:.0f}'.format(100.0 * num_records / mftsize) + '%')
                 self.update_progress_SIGNAL.emit(num_records, mftsize, uuid)
@@ -560,6 +560,7 @@ class Update_DB_Thread(QtCore.QThread):
                             `included`  BLOB,
                             `id`	INTEGER NOT NULL PRIMARY KEY  ,
                             `uuid`	TEXT NOT NULL UNIQUE,
+                            `alias` TEXT,
                             `fstype`	TEXT,
                             `name`	TEXT,
                             `label`	TEXT,
@@ -594,9 +595,9 @@ class Update_DB_Thread(QtCore.QThread):
                 major_dnum, minor_dnum = dev_id
                 uuid_list.append(uuid)
                 if not uuid in uuids:
-                    cur.execute('''INSERT INTO UUID (included, uuid,fstype,name,label,major_dnum,minor_dnum, path)
-                                 VALUES (?, ?,   ?,     ?,    ?,    ?,   ?, ?)''',
-                                (False, dev['uuid'], dev['fstype'], dev['name'], dev['label'],
+                    cur.execute('''INSERT INTO UUID (included, uuid, alias, fstype,name,label,major_dnum,minor_dnum, path)
+                                 VALUES (?, ?,   ?,  ?,   ?,    ?,    ?,   ?, ?)''',
+                                (False, dev['uuid'], dev['mountpoint'], dev['fstype'], dev['name'], dev['label'],
                                  major_dnum, minor_dnum, dev['mountpoint']))
                 else:
                     cur.execute('''UPDATE  UUID SET fstype=?,name=?,label=?,major_dnum=?,minor_dnum=?,path=?
@@ -706,20 +707,22 @@ class Update_DB_Thread(QtCore.QThread):
             self.flag.restart_flag = True
             # self.queue_condition.wakeOne()
 
-    @pyqtSlot(list)     # uuid_list: ['uuid','included','updatable']
+    @pyqtSlot(list)     # uuid_list: ['uuid','included','updatable','alias']
     def save_uuid_flag_slot(self, uuid_list):
         self.mutex.lock()
         for row in uuid_list:
             uuid = row[0]
             included = row[1]
             updatable = row[2]
-            logger.info("uuid: %s, included: %s" % (uuid, included))
+            alias = row[3]
+            logger.info("save_uuid_flag_slot:  uuid: %s, included: %s, alias: %s" % (uuid, included, alias))
             try:
-                # MainCon.cur.execute(''' UPDATE  UUID SET included=?, updatable=?
-                #             WHERE uuid=? ''',
+                MainCon.cur.execute(''' UPDATE  UUID SET included=?, updatable=?, alias=?
+                            WHERE uuid=? ''',
+                                    (included, updatable, alias, uuid))
+                # will set other col to NULL
+                # MainCon.cur.execute(''' insert or replace into  UUID ( included, updatable, uuid) VALUES (?, ?, ?) ''',
                 #                     (included, updatable, uuid))
-                MainCon.cur.execute(''' insert or replace into  UUID ( included, updatable, uuid) VALUES (?, ?, ?) ''',
-                                    (included, updatable, uuid))
 
             except Exception as e:
                 self.show_statusbar_warning_msg_SIGNAL.emit(str(e))

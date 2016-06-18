@@ -14,12 +14,11 @@ class QueryThread(QtCore.QThread):
     add_row_to_model_SIGNAL = QtCore.pyqtSignal(int, list)
     update_progress_SIGNAL = QtCore.pyqtSignal(int, int)
 
-    def __init__(self, mutex, queue_condition, qqueue, Query_Text_ID_list, parent=None):
+    def __init__(self, mutex, queue_condition, qqueue, parent=None):
         super(self.__class__, self).__init__()
         self.mutex = mutex
         self.queue_condition = queue_condition
         self.qqueue = qqueue
-        self.Query_Text_ID_list = Query_Text_ID_list
         self.quit_flag = False
         # self.add_row_to_model_SIGNAL = QtCore.pyqtSignal(list)
 
@@ -63,15 +62,13 @@ class QueryThread(QtCore.QThread):
                 q = self.qqueue.get()
                 self.mutex.unlock()
 
-                msg = "Queue get: " + str(q) + '\n\t\t' + "self.Query_Text_ID_list: " + str(self.Query_Text_ID_list)
-                logger.debug(msg)
-                # print "Queue get: ", QtCore.QThread.currentThreadId()
-                # print q
-                # print "self.Query_Text_ID_list: ", self.Query_Text_ID_list
+
                 query_id = q['query_id']
                 sql_comm = q['sql_comm']
+                msg = "Queue get: " + str(q) + '\n\t\t' + "Query_Text_ID: " + str(GlobalVar.Query_Text_ID) + " ID: " + str(query_id)
+                logger.debug(msg)
                 case_sensitive_like_flag_ON = q['case_sensitive_like_flag']
-                if (query_id < self.Query_Text_ID_list[0] or GlobalVar.CURRENT_MODEL_ITEMS>=GlobalVar.MODEL_MAX_ITEMS):
+                if (query_id < GlobalVar.Query_Text_ID or GlobalVar.CURRENT_MODEL_ITEMS>=GlobalVar.MODEL_MAX_ITEMS):
                     continue
                 try:
                     if case_sensitive_like_flag_ON:
@@ -82,28 +79,35 @@ class QueryThread(QtCore.QThread):
                     for query_row in cur:
                         if self.quit_flag:
                             break
-                        row = []
+                        row = [None] * len(DB_HEADER_LIST)
                         for idx, col in enumerate(query_row):
                             newitem = QtGui.QStandardItem(str(col))
                             newitem.setData(str(col), HACKED_QT_EDITROLE)
-                            if idx in [0]:
+                            if idx in [QUERY_HEADER.Filename, QUERY_HEADER.Path]:
                                 newitem.setData(str(col), HACKED_QT_EDITROLE)
-                            if idx in [2]:
+                            if idx in [QUERY_HEADER.Size]:
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
-                            if idx in [4, 5, 6]:
+                            if idx in [QUERY_HEADER.atime, QUERY_HEADER.ctime, QUERY_HEADER.mtime]:
                                 newitem.setData(QtCore.QVariant(col), HACKED_QT_EDITROLE)
-                            if idx in [3]:
-                                newitem.setTextAlignment(QtCore.Qt.AlignHCenter)
+                            if idx in [QUERY_HEADER.IsFolder]:
+                                newitem.setTextAlignment(QtCore.Qt.AlignVCenter)
 
-                            row.append(newitem)
-                        if (query_id < self.Query_Text_ID_list[0] or GlobalVar.CURRENT_MODEL_ITEMS >= GlobalVar.MODEL_MAX_ITEMS):
+                            row[QUERY_TO_DSP_MAP[idx]] = newitem
+
+                            if idx == QUERY_HEADER.Filename:
+                                extension = os.path.splitext(col)[1].replace('.','')
+                                newitem = QtGui.QStandardItem(extension)
+                                newitem.setData(extension, HACKED_QT_EDITROLE)
+                                newitem.setTextAlignment(QtCore.Qt.AlignVCenter)
+                                row[DB_HEADER.Extension] = newitem
+                        if (query_id < GlobalVar.Query_Text_ID or GlobalVar.CURRENT_MODEL_ITEMS >= GlobalVar.MODEL_MAX_ITEMS):
                             break
 
                         self.add_row_to_model_SIGNAL.emit(query_id, row)
                         # self.model.appendRow(row)
                 except Exception as e:
                     logger.error(str(e))
-                if (not self.quit_flag) and (query_id == self.Query_Text_ID_list[0]):
+                if (not self.quit_flag) and (query_id == GlobalVar.Query_Text_ID):
                     self.update_progress_SIGNAL.emit(self.qqueue.qsize(), q['LEN'])
     def quit(self):
         self.quit_flag = True
@@ -123,13 +127,9 @@ class DistributeQueryWorker(QtCore.QThread):
         # In python, we don't need mutex. Queue is thread-safe.
         self.target_slot = kwargs['target_slot']
         self.update_progress_slot = kwargs['progress_slot']
-        self.Query_Text_ID_list = kwargs['Query_Text_ID_list']
         self.thread_no = max(1, QtCore.QThread.idealThreadCount())
-        self.thread_pool = [QueryThread(self.queue_mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list,
-                                        parent=self) \
+        self.thread_pool = [QueryThread(self.queue_mutex, self.queue_condition, self.qqueue, parent=self) \
                             for _ in range(self.thread_no)]
-        # Single thread
-        # self.thread_pool = [QueryThread(self.queue_mutex, self.queue_condition, self.qqueue, self.Query_Text_ID_list) ]
         for thread in self.thread_pool:
             thread.add_row_to_model_SIGNAL.connect(self.target_slot)
             thread.update_progress_SIGNAL.connect(self.update_progress_slot)
@@ -146,7 +146,7 @@ class DistributeQueryWorker(QtCore.QThread):
                 break
 
             self.mutex.lock()
-            [query_id, uuid_path_list, sql_text, cur_query_id_list] = self.new_query_list
+            [query_id, uuid_path_list, sql_text] = self.new_query_list
             self.mutex.unlock()
 
             # # ======================================
@@ -193,8 +193,7 @@ class DistributeQueryWorker(QtCore.QThread):
 
 
             logger.info(
-                'distribute_new_query slot received: ' + str([query_id, uuid_path_list, sql_text, cur_query_id_list
-                                                              ]))
+                'distribute_new_query slot received: ' + str([query_id, uuid_path_list, sql_text  ]))
             for thread in self.thread_pool:
                 thread.quit_previous_query()
 

@@ -268,16 +268,8 @@
     <property name="title">
      <string>Setting</string>
     </property>
-    <widget class="QMenu" name="menuC">
-     <property name="title">
-      <string>c</string>
-     </property>
-     <addaction name="actionCv"/>
-     <addaction name="separator"/>
-    </widget>
     <addaction name="actionChange_excluded_folders"/>
     <addaction name="separator"/>
-    <addaction name="menuC"/>
     <addaction name="actionUse_MFT_parser"/>
     <addaction name="actionEnable_C_MFT_parser"/>
     <addaction name="separator"/>
@@ -521,7 +513,10 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>     Enable C++ MFT parser</string>
+    <string> ┗ Enable C++ MFT parser</string>
+   </property>
+   <property name="toolTip">
+    <string>┗ ━ Enable C++ MFT parser</string>
    </property>
    <property name="statusTip">
     <string>Much faster than python parser</string>
@@ -560,6 +555,10 @@
    </property>
   </action>
   <action name="actionOpen_setting_path">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/document-open-folder.png</normaloff>ui/icon/document-open-folder.png</iconset>
+   </property>
    <property name="text">
     <string>Open setting path</string>
    </property>
@@ -592,11 +591,22 @@
    </property>
   </action>
   <action name="actionOpen_db_path">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/document-open-folder.png</normaloff>ui/icon/document-open-folder.png</iconset>
+   </property>
    <property name="text">
-    <string>Open db path</string>
+    <string>Open main db path</string>
+   </property>
+   <property name="toolTip">
+    <string>Open main db path</string>
    </property>
   </action>
   <action name="actionOpen_temp_db_path">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/document-open-folder.png</normaloff>ui/icon/document-open-folder.png</iconset>
+   </property>
    <property name="text">
     <string>Open temp db path</string>
    </property>
@@ -658,6 +668,10 @@
    </property>
   </action>
   <action name="actionOpen_Project_Homepage">
+   <property name="icon">
+    <iconset>
+     <normaloff>ui/icon/applications-internet.png</normaloff>ui/icon/applications-internet.png</iconset>
+   </property>
    <property name="text">
     <string>Open Project Homepage...</string>
    </property>
@@ -665,6 +679,26 @@
   <action name="actionLatest_Version">
    <property name="text">
     <string>Latest Version...</string>
+   </property>
+  </action>
+  <action name="actionCheck_Included">
+   <property name="text">
+    <string>Check Included</string>
+   </property>
+  </action>
+  <action name="actionUncheck_Included">
+   <property name="text">
+    <string>Uncheck Included</string>
+   </property>
+  </action>
+  <action name="actionCheck_Updatable">
+   <property name="text">
+    <string>Check Updatable</string>
+   </property>
+  </action>
+  <action name="actionUncheck_Updatable">
+   <property name="text">
+    <string>Uncheck Updatable</string>
    </property>
   </action>
  </widget>

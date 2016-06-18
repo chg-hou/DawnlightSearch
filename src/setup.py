@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='DawnlightSearch',
-    version='0.1',
+    version='0.1.0.1',
     packages=['DawnlightSearch'],
     package_dir={'DawnlightSearch': 'DawnlightSearch'},
     url='https://github.com/chg-hou/DawnlightSearch',

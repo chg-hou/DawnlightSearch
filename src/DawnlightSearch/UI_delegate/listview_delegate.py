@@ -51,44 +51,44 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
         if index.column() > 0:
             return
         m = index.model()
-        ui = m.parent().parent().parent().parent()  # TODO: Ugly, unsafe
+        ui = m.parent().parent().parent().parent()  # TODO: Ugly, unsafe http://stackoverflow.com/questions/6551456/how-to-get-the-topbase-parentwidget-in-qt
         row = index.row()  # TODO: check proxy, hidden row
 
-        filename = m.data(m.index(row, 0), HACKED_QT_EDITROLE)
+        filename = m.data(m.index(row, DB_HEADER.Filename), HACKED_QT_EDITROLE)
         # logger.warning(m.data(m.index(row, 0), HACKED_QT_EDITROLE))
         # logger.warning(m.data(m.index(row, 0), QtCore.Qt.DisplayRole))
 
         new_highlight_words = GlobalVar.Query_Text_ID
-        old_highlight_words = m.data(m.index(row, 0), QtCore.Qt.AccessibleDescriptionRole)
+        old_highlight_words = m.data(m.index(row, DB_HEADER.Filename), QtCore.Qt.AccessibleDescriptionRole)
         if (new_highlight_words != old_highlight_words):
-            m.setData(m.index(row, 0), new_highlight_words, QtCore.Qt.AccessibleDescriptionRole)
+            m.setData(m.index(row, DB_HEADER.Filename), new_highlight_words, QtCore.Qt.AccessibleDescriptionRole)
             new_display_role = highlight_html(filename, GlobalVar.HIGHLIGHT_WORDS['Name'])
-            m.setData(m.index(row, 0), new_display_role, QtCore.Qt.DisplayRole)
+            m.setData(m.index(row, DB_HEADER.Filename), new_display_role, QtCore.Qt.DisplayRole)
 
-            path = m.data(m.index(row, 1), HACKED_QT_EDITROLE)
+            path = m.data(m.index(row, DB_HEADER.Path), HACKED_QT_EDITROLE)
             new_display_role = highlight_html(path, GlobalVar.HIGHLIGHT_WORDS['Path'])
-            m.setData(m.index(row, 1), new_display_role, QtCore.Qt.DisplayRole)
+            m.setData(m.index(row, DB_HEADER.Path), new_display_role, QtCore.Qt.DisplayRole)
 
-        itemdata = m.itemData(m.index(row, 0))
+        itemdata = m.itemData(m.index(row, DB_HEADER.Filename))
         if (QtCore.Qt.DecorationRole in itemdata or not (filename)):
             pass
         else:
-            m.setData(m.index(row, 0), filename, QtCore.Qt.ToolTipRole)
-            m.setData(m.index(row, 0), filename, QtCore.Qt.AccessibleDescriptionRole)
+            m.setData(m.index(row, DB_HEADER.Filename), filename, QtCore.Qt.ToolTipRole)
+            m.setData(m.index(row, DB_HEADER.Filename), filename, QtCore.Qt.AccessibleDescriptionRole)
 
-            isPath = m.data(m.index(row, 3)) == '1'
-            newicon = build_qicon(filename, isPath, size=32)
+            IsFolder = m.data(m.index(row, DB_HEADER.IsFolder)) == '1'
+            newicon = build_qicon(filename, IsFolder, size=32)
 
-            m.setData(m.index(row, 0), newicon, QtCore.Qt.DecorationRole)
+            m.setData(m.index(row, DB_HEADER.Filename), newicon, QtCore.Qt.DecorationRole)
 
 
-            size_data = m.data(m.index(row, 2), HACKED_QT_EDITROLE)
+            size_data = m.data(m.index(row, DB_HEADER.Size), HACKED_QT_EDITROLE)
             size_data = size_to_str(size_data, unit=GlobalVar.SIZE_UNIT)
 
-            m.setData(m.index(row, 2), size_data, QtCore.Qt.DisplayRole)
-            m.setData(m.index(row, 2), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
+            m.setData(m.index(row, DB_HEADER.Size), size_data, QtCore.Qt.DisplayRole)
+            m.setData(m.index(row, DB_HEADER.Size), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
 
-            for col in [4, 5, 6]:
+            for col in [DB_HEADER.ctime, DB_HEADER.atime, DB_HEADER.mtime]:
                 date = QtCore.QDateTime()
                 date.setTime_t(int(m.data(m.index(row, col), HACKED_QT_EDITROLE)))
                 m.setData(m.index(row, col), date.toString(), QtCore.Qt.DisplayRole)
@@ -175,9 +175,9 @@ class HTMLDelegate_VC_HL_bak(QtWidgets.QStyledItemDelegate):
             m.setData(m.index(row, 0), filename, QtCore.Qt.ToolTipRole)
             m.setData(m.index(row, 0), filename, QtCore.Qt.AccessibleDescriptionRole)
 
-            isPath = m.data(m.index(row, 3)) == '1'
+            IsFolder = m.data(m.index(row, 3)) == '1'
             # print 'Item filename:', filename
-            newicon = build_qicon(filename, isPath, size=32)
+            newicon = build_qicon(filename, IsFolder, size=32)
             # itemdata = m.itemData(m.index(row, 0))
             # itemdata[QtCore.Qt.DecorationRole] = newicon
             # import random

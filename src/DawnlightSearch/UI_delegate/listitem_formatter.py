@@ -17,7 +17,6 @@ except:
     class ddd:
         pass
     GlobalVar = ddd()
-    GlobalVar.GET_ICON_PROCRESS = None
 
 import mimetypes
 import sys, os
@@ -192,9 +191,3 @@ if __name__ == '__main__':
     print(file_type)
 
     pop_select_app_dialog_and_open(file_type, ['/home/cg/Desktop/test.txt'])
-    try:
-        GlobalVar.GET_ICON_PROCRESS.stdin.write(bytes('EXIT\n', 'utf8'))
-        GlobalVar.GET_ICON_PROCRESS.stdin.flush()
-        GlobalVar.GET_ICON_PROCRESS.terminate()
-    except:
-        pass

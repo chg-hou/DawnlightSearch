@@ -21,16 +21,29 @@ TEMP_DB_NAME = QSettings(QSettings.IniFormat, QSettings.UserScope,
         PATH_OF_SETTING_FILE,
         'temp_db.db'))
 
-# The following two lists MUST be be consistent with those in sql query.
-DB_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
+# The QUERY_HEADER_LIST MUST be be consistent with DB_HEADER_LIST except 'Extension'.
+QUERY_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
                   'atime', 'mtime', 'ctime']
-UUID_HEADER_LIST = ['included', 'path', 'label', 'uuid', 'fstype', 'name',
+DB_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder','Extension',
+                  'atime', 'mtime', 'ctime']
+QUERY_TO_DSP_MAP = [DB_HEADER_LIST.index(x) for x in QUERY_HEADER_LIST]
+UUID_HEADER_LIST = ['included', 'path', 'label', 'uuid','alias', 'fstype', 'name',
                     'major_dnum', 'minor_dnum', 'rows', 'updatable']
 
-DB_HEADER_LABEL= ['Filename', 'Path', 'Size', 'Is Folder',
+
+class QUERY_HEADER():
+    Filename, Path, Size, IsFolder, atime, mtime, ctime = range(len(QUERY_HEADER_LIST))
+    # 0          1   2       3       4      5       6
+class DB_HEADER():
+    Filename, Path, Size, IsFolder, Extension, atime, mtime, ctime = range(len(DB_HEADER_LIST))
+    #0          1   2       3       4           5       6       7
+class UUID_HEADER():
+    included, path, label, uuid, alias, fstype, name, major_dnum, minor_dnum, rows, updatable, processbar = range(len(UUID_HEADER_LIST) + 1)
+    #0          1   2       3       4       5   6           7           8       9       10          11
+DB_HEADER_LABEL= ['Filename', 'Path', 'Size', 'Is Folder', 'Extension',
                   'Access Time', 'Modify Time', 'Change Time']
-UUID_HEADER_LABEL = ['Search', 'Mount Path', 'Label', 'UUID', 'FS Type', 'Dev name',
-                    'Major Device Num', 'Minor Device Num', 'Items', 'Update']
+UUID_HEADER_LABEL = ['Search', 'Mount Path', 'Label', 'UUID', 'Alias', 'FS Type', 'Dev name',
+                    'Major Device Num', 'Minor Device Num', 'Items', 'Update','Progress']
 
 class GlobalVar(object):
 
@@ -39,6 +52,7 @@ class GlobalVar(object):
     MODEL_MAX_ITEMS = 3000
     QUERY_LIMIT = 100
     CURRENT_MODEL_ITEMS = 0
+
     # settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
     # query_limit = settings.value('Query_limit', type=int, defaultValue=100)
 
@@ -56,7 +70,6 @@ class GlobalVar(object):
 
     EXCLUDED_UUID = set()
 
-    GET_ICON_PROCRESS = None
     SKIP_DIFF_DEV = False
 
     SIZE_UNIT = 'KB'

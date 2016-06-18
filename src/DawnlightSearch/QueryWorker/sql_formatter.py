@@ -10,7 +10,7 @@ from PyQt5.QtCore import QDateTime
 try:
     from .._Global_DawnlightSearch import *
 except:
-    DB_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
+    QUERY_HEADER_LIST = ['Filename', 'Path', 'Size', 'IsFolder',
                   'atime', 'mtime', 'ctime']
     class temp:
         pass
@@ -68,7 +68,7 @@ def format_sql_cmd(sql_dict):
 
     sql_text = sql_text.strip()
 
-    header_list = DB_HEADER_LIST[:]
+    header_list = QUERY_HEADER_LIST[:]
     path_idx = header_list.index('Path')
     header_list[path_idx] = '''"%s"''' % path.replace("\"", "\"\"") +\
                             "||Path"
