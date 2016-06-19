@@ -51,7 +51,6 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
         if index.column() > 0:
             return
         m = index.model()
-        ui = m.parent().parent().parent().parent()  # TODO: Ugly, unsafe http://stackoverflow.com/questions/6551456/how-to-get-the-topbase-parentwidget-in-qt
         row = index.row()  # TODO: check proxy, hidden row
 
         filename = m.data(m.index(row, DB_HEADER.Filename), HACKED_QT_EDITROLE)

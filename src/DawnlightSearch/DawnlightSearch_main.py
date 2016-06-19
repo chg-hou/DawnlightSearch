@@ -414,7 +414,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         print("About dialog...")
         msg = QtWidgets.QMessageBox()
         # msg.setIcon()
-        msg.about(self, "aaa", 'bbb')
+        msg.about(self, "About Dawnlight Search", COPYRIGHT)
 
     def _open_setting_path(self):
         self._open_file_or_folder(os.path.dirname(

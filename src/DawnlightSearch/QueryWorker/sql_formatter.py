@@ -211,22 +211,25 @@ def format_sql_cmd(sql_dict):
             sql_cmd = '(' + field + ' REGEXP "' + word + ' ' + case + ')'
             return sql_cmd
 
-
-        if exact_match and (not wildcard):
-            verb = '='
-        if wildcard:
-            verb = 'LIKE'
+        # http://stackoverflow.com/questions/543580/equals-vs-like
+        # if exact_match and (not wildcard):
+        #     verb = '='
+        # if wildcard:
+        #     verb = 'LIKE'
+        ##  overwrite ALL '='. '=" does not support ESCAPE.
+        verb = 'LIKE'
         if verb == 'LIKE' and (not exact_match):
             word = "%" + word + "%"
 
-        sql_cmd = '(' + field + ' ' + verb + ' "' + word + '" ESCAPE "\\" ' + case + ')'
+
+        sql_cmd = '(' + field + ' ' + verb + ' "' + word + r'" ESCAPE "\" ' + case + ')'
 
         if verb == 'LIKE':
             if case_sensitive_like_flag_ON:
                 if case == '':  # case sensitive
                     pass
                 else:        #   ' COLLATE  nocase '
-                    sql_cmd = '( UPPER(' + field + ') ' + verb + ' "' + word.upper() + '" ESCAPE "\\" ' + case + ')'
+                    sql_cmd = '( UPPER(' + field + ') ' + verb + ' "' + word.upper() + r'" ESCAPE "\" ' + case + ')'
             else:
                 # global no case
                 pass

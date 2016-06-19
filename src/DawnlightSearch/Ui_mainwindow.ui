@@ -17,6 +17,13 @@
    <iconset>
     <normaloff>ui/icon/DawnlightSearch.png</normaloff>ui/icon/DawnlightSearch.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow::separator {
+		background:  rgb(188, 188, 188);
+		width: 2px;
+		height: 2px;
+}</string>
+  </property>
   <property name="dockOptions">
    <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
   </property>
@@ -365,7 +372,7 @@
 </string>
    </property>
    <property name="windowTitle">
-    <string>Resluts</string>
+    <string>Results</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>8</number>

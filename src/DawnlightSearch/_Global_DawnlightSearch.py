@@ -1,5 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from __future__ import absolute_import
-
+VERSION = "0.1.0.1"
+COPYRIGHT = '\nDawnlight Search ' + VERSION + '\n\n' + 'Copyright © 2016 ChG Hou\n'
 ORGANIZATION_NAME = "Dawnlight_Search"
 ALLICATION_NAME = "Dawnligh_Search"
 from PyQt5.QtCore import QSettings
