@@ -9,7 +9,8 @@ import sys
 import time
 
 # TODO:
-# save sort state
+# zip
+# auto update
 
 if __name__ == "__main__" and __package__ is None:
     # https://github.com/arruda/relative_import_example
@@ -47,7 +48,7 @@ MainWindow_base_class, _ = uic.loadUiType("Ui_mainwindow.ui")
 class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     send_query_to_worker_SIGNAL = QtCore.pyqtSignal(list)
     update_db_SIGNAL = QtCore.pyqtSignal(list)
-    save_uuid_flag_SIGNAL = QtCore.pyqtSignal(list)
+    save_uuid_flag_and_quit_SIGNAL = QtCore.pyqtSignal(list,bool)
     get_uuid_SIGNAL = QtCore.pyqtSignal()
     merge_db_SIGNAL = QtCore.pyqtSignal()
 
@@ -75,8 +76,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.progressBar.show()
         self.progressBar.setVisible(False)
 
-        self.pushButton.clicked.connect(self.on_push_button_clicked)
-        self.pushButton_2.clicked.connect(self.refresh_table_uuid_mount_state_slot)
+        # self.pushButton.clicked.connect(self.on_push_button_clicked)
+        # self.pushButton_2.clicked.connect(self.refresh_table_uuid_mount_state_slot)
 
         # self.pushButton_updatedb.clicked.connect(self.on_push_button_updatedb_clicked)
         # self.pushButton_stopupdatedb.clicked.connect(self.on_push_button_stopupdatedb_clicked)
@@ -89,6 +90,12 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.lazy_query_timer.setSingleShot(True)
         self.lazy_query_timer.timeout.connect(self.update_query_result)
         self.lazy_query_timer.setInterval(settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=50))
+
+        self.lazy_sort_timer = QtCore.QTimer(self)
+        self.lazy_sort_timer.setSingleShot(True)
+        self.lazy_sort_timer.timeout.connect(self.lazy_tableview_sort_slot)
+        self.lazy_sort_timer.setInterval(
+            settings.value("Restor_Sort_after_New_Row_Inserted", type=int, defaultValue=100))
 
         self.hide_tooltip_timer = QtCore.QTimer(self)
         self.hide_tooltip_timer.setSingleShot(True)
@@ -145,7 +152,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.query_error_icon.addPixmap(QtGui.QPixmap("./ui/icon/hint.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.query_error_icon.addPixmap(QtGui.QPixmap("./ui/icon/hint.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
 
-        self.comboBox_search.installEventFilter(self)
+        # self.comboBox_search.installEventFilter(self)
         self.comboBox_search.lineEdit().returnPressed.connect(self.on_lineedit_enter_pressed)
         # search setting
         self.actionCase_Sensitive.toggled.connect(self.on_toolbutton_casesensitive_toggled)
@@ -177,13 +184,15 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
         # load excluded UUID
         try:
-            GlobalVar.EXCLUDED_UUID = set(settings.value('Excluded_UUID',type=str, defaultValue=[]))
+            GlobalVar.EXCLUDED_UUID = set(settings.value('Excluded_UUID',type=str, defaultValue=GlobalVar.DEFAULT_EXCLUDED_UUID))
             self.actionShow_All.setChecked(settings.value('Excluded_UUID_Visible', type=bool, defaultValue=True))
         except Exception as e:
             logger.error('Fail to load excluded: '+ str(e))
 
     def eventFilter(self, source, event):
         # auto save search text when focus lost
+        print(str(source))
+        print(str(event))
         if source is self.comboBox_search.lineEdit() or \
                         source is self.comboBox_search:
             # http://doc.qt.io/qt-5/qevent.html
@@ -194,8 +203,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
     def __init_connect_menu_action(self):
 
-        self.actionChange_excluded_folders.setStatusTip('Exclude folders from indexing.')
-        self.actionChange_excluded_folders.setToolTip("folder1")
+        self.actionChange_excluded_folders.setStatusTip(translate('statusbar','Exclude folders from indexing.'))
         self.actionChange_excluded_folders.triggered.connect(self._show_dialog_change_excluded_folders)
         self.actionChange_excluded_folders.hovered.connect(self._show_tooltips_change_excluded_folders)
 
@@ -220,9 +228,54 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.actionOpen_db_path.triggered.connect(self._open_db_path)
         self.actionOpen_temp_db_path.triggered.connect(self._open_temp_db_path)
 
+        #    language
+        self.actionLanguage_Auto.triggered.connect(self.change_language_auto)
+        self.actionLanguage_English.triggered.connect(self.change_language_English)
+        self.actionLanguage_Simplified_Chinese.triggered.connect(self.change_language_zh_CN)
+
+    def change_language_auto(self):
+        lang_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lang', QLocale.system().name()+'.qm')
+        if os.path.exists(lang_path):
+            translator = QTranslator()
+            translator.load(lang_path)
+            app = QCoreApplication.instance()
+            app.installTranslator(translator)
+        self.retranslate_whole_ui()
+        settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+        settings.setValue('Language/language', 'auto')
+
+    def change_language_English(self):
+        translator = QTranslator()
+        translator.load(lang_path)
+        app = QCoreApplication.instance()
+        app.installTranslator(translator)
+        app.removeTranslator()
+        self.retranslate_whole_ui()
+        settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+        settings.setValue('Language/language', 'en_US')
+
+    def _change_language(self, locale):
+        translator = QTranslator()
+        translator.load(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lang', locale+'.qm'))
+        app = QCoreApplication.instance()
+        app.installTranslator(translator)
+        self.retranslate_whole_ui()
+        settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+        settings.setValue('Language/language', locale)
+
+    def change_language_zh_CN(self):
+        self._change_language('zh_CN')
+
+    def retranslate_whole_ui(self):
+        self.retranslateUi(self)
+        self.model.setHorizontalHeaderLabels([translate('ui', x) for x in DB_HEADER_LABEL])
+        self.tableWidget_uuid.setHorizontalHeaderLabels([translate('ui', x) for x in UUID_HEADER_LABEL])
+
+
     def ini_after_show(self):
         logger.info('ini table.')
-        self.statusBar.showMessage("Loading...")
+        self.statusBar.showMessage(translate('statusbar',"Loading..."))
         self.ini_table()
         logger.info('ini subthread.')
         self.ini_subthread()
@@ -245,7 +298,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         update_db_Thread = Update_DB_Thread(parent=self)
         logger.info('ini_subthread 2')
         self.update_db_SIGNAL.connect(update_db_Thread.update_db_slot, QtCore.Qt.QueuedConnection)
-        self.save_uuid_flag_SIGNAL.connect(update_db_Thread.save_uuid_flag_slot, QtCore.Qt.QueuedConnection)
+        self.save_uuid_flag_and_quit_SIGNAL.connect(update_db_Thread.save_uuid_flag_slot, QtCore.Qt.QueuedConnection)
         self.get_uuid_SIGNAL.connect(update_db_Thread.get_table_uuid_slot, QtCore.Qt.QueuedConnection)
         self.merge_db_SIGNAL.connect(update_db_Thread.merge_db_slot, QtCore.Qt.QueuedConnection)
 
@@ -265,10 +318,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.build_table_model_uuid()
 
         # self.build_table_widget_uuid()
-        self.header_list_uuid = UUID_HEADER_LIST
-        self.header_name_uuid = UUID_HEADER_LABEL
         self.tableWidget_uuid.setColumnCount(len(UUID_HEADER_LABEL))
-        self.tableWidget_uuid.setHorizontalHeaderLabels(UUID_HEADER_LABEL)
+        self.tableWidget_uuid.setHorizontalHeaderLabels([translate('ui', x) for x in UUID_HEADER_LABEL])
 
         # self.tableView.setModel(self.model)
 
@@ -286,7 +337,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
         # self.tableview_menu = QtWidgets.QMenu(self)
         # self.tableView.horizontalHeader().restoreGeometry()
-        self.tableView.setSortingEnabled(1)
+        self.tableView.setSortingEnabled(True)
+        self.tableView.sortByColumn(0, QtCore.Qt.AscendingOrder)
 
         # self.tableView_uuid.setModel(self.model_uuid)
         # self.tableView_uuid.horizontalHeader().setSectionsMovable(True)
@@ -432,9 +484,11 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         msgBox.aboutQt(self, 'cccc')
 
     def _about_open_homepage(self):
+	# TODO: wiki page
         QDesktopServices.openUrl(QUrl("https://github.com/chg-hou/DawnlightSearch"))
 
     def _about_open_latest_version(self):
+	# TODO: release page
         QDesktopServices.openUrl(QUrl("https://github.com/chg-hou/DawnlightSearch/wiki/Latest-Version"))
 
 
@@ -483,6 +537,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
             self.lazy_query_timer.setInterval(
                 settings.value("Start_Querying_after_Typing_Finished", type=int, defaultValue=50))
+            self.lazy_sort_timer.setInterval(
+                settings.value("Restor_Sort_after_New_Row_Inserted", type=int, defaultValue=100))
 
             GlobalVar.DATETIME_FORMAT = settings.value('Search/Date_Format', type=str, defaultValue="d/M/yyyy h:m:s")
             GlobalVar.SKIP_DIFF_DEV = settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True)
@@ -730,8 +786,9 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         #     self.update_query_result()
         self.lazy_query_timer.start()
 
-    @pyqtSlot(int, int)
+    @pyqtSlot(int, int) # update_progress_slot
     def on_update_progress_bar(self, remained, total):
+        logger.info('on_update_progress_bar:' + str(remained)+' '+ str(total) )
         self.progressBar.setRange(0, total)
         self.progressBar.setValue(total - remained)
         if remained == 0:
@@ -749,37 +806,37 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         if (not file_type) or (file_type == "folder") or (not app_name):
             menu.addAction("Open", self.on_tableview_context_menu_open)
         else:
-            tmp = menu.addAction('''Open with "%s"''' % app_name, partial(app_launch_fun, app_launcher, filename_list))
+            tmp = menu.addAction((translate('menu','''Open with "%s"''')) % app_name, partial(app_launch_fun, app_launcher, filename_list))
             tmp.setIcon(get_QIcon_object(icon_filename))
             tmp.setToolTip(app_tooltip)
 
-            open_with_menu = menu.addMenu("Open with")
+            open_with_menu = menu.addMenu((translate('menu',"Open with")))
             for icon_filename, app_name, app_tooltip, app_launch_fun, app_launcher in get_open_with_app(file_type):
-                tmp = open_with_menu.addAction('''Open with "%s"''' % app_name,
+                tmp = open_with_menu.addAction((translate('menu','''Open with "%s"''')) % app_name,
                                                partial(app_launch_fun, app_launcher, filename_list))
                 tmp.setIcon(get_QIcon_object(icon_filename))
                 tmp.setToolTip(app_tooltip)
             open_with_menu.addAction('''Open With Other Application...''' ,
                                          partial(pop_select_app_dialog_and_open, file_type, filename_list))
 
-        menu.addAction("Open path", self.on_tableview_context_menu_open_path)
-        copy_menu = menu.addMenu("Copy ...")
-        copy_menu.addAction("Copy fullpath", self.on_tableview_context_menu_copy_fullpath)
-        copy_menu.addAction("Copy filename", self.on_tableview_context_menu_copy_filename)
-        copy_menu.addAction("Copy path", self.on_tableview_context_menu_copy_path)
+        menu.addAction((translate('menu',"Open path")), self.on_tableview_context_menu_open_path)
+        copy_menu = menu.addMenu((translate('menu',"Copy ...")))
+        copy_menu.addAction((translate('menu',"Copy fullpath")), self.on_tableview_context_menu_copy_fullpath)
+        copy_menu.addAction((translate('menu',"Copy filename")), self.on_tableview_context_menu_copy_filename)
+        copy_menu.addAction((translate('menu',"Copy path")), self.on_tableview_context_menu_copy_path)
         menu.addSeparator()
-        move_to_menu = menu.addMenu("Move to ...")
-        move_to_menu.addAction("Browser ...", self.on_tableview_context_menu_move_to)
+        move_to_menu = menu.addMenu((translate('menu',"Move to ...")))
+        move_to_menu.addAction((translate('menu',"Browser ...")), self.on_tableview_context_menu_move_to)
         # TODO: history
         move_to_menu.addSeparator()
-        copy_to_menu = menu.addMenu("Copy to ...")
-        copy_to_menu.addAction("Browser ...", self.on_tableview_context_menu_copy_to)
+        copy_to_menu = menu.addMenu((translate('menu',"Copy to ...")))
+        copy_to_menu.addAction((translate('menu',"Browser ...")), self.on_tableview_context_menu_copy_to)
         copy_to_menu.addSeparator()
 
         # https://github.com/hsoft/send2trash
         # tmp = menu.addAction("Move to trash", self.on_tableview_context_menu_move_to_trash)
         # tmp.setIcon(get_QIcon_object('./ui/icon/user-trash.png'))
-        tmp = menu.addAction("Delete", self.on_tableview_context_menu_delete)
+        tmp = menu.addAction((translate('menu',"Delete")), self.on_tableview_context_menu_delete)
         tmp.setIcon(get_QIcon_object('./ui/icon/trash-empty.png'))
 
         # Need GTk3 to use Gtk.AppChooserDialog.new_for_content_type
@@ -844,14 +901,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         import os, subprocess
         if not os.path.exists(path):
             logger.warning("File/path does not exist: " + path)
-            msg = "File/path does not exist: " + path
-            QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), msg)
-            self.statusBar.setStyleSheet(
-                "QStatusBar{color:red;font-weight:bold;}")
-
-            self.statusBar.showMessage(msg, 3000)
-            self.restore_statusbar_timer.setInterval(3000)
-            self.restore_statusbar_timer.start()
+            msg = translate('statusbar', "File/path does not exist: ") + path
+            self.show_statusbar_warning_msg_slot(msg)
             return
         try:
             QDesktopServices.openUrl(QUrl.fromLocalFile(path))
@@ -862,7 +913,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
             # elif os.name == 'posix':
             #     subprocess.call(('xdg-open', path))
         except:
-            logger.warning("Cannot open file: %s" % path)
+            self.show_statusbar_warning_msg_slot((translate('statusbar',"Cannot open file: %s")) % path)
 
     def _restore_statusbar_style(self):
         self.statusBar.setStyleSheet("QStatusBar{}")
@@ -872,17 +923,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         print("Open path.")
         import os, subprocess
         for Filename, Path, fullpath, IsFolder in self.get_tableview_selected():
-            print(Path)
-            if not os.path.exists(Path):    continue
-            try:
-                if sys.platform.startswith('darwin'):
-                    subprocess.call(('open', Path))
-                elif os.name == 'nt':
-                    os.startfile(Path)
-                elif os.name == 'posix':
-                    subprocess.call(('xdg-open', Path))
-            except:
-                print("Cannot open path: %s" % Path)
+            self._open_file_or_folder(Path)
 
     @pyqtSlot()
     def on_tableview_context_menu_copy_fullpath(self):
@@ -927,25 +968,25 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def on_tableview_context_menu_move_to(self):
         # TODO: show process?
         import os, shutil
-        des_path = str(QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory (move to)"))
+        des_path = str(QtWidgets.QFileDialog.getExistingDirectory(self, (translate('dialog',"Select Directory (move to)"))))
         print("move to", des_path)
         if not os.path.exists(des_path):    return
-        self.statusBar.showMessage("Moving...")
+        self.statusBar.showMessage((translate('statusbar',"Moving...")))
         for Filename, Path, fullpath, IsFolder in self.get_tableview_selected():
             # if not os.path.exists(Path):    continue
             try:
                 shutil.move(fullpath, des_path)
             except:
                 print("Fail to move file: %s" % fullpath)
-        self.statusBar.showMessage("Done.", 3000)
+        self.statusBar.showMessage((translate('statusbar',"Done.")), 3000)
 
     @pyqtSlot()
     def on_tableview_context_menu_copy_to(self):
         import os, shutil
-        des_path = str(QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory (copy to)"))
+        des_path = str(QtWidgets.QFileDialog.getExistingDirectory(self, (translate('dialog',"Select Directory (copy to)"))))
         # print "copy to", des_path
         if not os.path.exists(des_path):    return
-        self.statusBar.showMessage("Coping...")
+        self.statusBar.showMessage(translate('statusbar',"Coping..."))
         for Filename, Path, fullpath, IsFolder in self.get_tableview_selected():
             # if not os.path.exists(Path):    continue
             try:
@@ -956,12 +997,12 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     shutil.copy2(fullpath, des_path)
             except:
                 logger.error("Fail to copy file: %s" % fullpath)
-        self.statusBar.showMessage("Done.", 3000)
+                self.statusBar.showMessage((translate('statusbar', "Done.")), 3000)
 
     @pyqtSlot()
     def on_tableview_context_menu_move_to_trash(self):
-        reply = QtGui.QMessageBox.question(self, 'Message',
-                                           "Are you sure to move file(s) to trash?", QtGui.QMessageBox.Yes |
+        reply = QtGui.QMessageBox.question(self, translate('message','Message'),
+                                           translate('message',"Are you sure to move file(s) to trash?"), QtGui.QMessageBox.Yes |
                                            QtGui.QMessageBox.No, QtGui.QMessageBox.No)
         # TODO : ?Gio.File.trash  https://developer.gnome.org/gio/stable/GFile.html#g-file-new-for-path
         if reply == QMessageBox.Yes:
@@ -969,12 +1010,12 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
     @pyqtSlot()
     def on_tableview_context_menu_delete(self):
-        reply = QMessageBox.question(self, 'Message',
-                                     "Are you sure to DELETE?", QMessageBox.Yes |
+        reply = QMessageBox.question(self, translate('message','Message'),
+                                     translate('message',"Are you sure to DELETE?"), QMessageBox.Yes |
                                      QMessageBox.No, QMessageBox.No)
 
         if reply == QMessageBox.Yes:
-            self.statusBar.showMessage("Deleting...")
+            self.statusBar.showMessage(translate('statusbar',"Deleting..."))
 
             import shutil
             for Filename, Path, fullpath, IsFolder in self.get_tableview_selected():
@@ -987,7 +1028,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                         os.remove(fullpath)
                 except:
                     logger.error("Fail to delete file: %s" % fullpath)
-            self.statusBar.showMessage("Done.", 3000)
+            self.statusBar.showMessage(translate('statusbar',"Done."), 3000)
 
     @pyqtSlot(bool)
     def on_toolbutton_casesensitive_toggled(self, checked):
@@ -1017,6 +1058,11 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         settings.setValue("Search/Match_Mode", GlobalVar.MATCH_OPTION)
 
 
+    @pyqtSlot()
+    def lazy_tableview_sort_slot(self):
+        self.tableView.setSortingEnabled(True)
+        QApplication.processEvents()
+
     @pyqtSlot(int, list)
     def on_model_receive_new_row(self, query_id, insert_row):
         # QApplication.processEvents()
@@ -1030,6 +1076,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         #     self.Query_Model_ID = query_id
         #     self._clear_model()
         #     # TODO: highlight former selected rows
+        self.tableView.setSortingEnabled(False)
         row = self.model.rowCount()
         GlobalVar.CURRENT_MODEL_ITEMS = row
         if row < GlobalVar.MODEL_MAX_ITEMS:
@@ -1041,6 +1088,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 self.model.setItem(row, col, item)
             #  method 1, XXX, memory leak!
             # self.model.appendRow(insert_row)
+        # self.tableView.setSortingEnabled(True)
+
+        if not self.lazy_sort_timer.isActive():
+            self.lazy_sort_timer.start()
 
     @pyqtSlot(int, int, str)
     def on_db_progress_update(self, num_records, mftsize, uuid_updating):
@@ -1083,6 +1134,8 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     progressbar.setValue(100)
                     progressbar.setFormat("Merging...")
                     QApplication.processEvents()    #
+                elif num_records == -3:
+                    progressbar.setFormat("Done")
                 else:
                     if mftsize < 0:
                         progressbar.setMinimum(0)
@@ -1095,8 +1148,9 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
         if num_records == -2:
             logger.debug("DB progress update: " + "merge temp db.")
-            self.merge_db_SIGNAL.emit()
-            progressbar.setFormat("Done")
+            # self.merge_db_SIGNAL.emit()
+            # progressbar.setFormat("Done")
+        # QApplication.processEvents()
 
     def _clear_model(self):
         self.model.setRowCount(0)
@@ -1131,7 +1185,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         self.header_list = header_list
         print(len(header_list))
         self.model.setColumnCount(len(header_list))
-        self.model.setHorizontalHeaderLabels(DB_HEADER_LABEL)
+        self.model.setHorizontalHeaderLabels([translate('ui',x) for x in DB_HEADER_LABEL])
 
         # self.proxy = QtCore.QSortFilterProxyModel(self)
         # self.proxy.setSourceModel(self.model)
@@ -1145,7 +1199,10 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
 
     @pyqtSlot(str)
     def show_statusbar_warning_msg_slot(self, msg):
-        QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), msg)
+        # QtWidgets.QToolTip.showText(QtGui.QCursor.pos(), msg)
+        if msg == 'UNIQUE constraint failed: UUID.uuid':
+            msg += translate('statusbar','Duplicate UUID found.')
+        logger.error('show_statusbar_warning_msg_slot:' + msg)
         self.statusBar.setStyleSheet(
             "QStatusBar{color:red;font-weight:bold;}")
 
@@ -1206,6 +1263,9 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                     newitem.setFont(temp_font)
                 if not idx in[UUID_HEADER.alias]:
                     newitem.setFlags(newitem.flags() ^ QtCore.Qt.ItemIsEditable)
+                else:
+                    newitem.setForeground(QtCore.Qt.blue)
+                    # newitem.setBackground(QtCore.Qt.gray)
                 # row.append(newitem)
                 self.tableWidget_uuid.setItem(row, idx, newitem)
 
@@ -1222,7 +1282,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # self.refresh_table_uuid_mount_state_slot()
         # self.refresh_mount_state_timer.start()
         self.tableWidget_uuid.setSortingEnabled(True)
-        self.statusBar.showMessage("Almost done.",1000)
+        self.statusBar.showMessage(translate('statusbar',"Almost done."),1000)
 
 
     def _find_row_of_uuid(self, uuid):
@@ -1320,11 +1380,12 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 continue
             uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
             path = self.tableWidget_uuid.item(row, UUID_HEADER.path).data(QtCore.Qt.DisplayRole)
+            alias = self.tableWidget_uuid.item(row, UUID_HEADER.alias).data(QtCore.Qt.DisplayRole)
             # MainCon.cur.execute('''SELECT COALESCE(MAX(rowid),0) FROM `%s` ''' % (uuid))
             # rows = MainCon.cur.fetchall()[0][0]  # max(rowid)
             rows = int(self.tableWidget_uuid.item(row, UUID_HEADER.rows).data(QtCore.Qt.DisplayRole))
             # TODO: move rows into query thread
-            r.append({'uuid': uuid, 'path': path, 'rows': rows})
+            r.append({'uuid': uuid, 'path': path, 'rows': rows,'alias': alias})
         return r
 
         # MainCon.cur.execute('''SELECT `uuid`,`path` FROM UUID WHERE (included=1) ''')
@@ -1342,7 +1403,6 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
     def closeEvent(self, event):
         print('close')
         self.distribute_query_thread.quit()
-        self.update_db_Thread.quit()
         settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
 
         # save uuid state
@@ -1362,7 +1422,7 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
                 uuid_list.append([uuid, included, updatable, alias])
             except Exception as e:
                 logger.error(str(e))
-        self.save_uuid_flag_SIGNAL.emit(uuid_list)
+        self.save_uuid_flag_and_quit_SIGNAL.emit(uuid_list, True)
 
         # save excluded UUID
         settings.setValue('Excluded_UUID', list(GlobalVar.EXCLUDED_UUID))
@@ -1398,7 +1458,47 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         settings.setValue("Main_Window/DOCK_LOCATIONS", self.saveState())
 
 if __name__ == '__main__':
+
+    # load language setting
+    settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+    translator = QTranslator()
+    lang = settings.value('Language/language', type=str, defaultValue='auto')
+    if lang == 'auto':
+        lang = QLocale.system().name()
+    lang_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),'lang',
+                             lang +'.qm')
+    if not os.path.exists(lang_path):
+        logger.warning('lang file missing: %s' % lang_path)
+    translator.load(lang_path )
     app = QApplication(sys.argv)
+    app.installTranslator(translator)
+
+    # perform vacuum
+    _tmp_settings = QSettings(QSettings.IniFormat, QSettings.UserScope, ORGANIZATION_NAME, ALLICATION_NAME)
+    last_vacuum_date = _tmp_settings.value('History/Last_Vacuum_Date', type=float, defaultValue=0)
+    vacuum_period = _tmp_settings.value('History/Vacuum_Period_Days', type=float, defaultValue=5)
+    if time.time() - last_vacuum_date > vacuum_period * 3600:
+        while 1:
+            try:
+                con = sqlite3.connect(DATABASE_FILE_NAME, check_same_thread=False, timeout=2)
+                cur = con.cursor()
+                cur.execute("VACUUM;")
+                con.close()
+                _tmp_settings.setValue('History/Last_Vacuum_Date', time.time())
+                del con
+                del cur
+                break
+            except Exception as e:
+                msgBox = QMessageBox()
+                msgBox.setIcon(QMessageBox.Critical)
+                msgBox.setText((translate('message',"Fail to vacuum databse:\n%s\n\nError message:\n%s")) % (DATABASE_FILE_NAME, str(e)))
+                msgBox.setInformativeText(translate('message',"Do you want to retry?"))
+                msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Cancel)
+                msgBox.setDefaultButton(QMessageBox.Retry)
+                ret = msgBox.exec_()
+                if (ret != msgBox.Retry):
+                    break
+    del last_vacuum_date, vacuum_period, _tmp_settings
 
     while 1:
         # https://docs.python.org/2/library/sqlite3.html
@@ -1410,8 +1510,8 @@ if __name__ == '__main__':
         except Exception as e:
             msgBox = QMessageBox()
             msgBox.setIcon(QMessageBox.Critical)
-            msgBox.setText("Fail to connect to databse:\n%s\n\nError message:\n%s" % (DATABASE_FILE_NAME, str(e)))
-            msgBox.setInformativeText("Do you want to retry?")
+            msgBox.setText((translate('message',"Fail to connect to databse:\n%s\n\nError message:\n%s")) % (DATABASE_FILE_NAME, str(e)))
+            msgBox.setInformativeText(translate('message',"Do you want to retry?"))
             msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Cancel)
             msgBox.setDefaultButton(QMessageBox.Retry)
             ret = msgBox.exec_()
@@ -1422,7 +1522,9 @@ if __name__ == '__main__':
 
     # if not createDBConnection():
     #     sys.exit(1)
+
     try:
+        exit_code = 0
         window = AppDawnlightSearch()
         window.show()
         window.ini_after_show()
@@ -1434,26 +1536,29 @@ if __name__ == '__main__':
     finally:
 
         logger.info("Close db.")
-        logger.info("Vacuum db.")
-        try:
-            MainCon.cur.execute("VACUUM;")
-        except Exception as e:
-            logger.error('Fail to vacuum db.')
-            logger.error(str(e))
+        # logger.info("Vacuum db.")
+        # try:
+        #     MainCon.cur.execute("VACUUM;")
+        # except Exception as e:
+        #     logger.error('Fail to vacuum db.')
+        #     logger.error(str(e))
 
         while 1:
             try:
-                MainCon.con.commit()
+                # MainCon.con.commit()
                 MainCon.con.close()
-                sys.exit(exit_code)
+                logger.error('Exit...')
+                break
             except Exception as e:
                 msgBox = QMessageBox()
                 msgBox.setIcon(QMessageBox.Critical)
-                msgBox.setText("Fail to close databse:\n%s\n\nError message:\n%s" % (DATABASE_FILE_NAME, str(e)))
-                msgBox.setInformativeText("Do you want to retry?")
+                msgBox.setText((translate('message',"Fail to close databse:\n%s\n\nError message:\n%s")) % (DATABASE_FILE_NAME, str(e)))
+                msgBox.setInformativeText(translate('message',"Do you want to retry?"))
                 msgBox.setStandardButtons(QMessageBox.Retry | QMessageBox.Cancel)
                 msgBox.setDefaultButton(QMessageBox.Retry)
                 ret = msgBox.exec_()
                 if (ret != msgBox.Retry):
                     sys.exit(exit_code)
-        logger.error('Exit...')
+
+
+        sys.exit(exit_code)

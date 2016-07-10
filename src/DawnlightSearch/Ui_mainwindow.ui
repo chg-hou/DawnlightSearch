@@ -20,8 +20,13 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow::separator {
 		background:  rgb(188, 188, 188);
-		width: 2px;
-		height: 2px;
+		width: 3px;
+		height: 3px;
+}
+QMainWindow::separator:hover {
+		background:  rgb(85, 0, 255);
+		width: 6px;
+		height:6px;
 }</string>
   </property>
   <property name="dockOptions">
@@ -114,24 +119,6 @@
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pushButton_2">
-           <property name="text">
-            <string>PushButton</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
        <item row="1" column="0">
         <widget class="QToolButton" name="toolButton_casesensitive">
          <property name="text">
@@ -275,6 +262,14 @@
     <property name="title">
      <string>Setting</string>
     </property>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <addaction name="actionLanguage_Auto"/>
+     <addaction name="actionLanguage_English"/>
+     <addaction name="actionLanguage_Simplified_Chinese"/>
+    </widget>
     <addaction name="actionChange_excluded_folders"/>
     <addaction name="separator"/>
     <addaction name="actionUse_MFT_parser"/>
@@ -285,6 +280,8 @@
     <addaction name="actionOpen_setting_path"/>
     <addaction name="actionOpen_db_path"/>
     <addaction name="actionOpen_temp_db_path"/>
+    <addaction name="separator"/>
+    <addaction name="menuLanguage"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -296,8 +293,15 @@
     <addaction name="actionOpen_Project_Homepage"/>
     <addaction name="actionLatest_Version"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionSearch_focus"/>
+   </widget>
    <addaction name="menuGf"/>
    <addaction name="menuSetting"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -442,9 +446,6 @@
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
       <widget class="QPlainTextEdit" name="plainTextEdit_sql_where">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;preee &lt;span style=&quot; font-weight:600;&quot;&gt;ENTER&lt;/span&gt; to submit sql query&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
        <property name="frameShape">
         <enum>QFrame::Box</enum>
        </property>
@@ -488,6 +489,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdvanced_settings"/>
+   <addaction name="actionSearch_focus"/>
   </widget>
   <action name="actionAbout">
    <property name="text">
@@ -503,11 +505,6 @@
    </property>
    <property name="text">
     <string>Change excluded folders</string>
-   </property>
-  </action>
-  <action name="actionCv">
-   <property name="text">
-    <string>cv</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -708,6 +705,32 @@
     <string>Uncheck Updatable</string>
    </property>
   </action>
+  <action name="actionSearch_focus">
+   <property name="text">
+    <string>Search...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Auto">
+   <property name="text">
+    <string>(Auto)</string>
+   </property>
+  </action>
+  <action name="actionLanguage_English">
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Simplified_Chinese">
+   <property name="text">
+    <string>Simplified Chinese (简体中文) zh_CN</string>
+   </property>
+   <property name="toolTip">
+    <string>Simplified Chinese (简体中文) zh_CN</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
@@ -789,6 +812,22 @@
     <hint type="destinationlabel">
      <x>657</x>
      <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionSearch_focus</sender>
+   <signal>triggered()</signal>
+   <receiver>comboBox_search</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>736</x>
+     <y>90</y>
     </hint>
    </hints>
   </connection>

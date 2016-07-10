@@ -62,6 +62,9 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
         self.checkBox_skip_diff_dev.setChecked(
             settings.value('Database/Skip_Different_Device', type=bool, defaultValue=True))
 
+        self.spinBox_restor_sort_interval.setValue(
+            settings.value("Restor_Sort_after_New_Row_Inserted", type=int, defaultValue=100)
+        )
         unit = settings.value('Size_Unit', type=str, defaultValue='KB')
         unit_list = ['Auto','B', 'KB', 'MB', 'GB', 'TB', 'PB']
         if not (unit in unit_list):
@@ -98,7 +101,7 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
     @pyqtSlot()
     def on_change_Database_File(self):
-        folder = str(QFileDialog.getExistingDirectory(self, "Select Directory of Database File",
+        folder = str(QFileDialog.getExistingDirectory(self, QCoreApplication.translate('dialog',"Select Directory of Database File"),
                                                       os.path.dirname(self.lineEdit_Database_File_Name.text())))
         if folder:
             filename = os.path.basename(self.lineEdit_Database_File_Name.text())
@@ -106,7 +109,7 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
 
     @pyqtSlot()
     def on_change_Temp_Database_File(self):
-        folder = str(QFileDialog.getExistingDirectory(self, "Select Directory of Temp Database File",
+        folder = str(QFileDialog.getExistingDirectory(self, QCoreApplication.translate('dialog',"Select Directory of Temp Database File"),
                                                       os.path.dirname(self.lineEdit_Temp_Database_File_Name.text())))
         if folder:
             filename = os.path.basename(self.lineEdit_Temp_Database_File_Name.text())
@@ -153,6 +156,8 @@ class EditSettingDialog(QDialog, EditSettingDialog_base_class):
                               unit)
 
             settings.setValue('Search/Instant_Search', dialog.radioButton_instant_search.isChecked())
+
+            settings.setValue('Restor_Sort_after_New_Row_Inserted', dialog.spinBox_restor_sort_interval.value())
 
             settings.sync()
         return (new_settings, result == QDialog.Accepted)

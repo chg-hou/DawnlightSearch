@@ -80,9 +80,11 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
 
             m.setData(m.index(row, DB_HEADER.Filename), newicon, QtCore.Qt.DecorationRole)
 
-
-            size_data = m.data(m.index(row, DB_HEADER.Size), HACKED_QT_EDITROLE)
-            size_data = size_to_str(size_data, unit=GlobalVar.SIZE_UNIT)
+            if  IsFolder:
+                size_data = ''
+            else:
+                size_data = m.data(m.index(row, DB_HEADER.Size), HACKED_QT_EDITROLE)
+                size_data = size_to_str(size_data, unit=GlobalVar.SIZE_UNIT)
 
             m.setData(m.index(row, DB_HEADER.Size), size_data, QtCore.Qt.DisplayRole)
             m.setData(m.index(row, DB_HEADER.Size), QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter, QtCore.Qt.TextAlignmentRole)
@@ -133,6 +135,8 @@ class HTMLDelegate_VC_HL(QtWidgets.QStyledItemDelegate):
 
         painter.restore()
 
+    # def sizeHint(self, option, index):
+    #     return Qg.QSize(self.doc.idealWidth(), self.doc.size().height())
 
 # CUSTOM DELEGATE TO GET HTML RICH TEXT IN LISTVIEW
 # ALLOWS USE OF <b></b> TAGS TO HIGHLIGHT SEARCHED PHRASE IN RESULTS

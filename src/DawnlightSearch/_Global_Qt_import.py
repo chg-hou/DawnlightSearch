@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 
 from PyQt5 import uic, QtGui, QtCore
-from PyQt5.QtCore import pyqtSlot, QSettings, QUrl, QDateTime
+from PyQt5.QtCore import pyqtSlot, QSettings, QUrl, QDateTime, QTranslator, QCoreApplication, QLocale
 
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMainWindow, QApplication

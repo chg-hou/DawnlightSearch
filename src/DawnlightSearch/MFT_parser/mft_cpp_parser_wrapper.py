@@ -29,7 +29,23 @@ MFT_CPP_PARSER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '
 #     else:
 #         logger.error("mft_parser_cpp: ERROR-- " + "".join(procExe.stderr.readlines()))
 
-def mft_parser_cpp(mft_filename, db_filename, table_name):
+import multiprocessing
+
+def parserProcess(mft_filename, db_filename, table_name):
 
     import DawnlightSearch.MFT_parser.mft_c_parser_module as mft_c_parser_module
-    logger.info(mft_c_parser_module.mft_c_parser_func(mft_filename, db_filename, table_name))
+    rst = mft_c_parser_module.mft_c_parser_func(mft_filename, db_filename, table_name)
+    logger.info(rst)
+
+def mft_parser_cpp(mft_filename, db_filename, table_name):
+    # import time
+    # print('parser sleep test')
+    # time.sleep(10)
+    # print('parser sleep test end')
+    # return
+
+    p = multiprocessing.Process(target=parserProcess, args=(mft_filename, db_filename, table_name))
+    p.daemon = True
+    p.start()
+    p.join()
+    logger.info('mft_parser_cpp END')

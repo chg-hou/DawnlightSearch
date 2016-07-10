@@ -44,7 +44,7 @@ class EditFolderDialog(QDialog, EditFolderDialog_base_class):
         self.folder_listWidget.edit(index)
 
     def action_add_open_folder(self):
-        folder = str(QFileDialog.getExistingDirectory(self, "Select Directory to Add"))
+        folder = str(QFileDialog.getExistingDirectory(self, QCoreApplication.translate('dialog',"Select Directory to Add")))
         if folder:
             a = QListWidgetItem()
             a.setText(folder)
