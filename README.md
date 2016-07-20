@@ -17,6 +17,10 @@ Highlights:
  - Support wildcards and regular expressions.
  - Support filter on multi fileds: file name, folder, full path, size, mtime, ctime, and atime. 
 
+Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
+
+![](./_screenshot/Dawnlight%20Search_2.png)
+
 
 ### Interface:
 
@@ -91,9 +95,3 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
  - [FSearch](https://github.com/cboxdoerfer/fsearch)
 
 
-
-
-
-Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
-
-![](./_screenshot/Dawnlight%20Search_2.png)
