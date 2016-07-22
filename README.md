@@ -97,6 +97,10 @@ python3-pyqt5
  - More language options
  - Support Windows.
 
+### FIXME:
+ - Wrong working path in .desktop (ubuntu 14.04)
+ - Wrong location of extracted .desktop (  ? use    data_files=[('/usr/share/applications',...)]  ) 
+
 ## Similar Projects:
 
  - [ANGRYsearch](https://github.com/DoTheEvo/ANGRYsearch) (python)
