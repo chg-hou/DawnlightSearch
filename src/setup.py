@@ -28,7 +28,7 @@ setup(
                                       'MFT_parser/*.py',
                                       'QueryWorker/*.py',
                                       'UI_delegate/*.py']},
-    install_requires=['PyQt5'],
+    # install_requires=['PyQt5'],
     data_files=[('share/applications',  ['DawnlightSearch/DawnlightSearch.desktop']),
                 ('share/pixmaps',       ['DawnlightSearch/ui/icon/DawnlightSearch.png'])],
     ext_package='DawnlightSearch.MFT_parser',
