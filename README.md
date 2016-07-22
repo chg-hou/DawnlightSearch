@@ -78,6 +78,14 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
 
 * others:
 
+  Dependences:  
+
+libsqlite3-dev
+
+g++ > 5   (need codecvt header)
+
+python3-pyqt5
+
 > $ cd src
  
 > $ python3 setup.py install
