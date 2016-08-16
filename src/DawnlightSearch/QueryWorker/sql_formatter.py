@@ -208,7 +208,7 @@ def format_sql_cmd(sql_dict):
         exact_match, wildcard,  word = parser_word()       # any wildcard will enable LIKE matach -- exact_match = False.
 
         if ( regexp_flag and exact_match):
-            sql_cmd = '(' + field + ' REGEXP "' + word + ' ' + case + ')'
+            sql_cmd = '(' + field + ' REGEXP "' + word + '" ' + case + ')'
             return sql_cmd
 
         # http://stackoverflow.com/questions/543580/equals-vs-like
@@ -494,6 +494,23 @@ def format_sql_cmd(sql_dict):
 
 if __name__ == '__main__':
 
+    def printsql(sqltext):
+        a, b, c, d, e, f = format_sql_cmd(
+            {
+                'path': '/devpath/',
+                'uuid': 'UUID',
+                'sql_text': sqltext,
+                'rowid_low': 1,
+                'rowid_high': 2,
+            }
+        )
+        # print(a)
+        # print(b)
+        # print(c)
+        print(d)
+        # print(e)
+        # print(f)
+        return d
     ## xxx:  (Filename Like "%CORE%" COLLATE  noCASE)
     ## Correct:  PRAGMA case_sensitive_like=Off;
 
@@ -518,23 +535,10 @@ if __name__ == '__main__':
     sql_text = ''' a folder: a  size:>=34G '''
     sql_text = ''' a folder: d'''
     sql_text = ''' a folder: p:d'''
-    a,b,c,d,e,f = format_sql_cmd(
-        {
-            'path': '/devpath/',
-            'uuid': 'UUID',
-            'sql_text': sql_text,
-            'rowid_low': 1,
-            'rowid_high': 2,
-        }
-    )
-    print(a)
-    print(b)
-    print(c)
-    print(d)
-    print(e)
-    print(f)
+
     # a      Like "%a%"
     # "a"     =  "a"
     # "a*b"  Like "a%b"
 
     # reg: "a*b"   REGEXP "a*b"
+    printsql('''reg:"\d"''')
