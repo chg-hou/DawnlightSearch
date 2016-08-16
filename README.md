@@ -65,6 +65,17 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
 !   *exclamation mark* | NOT
 
 
+
+Note: global "nocase" settings has no effect on regular expression. Use "(?i)" instead. 
+Examples: 
+
+***reg:"a"*** will match "123abcd", not "123Abcd". 
+
+***reg:"A"*** will match "123Abcd", not "123abcd". 
+
+***reg:"(?i)A"*** will match both "123Abcd" and "123abcd".
+
+
 ### Installation:
 
 * Ubuntu 16.04:
