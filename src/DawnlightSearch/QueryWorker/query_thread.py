@@ -28,6 +28,14 @@ class QueryThread(QtCore.QThread):
         # if not con.open():
         #     print con.lastError().text()
         con = sqlite3.connect(DATABASE_FILE_NAME, check_same_thread=False)
+        
+        # note:  "COLLATE nocase" has no effect here. Use "(?i)" in the reg expr.
+        import re
+        def sqlite_regexp(expr, text):
+            reg = re.compile(expr)
+            return reg.search(text) is not None
+        con.create_function("regexp", 2, sqlite_regexp)
+        
         cur = con.cursor()
 
         self.cur = cur
