@@ -1305,6 +1305,13 @@ class AppDawnlightSearch(QMainWindow, MainWindow_base_class):
         # So we disable sorting first and recovery it later.
         deviceDict = SystemDevices.deviceDict
         self.mount_state_timestamp = SystemDevices.timestamp
+        uuid_list = set([device['uuid'] for id, device in deviceDict.items()])
+        for row in range(self.tableWidget_uuid.rowCount()):
+            uuid = self.tableWidget_uuid.item(row, UUID_HEADER.uuid).data(QtCore.Qt.DisplayRole)
+            if not uuid in uuid_list:
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setIcon(get_QIcon_object('./ui/icon/tab-close-other.png'))
+                self.tableWidget_uuid.item(row, UUID_HEADER.included).setData(QtCore.Qt.DisplayRole, 0)
+
         for id, device in deviceDict.items():
             uuid = device['uuid']
             row = self._find_row_of_uuid(uuid)
