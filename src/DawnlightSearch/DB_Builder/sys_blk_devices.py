@@ -50,7 +50,7 @@ class LinuxDevices(object):
     @staticmethod
     def refresh_state():
         LinuxDevices.mutex.acquire()
-        blockinfo = os.popen('lsblk -o name,MAJ:MIN,UUID,LABEL,FSTYPE,MOUNTPOINT -J').read()
+        blockinfo = os.popen('lsblk -o name,MAJ:MIN,UUID,LABEL,FSTYPE,MOUNTPOINT -r').read()
         df_all = os.popen('df -a --output=source,target,fstype').read()
 
         if blockinfo == LinuxDevices.lsblk_history and df_all == LinuxDevices.df_history:
@@ -61,7 +61,7 @@ class LinuxDevices(object):
             LinuxDevices.df_history = df_all
             LinuxDevices.timestamp = time.time()
 
-        blockinfo = json.loads(blockinfo)
+        # blockinfo = json.loads(blockinfo)
         df_source = os.popen('df -a --output=source').readlines()[1:]
         df_target = os.popen('df -a --output=target').readlines()[1:]
         df_fstype = os.popen('df -a --output=fstype').readlines()[1:]
@@ -99,18 +99,37 @@ class LinuxDevices(object):
             mount_target_path.add(target)
             # print major_dnum, minor_dnum, target, source, fstype
 
-        for device in blockinfo['blockdevices']:
-            major, minor = map(int, device['maj:min'].split(':'))
-            if device['fstype']:  # unnecessary
-                blockdevices_id[major, minor] = device
-                blockdevices_id[major, minor]['isblock'] = True
-            if 'children' in device:
-                for child in device['children']:
-                    if not child['fstype']:  # filter out root/special partition
-                        continue
-                    major, minor = map(int, child['maj:min'].split(':'))
-                    blockdevices_id[major, minor] = child
-                    blockdevices_id[major, minor]['isblock'] = True
+        # for device in blockinfo['blockdevices']:
+        #     major, minor = map(int, device['maj:min'].split(':'))
+        #     if device['fstype']:  # unnecessary
+        #         blockdevices_id[major, minor] = device
+        #         blockdevices_id[major, minor]['isblock'] = True
+        #     if 'children' in device:
+        #         for child in device['children']:
+        #             if not child['fstype']:  # filter out root/special partition
+        #                 continue
+        #             major, minor = map(int, child['maj:min'].split(':'))
+        #             blockdevices_id[major, minor] = child
+        #             blockdevices_id[major, minor]['isblock'] = True
+
+        def escape_raw_string(str_in):
+            import codecs
+            return codecs.escape_decode(bytes(str_in, "utf-8"))[0].decode("utf-8")
+        for line in blockinfo.split('\n'):
+            col = line.split(' ')
+            if len(col) != 6 or col[0] == 'NAME':
+                continue
+            if col[4]:  # device['fstype']:  # filter out root/special partition
+                major, minor = map(int, col[1].split(':'))
+                blockdevices_id[major, minor] = {
+                    'name': col[0],
+                    'maj:min': col[1],
+                    'uuid': col[2],
+                    'label': escape_raw_string(col[3]),
+                    'fstype': col[4],
+                    'mountpoint': escape_raw_string(col[5]),
+                    'isblock': True
+                }
 
         deviceDict.update(blockdevices_id)
 
