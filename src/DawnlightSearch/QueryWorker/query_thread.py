@@ -132,6 +132,7 @@ class QueryThread(QtCore.QThread):
 
     def quit(self):
         self.quit_flag = True
+        self.con.close()
         super(self.__class__, self).quit()
 
 class DistributeQueryWorker(QtCore.QThread):
