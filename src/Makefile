@@ -1,11 +1,7 @@
 # https://github.com/matlink/gplaycli/blob/master/Makefile
 SHELL := /bin/bash
 PYTHON=`which python`
-DESTDIR=/
-BUILDIR=$(CURDIR)/debian/gplaycli
-PROJECT=gplaycli
-
-VERSION=0.1.1.0
+VERSION=0.1.1.1
 
 
 all:
@@ -51,20 +47,16 @@ publish_deb_ppa:
 	python3 setup.py --command-packages=stdeb.command sdist_dsc --default-distribution xenial 
 
 	# python3 setup.py --command-packages=stdeb.command sdist_dsc bdist_deb --default-distribution xenial 
-
-	cd deb_dist/dawnlightsearch-$VERSION
-
-	debuild -S
-	cd ../..
-
+deb_sign:
+	cd deb_dist/dawnlightsearch-${VERSION}/;pwd;debuild -S
 publish:
 	python setup.py register -r pypi
 	python setup.py sdist upload -r pypi
 
-ppa_dput:
-	cd deb_dist
-	# dput ppa:chg-hou/dawnlightsearch <source.changes> 
-	dput -f ppa:chg-hou/dawnlightsearch dawnlightsearch_$VERSION-1_source.changes
+ppa_build_upload:
+	make publish_deb_ppa
+	make deb_sign
+	cd deb_dist; dput -f ppa:chg-hou/dawnlightsearch dawnlightsearch_${VERSION}-1_source.changes
 
 gitpush:
 	git push origin master && git push github master
