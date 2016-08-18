@@ -81,31 +81,31 @@ Examples:
 * Ubuntu 16.04:
 > ppa: [https://launchpad.net/~chg-hou/+archive/ubuntu/dawnlightsearch](https://launchpad.net/~chg-hou/+archive/ubuntu/dawnlightsearch)
 
-> $ sudo add-apt-repository ppa:chg-hou/dawnlightsearch
+ > $ sudo add-apt-repository ppa:chg-hou/dawnlightsearch
 
-> $ sudo apt-get update
+ > $ sudo apt-get update
 
-> $ sudo apt-get install python3-dawnlightsearch 
+ > $ sudo apt-get install python3-dawnlightsearch 
 
-* others:
+* Others:
 
   Dependences:  
 
-libsqlite3-dev
+ - libsqlite3-dev
 
-g++ > 5   (need codecvt header)
+ - g++ > 5   (need codecvt header)
 
-python3-pyqt5
+ - python3-pyqt5
 
-> $ cd src
+ > $ cd src
  
-> $ python3 setup.py install
+ > $ python3 setup.py install
  
 ### TODO:
  - Auto indexing.
  - Monitor file system changes.
  - Index files in archives.
- - More language options
+ - More language options.
  - Support Windows.
 
 ### FIXME:
