@@ -34,7 +34,9 @@ __The app is still under development and not stable. Comments and pull requests 
   - Customizable **dock widget** design.
   - **Multi-threaded** search. 
 
-Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
+## Video demo:
+
+[https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
 
 ![](./_screenshot/Dawnlight%20Search_c++.png)
 
@@ -98,18 +100,13 @@ Examples:
 
 ### Installation:
 
-* Ubuntu 16.04:
-> ppa: [https://launchpad.net/~chg-hou/+archive/ubuntu/dawnlightsearch](https://launchpad.net/~chg-hou/+archive/ubuntu/dawnlightsearch)
+|||
+|-|-|
+|From Source| [https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source](https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source)|
+|AppImage|(pending)|
+|Snaps|(under review)|
+|Flatpak|(fail to work)|
 
- > $ sudo add-apt-repository ppa:chg-hou/dawnlightsearch
-
- > $ sudo apt-get update
-
- > $ sudo apt-get install python3-dawnlightsearch 
-
-* Others:
-
-  Dependences:  
 
  - Qt5
 
