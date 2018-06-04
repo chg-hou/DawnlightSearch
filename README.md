@@ -1,7 +1,10 @@
 # DawnlightSearch
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
 *****
-A pure C++ version is on the way...  Say goodbye to GIL.
+__A pure C++ version completed. This Python version is suspended.__
+
+__Please use branch "c++-version" rather than this "master" branch.__
+
 *****
 Framework: 
 
