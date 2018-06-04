@@ -5,6 +5,8 @@ __some parts are out of date__
 
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
 
+__The app is still under development and not stable. Comments and pull requests are very appreciated.__
+
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
 
 ## Similar Everything-like Search Engine: 
