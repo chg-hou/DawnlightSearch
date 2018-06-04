@@ -3,6 +3,10 @@ A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show 
 *****
 A pure C++ version is on the way...  Say goodbye to GIL.
 *****
+
+[![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=test_travis)](https://travis-ci.org/chg-hou/DawnlightSearch)
+
+
 Framework: 
 
  - Core: Python3
