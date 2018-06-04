@@ -1,28 +1,34 @@
-This page is under construction...
+# DawnlightSearch
 
-
-DawnlightSearch
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
+
+__This page is under construction...__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
 
-Framework: 
+## Framework: 
 
- - Core: Python3
- - Gui: PyQt5
- - Database: SQLite3
+| | | 
+|-|-|
+| Core | C++ |
+| Gui | Qt5 |
+| Database | SQLite3 |
 
-Test environment:
+ There is a old version in Python/Pyqt. Please refer to the [python branch](https://github.com/chg-hou/DawnlightSearch/tree/master) .
 
- - Xubuntu 16.04 
+## Test environment:
 
-Highlights:
+ - Ubuntu 16.04 / 18.04
+
+## Highlights:
 
  - Quick file indexing for NTFS partition by parsing master file table (MFT).
  - Support wildcards and regular expressions.
  - Support filter on multi fileds: file name, folder, full path, size, mtime, ctime, and atime. 
 
 Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
+
+![](./_screenshot/Dawnlight%20Search_c++.png)
 
 ![](./_screenshot/Dawnlight%20Search_2.png)
 
