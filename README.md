@@ -6,13 +6,18 @@ __This page is under construction...__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
 
-## Framework: 
+## Similar Everything-like Search Engine: 
 
-| | | 
-|-|-|
-| Core | C++ |
-| Gui | Qt5 |
-| Database | SQLite3 |
+(Ordered by first commit date)
+
+| Name | Language | GUI | Database | 
+|-|-|-|-|
+|[ANGRYsearch](https://github.com/DoTheEvo/ANGRYsearch) | Python3 | PyQt5 | SQLite3 |
+|[fsearch](https://github.com/cboxdoerfer/fsearch) | C | GTK+3 | (built-in) |
+|[DawnlightSearch (old)](https://github.com/chg-hou/DawnlightSearch/tree/master) | Python3 | PyQt5 | SQLite3 |
+|[DawnlightSearch (this)](https://github.com/chg-hou/DawnlightSearch) | C++ | Qt5 | SQLite3 |
+
+
 
  There is a old version in Python/Pyqt. Please refer to the [python branch](https://github.com/chg-hou/DawnlightSearch/tree/master) .
 
