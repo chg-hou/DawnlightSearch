@@ -6,6 +6,7 @@ dist: xenial
 # whitelist
 branches:
   only:
+    - c++-version
     - test_travis
 
 before_install:
@@ -26,6 +27,3 @@ script:
   - qmake CONFIG+=release DawnlightSearch.pro
   - make -j$(nproc)
   - make clean
-
-
-
