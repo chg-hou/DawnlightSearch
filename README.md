@@ -3,9 +3,9 @@ This page is under construction...
 
 DawnlightSearch
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
-*****
-A pure C++ version is on the way...  Say goodbye to GIL.
-*****
+
+[![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
+
 Framework: 
 
  - Core: Python3
