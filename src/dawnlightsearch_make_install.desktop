@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dawnlight Search
+Comment=Dawnlight Search Engine
+Exec=/opt/dawnlightsearch/dawnlightsearch
+Icon=/opt/dawnlightsearch/dawnlightsearch.png
+Type=Application
+StartupNotify=false
+Terminal=false
+Categories=Utility;
+

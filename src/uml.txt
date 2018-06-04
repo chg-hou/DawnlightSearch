@@ -1,0 +1,42 @@
+    @startuml
+
+partition main {
+  (*) --> "w.show()"
+  --> "w.ini_after_show()"
+  --> "QApplication.exec()"
+}
+
+partition MainWindow  #LightSkyBlue {
+  "w.show()" --> "MainWindow()"
+  "MainWindow()" --> "w.show()"
+  "MainWindow()" -->  "__init_connect_menu_action()"
+  
+  "w.ini_after_show()" --> "ini_after_show()"
+  
+  
+  "ini_after_show()" --> "ini_table"
+  ini_table --> ini_subthread
+  
+  partition fd  #Green {
+  
+  }
+  
+  (*) --> updatedb
+  
+  ini_subthread --> "w.ini_after_show()"
+  
+  "__init_connect_menu_action()" --> "MainWindow()"
+}
+
+
+
+partition Update_DB_Thread {
+    "update_uuid()" -->  "init_table(QString table_name, bool clear_table)"
+    updatedb --> update_db_slot(QStringList path_lists)
+}
+
+
+
+
+
+@enduml
