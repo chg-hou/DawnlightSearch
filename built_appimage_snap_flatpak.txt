@@ -1,0 +1,70 @@
+# =============================================== linuxdeployqt AppImage ==============================
+# https://github.com/probonopd/linuxdeployqt
+# https://wiki.qt.io/Deploying_a_Qt5_Application_Linux
+
+sudo apt install qt5-qmake kio-dev
+
+cd src
+qmake -qt=qt5 CONFIG+=release  DawnlightSearch.pro
+make
+make clean
+install -D dawnlightsearch ./../AppDir/usr/bin/dawnlightsearch
+install -d  ./../AppDir/usr/lib
+install -D dawnlightsearch_appimage.desktop ./../AppDir/usr/share/applications/dawnlightsearch.desktop
+install -D  ./ui/icon/main.png  ./../AppDir/usr/share/icons/hicolor/255/dawnlightsearch.png
+cd ..
+wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+chmod +x linuxdeployqt-continuous-x86_64.AppImage
+
+# make sure you use qt5:  
+export QT_SELECT=qt5
+qmake -v
+./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs
+./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage
+#  pull request at https://github.com/AppImage/appimage.github.io
+
+# =============================================== snap ==============================
+
+sudo snap install snapcraft --classic 
+
+#snap install lxd
+#sudo usermod -g lxd ${USER}
+#newgrp lxd
+#sudo lxd init
+
+snapcraft init 
+snapcraft
+#snapcraft build
+#snapcraft cleanbuild
+sudo snap install dawnlight-search_0.1.2.0_amd64.snap --dangerous --classic
+sudo snap install dawnlightsearch_0.1.2.0_amd64.snap --dangerous --classic
+
+
+# https://docs.snapcraft.io/build-snaps/c
+snapcraft register myapp
+
+
+
+# =============================================== flatpak ==============================
+
+
+sudo add-apt-repository ppa:alexlarsson/flatpak
+sudo apt update
+sudo apt install flatpak flatpak-builder -y
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# flatpak install flathub org.freedesktop.Platform//1.6 org.freedesktop.Sdk//1.6
+flatpak install flathub org.kde.Platform//5.11 org.kde.Sdk//5.11
+
+flatpak-builder build-dir org.chghou.dawnlightsearch.json
+flatpak-builder --run build-dir  org.chghou.dawnlightsearch.json dawnlightsearch
+
+
+flatpak-builder build-dir org.chghou.dawnlightsearch.json --force-clean
+flatpak-builder --run build-dir org.flatpak.Hello.json hello.sh
+
+flatpak run org.flatpak.Hello
+
+# flatpak-builder --repo=repo --force-clean build-dir org.flatpak.Hello.json
+
+# https://github.com/flatpak/qt-flatpak-demo/blob/master/org.flatpak.qtdemo.json
