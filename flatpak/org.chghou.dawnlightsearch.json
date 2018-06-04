@@ -1,0 +1,37 @@
+{
+    "app-id": "org.chghou.dawnlightsearch",  
+    "runtime": "org.kde.Platform", 
+    "_comment":  "<!--- org.kde.Platform -->",
+    
+    "runtime-version": "5.11",
+    "sdk": "org.kde.Sdk",
+    "command": "dawnlightsearch",
+    "modules": [
+        {
+            "name": "dawnlightsearch",
+            "buildsystem": "simple",
+            "_comment":  "simple   install -D dawnlightsearch /opt/dawnlighsearch/dawnlighsearch;",
+            "build-commands": [
+                "qmake DawnlightSearch.pro", "make","make clean",
+		"install -D dawnlightsearch /app/bin/dawnlightsearch"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "./src.tar.gz"
+                }
+            ] 
+        }
+    ],
+    "finish-args": [
+        "--socket=x11",
+        "--share=ipc",
+        "--share=network",
+        "--socket=wayland",
+        "--filesystem=host",
+        "--talk-name=org.freedesktop.Flatpak",
+        "--talk-name=ca.desrt.dconf",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+        "--device=all"
+    ]
+}
