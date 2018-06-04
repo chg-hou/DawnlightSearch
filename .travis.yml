@@ -1,0 +1,27 @@
+language: cpp
+compiler: gcc
+sudo: require
+dist: trusty
+
+# whitelist
+branches:
+  only:
+    - test_travis
+    
+install:
+  - sudo apt update
+  - sudo apt-get install -y qt5-qmake kio-dev
+
+before_script:
+  - cmake --version
+  - export QT_SELECT=qt5
+  - qmake -v
+  
+script:
+  - cd src
+  - qmake CONFIG+=release DawnlightSearch.pro
+  - make -j$(nproc)
+  - make clean
+
+
+
