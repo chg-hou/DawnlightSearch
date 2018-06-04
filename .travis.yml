@@ -7,10 +7,14 @@ dist: trusty
 branches:
   only:
     - test_travis
-    
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get -y install qt5-qmake
+
+  
 install:
-  - sudo apt update
-  - sudo apt-get install -y qt5-qmake kio-dev
+  - sudo apt-get -y install kio-dev
 
 before_script:
   - cmake --version
