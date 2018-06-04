@@ -1,8 +1,9 @@
+__This page is under construction...__
+__some parts are out of date__
+
 # DawnlightSearch
 
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
-
-__This page is under construction...__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
 
@@ -18,18 +19,18 @@ __This page is under construction...__
 |[DawnlightSearch (this)](https://github.com/chg-hou/DawnlightSearch) | C++ | Qt5 | SQLite3 |
 
 
-
- There is a old version in Python/Pyqt. Please refer to the [python branch](https://github.com/chg-hou/DawnlightSearch/tree/master) .
-
 ## Test environment:
 
  - Ubuntu 16.04 / 18.04
 
 ## Highlights:
 
- - Quick file indexing for NTFS partition by parsing master file table (MFT).
- - Support wildcards and regular expressions.
+ - Instant search.
+ - Support **wildcards** and **regular expressions**.
  - Support filter on multi fileds: file name, folder, full path, size, mtime, ctime, and atime. 
+  - ~~Quick file indexing for NTFS partition by parsing master file table (MFT).~~ (This feature is available in the old python version. I will put it back soon. )
+  - Customizable **dock widget** design.
+  - **Multi-threaded** search. 
 
 Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
 
@@ -37,6 +38,7 @@ Video demo: [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
 
 ![](./_screenshot/Dawnlight%20Search_2.png)
 
+--------------------------------
 
 ### Interface:
 
@@ -107,15 +109,9 @@ Examples:
 
   Dependences:  
 
- - libsqlite3-dev
+ - Qt5
 
- - g++ > 5   (need codecvt header)
-
- - python3-pyqt5
-
- > $ cd src
- 
- > $ python3 setup.py install
+ - kio-dev
  
 ### TODO:
  - Auto indexing.
