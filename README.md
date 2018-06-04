@@ -9,7 +9,7 @@ __The app is still under development and not stable. Comments and pull requests 
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
 
-## Similar Everything-like Search Engine: 
+## Similar Everything-like Search Engine in Linux: 
 
 (Ordered by first commit date)
 
