@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_Exclued_Folder</class>
+ <widget class="QDialog" name="Dialog_Exclued_Folder">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>545</width>
+    <height>334</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit Excluded Folders</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QListWidget" name="folder_listWidget">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QToolButton" name="add_one_folder">
+         <property name="text">
+          <string notr="true">...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/icon/ui/icon/list-add.png</normaloff>:/icon/ui/icon/list-add.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="add_open_folder">
+         <property name="text">
+          <string notr="true">...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/icon/ui/icon/insert-directory.png</normaloff>:/icon/ui/icon/insert-directory.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="remove_folders">
+         <property name="text">
+          <string notr="true">...</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>:/icon/ui/icon/list-remove.png</normaloff>:/icon/ui/icon/list-remove.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttons">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

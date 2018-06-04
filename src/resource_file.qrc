@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>ui/icon/application-exit.png</file>
+        <file>ui/icon/applications-internet.png</file>
+        <file>ui/icon/dashboard-show.png</file>
+        <file>ui/icon/DawnlightSearch.png</file>
+        <file>ui/icon/dev-harddisk.png</file>
+        <file>ui/icon/document-open-folder.png</file>
+        <file>ui/icon/document-preview.png</file>
+        <file>ui/icon/emblem-unreadable.png</file>
+        <file>ui/icon/gmb-case_insensitive.png</file>
+        <file>ui/icon/gmb-case_sensitive.png</file>
+        <file>ui/icon/go-bottom.png</file>
+        <file>ui/icon/go-top.png</file>
+        <file>ui/icon/hint.png</file>
+        <file>ui/icon/insert-directory.png</file>
+        <file>ui/icon/list-add.png</file>
+        <file>ui/icon/list-remove.png</file>
+        <file>ui/icon/main.png</file>
+        <file>ui/icon/system-reboot.png</file>
+        <file>ui/icon/system-run.png</file>
+        <file>ui/icon/system-suspend.png</file>
+        <file>ui/icon/tab-close-other.png</file>
+        <file>ui/icon/trash-empty.png</file>
+        <file>ui/icon/user-home.png</file>
+        <file>ui/icon/user-trash.png</file>
+        <file>ui/icon/dialog-ok.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>lang/zh_CN.qm</file>
+    </qresource>
+</RCC>
