@@ -14,6 +14,7 @@
 
 #include "partition_information.h"
 #include "db_commit_step_optimizer.h"
+#include "mft_parser.h"
 
 #include <sys/stat.h>
 #include <sys/statvfs.h>
@@ -44,6 +45,7 @@ public:
 signals:
     void update_progress_SIGNAL(long, long , QString);
     void tmp_db_ready_to_merge_SIGNAL();
+    void show_statusbar_warning_msg_SIGNAL( QString );
 
 public slots:
 

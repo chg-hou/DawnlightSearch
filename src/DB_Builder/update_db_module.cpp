@@ -102,8 +102,8 @@ void Update_DB_Object::init_slot()
         qint64 pid; QString hostname; QString appname;
         db_lockfile->getLockInfo(&pid, &hostname, &appname);
         QString warning_string;
-        warning_string =  QString("DB locked by") + "appname:" + appname +" PID:" + QString::number(pid)+
-                " hostname:" + hostname;
+        warning_string =  QString("DB locked by ") + "appname: " + appname +" PID: " + QString::number(pid)+
+                " hostname: " + hostname;
         qDebug()<< warning_string;
         emit show_statusbar_warning_msg_SIGNAL(warning_string);
     }

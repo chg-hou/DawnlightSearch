@@ -136,6 +136,7 @@ void Insert_db_Thread::run(){
         {
             QStringList _item = update_path_queue.takeFirst();
             QString root_path = _item[0];
+            const int root_path_name_length_to_skip = root_path.length();
             QString uuid = _item[1];
 
             __dev_t root_device_id = dev_id_of_path(root_path);
@@ -159,10 +160,34 @@ void Insert_db_Thread::run(){
             emit update_progress_SIGNAL(-1,-1,uuid);
             unsigned long num_records = 0;
 
-            if (false && fstype == "ntfs" && USE_MFT_PARSER)
+            bool use_dir_scan_method = true;
+            if (fstype == "ntfs" && USE_MFT_PARSER)
             {
-                // TODO : mft parser
-            }else{
+                // FIXME: In linux, cannot get the latest MFT; "sync" does not work. Linux cache?
+
+                QString mft_filename = root_path + QDir::separator() + "$MFT";
+                if (QFile::exists(mft_filename))
+                {
+                    MFT_Parser_space::MFTParser mftparser_obj;
+                    num_records = mftparser_obj.mft_c_parser_func(mft_filename, &cur);
+
+                    qDebug()<<"$MFT file "<<mft_filename<<" parsing done.";
+                    emit show_statusbar_warning_msg_SIGNAL( "MFT parsing done."  );
+
+                    ok = database.commit(); //TODO: ? should we commit frequently
+                    PRINT_SQL_ERROR(ok);
+                    use_dir_scan_method = false;
+
+                }
+                else
+                {
+                    emit show_statusbar_warning_msg_SIGNAL( "$MFT file does not exists." +mft_filename );
+                    qDebug()<<"Can not find $MFT file "<<mft_filename<<"\n Will use dir scan method.";
+                }
+            }
+
+            if (use_dir_scan_method)
+            {
 
 
 
@@ -184,8 +209,8 @@ void Insert_db_Thread::run(){
 
                     QString current_dir = dir_queue.takeFirst();
 
-                    //FIXME: TODO: set the correct path without mounted-dir
-                    cur.bindValue(1, current_dir);
+                    //TODO: set the correct path without mounted-dir  (further check)
+                    cur.bindValue(1, current_dir.mid(root_path_name_length_to_skip));
 
                     foreach (const QString& name, QDir(current_dir).entryList(QDir::AllEntries|QDir::NoDotAndDotDot)) {
 
@@ -197,6 +222,7 @@ void Insert_db_Thread::run(){
                         {emit update_progress_SIGNAL(-2, -2, uuid);break;}
 
                         QString fullpath ( current_dir + QDir::separator()+name);
+
                         fullpath.replace("//","/");
                         read_to_stat_buf(fullpath);
 

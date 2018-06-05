@@ -59,12 +59,12 @@ HTMLDelegate::HTMLDelegate(QStandardItemModel *model_in)
 inline QString html_escape_and_bold(    QString html)
 {
     // FIXME
-//    html = html.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;");
+    //    html = html.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;");
     return "<b>" + html + "</b>";
 }
 
 bool QPairLessThan(const QPair<int,int> &v1, const QPair<int,int> &v2)
- {
+{
     if (v1.first<v2.first)
         return true;
     else if (v1.first>v2.first)
@@ -72,9 +72,9 @@ bool QPairLessThan(const QPair<int,int> &v1, const QPair<int,int> &v2)
     else{
         return v1.second<v2.second;
     }
- }
+}
 bool QPairMoreThan(const QPair<int,int> &v2, const QPair<int,int> &v1)
- {
+{
     if (v1.first<v2.first)
         return true;
     else if (v1.first>v2.first)
@@ -82,7 +82,7 @@ bool QPairMoreThan(const QPair<int,int> &v2, const QPair<int,int> &v1)
     else{
         return v1.second<v2.second;
     }
- }
+}
 
 QString HTMLDelegate::highlight_html(QString html, QSet<QPair<bool, QString> > &word_list) const
 {
@@ -130,34 +130,36 @@ QString HTMLDelegate::highlight_html(QString html, QSet<QPair<bool, QString> > &
 
 void HTMLDelegate::update_item_icon(int col, int row) const
 {
-//    int col = index.column();
+    //    int col = index.column();
     if (col >0)
         return;
 
-//    int row = index.row();
+    //    int row = index.row();
 
     QString filename = model->item(row, DB_HEADER.Filename)->data(HACKED_QT_EDITROLE).toString();
     // TODO: improve this
-//    if (model->item(row, DB_HEADER.Filename)->data( Qt::ToolTip).toString()==filename && filename !="")
-//        return;
+    //    if (model->item(row, DB_HEADER.Filename)->data( Qt::ToolTip).toString()==filename && filename !="")
+    //        return;
 
     int  new_highlight_words = Query_Text_ID;
     int old_highlight_words = model->item(row, DB_HEADER.Filename)->data(Qt::AccessibleDescriptionRole).toInt();
     QString new_display_role;
     if (new_highlight_words != old_highlight_words)
     {
-         model->item(row, DB_HEADER.Filename)->setData(new_highlight_words,Qt::AccessibleDescriptionRole);
-         new_display_role =highlight_html(filename, HIGHLIGHT_WORDS_NAME);
-         model->item(row, DB_HEADER.Filename)->setData(new_display_role,Qt::DisplayRole);
+        model->item(row, DB_HEADER.Filename)->setData(new_highlight_words,Qt::AccessibleDescriptionRole);
+        new_display_role =highlight_html(filename, HIGHLIGHT_WORDS_NAME);
+        model->item(row, DB_HEADER.Filename)->setData(new_display_role,Qt::DisplayRole);
 
-         QString path = model->item(row, DB_HEADER.Path)->data(HACKED_QT_EDITROLE).toString();
-         new_display_role =highlight_html(path, HIGHLIGHT_WORDS_PATH);
-         model->item(row, DB_HEADER.Path)->setData(new_display_role,Qt::DisplayRole);
+        QString path = model->item(row, DB_HEADER.Path)->data(HACKED_QT_EDITROLE).toString();
+        new_display_role =highlight_html(path, HIGHLIGHT_WORDS_PATH);
+        model->item(row, DB_HEADER.Path)->setData(new_display_role,Qt::DisplayRole);
+
+
     }
 
 
-//    QMap<int, QVariant> itemData = model->itemData(row, DB_HEADER.Filename);
-//    if ( itemData.contains(Qt::DecorationRole) || filename =="")
+    //    QMap<int, QVariant> itemData = model->itemData(row, DB_HEADER.Filename);
+    //    if ( itemData.contains(Qt::DecorationRole) || filename =="")
 
     // TODO: ? typo, should use Qt::DecorationRole (in python) or Qt::AccessibleDescriptionRole
     // CORRECT
@@ -183,9 +185,14 @@ void HTMLDelegate::update_item_icon(int col, int row) const
             size_data = size_to_str(size_data);
         }
 
+// html align right does not work
+//        size_data = "<div align=\"right\">" + size_data + "</div>";
         model->item(row, DB_HEADER.Size)->setData(size_data, Qt::DisplayRole);
-        model->item(row, DB_HEADER.Size)->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
-        model->item(row, DB_HEADER.IsFolder)->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+
+        // Alignment is controled by html_delegate, no effect here
+//        model->item(row, DB_HEADER.Size)->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+//        model->item(row, DB_HEADER.IsFolder)->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+
         for(int col: QList<int>({ DB_HEADER.ctime, DB_HEADER.atime, DB_HEADER.mtime  }))
         {
             QDateTime date;
@@ -218,28 +225,64 @@ void HTMLDelegate::paint(QPainter* painter, const QStyleOptionViewItem & option,
     options.text = "";
     options.widget->style()->drawControl(QStyle::CE_ItemViewItem, &options, painter);
 
-    // shift text right to make icon visible
+    QRect clip;
 
-    QSize iconSize = options.icon.actualSize(options.rect.size());
-    //painter->translate(options.rect.left()+iconSize.width(), options.rect.top());
+    if (col == DB_HEADER.Filename)
+    {
+        // left align with icon
+        // shift text right to make icon visible
+        QSize iconSize = options.icon.actualSize(options.rect.size());
+        //painter->translate(options.rect.left()+iconSize.width(), options.rect.top());
 
-//    if (row ==0 && (col ==0 || col ==1))
-//    qDebug()<<"Col "<<col<<" "<<options.rect.size()<<iconSize<<options.rect
-//           <<options.icon;
+        //    if (row ==0 && (col ==0 || col ==1))
+        //    qDebug()<<"Col "<<col<<" "<<options.rect.size()<<iconSize<<options.rect
+        //           <<options.icon;
 
-    painter->translate(options.rect.left()+std::min(iconSize.height(),iconSize.width())*ICON_TEXT_SHIFT_COEFF, options.rect.top());
-//    QRect clip(0, 0, options.rect.width()+iconSize.width(), options.rect.height());
-    QRect clip(0, 0, options.rect.width()-std::min(iconSize.height(),iconSize.width())*ICON_TEXT_SHIFT_COEFF, options.rect.height());
+        painter->translate(options.rect.left()+std::min(iconSize.height(),iconSize.width())*ICON_TEXT_SHIFT_COEFF, options.rect.top());
+        //    QRect clip(0, 0, options.rect.width()+iconSize.width(), options.rect.height());
+        clip = QRect(0, 0, options.rect.width()-std::min(iconSize.height(),iconSize.width())*ICON_TEXT_SHIFT_COEFF, options.rect.height());
 
-    //doc.drawContents(painter, clip);
+        //doc.drawContents(painter, clip);
 
-    painter->setClipRect(clip);
+        painter->setClipRect(clip);
+    }
+    else if (col == DB_HEADER.IsFolder)
+    {
+        // middle
+        painter->translate(options.rect.left() + options.rect.width()/2-doc.size().width()/2, options.rect.top());
+        //    QRect clip(0, 0, options.rect.width()+iconSize.width(), options.rect.height());
+        clip = QRect(0, 0, options.rect.width()/2, options.rect.height());
 
+        //doc.drawContents(painter, clip);
+
+        painter->setClipRect(clip);
+    }
+    else if (col == DB_HEADER.Size || col == DB_HEADER.atime || col == DB_HEADER.ctime || col == DB_HEADER.mtime || col == DB_HEADER.Extension)
+    {
+        // right align
+        int left_shift = options.rect.width() - doc.size().width();
+        if (left_shift>0)
+        {painter->translate(options.rect.left() + left_shift, options.rect.top());
+        clip = QRect(0, 0, options.rect.width()-left_shift, options.rect.height());}
+        else
+        {left_shift=0;
+            painter->translate(options.rect.left() + left_shift, options.rect.top());
+                    clip = QRect(0, 0, options.rect.width()-left_shift, options.rect.height());
+        }
+        painter->setClipRect(clip);
+    }
+    else
+    {
+        // left align
+        painter->translate(options.rect.left(), options.rect.top());
+        clip = QRect(0, 0, options.rect.width(), options.rect.height());
+        painter->setClipRect(clip);
+    }
 
     QAbstractTextDocumentLayout::PaintContext ctx;
     // set text color to red for selected item
-//    if (option.state & QStyle::State_Selected)
-//        ctx.palette.setColor(QPalette::Text, QColor("red"));
+    //    if (option.state & QStyle::State_Selected)
+    //        ctx.palette.setColor(QPalette::Text, QColor("red"));
     if (option.state & QStyle::State_Selected)
         ctx.palette.setColor(QPalette::Text,
                              option.palette.color(QPalette::Active, QPalette::HighlightedText));
