@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->centralWidget->hide();
+//    ui->centralWidget->hide();
     device_mounted_icon = QIcon(QPixmap(":/icon/ui/icon/dev-harddisk.png"));
     device_unmounted_icon = QIcon(QPixmap(":/icon/ui/icon/tab-close-other.png"));
 
@@ -45,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(lazy_sort_timer,SIGNAL(timeout()),
             SLOT(lazy_tableview_sort_slot()));
     lazy_sort_timer->setInterval(settings.value("Restor_Sort_after_New_Row_Inserted",
-                                                100).toInt()
+                                                50).toInt()
                                  );
 
     hide_tooltip_timer = new QTimer(this);
@@ -112,10 +112,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //TODO: typo
     ui->toolButton_avd_setting->setChecked(
-                settings.value("Main_Window/Show_Search_Setting_Panel", False).toBool()
+                settings.value("Main_Window/Show_Search_Setting_Panel", true).toBool()
                 );
-    ui->frame_adv_setting->setVisible(
-                settings.value("Main_Window/Show_Search_Setting_Panel", False).toBool()
+    ui->dockWidget_search_settings->setVisible(
+                settings.value("Main_Window/Show_Search_Setting_Panel", true).toBool()
                 );
     DATETIME_FORMAT = settings.value("Search/Date_Format","d/M/yyyy h:m:s").toString();
 
@@ -204,7 +204,7 @@ void MainWindow::ini_after_show(){
     }
     else
         ui->dockWidget_sqlcmd->close();
-    ui->centralWidget->hide();
+//    ui->centralWidget->hide();
     // MainWindow::setCentralWidget(NULL);
 //    ui->dockWidget_result->titleBarWidget()->setHidden(true);
 }
@@ -280,7 +280,11 @@ void MainWindow::ini_table(){
     qDebug()<<" width_list_uuid: " <<width_list_uuid;
 //    qDebug()<<" width_list_uuid: " <<settings.value("Column_width_of_uuid_list");
 //    qDebug()<<" width_list_uuid: " <<settings.value("Column_width_of_uuid_list").value<QList<int>>();
-
+    if (width_list_uuid.length()==0)
+    {
+        // load default width
+        width_list_uuid = {59, 193, 77, 49, 88, 72, 67, 49, 49, 78, 49, 100};
+    }
     try{
         for(int i =0; i < width_list_uuid.length();i++)
         {
@@ -309,6 +313,7 @@ void MainWindow::ini_table(){
     // html hightlight : self.tableView.setItemDelegate( HTMLDelegate())
 
     ui->tableView->setModel(model);
+
     HTMLDelegate * delegate = new HTMLDelegate(model);
     ui->tableView->setItemDelegate(delegate);
     ui->tableView->horizontalHeader()->setSectionsMovable(true);
@@ -330,6 +335,11 @@ void MainWindow::ini_table(){
         width_list_result << settings.value("width").toInt();
     }settings.endArray();
     qDebug()<<" width_list_result: " <<width_list_result;
+    if (width_list_result.length()==0)
+    {
+        // load default width
+        width_list_result = {157, 100, 49, 49, 62, 100, 100, 100};
+    }
     try{
         for(int i =0; i < width_list_result.length();i++)
             ui->tableView->setColumnWidth(i,width_list_result[i]);
@@ -401,6 +411,9 @@ void MainWindow::init_db_module_ready_connect_mainWindow_SLOT(){
             this, SLOT(_on_db_progress_update(long,long,QString)));
     connect(db_object->insert_db_thread,SIGNAL(update_progress_SIGNAL(long,long,QString)),
             this, SLOT(_on_db_progress_update(long,long,QString)));
+
+    connect(db_object->insert_db_thread,SIGNAL(show_statusbar_warning_msg_SIGNAL(QString)),
+            this, SLOT(show_statusbar_warning_msg_slot(QString)));
 
 
     emit init_db_start_timer_SIGNAL();
@@ -527,7 +540,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
     }
     settings.endArray();
 
-    settings.setValue("Main_Window/Show_Search_Setting_Panel", ui->frame_adv_setting->isVisible());
+    settings.setValue("Main_Window/Show_Search_Setting_Panel", ui->dockWidget_search_settings->isVisible());
 
     settings.setValue("Main_Window/x", this->x());
     settings.setValue("Main_Window/y", this->y());

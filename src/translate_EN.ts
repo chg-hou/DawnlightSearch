@@ -1,69 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="en" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="en">
 <context>
-    <name>Dialog</name>
+    <name>Dialog_Advanced_Setting</name>
     <message>
-        <location filename="DawnlightSearch/Ui_edit_exclued_folder.ui" line="14"/>
-        <source>Edit Excluded Folders</source>
+        <location filename="Ui_advanced_setting_dialog.ui" line="14"/>
+        <source>Advanced Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="48"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="48"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="54"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="56"/>
+        <source>Number of Threads Used for Querying: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="64"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="643"/>
+        <source>(Auto)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="69"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="74"/>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="79"/>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="84"/>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="89"/>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="94"/>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="117"/>
         <source>Result Limit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="68"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="131"/>
         <source>Query  Chunk  Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="132"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="195"/>
         <source>Query Limit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="190"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="253"/>
         <source>Max Items in Table:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="225"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="288"/>
         <source>Search Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="235"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="298"/>
         <source>Instant Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="255"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="318"/>
         <source>Start Querying after Typing Finished:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="830"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="356"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="498"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="777"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="842"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="907"/>
         <source>ms</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="320"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="332"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="395"/>
         <source>Date-time Format:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="339"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="402"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
 
 &lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
@@ -115,380 +161,412 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="397"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="460"/>
         <source>Restore Sorting after New Row Inserted</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="477"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="483"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="545"/>
         <source>Database Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="489"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="551"/>
         <source>Main Database File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="516"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="561"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="582"/>
         <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="506"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="572"/>
         <source>Temp Database File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="526"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="596"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Will tree walk all folders under the root path, no matter whether the subfolders are in the same devices as the root path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="529"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="550"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="606"/>
+        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_advanced_setting_dialog.ui" line="627"/>
         <source>Result Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="558"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="635"/>
         <source>Prefered Size Unit:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="566"/>
-        <source>(Auto)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="571"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="648"/>
         <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="576"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="653"/>
         <source>KB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="581"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="658"/>
         <source>MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="586"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="663"/>
         <source>GB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="591"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="668"/>
         <source>TB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="596"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="673"/>
         <source>PB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="633"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="710"/>
         <source>UUID Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="641"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="718"/>
         <source>Timer Interval</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="649"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="726"/>
         <source>Mount-state Update:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="714"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="791"/>
         <source>Rows Update:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="779"/>
+        <location filename="Ui_advanced_setting_dialog.ui" line="856"/>
         <source>Database Update:</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>Dialog_Exclued_Folder</name>
     <message>
-        <location filename="DawnlightSearch/Ui_advanced_setting_dialog.ui" line="14"/>
-        <source>Advanced Settings</source>
+        <location filename="Ui_edit_exclued_folder.ui" line="14"/>
+        <source>Edit Excluded Folders</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="14"/>
+        <location filename="Ui_mainwindow.ui" line="14"/>
         <source>Dawnlight Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="143"/>
+        <location filename="Ui_mainwindow.ui" line="96"/>
+        <source>Fi&amp;le</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="102"/>
+        <source>Setti&amp;ng</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="106"/>
+        <source>&amp;Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="127"/>
+        <source>Abo&amp;ut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="186"/>
+        <source>&amp;Database</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="241"/>
+        <source>SQL &amp;Command Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="312"/>
+        <source>Sea&amp;rch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="386"/>
+        <location filename="Ui_mainwindow.ui" line="502"/>
         <source>Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="134"/>
-        <source>PushButton</source>
+        <location filename="Ui_mainwindow.ui" line="444"/>
+        <source>Search Settin&amp;gs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="165"/>
+        <location filename="Ui_mainwindow.ui" line="536"/>
+        <source>Na&amp;me</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="560"/>
+        <source>De&amp;v/Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="582"/>
+        <source>&amp;About...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="593"/>
+        <source>&amp;Change excluded folders</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="598"/>
+        <source>About &amp;Qt...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="609"/>
+        <source> ┗ &amp;Enable C++ MFT parser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="612"/>
+        <source>┗ ━ Enable C++ MFT parser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="627"/>
+        <source>&amp;Exit...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="638"/>
+        <source>&amp;Use MFT parser to build index</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="653"/>
+        <source>&amp;Advanced Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="662"/>
+        <source>&amp;Open Setting File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="665"/>
+        <source>Open Setting File Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="719"/>
+        <source>Open Temp &amp;DB Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="784"/>
+        <source>&amp;Open Project Homepage...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="789"/>
+        <source>&amp;Latest Version...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="818"/>
+        <source>&amp;Search...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="826"/>
+        <source>(A&amp;uto)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="831"/>
+        <source>&amp;English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="836"/>
+        <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="839"/>
+        <source>Simplified Chinese (简体中文) zh_CN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="530"/>
         <source>Default Match Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="171"/>
-        <source>Name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="181"/>
+        <location filename="Ui_mainwindow.ui" line="546"/>
         <source>Path/Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="188"/>
+        <location filename="Ui_mainwindow.ui" line="553"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="195"/>
-        <source>Dev/Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="202"/>
+        <location filename="Ui_mainwindow.ui" line="567"/>
         <source>Dev/Path/Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="275"/>
-        <source>File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="281"/>
-        <source>Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="296"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="306"/>
+        <location filename="Ui_mainwindow.ui" line="137"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="320"/>
+        <location filename="Ui_mainwindow.ui" line="269"/>
         <source>ToolBar Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="349"/>
-        <source>Database</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="387"/>
-        <source>Results</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="448"/>
-        <source>SQL Command Preview</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="458"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;preee &lt;span style=&quot; font-weight:600;&quot;&gt;ENTER&lt;/span&gt; to submit sql query&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="476"/>
+        <location filename="Ui_mainwindow.ui" line="151"/>
         <source>ToolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="491"/>
+        <location filename="Ui_mainwindow.ui" line="284"/>
         <source>ToolBar Advanced Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="507"/>
-        <source>About...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="518"/>
-        <source>Change excluded folders</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="523"/>
-        <source>cv</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="528"/>
-        <source>About Qt...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="536"/>
-        <source> &#xe2;&#x94;&#x97; Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="539"/>
-        <source>&#xe2;&#x94;&#x97; &#xe2;&#x94;&#x81; Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="542"/>
+        <location filename="Ui_mainwindow.ui" line="615"/>
         <source>Much faster than python parser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="551"/>
-        <source>Exit...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="554"/>
+        <location filename="Ui_mainwindow.ui" line="630"/>
         <source>Exit application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="562"/>
-        <source>Use MFT parser to build index</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="565"/>
+        <location filename="Ui_mainwindow.ui" line="641"/>
         <source>Only NTFS partition, faster than path walk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="574"/>
-        <source>Advanced settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="583"/>
-        <source>Open setting path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="592"/>
+        <location filename="Ui_mainwindow.ui" line="680"/>
         <source>Show Location Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="601"/>
+        <location filename="Ui_mainwindow.ui" line="689"/>
         <source>Update DB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="610"/>
+        <location filename="Ui_mainwindow.ui" line="698"/>
         <source>Stop Updating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="622"/>
+        <location filename="Ui_mainwindow.ui" line="707"/>
+        <source>Open &amp;Main DB Path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Ui_mainwindow.ui" line="710"/>
         <source>Open main db path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="631"/>
-        <source>Open temp db path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="640"/>
+        <location filename="Ui_mainwindow.ui" line="728"/>
         <source>Show Search Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="657"/>
+        <location filename="Ui_mainwindow.ui" line="742"/>
+        <location filename="Ui_mainwindow.ui" line="745"/>
         <source>Toggle Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="662"/>
+        <location filename="Ui_mainwindow.ui" line="750"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="667"/>
+        <location filename="Ui_mainwindow.ui" line="755"/>
         <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="675"/>
+        <location filename="Ui_mainwindow.ui" line="763"/>
         <source>Show All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="687"/>
+        <location filename="Ui_mainwindow.ui" line="772"/>
+        <location filename="Ui_mainwindow.ui" line="775"/>
         <source>Update DB (only selected)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="696"/>
-        <source>Open Project Homepage...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="701"/>
-        <source>Latest Version...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="706"/>
+        <location filename="Ui_mainwindow.ui" line="794"/>
         <source>Check Included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="711"/>
+        <location filename="Ui_mainwindow.ui" line="799"/>
         <source>Uncheck Included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="716"/>
+        <location filename="Ui_mainwindow.ui" line="804"/>
         <source>Check Updatable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="721"/>
+        <location filename="Ui_mainwindow.ui" line="809"/>
         <source>Uncheck Updatable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="726"/>
-        <source>Search...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_mainwindow.ui" line="729"/>
+        <location filename="Ui_mainwindow.ui" line="821"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
@@ -496,27 +574,18 @@
 <context>
     <name>dialog</name>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="932"/>
-        <source>Select Directory (move to)</source>
+        <location filename="ui_change_advanced_setting_dialog.cpp" line="73"/>
+        <source>All Cores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="947"/>
-        <source>Select Directory (copy to)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_change_advanced_setting_dialog.py" line="104"/>
+        <location filename="ui_change_advanced_setting_dialog.cpp" line="108"/>
+        <location filename="ui_change_advanced_setting_dialog.cpp" line="119"/>
         <source>Select Directory of Database File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/Ui_change_advanced_setting_dialog.py" line="112"/>
-        <source>Select Directory of Temp Database File</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/Ui_change_excluded_folder_dialog.py" line="47"/>
+        <location filename="ui_change_excluded_folder_dialog.cpp" line="56"/>
         <source>Select Directory to Add</source>
         <translation type="unfinished"></translation>
     </message>
@@ -524,57 +593,43 @@
 <context>
     <name>menu</name>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="775"/>
-        <source>Open with &quot;%s&quot;</source>
+        <location filename="mainwindow_table_action.cpp" line="153"/>
+        <location filename="mainwindow_table_action.cpp" line="247"/>
+        <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="773"/>
-        <source>Open with</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="782"/>
+        <location filename="mainwindow_table_action.cpp" line="258"/>
         <source>Open path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="783"/>
+        <location filename="mainwindow_table_action.cpp" line="265"/>
         <source>Copy ...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="784"/>
+        <location filename="mainwindow_table_action.cpp" line="267"/>
         <source>Copy fullpath</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="785"/>
+        <location filename="mainwindow_table_action.cpp" line="269"/>
         <source>Copy filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="786"/>
+        <location filename="mainwindow_table_action.cpp" line="271"/>
         <source>Copy path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="788"/>
-        <source>Move to ...</source>
+        <location filename="mainwindow_table_action.cpp" line="284"/>
+        <source>Move to trash</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="793"/>
-        <source>Browser ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="792"/>
-        <source>Copy to ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="799"/>
+        <location filename="mainwindow_table_action.cpp" line="290"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -582,231 +637,41 @@
 <context>
     <name>message</name>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="974"/>
+        <location filename="mainwindow_table_action.cpp" line="377"/>
         <source>Message</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="965"/>
-        <source>Are you sure to move file(s) to trash?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="974"/>
+        <location filename="mainwindow_table_action.cpp" line="378"/>
         <source>Are you sure to DELETE?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="1443"/>
-        <source>Fail to vacuum databse:
-%s
-
-Error message:
-%s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DB_Builder/update_db_module.py" line="883"/>
-        <source>Do you want to retry?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="1462"/>
-        <source>Fail to connect to databse:
-%s
-
-Error message:
-%s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="1502"/>
-        <source>Fail to close databse:
-%s
-
-Error message:
-%s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DB_Builder/update_db_module.py" line="859"/>
-        <source>Fail to merge temp databse into main database:
-%s
-
-Error message:
-%s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DB_Builder/update_db_module.py" line="861"/>
-        <source>Do you want to retry?
-Press &quot;Abort&quot; to quit and KEEP the temp database.
-Press &quot;Cancel&quot; or close this message to quit and DELETE the temp database.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DB_Builder/update_db_module.py" line="882"/>
-        <source>Fail to delete temp databse:
-%s
-
-Error message:
-%s</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>statusbar</name>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="208"/>
+        <location filename="MainWindow.cpp" line="588"/>
         <source>Exclude folders from indexing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="236"/>
+        <location filename="MainWindow.cpp" line="188"/>
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="865"/>
-        <source>File/path does not exist: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="877"/>
-        <source>Cannot open file: %s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="935"/>
-        <source>Moving...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="992"/>
+        <location filename="mainwindow_table_action.cpp" line="389"/>
         <source>Done.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="950"/>
-        <source>Coping...</source>
+        <location filename="mainwindow_uuid_table_slots.cpp" line="213"/>
+        <source> [Read Only Mode]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="979"/>
-        <source>Deleting...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="1166"/>
-        <source>Duplicate UUID found.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/DawnlightSearch_main.py" line="1245"/>
-        <source>Almost done.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>ui</name>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="48"/>
-        <source>Filename</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="48"/>
-        <source>Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="48"/>
-        <source>Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="48"/>
-        <source>Is Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="49"/>
-        <source>Extension</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="49"/>
-        <source>Access Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="49"/>
-        <source>Modify Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="50"/>
-        <source>Change Time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="51"/>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="51"/>
-        <source>Mount Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="51"/>
-        <source>Label</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="51"/>
-        <source>UUID</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="52"/>
-        <source>Alias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="52"/>
-        <source>FS Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="52"/>
-        <source>Dev name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="53"/>
-        <source>Major Device Num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="53"/>
-        <source>Minor Device Num</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="53"/>
-        <source>Items</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="54"/>
-        <source>Update</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="DawnlightSearch/_Global_DawnlightSearch.py" line="54"/>
-        <source>Progress</source>
+        <location filename="mainwindow_uuid_table_slots.cpp" line="215"/>
+        <source>Ready.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

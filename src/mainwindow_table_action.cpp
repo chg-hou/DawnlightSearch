@@ -244,7 +244,7 @@ void MainWindow::_on_tableview_context_menu_requested(QPoint){
 
     if(action == nullptr)
     {
-        menu.addAction(QApplication::translate("menu","Open All"),
+        menu.addAction(QApplication::translate("menu","Open"),
                        this, SLOT(_on_tableview_context_menu_open()));
     }
     else

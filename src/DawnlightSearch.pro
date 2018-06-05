@@ -58,9 +58,10 @@ SOURCES += \
     UI_delegate/html_delegate.cpp \
     mainwindow_table_action.cpp \
     ui_change_advanced_setting_dialog.cpp \
-    ui_change_excluded_folder_dialog.cpp
+    ui_change_excluded_folder_dialog.cpp \
+    DB_Builder/mft_parser.cpp
 
-HEADERS += \    
+HEADERS += \
     MainWindow.h \
     globals.h \
     DB_Builder/update_db_module.h \
@@ -72,7 +73,8 @@ HEADERS += \
     QueryWorker/sql_formatter.h \
     UI_delegate/html_delegate.h \
     ui_change_advanced_setting_dialog.h \
-    ui_change_excluded_folder_dialog.h
+    ui_change_excluded_folder_dialog.h \
+    DB_Builder/mft_parser.h
 
 FORMS += \
         Ui_mainwindow.ui \
@@ -90,7 +92,16 @@ DISTFILES += \
     model_chart_update_db.qmodel \
     model_chart_update_db_copy.qmodel \
     model_chart_query.qmodel \
-    model_chart_start.qmodel
+    model_chart_start.qmodel \
+    translate_zh_CN.ts
+
+
+TRANSLATIONS    =     \
+    translate_EN.ts \
+    translate_zh_CN.ts
+
+QTPLUGIN     +=  qsqlite
+# CONFIG += static
 
 # CONFIG+=link_pkgconfig
 # PKGCONFIG+=gio-2.0
@@ -106,3 +117,5 @@ LIBS += -lKF5KIOWidgets
 INCLUDEPATH += /usr/include/KF5/KIOFileWidgets/
 LIBS += -lKF5KIOFileWidgets
 LIBS += -L/usr/lib/x86_64-linux-gnu/
+
+

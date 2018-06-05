@@ -35,7 +35,7 @@ void MainWindow::_on_match_option_changed(bool){
 void  MainWindow::_open_setting_path(){
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,
                        ORGANIZATION_NAME,ALLICATION_NAME);
-    QDesktopServices::openUrl(QUrl::fromLocalFile(settings.fileName()));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(settings.fileName()).path()));
 }
 
 void  MainWindow:: _open_db_path(){

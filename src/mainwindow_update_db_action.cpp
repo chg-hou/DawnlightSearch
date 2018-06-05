@@ -106,6 +106,7 @@ void MainWindow::_on_db_progress_update(long num_records,long total_files,QStrin
                 else{
                     QString str;
                     str.sprintf("%ld/%ld ", num_records, total_files);
+                     total_files=(total_files==0)?1:total_files; // divide by zero
                      progressbar->setFormat(str + "%p%");
                      progressbar->setValue(num_records * 100 / total_files);
                 }

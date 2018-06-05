@@ -210,10 +210,11 @@ void MainWindow::_on_model_receive_new_row(int query_id, QList<QList<QVariant> >
                     row_to_insert << newitem;
                     break;
                 case QUERY_HEADER_class::IsFolder_:
-                    newitem->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+                    // Alignment is controled by html_delegate, no effect here
+                    //newitem->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
                     //                    newitem->setData(current_value.toBool(), Qt::DisplayRole);
                     if (current_value.toBool())
-                        newitem->setData(QString("     ✓"), Qt::DisplayRole);
+                        newitem->setData(QString("✓"), Qt::DisplayRole);
                     else
                         newitem->setData(QString(""), Qt::DisplayRole);
 
