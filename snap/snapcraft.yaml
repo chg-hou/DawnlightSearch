@@ -45,6 +45,7 @@ parts:          # https://docs.snapcraft.io/build-snaps/parts
             - libkio5
             - util-linux        # lsblk
             - libqt5gui5
+            - libqt5sql5-sqlite
         
 
 #        filesets:
