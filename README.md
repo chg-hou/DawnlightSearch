@@ -30,7 +30,7 @@ __The app is still under development and not stable. Comments and pull requests 
  - Instant search.
  - Support **wildcards** and **regular expressions**.
  - Support filter on multi fileds: file name, folder, full path, size, mtime, ctime, and atime. 
-  - ~~Quick file indexing for NTFS partition by parsing master file table (MFT).~~ (This feature is available in the old python version. I will put it back soon. )
+  - Quick file indexing for NTFS partition by parsing master file table (MFT).
   - Customizable **dock widget** design.
   - **Multi-threaded** search. 
 
