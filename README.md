@@ -3,7 +3,7 @@ __some parts are out of date__
 
 # DawnlightSearch
 
-A Linux version of [Everything Search Engine](https://www.voidtools.com/). Show instant results as you type.
+A Linux version of [Everything Search Engine](https://www.voidtools.com/). Support **NTFS indexing**. Show instant results as you type.
 
 __The app is still under development and not stable. Comments and pull requests are very appreciated.__
 
