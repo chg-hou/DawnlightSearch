@@ -180,7 +180,27 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-void MainWindow::ini_after_show(){
+int MainWindow::ini_after_show(){
+    QSettings settings(QSettings::IniFormat,QSettings::UserScope,
+                       ORGANIZATION_NAME,ALLICATION_NAME);
+    // If this is first time starting, pop adv setting
+    if (settings.value("First_time_start_up", true).toBool())
+    {
+        bool ok = Dialog_Advanced_Setting::getSettings();
+        if (ok)
+        {
+
+            settings.setValue("First_time_start_up", false);
+            settings.sync();
+            return APP_RESTART_CODE;
+        }
+        else{
+            return APP_QUIT_CODE;
+        }
+    }
+
+
+
 
 
     qDebug() << "ini table.";
@@ -190,8 +210,7 @@ void MainWindow::ini_after_show(){
     qDebug() << "ini_subthread";
     ini_subthread();
     qDebug() << "ini done.";
-    QSettings settings(QSettings::IniFormat,QSettings::UserScope,
-                       ORGANIZATION_NAME,ALLICATION_NAME);
+
     if (settings.contains("Main_Window/DOCK_LOCATIONS"))
     {
         try{
@@ -207,6 +226,7 @@ void MainWindow::ini_after_show(){
 //    ui->centralWidget->hide();
     // MainWindow::setCentralWidget(NULL);
 //    ui->dockWidget_result->titleBarWidget()->setHidden(true);
+    return 0;
 }
 void MainWindow::ini_table(){
     ui->tableWidget_uuid->setColumnCount(UUID_HEADER_LABEL.length() );
@@ -372,8 +392,8 @@ void MainWindow::ini_subthread(){
             db_object,SLOT(init_start_timer_slot()));
     connect(db_object,SIGNAL(init_ready_connect_mainWindow_SIGNAL()),
             this,SLOT(init_db_module_ready_connect_mainWindow_SLOT()));
-    connect(db_object,SIGNAL(show_statusbar_warning_msg_SIGNAL(QString)),
-            this, SLOT(show_statusbar_warning_msg_slot(QString)));
+    connect(db_object,SIGNAL(show_statusbar_warning_msg_SIGNAL(QString , long , bool)),
+            this, SLOT(show_statusbar_warning_msg_slot(QString , long , bool)));
 
 
     connect(this, SIGNAL(init_query_worker_SIGNAL()),
@@ -412,8 +432,8 @@ void MainWindow::init_db_module_ready_connect_mainWindow_SLOT(){
     connect(db_object->insert_db_thread,SIGNAL(update_progress_SIGNAL(long,long,QString)),
             this, SLOT(_on_db_progress_update(long,long,QString)));
 
-    connect(db_object->insert_db_thread,SIGNAL(show_statusbar_warning_msg_SIGNAL(QString)),
-            this, SLOT(show_statusbar_warning_msg_slot(QString)));
+    connect(db_object->insert_db_thread,SIGNAL(show_statusbar_warning_msg_SIGNAL(QString , long , bool)),
+            this, SLOT(show_statusbar_warning_msg_slot(QString , long , bool)));
 
 
     emit init_db_start_timer_SIGNAL();
@@ -445,6 +465,18 @@ MainWindow::~MainWindow()
 }
 void MainWindow::closeEvent(QCloseEvent *event){
 
+    restore_statusbar_timer->stop();
+    delete restore_statusbar_timer;
+    restore_statusbar_timer = nullptr;
+
+    lazy_query_timer->stop();
+    lazy_sort_timer->stop();
+    hide_tooltip_timer->stop();
+
+    delete lazy_query_timer;
+    delete lazy_sort_timer;
+    delete hide_tooltip_timer;
+
     // TODO: send closing message
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,
                        ORGANIZATION_NAME,ALLICATION_NAME);
@@ -467,18 +499,28 @@ void MainWindow::closeEvent(QCloseEvent *event){
     emit db_module_quit_SIGNAL();
     emit query_worker_module_quit_SIGNAL();
 
+    qDebug()<<"waiting for db_object/query_worker ready_to_quit_flag";
+    while(!db_object->ready_to_quit_flag || !query_worker->ready_to_quit_flag)
+    {
+        QThread::msleep(10);
+        QApplication::processEvents();//QEventLoop::ExcludeUserInputEvents
+    }
+
+
     qDebug()<<"db_update_thread send quit";
     db_update_thread.quit();
     qDebug()<<"query_worker_thread send quit";
     query_worker_thread.quit();
 
-    qDebug()<<"db_update_thread wait";
-    db_update_thread.wait();
-    qDebug()<<"db_update_thread closed";
-
     qDebug()<<"query_worker_thread wait";
     query_worker_thread.wait();
     qDebug()<<"query_worker_thread closed";
+
+    qDebug()<<"db_update_thread wait";
+    db_update_thread.wait();
+//    while(!db_update_thread.wait(10))   // ms
+//        QApplication::processEvents(); //QEventLoop::ExcludeUserInputEvents
+    qDebug()<<"db_update_thread closed";
 
     qDebug()<<"delete db_object;";
     delete db_object;
@@ -553,14 +595,9 @@ void MainWindow::closeEvent(QCloseEvent *event){
 
     // event.accept()
 
-    restore_statusbar_timer->stop();
-    lazy_query_timer->stop();
-    lazy_sort_timer->stop();
-    hide_tooltip_timer->stop();
-    delete restore_statusbar_timer;
-    delete lazy_query_timer;
-    delete lazy_sort_timer;
-    delete hide_tooltip_timer;
+
+
+
 
     settings.setValue("Main_Window/DOCK_LOCATIONS", this->saveState());
 
@@ -769,13 +806,20 @@ void MainWindow::_on_tableWidget_uuid_context_menu_requested(QPoint ){
 
 
 
-void MainWindow::show_statusbar_warning_msg_slot(QString msg){
+void MainWindow::show_statusbar_warning_msg_slot(QString msg, long timeout, bool warning_flag){
     //        if msg == 'UNIQUE constraint failed: UUID.uuid':
     //          msg += translate('statusbar','Duplicate UUID found.')
-    ui->statusBar->setStyleSheet("QStatusBar{color:red;font-weight:bold;}");
-    ui->statusBar->showMessage(msg, 8000);
-    restore_statusbar_timer->setInterval(8000);
-    restore_statusbar_timer->start();
+    if (warning_flag)
+        ui->statusBar->setStyleSheet("QStatusBar{color:red;font-weight:bold;}");
+    else
+        _restore_statusbar_style();
+    ui->statusBar->showMessage(msg, timeout);
+    // it will be deleted in closeevent, so check it first
+    if(restore_statusbar_timer!=nullptr)
+    {
+        restore_statusbar_timer->setInterval(timeout);
+        restore_statusbar_timer->start();
+    }
     //QApplication::processEvents();
 };
 

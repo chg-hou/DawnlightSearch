@@ -45,7 +45,7 @@ public:
 signals:
     void update_progress_SIGNAL(long, long , QString);
     void tmp_db_ready_to_merge_SIGNAL();
-    void show_statusbar_warning_msg_SIGNAL( QString );
+    void show_statusbar_warning_msg_SIGNAL( QString , long , bool );
 
 public slots:
 

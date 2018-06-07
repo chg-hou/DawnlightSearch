@@ -49,6 +49,8 @@ public:
 
     void update_table_uuid_from_db();
 
+    bool ready_to_quit_flag = false;
+
 public slots:
     // TODO: test whether slots/function will block ui thread
     void init_slot();
@@ -78,7 +80,7 @@ signals:
     void update_table_uuid_from_db_SIGNAL(QList<QVariantList>);  // -->refresh_table_uuid_from_db_slot(QList<QVariantList> rst)
     void update_rowid_SIGNAL( QList<QPair<QString,QVariant>> );
     void get_table_uuid_sendback_SIGNAL( QList<QVariantList> );
-    void show_statusbar_warning_msg_SIGNAL( QString );
+    void show_statusbar_warning_msg_SIGNAL( QString , long , bool );
 
 private:
     QSqlDatabase database;

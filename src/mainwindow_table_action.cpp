@@ -45,6 +45,9 @@ QList< ResultTableRow > MainWindow::get_tableview_selected()
         QString filename =  model->item(row, DB_HEADER.Filename)->data(HACKED_QT_EDITROLE).toString();
         QString path   =  model->item(row, DB_HEADER.Path)->data(HACKED_QT_EDITROLE).toString();
         QString fullpath = path + QDir::separator() + filename;
+
+//        qDebug()<<path<<filename<<fullpath;
+
         fullpath.replace("//","/");
         bool isfolder = model->item(row, DB_HEADER.IsFolder)->data(HACKED_QT_EDITROLE).toBool();
 

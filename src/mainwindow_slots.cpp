@@ -1,8 +1,7 @@
 #include "MainWindow.h"
 #include "ui_Ui_mainwindow.h"
 
-#include "ui_change_advanced_setting_dialog.h"
-#include "ui_change_excluded_folder_dialog.h"
+
 
 void MainWindow::_on_toolbutton_casesensitive_toggled(bool checked){
     _Former_search_text = "";

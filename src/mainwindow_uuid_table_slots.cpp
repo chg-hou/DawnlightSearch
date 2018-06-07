@@ -212,7 +212,7 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
         if (DB_READ_ONLY_FLAG)
             setWindowTitle(windowTitle() + QCoreApplication::translate("statusbar"," [Read Only Mode]"));
         else
-            ui->statusBar->showMessage( QCoreApplication::translate("statusbar","Ready."), 3000 );
+            ui->statusBar->showMessage( QCoreApplication::translate("statusbar","Ready."), 30000 );
     }
 
 }

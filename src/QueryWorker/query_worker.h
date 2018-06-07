@@ -24,6 +24,7 @@ public:
     QQueue<QPair<QPair<int,bool>, QString>>  sql_queue;
 
     QList<QueryThread *> thread_pool_list;
+    bool ready_to_quit_flag = false;
 
 signals:
     void update_progress_SIGNAL(int query_text_id, int  queue_size);

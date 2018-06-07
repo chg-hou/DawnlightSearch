@@ -103,6 +103,9 @@ struct AppLauncher{
 #include "globals.h"
 #include "QueryWorker/sql_formatter.h"
 #include "UI_delegate/html_delegate.h"
+
+#include "ui_change_advanced_setting_dialog.h"
+#include "ui_change_excluded_folder_dialog.h"
 // (copy from python version) ? qt bug: cannot set different values for display and user roles.
 
 struct ResultTableRow{
@@ -177,7 +180,7 @@ public slots:
 
     void _on_db_progress_update(long,long,QString);
 
-    void show_statusbar_warning_msg_slot(QString);
+    void show_statusbar_warning_msg_slot(QString msg, long timeout, bool warning_flag);
     //void get_table_widget_uuid_back_slot(QList<int>);
     void refresh_table_uuid_from_db_slot(QList<QVariantList>);
     void refresh_table_uuid_mount_state_slot();
@@ -244,7 +247,7 @@ public:
     QStandardItemModel * model;
     QStringList header_list;
 
-    void ini_after_show();
+    int ini_after_show();
     void ini_table();
     void ini_subthread();
 

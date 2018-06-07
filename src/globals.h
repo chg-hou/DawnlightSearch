@@ -4,6 +4,8 @@
 #define True true
 #define False false
 #define HACKED_QT_EDITROLE (Qt::UserRole)
+#define APP_RESTART_CODE 1106
+#define APP_QUIT_CODE 1000
 
 #include <QString>
 #include <QStringList>

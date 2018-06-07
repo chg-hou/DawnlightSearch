@@ -136,7 +136,8 @@ void Insert_db_Thread::run(){
         {
             QStringList _item = update_path_queue.takeFirst();
             QString root_path = _item[0];
-            const int root_path_name_length_to_skip = root_path.length();
+            int root_path_name_length_to_skip = root_path.length();
+            root_path_name_length_to_skip = (root_path_name_length_to_skip==1)?0:root_path_name_length_to_skip; // root_path ==/"
             QString uuid = _item[1];
 
             __dev_t root_device_id = dev_id_of_path(root_path);
@@ -172,7 +173,7 @@ void Insert_db_Thread::run(){
                     num_records = mftparser_obj.mft_c_parser_func(mft_filename, &cur);
 
                     qDebug()<<"$MFT file "<<mft_filename<<" parsing done.";
-                    emit show_statusbar_warning_msg_SIGNAL( "MFT parsing done."  );
+                    emit show_statusbar_warning_msg_SIGNAL( "MFT parsing done.",8000,false  );
 
                     ok = database.commit(); //TODO: ? should we commit frequently
                     PRINT_SQL_ERROR(ok);
@@ -181,7 +182,7 @@ void Insert_db_Thread::run(){
                 }
                 else
                 {
-                    emit show_statusbar_warning_msg_SIGNAL( "$MFT file does not exists." +mft_filename );
+                    emit show_statusbar_warning_msg_SIGNAL( "$MFT file does not exists." +mft_filename,8000,true );
                     qDebug()<<"Can not find $MFT file "<<mft_filename<<"\n Will use dir scan method.";
                 }
             }

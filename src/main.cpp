@@ -22,59 +22,70 @@
 int main(int argc, char *argv[])
 {
 
+    int ok;
+    int ini_show_code;
+    // restart loop
+    // https://stackoverflow.com/questions/5129788/how-to-restart-my-own-qt-application
+    do{
 
-    qRegisterMetaType<QList<QPair<QString,QVariant>>>("QList<QPair<QString,QVariant>>");
-    qRegisterMetaType<QList<QVariantList>>("QList<QVariantList>");
-    qRegisterMetaType<QList<QStringList>>("QList<QStringList>");
-    qRegisterMetaType<QList<QList<QVariant>>>("QList<QList<QVariant>>");
+        qRegisterMetaType<QList<QPair<QString,QVariant>>>("QList<QPair<QString,QVariant>>");
+        qRegisterMetaType<QList<QVariantList>>("QList<QVariantList>");
+        qRegisterMetaType<QList<QStringList>>("QList<QStringList>");
+        qRegisterMetaType<QList<QList<QVariant>>>("QList<QList<QVariant>>");
 
-    //qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
+        //qRegisterMetaTypeStreamOperators<QList<int> >("QList<int>");
 
-    QSettings settings(QSettings::IniFormat, QSettings::UserScope,
-                       ORGANIZATION_NAME, ALLICATION_NAME);
+        QSettings settings(QSettings::IniFormat, QSettings::UserScope,
+                           ORGANIZATION_NAME, ALLICATION_NAME);
 
-    {
-        QDir settings_dir(  QFileInfo(settings.fileName()).path() );
-        QDir db_dir(  QFileInfo(DATABASE_FILE_NAME).path() );
-        QDir tmp_db_dir(  QFileInfo(TEMP_DB_NAME).path() );
-
-        for(const QDir & dir: QList<QDir>({ settings_dir, db_dir ,tmp_db_dir }))
         {
-            if(!dir.exists())
-                dir.mkpath(".");
+            QDir settings_dir(  QFileInfo(settings.fileName()).path() );
+            QDir db_dir(  QFileInfo(DATABASE_FILE_NAME).path() );
+            QDir tmp_db_dir(  QFileInfo(TEMP_DB_NAME).path() );
+
+            for(const QDir & dir: QList<QDir>({ settings_dir, db_dir ,tmp_db_dir }))
+            {
+                if(!dir.exists())
+                    dir.mkpath(".");
+            }
         }
-    }
 
 
-    QTranslator translator;
-    QString lang = settings.value("Language/language","auto").toString();
-    if (lang =="auto")
-        lang = QLocale::system().name();
+        QTranslator translator;
+        QString lang = settings.value("Language/language","auto").toString();
+        if (lang =="auto")
+            lang = QLocale::system().name();
 
-    QString lang_path = ":/lang/"+ lang+ ".qm";
-    //                 ":/lang/zh_CN.qm"
-    if (!QFile(lang_path).exists())
-        qDebug()<<"lang file missing: " + lang_path;
-    translator.load(lang_path);
+        QString lang_path = ":/lang/"+ lang+ ".qm";
+        //                 ":/lang/zh_CN.qm"
+        if (!QFile(lang_path).exists())
+            qDebug()<<"lang file missing: " + lang_path;
+        translator.load(lang_path);
 
 
-    QApplication a(argc, argv);
+        QApplication a(argc, argv);
 
-    // ===========
-    a.installTranslator(&translator);
-    // ===========
+        // ===========
+        a.installTranslator(&translator);
+        // ===========
 
-    MainWindow w;
-    w.show();
+        MainWindow w;
+        w.show();
 
-    // ===========
-    w.ini_after_show();
-    // ===========
-    //    QIcon accc(QPixmap(":/icon/ui/icon/dev-harddisk.png"));
-    //    qDebug()<< "ddddddddddddddddddd  "<< accc.isNull();
+        // ===========
+        ini_show_code = w.ini_after_show();
+        if (ini_show_code ==APP_RESTART_CODE)
+            continue;
+        if (ini_show_code ==APP_QUIT_CODE)
+            break;
+        // ===========
+        //    QIcon accc(QPixmap(":/icon/ui/icon/dev-harddisk.png"));
+        //    qDebug()<< "ddddddddddddddddddd  "<< accc.isNull();
 
-    //    try{
-    int ok = a.exec();
+        //    try{
+        ok = a.exec();
+        break;
+    } while( ini_show_code);
     return ok;
     //    }
     //    catch (const std::exception &exc)

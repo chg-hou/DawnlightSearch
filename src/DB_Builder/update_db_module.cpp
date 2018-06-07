@@ -1,7 +1,7 @@
 #include "update_db_module.h"
 #include <QDataStream>
 
-#define PRINT_SQL_ERROR(OK) if (!OK) { qDebug()<<"SQL ERROR: "<<__FILE__<< __LINE__<< __FUNCTION__<<"\n\twhen: "<<cur.lastQuery()<<"\n\t"<<cur.lastError();(emit show_statusbar_warning_msg_SIGNAL(cur.lastError().text())); }
+#define PRINT_SQL_ERROR(OK) if (!OK) { qDebug()<<"SQL ERROR: "<<__FILE__<< __LINE__<< __FUNCTION__<<"\n\twhen: "<<cur.lastQuery()<<"\n\t"<<cur.lastError();(emit show_statusbar_warning_msg_SIGNAL(cur.lastError().text(), 8000,true)); }
 
 
 bool zip(QString filename , QString zip_filename)
@@ -70,13 +70,14 @@ Update_DB_Object::Update_DB_Object(QObject *parent)
 
 void Update_DB_Object::init_slot()
 {
-    QString compressed_db_file = DATABASE_FILE_NAME +".zip";
+    QString compressed_db_file = DATABASE_FILE_NAME +".zlib";
     if (COMPRESS_DB_FILE && ! fileExists(DATABASE_FILE_NAME)
             &&  fileExists(compressed_db_file)  )
     {
         qDebug()<<" Uncompressing db file...";
         unZip(compressed_db_file, DATABASE_FILE_NAME);
         qDebug()<< "Uncompression Done.";
+        QFile::remove(compressed_db_file);
     }
     //QThread::sleep(15);
 
@@ -105,7 +106,7 @@ void Update_DB_Object::init_slot()
         warning_string =  QString("DB locked by ") + "appname: " + appname +" PID: " + QString::number(pid)+
                 " hostname: " + hostname;
         qDebug()<< warning_string;
-        emit show_statusbar_warning_msg_SIGNAL(warning_string);
+        emit show_statusbar_warning_msg_SIGNAL(warning_string,60000,true);
     }
 
     cur = QSqlQuery(database);
@@ -170,20 +171,27 @@ void Update_DB_Object::quit_slot()
     database.close();
     qDebug()<<"db module quit_slot: database.close()";
 
-    QString compressed_db_file = DATABASE_FILE_NAME +".zip";
+    if ( DB_READ_ONLY_FLAG)
+        return;
+
+    QString compressed_db_file = DATABASE_FILE_NAME +".zlib";
     if ( COMPRESS_DB_FILE )
     {
         qDebug()<<" Compressing db file...";
+        emit show_statusbar_warning_msg_SIGNAL("Compressing db file...", 60000, false);
         if (zip( DATABASE_FILE_NAME, compressed_db_file)
                 && fileExists(compressed_db_file) )
             QFile::remove(DATABASE_FILE_NAME);
         else
             qDebug()<<"Compression ERROR: "<<__FILE__<< __LINE__<< __FUNCTION__<<"\n\t"<<"Something wrong.";
         qDebug()<< "Compression Done.";
+        emit show_statusbar_warning_msg_SIGNAL("Compression Done.", 60000, false);
     }
     if (! DB_READ_ONLY_FLAG)
         db_lockfile->unlock();
+    emit show_statusbar_warning_msg_SIGNAL("Closing...", 60000, false);
 
+    ready_to_quit_flag = true;
 }
 
 

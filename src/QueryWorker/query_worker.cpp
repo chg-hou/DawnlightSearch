@@ -135,5 +135,6 @@ void DistributeQueryWorker::quit_slot()
         delete thread; // ~QueryThread() : abort = true; wait();
     }
 
+    ready_to_quit_flag = true;
 }
 
