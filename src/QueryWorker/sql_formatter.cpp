@@ -9,11 +9,11 @@ Format_Sql_Result format_sql_cmd(QString path,
 
 
 
-    static QCache<QPair<QString,
+    static QCache<QPair<QPair<QString,unsigned int>,
                    QPair<QString,QString>
                         >, Format_Sql_Result> cache_sql(CONST_SQL_TEXT_FORMAT_CACHE_SIZE);
 
-    QPair<QString,QPair<QString,QString>> hash_key ( {  path,
+    QPair<QPair<QString, unsigned int>,QPair<QString,QString>> hash_key ( {  QPair<QString,unsigned int>   ({path, MATCH_OPTION}),
                                                         QPair<QString,QString> ( {uuid,sql_text }) } );
 
     if(cache_sql.contains(hash_key)){

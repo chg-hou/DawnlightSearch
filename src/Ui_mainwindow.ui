@@ -820,6 +820,9 @@ QMainWindow::separator:hover {
    <property name="shortcut">
     <string>Ctrl+G</string>
    </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
   </action>
   <action name="actionLanguage_Auto">
    <property name="text">
@@ -890,6 +893,22 @@ QMainWindow::separator:hover {
     <hint type="destinationlabel">
      <x>135</x>
      <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dockWidget_search_settings</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>toolButton_avd_setting</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>135</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>978</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>

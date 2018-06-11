@@ -29,6 +29,10 @@ void MainWindow::_on_match_option_changed(bool){
                        ORGANIZATION_NAME,ALLICATION_NAME);
     settings.setValue("Search/Match_Mode",MATCH_OPTION);
     settings.sync();
+
+    _Former_search_text = "";
+    _on_lineedit_text_changed(lineEdit_search->text());
+
 }
 
 void  MainWindow::_open_setting_path(){
