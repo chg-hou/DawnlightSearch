@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QByteArray>
 #include <QLockFile>
+#include <QMessageBox>
+#include <QCoreApplication>
 
 #include "globals.h"
 #include "partition_information.h"

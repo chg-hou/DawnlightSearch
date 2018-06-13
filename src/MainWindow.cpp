@@ -199,7 +199,28 @@ int MainWindow::ini_after_show(){
         }
     }
 
+    QLockFile db_lockfile(DATABASE_FILE_NAME+".lock");
 
+    if (!db_lockfile.tryLock())
+    {
+        DB_READ_ONLY_FLAG = true;
+        qint64 pid; QString hostname; QString appname;
+        db_lockfile.getLockInfo(&pid, &hostname, &appname);
+        QString warning_string;
+        warning_string =  QCoreApplication::translate("ui","Database is locked by")+ "\n"+
+                QCoreApplication::translate("ui","Appname: ") + appname +"\n"+
+                QCoreApplication::translate("ui","PID: ")  + QString::number(pid)+"\n"+
+                QCoreApplication::translate("ui","Hostname:") + hostname;
+        qDebug()<< warning_string;
+
+        QMessageBox::warning(this,
+                             QCoreApplication::translate("ui","Warning"),
+                             warning_string);
+        qDebug()<<"exit------------";
+        return APP_QUIT_CODE;
+    }
+    else
+        db_lockfile.unlock();
 
 
 
