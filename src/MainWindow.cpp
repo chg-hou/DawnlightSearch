@@ -244,6 +244,9 @@ int MainWindow::ini_after_show(){
     }
     else
         ui->dockWidget_sqlcmd->close();
+
+    ui->actionShow_Location_Table->setChecked(ui->dockWidget_uuid->isVisible());
+
 //    ui->centralWidget->hide();
     // MainWindow::setCentralWidget(NULL);
 //    ui->dockWidget_result->titleBarWidget()->setHidden(true);

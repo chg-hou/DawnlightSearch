@@ -178,8 +178,8 @@ QMainWindow::separator:hover {
    </property>
    <property name="minimumSize">
     <size>
-     <width>30</width>
-     <height>30</height>
+     <width>96</width>
+     <height>122</height>
     </size>
    </property>
    <property name="features">
@@ -915,6 +915,22 @@ QMainWindow::separator:hover {
     <hint type="destinationlabel">
      <x>978</x>
      <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dockWidget_uuid</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionShow_Location_Table</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>498</x>
+     <y>557</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
