@@ -97,7 +97,7 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
         if (! Partition_Information::uuid_set.contains(uuid))
         {
             ui->tableWidget_uuid->item(row,UUID_HEADER.included)->setIcon(
-                        QIcon(QPixmap(":/icon/ui/icon/tab-close-other.png"))   );
+                        device_unmounted_icon   );
             ui->tableWidget_uuid->item(row,UUID_HEADER.included)->setData(
                         Qt::DisplayRole,0);
         }
@@ -190,6 +190,13 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
 
         ui->tableWidget_uuid->item(row,UUID_HEADER.path)->setData(Qt::DisplayRole,
                                                                   device.path);
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+        if (SNAP_LSBLK_COMPATIBILITY_MODE_FLAG)
+            ui->tableWidget_uuid->item(row, UUID_HEADER.path)->setData(Qt::DisplayRole,
+                                                               ui->tableWidget_uuid->item(row, UUID_HEADER.alias)->data(Qt::DisplayRole)
+                                                                           );
+#endif
+
         ui->tableWidget_uuid->item(row,UUID_HEADER.label)->setData(Qt::DisplayRole,
                                                                    device.label);
         ui->tableWidget_uuid->item(row,UUID_HEADER.fstype)->setData(Qt::DisplayRole,
@@ -213,6 +220,11 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
             setWindowTitle(windowTitle() + QCoreApplication::translate("statusbar"," [Read Only Mode]"));
         else
             ui->statusBar->showMessage( QCoreApplication::translate("statusbar","Ready."), 30000 );
+
+    #ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+            if (SNAP_LSBLK_COMPATIBILITY_MODE_FLAG)
+                setWindowTitle(windowTitle() + QCoreApplication::translate("statusbar"," [Snap Compatibility Mode]"));
+    #endif
     }
 
 }

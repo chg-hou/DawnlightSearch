@@ -128,4 +128,9 @@ extern  long MODEL_MAX_ITEMS;
 extern bool COMPRESS_DB_FILE ;
 
 extern bool DB_READ_ONLY_FLAG;
+
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+extern bool SNAP_LSBLK_COMPATIBILITY_MODE_FLAG;
+#endif
+
 #endif // GLOBALS_H

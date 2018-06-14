@@ -390,7 +390,22 @@ void MainWindow::ini_table(){
     }catch(...)
     {
     }
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+    connect(ui->tableWidget_uuid, SIGNAL(cellChanged(int,int)),
+            this, SLOT(_on_uuid_table_cell_alias_changed(int,int)));
+#endif
 }
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+    void MainWindow::_on_uuid_table_cell_alias_changed(int row, int column)
+    {
+        if (column!= UUID_HEADER.alias)
+            return;
+        ui->tableWidget_uuid->item(row, UUID_HEADER.path)->setData(Qt::DisplayRole,
+                                                       ui->tableWidget_uuid->item(row, UUID_HEADER.alias)->data(Qt::DisplayRole)
+                                                                   );
+    }
+#endif
+
 void MainWindow::ini_subthread(){
 
     qDebug()<<"Update_DB_Object init...";

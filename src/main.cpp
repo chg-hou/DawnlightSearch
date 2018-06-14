@@ -21,6 +21,17 @@
 
 int main(int argc, char *argv[])
 {
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+    QProcess process;
+    //  -s, --inverse        inverse dependencies
+    //  -d, --nodeps         don't print slaves or holders
+    process.start("mount");
+    process.waitForFinished(-1); // will wait forever until finished
+
+    QString stdout = process.readAllStandardOutput();
+    if (stdout=="")
+        SNAP_LSBLK_COMPATIBILITY_MODE_FLAG=true;
+#endif
 
     int ok;
     int ini_show_code;

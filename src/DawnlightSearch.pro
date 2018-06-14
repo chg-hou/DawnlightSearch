@@ -15,7 +15,7 @@
 #-------------------------------------------------
 
 CONFIG += c++11
-
+DEFINES += SNAP_LSBLK_COMPATIBILITY_MODE
 
 # CONFIG += no-opengl
 
