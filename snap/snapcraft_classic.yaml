@@ -13,14 +13,14 @@ description: |
 
 type: app
 grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: strict # devmode classic. #  use 'strict' once you have the right plugs and slots
+confinement: classic # devmode classic. #  use 'strict' once you have the right plugs and slots
 
 icon: ./src/ui/icon/main.png
  
 apps:
     dawnlightsearch:
-        command: desktop-launch $SNAP/opt/dawnlightsearch/dawnlightsearch # xxx qt5-launch dawnlightsearch
-        plugs: [desktop,hardware-observe, home,  removable-media]   # https://docs.snapcraft.io/reference/interfaces # hardware-random-control,fuse-support,storage-framework-service, system-observe, opengl, x11, wayland,
+        command: opt/dawnlightsearch/dawnlightsearch # xxx qt5-launch dawnlightsearch
+        # plugs: [desktop, home, opengl, x11, wayland, removable-media]   # https://docs.snapcraft.io/reference/interfaces
         desktop: opt/dawnlightsearch/dawnlightsearch_snap.desktop
         
 parts:          # https://docs.snapcraft.io/build-snaps/parts
@@ -33,21 +33,17 @@ parts:          # https://docs.snapcraft.io/build-snaps/parts
         project-files: [DawnlightSearch.pro]
         #prepare: |
         #    chmod 644 ./src/ui/icon/main.png 
-
         build-packages:     # https://docs.snapcraft.io/build-snaps/syntax#build-packages
             - kio-dev  
             - qtbase5-dev
             - kio  
-        override-build: |
-            snapcraftctl build
+        install: |
             install -D  dawnlightsearch $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch
             install -D  ui/icon/main.png $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch.png
             install -D  dawnlightsearch_snap.desktop $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch_snap.desktop
-            install -D  /bin/lsblk $SNAPCRAFT_PART_INSTALL/bin/lsblk2
         stage-packages:  
             - libkio5
-            - kio  
-            - util-linux        # lsblk            
+            - util-linux        # lsblk
             - libqt5gui5
             - libqt5sql5-sqlite
         
@@ -55,4 +51,4 @@ parts:          # https://docs.snapcraft.io/build-snaps/parts
 #        filesets:
 #            extra_drivers: []
 #       stage:
-#            - -$extra_drivers   # excluding 
+#            - -$extra_drivers   # excluding
