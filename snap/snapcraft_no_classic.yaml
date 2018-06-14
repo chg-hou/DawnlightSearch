@@ -1,0 +1,57 @@
+name: dawnlightsearch # you probably want to 'snapcraft register <name>'
+version: '0.1.2.0' # just for humans, typically '1.2+git' or '1.3.2'
+summary: A Linux version of Everything Search Engine. Show instant results as you type. # 79 char long summary
+description: |
+  Instant (as you type) search for file and path names using wildcard 
+  characters and regular expressions. Support multi-threaded offline
+  searching over indexed devices. Written in pure C++/Qt5. 
+  
+#  This is my-snap's description. You have a paragraph or two to tell the
+#  most important story about your snap. Keep it under 100 words though,
+#  we live in tweetspace and your description wants to look good in the snap
+#  store.
+
+type: app
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict # devmode classic. #  use 'strict' once you have the right plugs and slots
+
+icon: ./src/ui/icon/main.png
+ 
+apps:
+    dawnlightsearch:
+        command: desktop-launch $SNAP/opt/dawnlightsearch/dawnlightsearch # xxx qt5-launch dawnlightsearch
+        plugs: [desktop,hardware-observe,hardware-random-control,fuse-support,storage-framework-service, system-observe, home, opengl, x11, wayland, removable-media]   # https://docs.snapcraft.io/reference/interfaces
+        desktop: opt/dawnlightsearch/dawnlightsearch_snap.desktop
+        
+parts:          # https://docs.snapcraft.io/build-snaps/parts
+    dawnlightsearch:
+        after: [desktop-qt5] #  qt5conf
+        qt-version: qt5
+        plugin: qmake  # https://docs.snapcraft.io/reference/plugins/qmake
+        source: ./src
+        
+        project-files: [DawnlightSearch.pro]
+        #prepare: |
+        #    chmod 644 ./src/ui/icon/main.png 
+
+        build-packages:     # https://docs.snapcraft.io/build-snaps/syntax#build-packages
+            - kio-dev  
+            - qtbase5-dev
+            - kio  
+        override-build: |
+            snapcraftctl build
+            install -D  dawnlightsearch $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch
+            install -D  ui/icon/main.png $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch.png
+            install -D  dawnlightsearch_snap.desktop $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch_snap.desktop
+            install -D  /bin/lsblk $SNAPCRAFT_PART_INSTALL/bin/lsblk2
+        stage-packages:  
+            - libkio5
+            - util-linux        # lsblk
+            - libqt5gui5
+            - libqt5sql5-sqlite
+        
+
+#        filesets:
+#            extra_drivers: []
+#       stage:
+#            - -$extra_drivers   # excluding 
