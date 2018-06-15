@@ -49,8 +49,7 @@ script:
   - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage
 
 before_deploy:
-  - app_version=$(cat src/VERSION)
-  - mv ./src/dawnlightsearch DawnlightSearch_v$(app_version)
+  - mv ./src/dawnlightsearch DawnlightSearch_v$(cat src/VERSION)
   - sha256sum DawnlightSearch* > DawnlightSearch.sha256
   
 deploy:
