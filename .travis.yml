@@ -51,11 +51,13 @@ script:
 before_deploy:
   - mv ./src/dawnlightsearch DawnlightSearch_v$(cat src/VERSION)
   - sha256sum DawnlightSearch* > DawnlightSearch.sha256
+  - ls
   
 deploy:
   provider: releases
   api_key:
-    - secure: $MY_GITHUB_SECURE_KEY_TOKEN
+    secure: lX2004eoeJkx5ZVCk9bhqexNZ9wWpn7veJc0DBV1xCDdJkmSQlRX4u+3ariAPtG99iGCaqrWqBr7DJShHxfpx/zdJAAZPbNVy+VEPrS3PFg3cNsGpA58jMVWC7fX9imo91r6X53yWA4u+smXaYPbwZ3PrhaDTy8mqRyqqB2M8TLAIstq2Dg+/ricg9GK0Qdefm74GiVXvrTF1i9aGCJkYFVb8WNnTizNGZwVCwwialTvZNykaNiVUMWSNS3djKZD3Fl/T9XpNR+qmSy4gUGhOoL+de7wrhfNpJNjKJ1a4xeAk4o/NBxZZ0JrRztKCkaooqVkZ+UVUk+pVFSj3RKankmU39hjR+ipVmduS5MGmRLSsJt2FgSgkomu4/uRxcu9rdbe7bjjj92E6ka+BQcs0qLXKGKNcTL90t7XBAUZVDAktYFlrEy4wiiXCpHGDUsFR7Xy1PZ69cLwZbgX4/D4t1XfwWJ+URaDNTgUcYrNql+VOZBpbTYMVw22Hfl7nRa13GjZqsJIpXHynTrTMub6MfYXbrF8MaSz9QndE21eac9IUivWxtcwdNZUpCUTA8+3Wi2h0s7Es7lEUzJmPsw9jTvL3lNSQGfZQ/xFOxYiIHmf1PBEOBCjsDwFaA+lsPmcyGY3iaQdiD/TIH1pjpP8zWaa3xIotuonntdxM96mb3c=
+    #$MY_GITHUB_SECURE_KEY_TOKEN
   file_glob: true
   file:
     - DawnlightSearch*
