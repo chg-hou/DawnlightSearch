@@ -11,7 +11,7 @@ branches:
     - /v\d+\.\d+[a-z]/
     - /v\d+\.\d+\.\d+[a-z]/
     - /v\d+\.\d+\.\d+/
-    - /v\d+\.\d+/
+    - /v\d+\..+/
     
 before_install:
   - sudo apt-get update -qq
