@@ -151,7 +151,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //# skip diff dev
     SKIP_DIFF_DEV = settings.value("Database/Skip_Different_Device",True).toBool();
-
+#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+    SKIP_DIFF_DEV = settings.value("Database/Skip_Different_Device",False).toBool();
+#endif
     //# size unit
     SIZE_UNIT = settings.value("Size_Unit","KB").toString();
 

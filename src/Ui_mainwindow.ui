@@ -132,15 +132,8 @@ QMainWindow::separator:hover {
     <addaction name="actionOpen_Project_Homepage"/>
     <addaction name="actionLatest_Version"/>
    </widget>
-   <widget class="QMenu" name="menuEdit">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actionSearch_focus"/>
-   </widget>
    <addaction name="menuGf"/>
    <addaction name="menuSetting"/>
-   <addaction name="menuEdit"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">

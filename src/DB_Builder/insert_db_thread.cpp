@@ -121,8 +121,8 @@ void Insert_db_Thread::run(){
                            ORGANIZATION_NAME,ALLICATION_NAME);
 
         // skip diff dev
-        SKIP_DIFF_DEV = settings.value("Database/Skip_Different_Device",
-                                       true).toBool();
+//        SKIP_DIFF_DEV = settings.value("Database/Skip_Different_Device",
+//                                       true).toBool();
 
         QSet<QString> excluded_folders;
         for (QString i_path: settings.value("Excluded_folders",{}).toStringList())
