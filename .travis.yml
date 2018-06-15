@@ -55,7 +55,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: $MY_GITHUB_SECURE_KEY_TOKEN
+    - secure: $MY_GITHUB_SECURE_KEY_TOKEN
   file_glob: true
   file:
     - DawnlightSearch*
