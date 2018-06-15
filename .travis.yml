@@ -39,7 +39,26 @@ script:
   - chmod +x linuxdeployqt-continuous-x86_64.AppImage
   - export QT_SELECT=qt5
   - qmake -v
-  - git rev-parse --short HEAD
-  - export VERSION=$(git rev-parse --short HEAD) # linuxdeployqt uses this for naming the file
+#  - export VERSION=$(git rev-parse --short HEAD) # linuxdeployqt uses this for naming the file
+  - export VERSION=$(cat src/VERSION) # linuxdeployqt uses this for naming the file
   - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs -extra-plugins=qsqlite
   - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage
+
+before_deploy:
+  - app_version=$(cat src/VERSION)
+  - mv ./src/dawnlightsearch DawnlightSearch_v$(app_version)
+  - sha256sum DawnlightSearch* > DawnlightSearch.sha256
+  
+deploy:
+  provider: releases
+  api_key:
+    secure: $MY_GITHUB_SECURE_KEY_TOKEN
+  file_glob: true
+  file:
+    - DawnlightSearch*
+
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: chg-hou/DawnlightSearch
+    branch: c++-version
