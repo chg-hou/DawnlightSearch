@@ -20,7 +20,8 @@ icon: ./src/ui/icon/main.png
 apps:
     dawnlightsearch:
         command: desktop-launch $SNAP/opt/dawnlightsearch/dawnlightsearch # xxx qt5-launch dawnlightsearch
-        plugs: [desktop,hardware-observe, home,  removable-media]   # https://docs.snapcraft.io/reference/interfaces # hardware-random-control,fuse-support,storage-framework-service, system-observe, opengl, x11, wayland,
+        plugs: [desktop,hardware-observe, home,  removable-media, mount-observe,  x11]   # https://docs.snapcraft.io/reference/interfaces # hardware-random-control,fuse-support,storage-framework-service, system-observe, opengl, x11, wayland, 
+# wayland unity7
         desktop: opt/dawnlightsearch/dawnlightsearch_snap.desktop
         
 parts:          # https://docs.snapcraft.io/build-snaps/parts
