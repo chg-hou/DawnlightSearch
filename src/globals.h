@@ -19,7 +19,7 @@
 
 #define CONST_SQL_TEXT_FORMAT_CACHE_SIZE  200
 #define ICON_TEXT_SHIFT_COEFF 0.8
-extern QString VERSION ;
+//extern QString VERSION ;
 extern QString COPYRIGHT;
 extern QString ORGANIZATION_NAME;
 extern QString ALLICATION_NAME ;

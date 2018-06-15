@@ -1,8 +1,8 @@
 #include "globals.h"
 
 
-QString VERSION = "0.1.2.0";
-QString COPYRIGHT = "\nDawnlight Search " + VERSION + "\n\n" + "Copyright © 2018 ChG Hou\n";
+//QString VERSION = "0.1.2.0";
+QString COPYRIGHT = QString("\nDawnlight Search ") + VERSION_STRING + "\n\n" + "Copyright © 2018 ChG Hou\n";
 
 // TODO: use correct open source license
 // Qt:              GNU Lesser General Public License (LGPL) version 3
