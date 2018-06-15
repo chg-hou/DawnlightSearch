@@ -27,3 +27,18 @@ script:
   - qmake CONFIG+=release DawnlightSearch.pro
   - make -j$(nproc)
   - make clean
+    
+    
+  - install -D dawnlightsearch ./../AppDir/usr/bin/dawnlightsearch
+  - install -d  ./../AppDir/usr/lib
+  - install -D dawnlightsearch_appimage.desktop ./../AppDir/usr/share/applications/dawnlightsearch.desktop
+  - install -D  ./ui/icon/main.png  ./../AppDir/usr/share/icons/hicolor/255/dawnlightsearch.png
+  - install -D /bin/lsblk ./../AppDir/usr/bin/lsblk
+  - cd ..
+  - wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
+  - chmod +x linuxdeployqt-continuous-x86_64.AppImage
+  - export QT_SELECT=qt5
+  - qmake -v
+  - export VERSION=$(git rev-parse --short HEAD) # linuxdeployqt uses this for naming the file
+  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs -extra-plugins=qsqlite
+  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage
