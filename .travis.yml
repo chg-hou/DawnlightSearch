@@ -45,7 +45,7 @@ script:
   - qmake -v
 #  - export VERSION=$(git rev-parse --short HEAD) # linuxdeployqt uses this for naming the file
   - export VERSION=$(cat src/VERSION) # linuxdeployqt uses this for naming the file
-  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs -extra-plugins=qsqlite
+  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs -extra-plugins=sqldrivers/libqsqlite.so
   - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage
 
 before_deploy:
