@@ -8,6 +8,15 @@ A Linux version of [Everything Search Engine](https://www.voidtools.com/). Suppo
 __The app is still under development and not stable. Comments and pull requests are very appreciated.__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
+         
+<details>
+  <summary>
+   <a href="https://www.transifex.com/a-195/dawnlightsearch/">
+      <img src="https://img.shields.io/badge/Translate-at%20Transifex-lightgrey.svg" >
+   </a>
+ </summary> 
+ <img src="https://www.transifex.com/projects/p/dawnlightsearch/resource/translate_ents/chart/image_png/" >  
+</details>
 
 ## Similar Everything-like Search Engine in Linux: 
 
@@ -120,12 +129,5 @@ Examples:
  - Support Windows.
 
 ### FIXME:
- - Wrong working path in .desktop (ubuntu 14.04)
- - Wrong location of extracted .desktop (  ? use    data_files=[('/usr/share/applications',...)]  ) 
-
-## Similar Projects:
-
- - [ANGRYsearch](https://github.com/DoTheEvo/ANGRYsearch) (python)
- - [FSearch](https://github.com/cboxdoerfer/fsearch)
 
 
