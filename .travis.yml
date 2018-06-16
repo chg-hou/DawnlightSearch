@@ -39,8 +39,9 @@ script:
   - install -D  ./ui/icon/main.png  ./../AppDir/usr/share/icons/hicolor/255/dawnlightsearch.png
   - install -D /bin/lsblk ./../AppDir/usr/bin/lsblk
 # seems -extra-plugins=sqldrivers,sqldrivers/libqsqlite.so does not work
-#  - install -D /usr/lib/x86_64-linux-gnu/qt5/plugins/sqldrivers/libqsqlite.so ./../AppDir/usr/lib/libqsqlite.so
-  - install -D $(locate sqldrivers/libqsqlite.so | grep qt5) ./../AppDir/usr/lib/libqsqlite.so
+  - install -D /usr/lib/x86_64-linux-gnu/qt5/plugins/sqldrivers/libqsqlite.so ./../AppDir/usr/lib/libqsqlite.so
+  - locate sqldrivers/libqsqlite.so
+#  - install -D $(locate sqldrivers/libqsqlite.so | grep qt5) ./../AppDir/usr/lib/libqsqlite.so
   - cd ..
   - wget https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
   - chmod +x linuxdeployqt-continuous-x86_64.AppImage
