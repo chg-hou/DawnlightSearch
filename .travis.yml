@@ -57,8 +57,9 @@ script:
 #  - export VERSION=$(git rev-parse --short HEAD) # linuxdeployqt uses this for naming the file
   - export VERSION=$(cat src/VERSION) # linuxdeployqt uses this for naming the file
   - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/dawnlightsearch  -always-overwrite -bundle-non-qt-libs -extra-plugins=sqldrivers/libqsqlite.so,sqldrivers -verbose=2
+  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/bin/lsblk  -always-overwrite -bundle-non-qt-libs -executable=./AppDir/usr/bin/lsblk  -verbose=2  
   # sqldrivers/libqsqlite.so
-  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage -verbose=2
+  - ./linuxdeployqt-continuous-x86_64.AppImage ./AppDir/usr/share/applications/dawnlightsearch.desktop  -always-overwrite -appimage -verbose=2  -executable=./AppDir/usr/bin/lsblk
 
 before_deploy:
   - mv ./src/dawnlightsearch DawnlightSearch_v$(cat src/VERSION)
