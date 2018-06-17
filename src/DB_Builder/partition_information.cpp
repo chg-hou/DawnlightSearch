@@ -71,14 +71,25 @@ Partition_Information::Partition_Information()
     //}
 
 }
-
+bool Partition_Information::lsblk_prefix_path_init = false;
+QString Partition_Information::lsblk_prefix_path = "";
 bool Partition_Information::refresh_state(){
     // TODO: windows
+    if (!lsblk_prefix_path_init)
+    {
+        QString app_path = QFileInfo(QCoreApplication::applicationFilePath()).path()  + QDir::separator() ;
+        if(QFile::exists( app_path + "lsblk" ))
+            lsblk_prefix_path = app_path  ;
+        else
+            lsblk_prefix_path = "";
+        lsblk_prefix_path_init = true;
+        qDebug()<<"lsblk path: "<<lsblk_prefix_path;
+    }
 
     QProcess process;
     //  -s, --inverse        inverse dependencies
     //  -d, --nodeps         don't print slaves or holders
-    process.start("lsblk -o MOUNTPOINT,LABEL,UUID,FSTYPE,name,MAJ:MIN -J -s -d");
+    process.start(lsblk_prefix_path + "lsblk -o MOUNTPOINT,LABEL,UUID,FSTYPE,name,MAJ:MIN -J -s -d");
     process.waitForFinished(-1); // will wait forever until finished
 
     QString stdout = process.readAllStandardOutput();

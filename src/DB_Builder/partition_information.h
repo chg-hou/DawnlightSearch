@@ -8,6 +8,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QCoreApplication>
 //class UUID_HEADER_class
 //{
 //public:
@@ -54,6 +55,8 @@ public:
     static QString lsblk_history;
     static QString uuid_to_fstype(QString);
     static QSet<QString> uuid_set;
+    static bool lsblk_prefix_path_init;
+    static QString lsblk_prefix_path;
     Partition_Information();
 };
 
