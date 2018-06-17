@@ -13,7 +13,7 @@
 
 #include <string>
 #include <locale>
-#include <codecvt>
+//#include <codecvt> // codecvt not included in g++ 4.8
 #include <iomanip>
 #include <assert.h>
 

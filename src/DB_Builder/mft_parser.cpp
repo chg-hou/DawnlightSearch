@@ -21,7 +21,7 @@ union
     ATTR_FILE_NAME*	    FN;
 } attrUnion_FN;
 
-std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> cvt_u16string_to_string;
+//std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> cvt_u16string_to_string; // codecvt not included in g++ 4.8
 
 string get_path(vector<MFT_RECORD> & mft,DWORD seqnum)
 {
@@ -241,7 +241,8 @@ unsigned long long MFTParser::mft_c_parser_func(QString mft_filename_in, QSqlQue
                 //cout<<endl<<"Name: "<<nameBuf<<endl;
                 //delete [] nameBuf;
 
-                string u8_cvt_str = cvt_u16string_to_string.to_bytes(u16_cvt_str);
+                //string u8_cvt_str = cvt_u16string_to_string.to_bytes(u16_cvt_str);
+                string u8_cvt_str = QString::fromStdU16String(u16_cvt_str).toStdString();
                 //                cout<<endl<<"\t\t\t\tName: "<<u8_cvt_str<<endl;//#debugaa
                 FN_NAME_vector.push_back(u8_cvt_str);
             }
