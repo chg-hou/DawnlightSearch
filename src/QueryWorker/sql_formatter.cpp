@@ -13,7 +13,7 @@ Format_Sql_Result format_sql_cmd(QString path,
                    QPair<QString,QString>
                         >, Format_Sql_Result> cache_sql(CONST_SQL_TEXT_FORMAT_CACHE_SIZE);
 
-    QPair<QPair<QString, unsigned int>,QPair<QString,QString>> hash_key ( {  QPair<QString,unsigned int>   ({path, MATCH_OPTION}),
+    QPair<QPair<QString, unsigned int>,QPair<QString,QString>> hash_key ( {  QPair<QString,unsigned int>   ({path, MATCH_OPTION + CASE_SENSTITIVE*125}),
                                                         QPair<QString,QString> ( {uuid,sql_text }) } );
 
     if(cache_sql.contains(hash_key)){

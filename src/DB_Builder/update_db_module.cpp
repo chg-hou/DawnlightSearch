@@ -319,7 +319,7 @@ void Update_DB_Object::update_db_slot(QList<QStringList> path_lists){
     QList<QStringList> update_path_list;
     for(const QStringList& path_uuid: path_lists)
     {
-        if (QDir(path_uuid[0]).exists())
+        if (QDir(path_uuid[0]).exists() && path_uuid[0]!="" ) //if dev not mounted, path_uuid[0] == ""
             update_path_list<< QStringList({path_uuid[0],path_uuid[1] });
         else
         {

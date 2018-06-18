@@ -45,7 +45,7 @@ bool DB_Commit_Step_Optimizer::ready_to_commit(unsigned long & num_records_in){
 
      // safe check
      if (next_record_to_commit_step<10){
-         qDebug()<< __FILE__<< __LINE__<< __FUNCTION__ << "\n\t"<<"step too small, check here";
+         //qDebug()<< __FILE__<< __LINE__<< __FUNCTION__ << "\n\t"<<"step too small, check here";
          next_record_to_commit_step = 10;
      }
 

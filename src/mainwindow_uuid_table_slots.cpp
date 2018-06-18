@@ -225,6 +225,10 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
             if (SNAP_LSBLK_COMPATIBILITY_MODE_FLAG)
                 setWindowTitle(windowTitle() + QCoreApplication::translate("statusbar"," [Snap Compatibility Mode]"));
     #endif
+
+        connect(lineEdit_search, SIGNAL(textChanged(QString)),
+                SLOT(_on_lineedit_text_changed(QString)));
+        lineEdit_search->setEnabled(true);
     }
 
 }

@@ -213,9 +213,9 @@ public slots:
     void _on_model_receive_new_row_old_2(int query_id, QList<QList<QStandardItem *>> list_of_row_to_insert);
 
     void _on_model_receive_new_row(int query_id, QList<QList<QVariant>> list_of_row_to_insert);
-#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+
     void _on_uuid_table_cell_alias_changed(int,int);
-#endif
+
 signals:
     void init_db_module_SIGNAL();
     void init_db_start_timer_SIGNAL();

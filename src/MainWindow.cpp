@@ -89,8 +89,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     lineEdit_search = ui->comboBox_search->lineEdit();
 
-    connect(lineEdit_search, SIGNAL(textChanged(QString)),
-            SLOT(_on_lineedit_text_changed(QString)));
+//    connect(lineEdit_search, SIGNAL(textChanged(QString)),
+//            SLOT(_on_lineedit_text_changed(QString)));
+    lineEdit_search->setEnabled(false);  // will enable in first run of refresh_table_uuid_mount_state_slot
     lineEdit_search->setClearButtonEnabled(True);
 
     query_ok_icon.addPixmap(QPixmap(":/icon/ui/icon/dialog-ok.png"));
@@ -177,7 +178,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     CASE_SENSTITIVE = settings.value("Search/Case_Sensitive",CASE_SENSTITIVE).toBool();
 
-
+    ui->actionCase_Sensitive->setChecked(CASE_SENSTITIVE);
 }
 
 
@@ -392,21 +393,31 @@ void MainWindow::ini_table(){
     }catch(...)
     {
     }
-#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+
     connect(ui->tableWidget_uuid, SIGNAL(cellChanged(int,int)),
             this, SLOT(_on_uuid_table_cell_alias_changed(int,int)));
-#endif
+
 }
-#ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+
     void MainWindow::_on_uuid_table_cell_alias_changed(int row, int column)
     {
-        if (column!= UUID_HEADER.alias)
-            return;
+        #ifdef SNAP_LSBLK_COMPATIBILITY_MODE
+        if (column== UUID_HEADER.alias)
+        {
         ui->tableWidget_uuid->item(row, UUID_HEADER.path)->setData(Qt::DisplayRole,
                                                        ui->tableWidget_uuid->item(row, UUID_HEADER.alias)->data(Qt::DisplayRole)
                                                                    );
+        }
+        #endif
+
+        if (column==UUID_HEADER.included)
+        {
+            _Former_search_text = "";
+            _on_lineedit_text_changed(lineEdit_search->text());
+        }
+
     }
-#endif
+
 
 void MainWindow::ini_subthread(){
 
