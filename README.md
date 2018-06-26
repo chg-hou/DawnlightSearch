@@ -100,11 +100,11 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
 Note: global "nocase" settings has no effect on regular expression. Use "(?i)" instead. 
 Examples: 
 
-***reg:"a"*** will match "123abcd", not "123Abcd". 
+<span style="color:red"> ***reg:"a"*** </span> will match "123abcd", not "123Abcd". 
 
-***reg:"A"*** will match "123Abcd", not "123abcd". 
+<span style="color:red"> ***reg:"A"*** </span>will match "123Abcd", not "123abcd". 
 
-***reg:"(?i)A"*** will match both "123Abcd" and "123abcd".
+<span style="color:red"> ***reg:"(?i)A"*** </span> will match both "123Abcd" and "123abcd".
 
 
 ### Installation:
@@ -112,7 +112,7 @@ Examples:
 |||
 |-|-|
 |From Source| [https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source](https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source)|
-|AppImage|(pending)|
+|AppImage|([https://github.com/chg-hou/DawnlightSearch/releases](https://github.com/chg-hou/DawnlightSearch/releases))|
 |Snaps|(under review)|
 |Flatpak|(fail to work)|
 
