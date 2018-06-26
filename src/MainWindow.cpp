@@ -688,12 +688,15 @@ void MainWindow::__init_connect_menu_action(){
 
     USE_MFT_PARSER_CPP = settings.value("Use_CPP_MFT_parser",  True).toBool();
     ui->actionEnable_C_MFT_parser->setChecked(USE_MFT_PARSER_CPP);
-    connect(ui->actionEnable_C_MFT_parser, SIGNAL(triggered(bool)),
+    connect(ui->actionUse_MFT_parser, SIGNAL(triggered(bool)),
             this,SLOT(_toggle_use_MFT_parser(bool)));
+    connect(ui->actionEnable_C_MFT_parser, SIGNAL(triggered(bool)),
+            this,SLOT(_toggle_C_MFT_parser(bool)));
 
     USE_MFT_PARSER = settings.value("Use_MFT_parser", True).toBool();
     ui->actionUse_MFT_parser->setChecked(USE_MFT_PARSER);
     ui->actionEnable_C_MFT_parser->setEnabled(USE_MFT_PARSER);
+
 
 
     connect(ui->actionAbout, &QAction::triggered,
