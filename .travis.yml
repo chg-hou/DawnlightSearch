@@ -25,7 +25,7 @@ before_install:
 
   
 install:
-  - sudo apt-get -y install kio-dev
+  - sudo apt-get -y install kio-dev libsqlite3-dev
 
 before_script:
   - cmake --version
