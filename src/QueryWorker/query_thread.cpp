@@ -1,4 +1,33 @@
 #include "query_thread.h"
+#include <QSqlDriver>
+
+#ifdef QT_CUSTOM_SQLITE_REGEXP
+#include <sqlite3.h>
+static void qtregexp(sqlite3_context* ctx, int , sqlite3_value** argv)
+{
+    QRegExp regex;
+    QString str1((const char*)sqlite3_value_text(argv[0]));
+    QString str2((const char*)sqlite3_value_text(argv[1]));
+
+    regex.setPattern(str1);
+    if (CASE_SENSTITIVE)
+        regex.setCaseSensitivity(Qt::CaseSensitive);
+    else
+        regex.setCaseSensitivity(Qt::CaseInsensitive);
+
+
+    if (str2.contains(regex))
+    {
+        sqlite3_result_int(ctx, 1);
+    }
+    else
+    {
+        sqlite3_result_int(ctx, 0);
+    }
+}
+#endif
+
+
 int QueryThread::ERROR_QUERY_ID=-1;
 QueryThread::QueryThread(QMutex * mutex_in, QWaitCondition * condition_in,
                          QString db_connection_name_in, QQueue<QPair<QPair<int,bool>, QString>> * sql_queue_in,
@@ -30,6 +59,10 @@ void QueryThread::run()
     QSqlDatabase database;
     database = QSqlDatabase::addDatabase("QSQLITE", db_connection_name);
     database.setDatabaseName(DATABASE_FILE_NAME);
+
+    // QTBUG-18084, before Qt 5.10.0, QSQLITE_ENABLE_REGEXP won't work
+    database.setConnectOptions("QSQLITE_ENABLE_REGEXP=30;QSQLITE_ENABLE_SHARED_CACHE=1;");
+
     if (! (database.open()))
     {
         qDebug()<< ("Fail to open db: "  +db_connection_name);
@@ -37,6 +70,25 @@ void QueryThread::run()
     }
     else
         qDebug()<<( "Open db OK: "  +db_connection_name);
+
+#ifdef QT_CUSTOM_SQLITE_REGEXP
+    qDebug()<<( "   Use custom REGEXP funtion "  );
+    {
+        QVariant v = database.driver()->handle();
+        if (v.isValid() && qstrcmp(v.typeName(), "sqlite3*")==0)
+        {
+            sqlite3 *db_handle = *static_cast<sqlite3 **>(v.data());
+            if (db_handle != 0)
+            {
+                sqlite3_initialize();
+                // must use the same sqlite3 version with the one Qt ships, aka. Qt 5.7 uses sqlite3 3.11.1.0
+                // http://www.sqlite.org/2016/sqlite-amalgamation-3110100.zip
+                sqlite3_create_function_v2(db_handle, "regexp", 2, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, &qtregexp, NULL, NULL, NULL);
+            }
+        }
+    }
+#endif
+
     QSqlQuery cur(database);
     cur.setForwardOnly(true);
 

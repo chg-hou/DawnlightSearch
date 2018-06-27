@@ -121,3 +121,15 @@ LIBS += -lKF5KIOFileWidgets
 LIBS += -L/usr/lib/x86_64-linux-gnu/
 
 
+lessThan(QT_VERSION, QT_VERSION_CHECK(5, 10, 0))
+{
+    LIBS += -lsqlite3
+    DEFINES += QT_CUSTOM_SQLITE_REGEXP
+    # QTBUG-18084, before Qt 5.10.0
+    # libsqlite3-dev
+    # #include <sqlite3.h>
+    # query_thread.cpp
+    # https://stackoverflow.com/questions/34415351/adding-a-custom-sqlite-function-to-a-qt-application/34415352
+    # https://blog.minidump.info/2016/06/qt-sqlite-plugin-supports-regexp-select/
+}
+
