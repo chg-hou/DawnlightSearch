@@ -39,6 +39,7 @@ parts:          # https://docs.snapcraft.io/build-snaps/parts
             - kio-dev  
             - qtbase5-dev
             - kio  
+            - libsqlite3-dev
         override-build: |
             snapcraftctl build
             install -D  dawnlightsearch $SNAPCRAFT_PART_INSTALL/opt/dawnlightsearch/dawnlightsearch
@@ -51,6 +52,7 @@ parts:          # https://docs.snapcraft.io/build-snaps/parts
             - util-linux        # lsblk            
             - libqt5gui5
             - libqt5sql5-sqlite
+            - libsqlite3-0
         
 
 #        filesets:
