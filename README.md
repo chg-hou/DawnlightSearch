@@ -97,14 +97,11 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
 
 
 
-Note: global "nocase" settings has no effect on regular expression. Use "(?i)" instead. 
+Note: global "nocase" settings DOES have effect on regular expression.  
 Examples: 
 
-<span style="color:red"> ***reg:"a"*** </span> will match "123abcd", not "123Abcd". 
+<span style="color:red"> ***reg:"a"*** </span> will match "123abcd". Will also match "123Abcd" if case-insensitive. 
 
-<span style="color:red"> ***reg:"A"*** </span>will match "123Abcd", not "123abcd". 
-
-<span style="color:red"> ***reg:"(?i)A"*** </span> will match both "123Abcd" and "123abcd".
 
 
 ### Installation:
