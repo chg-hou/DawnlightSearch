@@ -1,5 +1,13 @@
 
 default:
+	lsblak --version
+	if [ $? -ne 0 ]
+	then
+		echo lsblk command, which is part of the util-linux, not found.
+	else
+		echo lsblk found.
+		exit 1
+	fi
 	cd src ;\
 	export QT_SELECT=qt5 ;\
 	qmake -qt=qt5 CONFIG+=release  DawnlightSearch.pro ;\
@@ -9,7 +17,7 @@ default:
 
 	
 install_ubuntu_dep:
-	sudo apt install qt5-qmake kio-dev libsqlite3-dev -y
+	sudo apt install qt5-qmake kio-dev -y
 	
 	
 install:
