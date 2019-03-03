@@ -1,13 +1,12 @@
 
 default:
-	lsblk --version
-	if [ $? -ne 0 ]
-	then
-		echo lsblk command, which is part of the util-linux, not found.
-		exit 1
-	else
-		echo lsblk found.
-	fi
+	lsblk --version ; \
+	if [ $? -ne 0 ]; then \
+		echo "lsblk command, which is part of the util-linux, not found."; \
+		exit 1; \
+	else \
+		echo "lsblk found."; \
+	fi ;\
 	cd src ;\
 	export QT_SELECT=qt5 ;\
 	qmake -qt=qt5 CONFIG+=release  DawnlightSearch.pro ;\
