@@ -179,6 +179,52 @@ MainWindow::MainWindow(QWidget *parent) :
     CASE_SENSTITIVE = settings.value("Search/Case_Sensitive",CASE_SENSTITIVE).toBool();
 
     ui->actionCase_Sensitive->setChecked(CASE_SENSTITIVE);
+
+//    connect(ui->menuView, SIGNAL(aboutToShow()),
+//            SLOT(_on_menu_view_clicked()));
+
+    /*
+    actionShowView_Database_Dock
+    actionShowView_Search_Dock
+    actionShowView_Search_Settings_Dock
+    actionShowView_SQL_Command_Preview_Dock
+    actionShowView_Toolbar
+    actionShowView_Toolbar_Advanced_Setting
+    actionShowView_Toolbar_Case_Snesitive
+    */
+
+    connect(ui->menuView, SIGNAL(aboutToShow()),
+                SLOT(_on_menu_view_aboutToShown()));
+
+//    connect(ui->actionShowView_Database_Dock,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Database_Dock_toggled(bool)));
+//    connect(ui->actionShowView_Search_Dock,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Search_Dock_toggled(bool)));
+//    connect(ui->actionShowView_Search_Settings_Dock,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Search_Settings_Dock_toggled(bool)));
+//    connect(ui->actionShowView_SQL_Command_Preview_Dock,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_SQL_Command_Preview_Dock_toggled(bool)));
+
+//    connect(ui->actionShowView_Toolbar,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Toolbar_toggled(bool)));
+//    connect(ui->actionShowView_Toolbar_Advanced_Setting,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Toolbar_Advanced_Setting_toggled(bool)));
+//    connect(ui->actionShowView_Toolbar_Case_Snesitive,
+//            SIGNAL(triggered(bool)),
+//            SLOT(_on_actionShowView_Toolbar_Case_Snesitive_toggled(bool)));
+
+    QIcon::setThemeName(settings.value("General/Theme_Name", QIcon::themeName()).toString());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+    QIcon::setFallbackThemeName(settings.value("General/Fallback_Theme_Name", QIcon::fallbackThemeName()).toString());
+#endif
+//    qDebug()<<" QIcon::themeName   "<< QIcon::themeName();
+//    qDebug()<<" QIcon::themeName   "<< QIcon::themeSearchPaths();
 }
 
 
@@ -231,6 +277,7 @@ int MainWindow::ini_after_show(){
 
     ui->statusBar->showMessage(QCoreApplication::translate("statusbar","Loading..."));
     ini_table();
+    retranslate_whole_ui();
     qDebug() << "ini_subthread";
     ini_subthread();
     qDebug() << "ini done.";
@@ -257,13 +304,6 @@ int MainWindow::ini_after_show(){
 }
 void MainWindow::ini_table(){
     ui->tableWidget_uuid->setColumnCount(UUID_HEADER_LABEL.length() );
-    QStringList UUID_HEADER_LABEL_tr;
-    for(const QString & str: UUID_HEADER_LABEL){
-        std::string s2 = str.toStdString();
-        const char * c3 = s2.c_str();
-        UUID_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
-    }
-    ui->tableWidget_uuid->setHorizontalHeaderLabels(UUID_HEADER_LABEL_tr);
 
     ui->tableWidget_uuid->horizontalHeader()->setSectionsMovable(true);
     ui->tableWidget_uuid->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -343,18 +383,12 @@ void MainWindow::ini_table(){
 
     }
     // ======================================result table start here ========================================================
-    model = new QStandardItemModel();
+//    model = new QStandardItemModel();
+    model = new MyQStandardItemModel();
+
     model->setSortRole(HACKED_QT_EDITROLE);
     header_list = DB_HEADER_LIST;
     model->setColumnCount(header_list.length());
-
-    QStringList DB_HEADER_LABEL_tr;
-    for(const QString & str: DB_HEADER_LABEL){
-        std::string s2 = str.toStdString();
-        const char * c3 = s2.c_str();
-        DB_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
-    }
-    model->setHorizontalHeaderLabels(DB_HEADER_LABEL_tr);
 
     //TODO: HTMLDelegate = HTMLDelegate_VC_HL
     // html hightlight : self.tableView.setItemDelegate( HTMLDelegate())
@@ -397,9 +431,31 @@ void MainWindow::ini_table(){
     connect(ui->tableWidget_uuid, SIGNAL(cellChanged(int,int)),
             this, SLOT(_on_uuid_table_cell_alias_changed(int,int)));
 
+//    QFont font;
+//    font.setFamily(font.defaultFamily());
+//    font.setKerning(false);
+//    font.setLetterSpacing(QFont::PercentageSpacing,0.0);
+//    font.setHintingPreference(QFont::PreferNoHinting);
+//    font.setWordSpacing(0.0);
+//    ui->tableWidget_uuid->setFont(font);
+
+//    ui->tableWidget_uuid->setStyleSheet("QHeaderView::section:horizontal {margin: 0px;  border: 0; padding 0px}");
+//    ui->tableWidget_uuid->setStyleSheet("QTableView::item {padding: 0px; margin: 0px; border: 0; background-color: orange; }");
+
+//    ui->tableWidget_uuid->horizontalHeader()->setMinimumWidth(0);
+    // Minimum size for QTableWidget collums
+    ui->tableWidget_uuid->horizontalHeader()->setMinimumSectionSize(2);
+
+    ui->tableView->setDragDropMode(QAbstractItemView::DragOnly);
+    ui->tableView->setDragEnabled(true);
+    ui->tableView->setDropIndicatorShown(true);
+
+    ui->tableView->setDragDropMode(QAbstractItemView::DragDrop);
+    ui->tableView->setDragEnabled(true);
+
 }
 
-    void MainWindow::_on_uuid_table_cell_alias_changed(int row, int column)
+void MainWindow::_on_uuid_table_cell_alias_changed(int row, int column)
     {
         #ifdef SNAP_LSBLK_COMPATIBILITY_MODE
         if (column== UUID_HEADER.alias)
@@ -697,7 +753,7 @@ void MainWindow::__init_connect_menu_action(){
     ui->actionUse_MFT_parser->setChecked(USE_MFT_PARSER);
     ui->actionEnable_C_MFT_parser->setEnabled(USE_MFT_PARSER);
 
-
+//    connect(ui, &QAction::
 
     connect(ui->actionAbout, &QAction::triggered,
             this, &MainWindow::_show_dialog_about);
@@ -853,6 +909,13 @@ void MainWindow::_on_tableview_double_clicked(QModelIndex index ){
 };
 
 
+//void MainWindow::_on_menu_view_clicked()
+//{
+//    qDebug()<< "aboutToShow _on_menu_view_clicked";
+//    QContextMenuEvent event(QContextMenuEvent::Mouse,
+//                            (QPoint)QCursor::pos());
+//    QCoreApplication::sendEvent(this, &event);
+//}
 
 void MainWindow::_on_tableWidget_uuid_context_menu_requested(QPoint ){
     QPoint point = QCursor::pos();

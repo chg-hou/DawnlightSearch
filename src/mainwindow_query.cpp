@@ -45,7 +45,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 }
 
 void MainWindow::_on_lineedit_text_changed(QString text){
-    qDebug()<<"_on_lineedit_text_changed"<< text;
+    if (text.length()>0)
+        qDebug()<<"_on_lineedit_text_changed"<< text;
 
     ui->toolButton_query_ok->setIcon(query_ok_icon);
 

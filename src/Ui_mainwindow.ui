@@ -99,7 +99,7 @@ QMainWindow::separator:hover {
    </widget>
    <widget class="QMenu" name="menuSetting">
     <property name="title">
-     <string>Setti&amp;ng</string>
+     <string>Setti&amp;ngs</string>
     </property>
     <widget class="QMenu" name="menuLanguage">
      <property name="title">
@@ -132,7 +132,21 @@ QMainWindow::separator:hover {
     <addaction name="actionOpen_Project_Homepage"/>
     <addaction name="actionLatest_Version"/>
    </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionShowView_Search_Dock"/>
+    <addaction name="actionShowView_Search_Settings_Dock"/>
+    <addaction name="actionShowView_Database_Dock"/>
+    <addaction name="actionShowView_SQL_Command_Preview_Dock"/>
+    <addaction name="separator"/>
+    <addaction name="actionShowView_Toolbar"/>
+    <addaction name="actionShowView_Toolbar_Case_Snesitive"/>
+    <addaction name="actionShowView_Toolbar_Advanced_Setting"/>
+   </widget>
    <addaction name="menuGf"/>
+   <addaction name="menuView"/>
    <addaction name="menuSetting"/>
    <addaction name="menuAbout"/>
   </widget>
@@ -589,7 +603,7 @@ QMainWindow::separator:hover {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Change excluded folders</string>
+    <string>&amp;Set Excluded Folders...</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
@@ -606,9 +620,6 @@ QMainWindow::separator:hover {
    </property>
    <property name="text">
     <string> ┗ &amp;Enable C++ MFT parser</string>
-   </property>
-   <property name="toolTip">
-    <string>┗ ━ Enable C++ MFT parser</string>
    </property>
    <property name="statusTip">
     <string>Much faster than python parser</string>
@@ -634,7 +645,7 @@ QMainWindow::separator:hover {
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>&amp;Use MFT parser to build index</string>
+    <string>&amp;Use MFT Parser to Build Index</string>
    </property>
    <property name="statusTip">
     <string>Only NTFS partition, faster than path walk</string>
@@ -649,7 +660,7 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/system-run.png</normaloff>:/icon/ui/icon/system-run.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Advanced Settings</string>
+    <string>&amp;Advanced Settings...</string>
    </property>
   </action>
   <action name="actionOpen_setting_path">
@@ -658,10 +669,7 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/document-open-folder.png</normaloff>:/icon/ui/icon/document-open-folder.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open Setting File Path</string>
-   </property>
-   <property name="iconText">
-    <string>Open Setting File Path</string>
+    <string>&amp;Open Settings File Path</string>
    </property>
   </action>
   <action name="actionShow_Location_Table">
@@ -704,9 +712,6 @@ QMainWindow::separator:hover {
    </property>
    <property name="text">
     <string>Open &amp;Main DB Path</string>
-   </property>
-   <property name="toolTip">
-    <string>Open main db path</string>
    </property>
   </action>
   <action name="actionOpen_temp_db_path">
@@ -841,6 +846,62 @@ QMainWindow::separator:hover {
     <string>Simplified Chinese (简体中文) zh_CN</string>
    </property>
   </action>
+  <action name="actionShowView_Search_Dock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Search</string>
+   </property>
+  </action>
+  <action name="actionShowView_Search_Settings_Dock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>S&amp;earch Settings</string>
+   </property>
+  </action>
+  <action name="actionShowView_Database_Dock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Database</string>
+   </property>
+  </action>
+  <action name="actionShowView_SQL_Command_Preview_Dock">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>SQL &amp;Command Preview</string>
+   </property>
+  </action>
+  <action name="actionShowView_Toolbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Toolbar</string>
+   </property>
+  </action>
+  <action name="actionShowView_Toolbar_Case_Snesitive">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>T&amp;oolbar Case Snesitive</string>
+   </property>
+  </action>
+  <action name="actionShowView_Toolbar_Advanced_Setting">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Too&amp;lbar Advanced Setting</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
@@ -859,7 +920,7 @@ QMainWindow::separator:hover {
     </hint>
     <hint type="destinationlabel">
      <x>428</x>
-     <y>714</y>
+     <y>618</y>
     </hint>
    </hints>
   </connection>
@@ -886,8 +947,8 @@ QMainWindow::separator:hover {
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>870</x>
-     <y>125</y>
+     <x>994</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
      <x>135</x>
@@ -924,6 +985,118 @@ QMainWindow::separator:hover {
     <hint type="destinationlabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Database_Dock</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockWidget_uuid</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>557</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_SQL_Command_Preview_Dock</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockWidget_sqlcmd</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Search_Dock</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockWidget_search</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Search_Settings_Dock</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>dockWidget_search_settings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Toolbar</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>mainToolBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>48</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Toolbar_Advanced_Setting</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>toolBar_2</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>813</x>
+     <y>48</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowView_Toolbar_Case_Snesitive</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>toolBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>535</x>
+     <y>48</y>
     </hint>
    </hints>
   </connection>

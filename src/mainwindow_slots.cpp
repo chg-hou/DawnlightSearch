@@ -111,72 +111,81 @@ void MainWindow::_show_dialog_change_excluded_folders(){
 void MainWindow::retranslate_whole_ui()
 {
     ui->retranslateUi(this);
-    {
-        QStringList DB_HEADER_LABEL_tr;
-        for(const QString & str: DB_HEADER_LABEL){
-            std::string s2 = str.toStdString();
-            const char * c3 = s2.c_str();
-            DB_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
-        }
-        model->setHorizontalHeaderLabels(DB_HEADER_LABEL_tr);
-    }
-    {
-        QStringList UUID_HEADER_LABEL_tr;
-        for(const QString & str: UUID_HEADER_LABEL){
-            std::string s2 = str.toStdString();
-            const char * c3 = s2.c_str();
-            UUID_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
-        }
-        ui->tableWidget_uuid->setHorizontalHeaderLabels(UUID_HEADER_LABEL_tr);
-    }
 
+    QStringList DB_HEADER_LABEL_tr;
+    for(const QString & str: DB_HEADER_LABEL){
+        std::string s2 = str.toStdString();
+        const char * c3 = s2.c_str();
+        DB_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
+    }
+    model->setHorizontalHeaderLabels(DB_HEADER_LABEL_tr);
+
+    for(int i=0;i<model->columnCount();i++)
+    {
+        model->horizontalHeaderItem(i)->setToolTip(
+                    model->horizontalHeaderItem(i)->text());
+    }
+//    model->horizontalHeaderItem(DB_HEADER.IsFolder)->setText("");
+//    model->horizontalHeaderItem(DB_HEADER.IsFolder)->setIcon(QIcon::fromTheme("folder"));
+
+    QStringList UUID_HEADER_LABEL_tr;
+    for(const QString & str: UUID_HEADER_LABEL){
+        std::string s2 = str.toStdString();
+        const char * c3 = s2.c_str();
+        UUID_HEADER_LABEL_tr<<QCoreApplication::translate("ui",c3);
+    }
+    ui->tableWidget_uuid->setHorizontalHeaderLabels(UUID_HEADER_LABEL_tr);
+
+    QTableWidgetItem * major_dnum_header, * minor_dnum_header;
+    major_dnum_header = ui->tableWidget_uuid->horizontalHeaderItem(UUID_HEADER.major_dnum);
+    minor_dnum_header = ui->tableWidget_uuid->horizontalHeaderItem(UUID_HEADER.minor_dnum);
+
+    major_dnum_header->setToolTip(major_dnum_header->text());
+    minor_dnum_header->setToolTip(minor_dnum_header->text());
+
+    // 1. copy label to tooltip firstly
+    for(int i=0;i<ui->tableWidget_uuid->columnCount();i++)
+    {
+        ui->tableWidget_uuid->horizontalHeaderItem(i)->setToolTip(
+                    ui->tableWidget_uuid->horizontalHeaderItem(i)->text());
+    }
+    ui->tableWidget_uuid->horizontalHeaderItem(UUID_HEADER.major_dnum)->setText("Ⓜ");
+    ui->tableWidget_uuid->horizontalHeaderItem(UUID_HEADER.minor_dnum)->setText("ⓜ");
+
+    // 2. add tr(tooltip) behind
+    for(int i=0;i<ui->tableWidget_uuid->columnCount();i++)
+    {
+        std::string s2 = UUID_HEADER_TOOLTIP[i].toStdString();
+        const char * c3 = s2.c_str();
+        ui->tableWidget_uuid->horizontalHeaderItem(i)->setToolTip(
+                    ui->tableWidget_uuid->horizontalHeaderItem(i)->toolTip() + '\n' +
+                    QCoreApplication::translate("ui", c3 )  );
+    }
 }
 
 // TODO: clean up
 void  MainWindow::change_language_auto(){
-
-    QTranslator translator;
-    QString lang = QLocale::system().name();
-
-    QString lang_path = ":/lang/"+ lang+ ".qm";
-    if (!QFile::exists(lang_path))
-    {
-        qDebug()<<"lang file missing: " + lang_path;
-        translator.load(lang_path);
-        QCoreApplication * app = QCoreApplication::instance();
-        app->installTranslator(&translator);
-    }
-    retranslate_whole_ui();
-    QSettings settings(QSettings::IniFormat,QSettings::UserScope,
-                       ORGANIZATION_NAME,ALLICATION_NAME);
-    settings.setValue("Language/language", "auto");
-
+    _change_language("auto");
 }
 
 void  MainWindow::_change_language(QString lang){
-    QTranslator translator;
-    QString lang_path = ":/lang/"+ lang+ ".qm";
-    translator.load(lang_path);
-    QCoreApplication * app = QCoreApplication::instance();
-    app->installTranslator(&translator);
-    retranslate_whole_ui();
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,
                        ORGANIZATION_NAME,ALLICATION_NAME);
     settings.setValue("Language/language", lang);
+
+    if (lang == "auto")
+        lang = QLocale::system().name();
+    if(!translator.load("translate_"+ lang, ":/lang"))
+        qDebug()<<"lang file missing: " + lang;
+
+    QCoreApplication * app = QCoreApplication::instance();
+    app->installTranslator(&translator);
+    retranslate_whole_ui();
 }
 
 void  MainWindow::change_language_English(){
-    QTranslator translator;
-    QString lang_path = "";
-    translator.load(lang_path);
-    QCoreApplication * app = QCoreApplication::instance();
-    app->installTranslator(&translator); // ?
-    app->removeTranslator(&translator);
-    retranslate_whole_ui();
-    QSettings settings(QSettings::IniFormat,QSettings::UserScope,
-                       ORGANIZATION_NAME,ALLICATION_NAME);
-    settings.setValue("Language/language", "en_US");
-};
+    _change_language("en_US");
+}
 void  MainWindow::change_language_zh_CN(){
     _change_language("zh_CN");
 }
@@ -199,3 +208,36 @@ void MainWindow::_toggle_C_MFT_parser(bool enable_C_MFT_parser){
     settings.setValue("Use_CPP_MFT_parser",USE_MFT_PARSER_CPP);
     settings.sync();
 }
+
+void MainWindow::_on_menu_view_aboutToShown(){
+    ui->actionShowView_Database_Dock->setChecked(ui->dockWidget_uuid->isVisible());
+    ui->actionShowView_Search_Dock->setChecked(ui->dockWidget_search->isVisible());
+    ui->actionShowView_Search_Settings_Dock->setChecked(ui->dockWidget_search_settings->isVisible());
+    ui->actionShowView_SQL_Command_Preview_Dock->setChecked(ui->dockWidget_sqlcmd->isVisible());
+
+    ui->actionShowView_Toolbar->setChecked(ui->mainToolBar->isVisible());
+    ui->actionShowView_Toolbar_Advanced_Setting->setChecked(ui->toolBar_2->isVisible());
+    ui->actionShowView_Toolbar_Case_Snesitive->setChecked(ui->toolBar->isVisible());
+}
+//void  MainWindow::_on_actionShowView_Database_Dock_toggled(bool ){
+//    ui->dockWidget_uuid->setVisible(!ui->dockWidget_uuid->isVisible());
+//}
+//void  MainWindow::_on_actionShowView_Search_Dock_toggled(bool ){
+//    ui->dockWidget_search->setVisible(!ui->dockWidget_search->isVisible());
+//}
+//void  MainWindow::_on_actionShowView_Search_Settings_Dock_toggled(bool ){
+//    ui->dockWidget_search_settings->setVisible(!ui->dockWidget_search_settings->isVisible());
+//}
+//void  MainWindow::_on_actionShowView_SQL_Command_Preview_Dock_toggled(bool ){
+//    ui->dockWidget_sqlcmd->setVisible(!ui->dockWidget_sqlcmd->isVisible());
+//}
+
+//void  MainWindow::_on_actionShowView_Toolbar_toggled(bool ){
+//    ui->mainToolBar->setVisible(!ui->mainToolBar->isVisible());
+//}
+//void  MainWindow::_on_actionShowView_Toolbar_Advanced_Setting_toggled(bool ){
+//    ui->toolBar_2->setVisible(!ui->toolBar_2->isVisible());
+//}
+//void  MainWindow::_on_actionShowView_Toolbar_Case_Snesitive_toggled(bool ){
+//    ui->toolBar->setVisible(!ui->toolBar->isVisible());
+//}

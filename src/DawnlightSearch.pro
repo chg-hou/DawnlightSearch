@@ -61,7 +61,8 @@ SOURCES += \
     mainwindow_table_action.cpp \
     ui_change_advanced_setting_dialog.cpp \
     ui_change_excluded_folder_dialog.cpp \
-    DB_Builder/mft_parser.cpp
+    DB_Builder/mft_parser.cpp \
+    Result_Item_Model/my_qstandarditemmodel.cpp
 
 HEADERS += \
     MainWindow.h \
@@ -76,7 +77,8 @@ HEADERS += \
     UI_delegate/html_delegate.h \
     ui_change_advanced_setting_dialog.h \
     ui_change_excluded_folder_dialog.h \
-    DB_Builder/mft_parser.h
+    DB_Builder/mft_parser.h \
+    Result_Item_Model/my_qstandarditemmodel.h
 
 FORMS += \
         Ui_mainwindow.ui \
@@ -88,19 +90,20 @@ RESOURCES += \
 
 STATECHARTS +=
 
-DISTFILES += \
-    uml.txt \
-    model_chart_close_event.qmodel \
-    model_chart_update_db.qmodel \
-    model_chart_update_db_copy.qmodel \
-    model_chart_query.qmodel \
-    model_chart_start.qmodel \
-    translate_zh_CN.ts
 
-
+# translation guide:
+# 1. edit following output file
+# 2. click Tools > External > Linguist > Update
+# 3. translate .ts file in /lang
+# 4. click Tools > External > Linguist > Release
 TRANSLATIONS    =     \
-    translate_EN.ts \
-    translate_zh_CN.ts
+    lang/translate_en_US.ts \
+    lang/translate_zh_CN.ts
+
+#DISTFILES += \
+RESOURCES += \
+    lang/translate_en_US.qm \
+    lang/translate_zh_CN.qm
 
 QTPLUGIN     +=  qsqlite
 # CONFIG += static
@@ -133,3 +136,18 @@ lessThan(QT_VERSION, QT_VERSION_CHECK(5, 10, 0))
     # https://blog.minidump.info/2016/06/qt-sqlite-plugin-supports-regexp-select/
 }
 
+DISTFILES += \
+    uml.txt \
+    model_chart_close_event.qmodel \
+    model_chart_update_db.qmodel \
+    model_chart_update_db_copy.qmodel \
+    model_chart_query.qmodel \
+    model_chart_start.qmodel \
+    lang/translate_en_US.qm \
+    lang/translate_zh_CN.qm \
+    lang/translate_en_US.ts \
+    lang/translate_zh_CN.ts
+
+# Recognized as shared library and won't run it by clicking
+# Thanks revast@github for the solution
+QMAKE_LFLAGS += -no-pie

@@ -108,6 +108,8 @@ struct AppLauncher{
 #include "ui_change_excluded_folder_dialog.h"
 // (copy from python version) ? qt bug: cannot set different values for display and user roles.
 
+#include "Result_Item_Model/my_qstandarditemmodel.h"
+
 struct ResultTableRow{
     // row_to_insert<< filename << path<< fullpath <<isfolder;
     QString filename;
@@ -130,6 +132,16 @@ protected:
       bool eventFilter(QObject *obj, QEvent *event) ;
 
 public slots:
+
+      void _on_menu_view_aboutToShown();
+
+//    void _on_actionShowView_Database_Dock_toggled(bool);
+//    void _on_actionShowView_Search_Dock_toggled(bool);
+//    void _on_actionShowView_Search_Settings_Dock_toggled(bool);
+//    void _on_actionShowView_SQL_Command_Preview_Dock_toggled(bool);
+//    void _on_actionShowView_Toolbar_toggled(bool);
+//    void _on_actionShowView_Toolbar_Advanced_Setting_toggled(bool);
+//    void _on_actionShowView_Toolbar_Case_Snesitive_toggled(bool);
 
     void _on_push_button_updatedb_clicked();
     void _on_push_button_stopupdatedb_clicked();
@@ -257,6 +269,7 @@ public:
     void _change_language(QString );
 
     QList<QStringList> get_search_included_uuid();
+    QTranslator translator;
 
 private:
 

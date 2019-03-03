@@ -16,6 +16,7 @@
 #include <QSettings>
 #include <QDir>
 #include <QObject>
+#include <QCoreApplication>
 
 #define CONST_SQL_TEXT_FORMAT_CACHE_SIZE  200
 #define ICON_TEXT_SHIFT_COEFF 0.8
@@ -100,6 +101,7 @@ public:
     const int len=12;
 };
 extern QStringList UUID_HEADER_LABEL;
+extern QStringList UUID_HEADER_TOOLTIP;
 
 extern const QUERY_HEADER_class QUERY_HEADER;
 extern DB_HEADER_class DB_HEADER;

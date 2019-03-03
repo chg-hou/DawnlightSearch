@@ -25,8 +25,7 @@
         <file>ui/icon/user-home.png</file>
         <file>ui/icon/user-trash.png</file>
         <file>ui/icon/dialog-ok.png</file>
+        <file>ui/icon/application-x-zerosize.svg</file>
     </qresource>
-    <qresource prefix="/">
-        <file>lang/zh_CN.qm</file>
-    </qresource>
+    <qresource prefix="/"/>
 </RCC>

@@ -61,26 +61,19 @@ int main(int argc, char *argv[])
             }
         }
 
+        QApplication a(argc, argv);
+        MainWindow w;
 
-        QTranslator translator;
         QString lang = settings.value("Language/language","auto").toString();
+
         if (lang =="auto")
             lang = QLocale::system().name();
-
-        QString lang_path = ":/lang/"+ lang+ ".qm";
-        //                 ":/lang/zh_CN.qm"
-        if (!QFile(lang_path).exists())
-            qDebug()<<"lang file missing: " + lang_path;
-        translator.load(lang_path);
-
-
-        QApplication a(argc, argv);
+        if(!w.translator.load("translate_"+ lang, ":/lang"))
+            qDebug()<<"lang file missing: " + lang;
 
         // ===========
-        a.installTranslator(&translator);
-        // ===========
-
-        MainWindow w;
+        a.installTranslator(&(w.translator));
+        // ===========       
         w.show();
 
         // ===========

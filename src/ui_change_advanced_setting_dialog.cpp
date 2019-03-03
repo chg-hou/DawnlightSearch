@@ -80,6 +80,14 @@ Dialog_Advanced_Setting::Dialog_Advanced_Setting(QWidget *parent):QDialog(parent
         comboBox_threads_for_querying->setCurrentIndex(query_thread);
 
     checkBox_compress_db_file->setChecked(COMPRESS_DB_FILE);
+
+    lineEdit_ThemeName->setText(settings.value("General/Theme_Name", QIcon::themeName()).toString());
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+    lineEdit_Fallback_ThemeName->setText(settings.value("General/Fallback_Theme_Name", QIcon::fallbackThemeName()).toString());
+#else
+    // lineEdit_Fallback_ThemeName->setText(settings.value("General/Fallback_Theme_Name", QIcon::themeName()).toString());
+    lineEdit_Fallback_ThemeName->setDisabled(true);
+#endif
 }
 
 
@@ -178,6 +186,17 @@ bool Dialog_Advanced_Setting::getSettings(QWidget * parent)
 
         COMPRESS_DB_FILE = dialog.checkBox_compress_db_file->isChecked();
         settings.setValue("Compress_DB_File", COMPRESS_DB_FILE);
+
+        QString themename = dialog.lineEdit_ThemeName->text();
+        QString fallback_themename = dialog.lineEdit_Fallback_ThemeName->text();
+
+        settings.setValue("General/Theme_Name", themename);
+        settings.setValue("General/Fallback_Theme_Name", fallback_themename);
+
+        QIcon::setThemeName(themename);
+    #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        QIcon::setFallbackThemeName(fallback_themename);
+    #endif
 
         settings.sync();
         return true;
