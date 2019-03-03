@@ -1,6 +1,6 @@
 
 default:
-	lsblak --version
+	lsblk --version
 	if [ $? -ne 0 ]
 	then
 		echo lsblk command, which is part of the util-linux, not found.
