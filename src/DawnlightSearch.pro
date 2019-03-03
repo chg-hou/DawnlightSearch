@@ -151,12 +151,4 @@ DISTFILES += \
 # Recognized as shared library and won't run it by clicking
 # Thanks revast@github for the solution
 # ? no work in gcc 4.8
-# QMAKE_LFLAGS += -no-pie
-linux-g++ {
-    system( g++ -no-pie | grep -e "no-pie" ) {
-        message( "older gcc version found, not supported no-pie" )
-    }
-    else  {
-        QMAKE_LFLAGS += -no-pie
-    }
-}
+QMAKE_LFLAGS += -no-pie
