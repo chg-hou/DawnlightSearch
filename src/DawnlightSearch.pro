@@ -150,4 +150,5 @@ DISTFILES += \
 
 # Recognized as shared library and won't run it by clicking
 # Thanks revast@github for the solution
-QMAKE_LFLAGS += -no-pie
+# ? no work in gcc 4.8
+# QMAKE_LFLAGS += -no-pie
