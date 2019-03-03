@@ -1,6 +1,8 @@
 #include "html_delegate.h"
 #include <algorithm>
 
+QIcon fallback_file_icon;
+
 QIcon build_qicon(QString filename, bool IsFolder) // int size = 32
 {
     QString iconname;
@@ -11,7 +13,8 @@ QIcon build_qicon(QString filename, bool IsFolder) // int size = 32
         QMimeType type = QMimeDatabase().mimeTypeForFile(filename, QMimeDatabase::MatchExtension);
         iconname = type.iconName();
     }
-    QIcon icon = QIcon::fromTheme(iconname);
+
+    QIcon icon = QIcon::fromTheme(iconname, fallback_file_icon);
     return icon;
 }
 QString size_to_str(QString value_in, QString unit = SIZE_UNIT)
@@ -55,6 +58,7 @@ QString size_to_str(QString value_in, QString unit = SIZE_UNIT)
 HTMLDelegate::HTMLDelegate(QStandardItemModel *model_in)
 {
     model = model_in;
+    fallback_file_icon = QIcon(QPixmap(":/icon/ui/icon/application-x-zerosize.svg"));
 }
 inline QString html_escape_and_bold(    QString html)
 {
