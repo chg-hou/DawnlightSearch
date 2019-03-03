@@ -27,5 +27,8 @@
         <file>ui/icon/dialog-ok.png</file>
         <file>ui/icon/application-x-zerosize.svg</file>
     </qresource>
-    <qresource prefix="/"/>
+    <qresource prefix="/">
+        <file>lang/translate_en_US.qm</file>
+        <file>lang/translate_zh_CN.qm</file>
+    </qresource>
 </RCC>

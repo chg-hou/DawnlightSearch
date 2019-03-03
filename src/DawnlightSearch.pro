@@ -101,9 +101,9 @@ TRANSLATIONS    =     \
     lang/translate_zh_CN.ts
 
 #DISTFILES += \
-RESOURCES += \
-    lang/translate_en_US.qm \
-    lang/translate_zh_CN.qm
+#RESOURCES += \
+#    lang/translate_en_US.qm \
+#    lang/translate_zh_CN.qm
 
 QTPLUGIN     +=  qsqlite
 # CONFIG += static
