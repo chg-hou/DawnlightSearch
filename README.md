@@ -42,7 +42,8 @@ __The app is still under development and not stable. Comments and pull requests 
   - Quick file indexing for NTFS partition by parsing master file table (MFT).
   - Customizable **dock widget** design.
   - **Multi-threaded** search. 
-
+  - **Drag&drop** search results. (v0.1.2.2)
+  
 ## Video demo:
 
 [https://youtu.be/949Jm9j4sP4](https://youtu.be/949Jm9j4sP4)
