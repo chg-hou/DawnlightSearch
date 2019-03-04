@@ -12,7 +12,7 @@ default:
 
 	
 install_ubuntu_dep:
-	sudo apt install qt5-qmake kio-dev libsqlite3-dev -y
+	sudo apt install qt5-qmake kio-dev libsqlite3-dev util-linux -y
 	
 	
 install:
