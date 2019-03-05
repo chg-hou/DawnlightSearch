@@ -88,6 +88,8 @@ Dialog_Advanced_Setting::Dialog_Advanced_Setting(QWidget *parent):QDialog(parent
     // lineEdit_Fallback_ThemeName->setText(settings.value("General/Fallback_Theme_Name", QIcon::themeName()).toString());
     lineEdit_Fallback_ThemeName->setDisabled(true);
 #endif
+
+    lineEdit_excluded_mount_path_regex->setText(settings.value("Database/Excluded_Mount_Path_Regex", DEFAULT_EXCLUDED_MOUNT_PATH_RE_STRING).toString());
 }
 
 
@@ -197,6 +199,9 @@ bool Dialog_Advanced_Setting::getSettings(QWidget * parent)
     #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         QIcon::setFallbackThemeName(fallback_themename);
     #endif
+
+        settings.setValue("Database/Excluded_Mount_Path_Regex", dialog.lineEdit_excluded_mount_path_regex->text());
+        EXCLUDED_MOUNT_PATH_RE.setPattern(dialog.lineEdit_excluded_mount_path_regex->text());
 
         settings.sync();
         return true;

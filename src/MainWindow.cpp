@@ -7,8 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 //    ui->centralWidget->hide();
-    device_mounted_icon = QIcon(QPixmap(":/icon/ui/icon/dev-harddisk.png"));
-    device_unmounted_icon = QIcon(QPixmap(":/icon/ui/icon/tab-close-other.png"));
+    device_mounted_icon = QIcon(QPixmap(":/icon/ui/icon/device-mounted.svg"));
+    device_unmounted_icon = QIcon(QPixmap(":/icon/ui/icon/device-unmounted.svg"));
 
 
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,
@@ -162,7 +162,7 @@ MainWindow::MainWindow(QWidget *parent) :
     INSTANT_SEARCH = settings.value("Search/Instant_Search", True).toBool();
 
     //# load excluded UUID
-    EXCLUDED_UUID = settings.value("Excluded_UUID",DEFAULT_EXCLUDED_UUID).toStringList();
+    HIDDEN_UUID = settings.value("Excluded_UUID",DEFAULT_HIDDEN_UUID).toStringList();
     ui->actionShow_All->setChecked(settings.value("Excluded_UUID_Visible", True).toBool());
 
     // threads used for querying
@@ -225,6 +225,8 @@ MainWindow::MainWindow(QWidget *parent) :
 #endif
 //    qDebug()<<" QIcon::themeName   "<< QIcon::themeName();
 //    qDebug()<<" QIcon::themeName   "<< QIcon::themeSearchPaths();
+    EXCLUDED_MOUNT_PATH_RE.setPattern(
+        settings.value("Database/Excluded_Mount_Path_Regex", DEFAULT_EXCLUDED_MOUNT_PATH_RE_STRING).toString() );
 }
 
 
@@ -656,7 +658,7 @@ void MainWindow::closeEvent(QCloseEvent *event){
     // TODO : self.distribute_query_thread.quit()
 
 
-    settings.setValue("Excluded_UUID", EXCLUDED_UUID);
+    settings.setValue("Excluded_UUID", HIDDEN_UUID);
     settings.setValue("Excluded_UUID_Visible", ui->actionShow_All->isChecked());
 
     QList<int> width_list_result;
@@ -807,7 +809,7 @@ void MainWindow::action_uuid_show_all(bool checked){
         else{
             QString uuid = ui->tableWidget_uuid->item(row,
                                                       UUID_HEADER.uuid)->text();
-            if (EXCLUDED_UUID.contains(uuid))
+            if (HIDDEN_UUID.contains(uuid))
                 ui->tableWidget_uuid->setRowHidden(row, true);
         }
     }
@@ -819,8 +821,8 @@ void MainWindow::action_uuid_show_uuid(){
         temp_font.setItalic(false);
         item->setFont(temp_font);
         if (item->column() == UUID_HEADER.uuid)
-            if (EXCLUDED_UUID.contains(item->text()))
-                EXCLUDED_UUID.removeAll(item->text());
+            if (HIDDEN_UUID.contains(item->text()))
+                HIDDEN_UUID.removeAll(item->text());
     }
 }
 
@@ -833,7 +835,7 @@ void MainWindow::action_uuid_hide_uuid(){
         if (item->column() == UUID_HEADER.uuid)
         {
             QString uuid = item->text();
-            EXCLUDED_UUID.append(uuid);
+            HIDDEN_UUID.append(uuid);
             if (! ui->actionShow_All->isChecked())
                 ui->tableWidget_uuid->setRowHidden(item->row(),true);
         }

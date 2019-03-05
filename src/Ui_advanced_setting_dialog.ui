@@ -26,7 +26,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="usesScrollButtons">
       <bool>true</bool>
@@ -606,6 +606,20 @@
           <string>Compress  the database file (using zlib) to save disk space when programe is closed</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Regular Expression to Exclude Mount Path:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_excluded_mount_path_regex"/>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer_2">

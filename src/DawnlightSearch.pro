@@ -160,3 +160,16 @@ linux-g++ {
         QMAKE_LFLAGS += -no-pie
     }
 }
+CONFIG(debug, debug|release) {
+  message( "debug" )
+}
+CONFIG(release, debug|release) {
+    message( "release" )
+    system( which upx | grep -e "upx" ) {
+        message( "upx found" )
+        QMAKE_POST_LINK += upx -9 -v $${TARGET}
+    }
+    else  {
+        message( "upx not found" )
+    }
+}

@@ -17,6 +17,7 @@
 #include <QDir>
 #include <QObject>
 #include <QCoreApplication>
+#include <QRegularExpression>
 
 #define CONST_SQL_TEXT_FORMAT_CACHE_SIZE  200
 #define ICON_TEXT_SHIFT_COEFF 0.8
@@ -37,8 +38,10 @@ extern long PROGRESS_STEP;
 extern bool SKIP_DIFF_DEV;
 extern QString SIZE_UNIT;
 extern bool INSTANT_SEARCH;
-extern QStringList EXCLUDED_UUID;
-extern QStringList DEFAULT_EXCLUDED_UUID;
+extern QStringList HIDDEN_UUID;
+extern QStringList DEFAULT_HIDDEN_UUID;
+extern QRegularExpression EXCLUDED_MOUNT_PATH_RE;
+extern QString DEFAULT_EXCLUDED_MOUNT_PATH_RE_STRING;
 
 extern QString DATABASE_FILE_NAME;
 extern QString PATH_OF_SETTING_FILE;

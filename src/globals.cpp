@@ -20,10 +20,16 @@ QString DATETIME_FORMAT = "d/M/yyyy h:m:s";
 bool SKIP_DIFF_DEV;
 QString SIZE_UNIT;
 bool INSTANT_SEARCH;
-QStringList EXCLUDED_UUID;
+QStringList HIDDEN_UUID;
 // TODO: check this
-QStringList DEFAULT_EXCLUDED_UUID = { "0:0","0:1" };
-
+QStringList DEFAULT_HIDDEN_UUID = { "loop0", "loop1", "loop2", "loop3", "loop4", "loop5", "loop6",
+                                      "loop7", "loop8", "loop9", "loop10", "loop11", "loop12", "loop13",
+                                      "/dev", "/dev/hugepages","/dev/mqueue","/dev/pts","/dev/shm",
+                                      "/proc","/proc/sys/fs/binfmt_misc",
+                                      "/run","/run/lock","/run/rpc_pipefs","/run/user/1000","/run/user/1000/doc",
+                                      "/sys","/sys/firmware/efi/efivars"};
+QRegularExpression EXCLUDED_MOUNT_PATH_RE;
+QString DEFAULT_EXCLUDED_MOUNT_PATH_RE_STRING = "/snap/.*|/loop\\d|/aa\\d|/run|/run/.*|/sys|/sys/.*|/dev.*|/proc|/proc/.*";
 
 const QUERY_HEADER_class QUERY_HEADER;
 DB_HEADER_class DB_HEADER;
@@ -59,7 +65,7 @@ QStringList UUID_HEADER_LABEL = {
                          "Update","Progress"
 };
 QStringList UUID_HEADER_TOOLTIP_for_tr = {
-    QCoreApplication::translate("ui",    "Check to search this device."    ),
+    QCoreApplication::translate("ui",    "Check to search this device. The icon indicates the mount state."    ),
     QCoreApplication::translate("ui",    "Path where the device is mounted."    ),
     QCoreApplication::translate("ui",    "Device label."    ),
     QCoreApplication::translate("ui",    "Universally unique identifier (UUID)."    ),
@@ -73,7 +79,7 @@ QStringList UUID_HEADER_TOOLTIP_for_tr = {
     QCoreApplication::translate("ui",    "Update progress"    )
 };
 QStringList UUID_HEADER_TOOLTIP = {
-    "Check to search this device.",
+    "Check to search this device. The icon indicates the mount state.",
     "Path where the device is mounted.",
     "Device label.",
     "Universally unique identifier (UUID).",

@@ -20,7 +20,7 @@
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="64"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="643"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="657"/>
         <source>(Auto)</source>
         <translation></translation>
     </message>
@@ -92,9 +92,9 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="356"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="498"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="823"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="888"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="953"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="837"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="967"/>
         <source>ms</source>
         <translation></translation>
     </message>
@@ -207,92 +207,97 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="627"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
+        <source>Regular Expression to Exclude Mount Path:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
         <source>Result Table</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="635"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
         <source>Prefered Size Unit:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="648"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="653"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="658"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="663"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="668"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="673"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="698"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="705"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains a &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt; Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="716"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
         <source>Fallback Theme Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="723"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
         <source>FallbackThemeName was introduced in Qt 5.12.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="732"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains an &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt;Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="756"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
         <source>UUID Table</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="764"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
         <source>Timer Interval</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="772"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="786"/>
         <source>Mount-state Update:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="837"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="851"/>
         <source>Rows Update:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
         <translation></translation>
     </message>
@@ -616,8 +621,8 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../ui_change_advanced_setting_dialog.cpp" line="116"/>
-        <location filename="../ui_change_advanced_setting_dialog.cpp" line="127"/>
+        <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
+        <location filename="../ui_change_advanced_setting_dialog.cpp" line="129"/>
         <source>Select Directory of Database File</source>
         <translation></translation>
     </message>
@@ -687,12 +692,12 @@
 <context>
     <name>statusbar</name>
     <message>
-        <location filename="../MainWindow.cpp" line="278"/>
+        <location filename="../MainWindow.cpp" line="280"/>
         <source>Loading...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="733"/>
+        <location filename="../MainWindow.cpp" line="735"/>
         <source>Exclude folders from indexing.</source>
         <translation></translation>
     </message>
@@ -720,184 +725,184 @@
 <context>
     <name>ui</name>
     <message>
-        <location filename="../MainWindow.cpp" line="259"/>
+        <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="260"/>
+        <location filename="../MainWindow.cpp" line="262"/>
         <source>Appname: </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="261"/>
+        <location filename="../MainWindow.cpp" line="263"/>
         <source>PID: </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="262"/>
+        <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="266"/>
+        <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="42"/>
+        <location filename="../globals.cpp" line="48"/>
         <source>Search</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="43"/>
+        <location filename="../globals.cpp" line="49"/>
         <source>Mount Path</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="44"/>
+        <location filename="../globals.cpp" line="50"/>
         <source>Label</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="45"/>
+        <location filename="../globals.cpp" line="51"/>
         <source>UUID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="46"/>
+        <location filename="../globals.cpp" line="52"/>
         <source>Alias</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="47"/>
+        <location filename="../globals.cpp" line="53"/>
         <source>FS Type</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="48"/>
+        <location filename="../globals.cpp" line="54"/>
         <source>Dev name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="49"/>
+        <location filename="../globals.cpp" line="55"/>
         <source>Major Device Num</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="50"/>
+        <location filename="../globals.cpp" line="56"/>
         <source>Minor Device Num</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="51"/>
+        <location filename="../globals.cpp" line="57"/>
         <source>Items</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="52"/>
+        <location filename="../globals.cpp" line="58"/>
         <source>Update</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="53"/>
+        <location filename="../globals.cpp" line="59"/>
         <source>Progress</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="62"/>
-        <source>Check to search this device.</source>
-        <translation></translation>
+        <location filename="../globals.cpp" line="68"/>
+        <source>Check to search this device. The icon indicates the mount state.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="63"/>
+        <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="64"/>
+        <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="65"/>
+        <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="66"/>
+        <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="67"/>
+        <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="68"/>
+        <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="69"/>
-        <location filename="../globals.cpp" line="70"/>
+        <location filename="../globals.cpp" line="75"/>
+        <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="71"/>
+        <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="72"/>
+        <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="73"/>
+        <location filename="../globals.cpp" line="79"/>
         <source>Update progress</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="94"/>
+        <location filename="../globals.cpp" line="100"/>
         <source>Filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="95"/>
+        <location filename="../globals.cpp" line="101"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="96"/>
+        <location filename="../globals.cpp" line="102"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="97"/>
+        <location filename="../globals.cpp" line="103"/>
         <source>Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="98"/>
+        <location filename="../globals.cpp" line="104"/>
         <source>Extension</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="99"/>
+        <location filename="../globals.cpp" line="105"/>
         <source>Access Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="100"/>
+        <location filename="../globals.cpp" line="106"/>
         <source>Modify Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../globals.cpp" line="101"/>
+        <location filename="../globals.cpp" line="107"/>
         <source>Change Time</source>
         <translation type="unfinished"></translation>
     </message>

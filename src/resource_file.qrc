@@ -4,7 +4,6 @@
         <file>ui/icon/applications-internet.png</file>
         <file>ui/icon/dashboard-show.png</file>
         <file>ui/icon/DawnlightSearch.png</file>
-        <file>ui/icon/dev-harddisk.png</file>
         <file>ui/icon/document-open-folder.png</file>
         <file>ui/icon/document-preview.png</file>
         <file>ui/icon/emblem-unreadable.png</file>
@@ -20,12 +19,13 @@
         <file>ui/icon/system-reboot.png</file>
         <file>ui/icon/system-run.png</file>
         <file>ui/icon/system-suspend.png</file>
-        <file>ui/icon/tab-close-other.png</file>
         <file>ui/icon/trash-empty.png</file>
         <file>ui/icon/user-home.png</file>
         <file>ui/icon/user-trash.png</file>
         <file>ui/icon/dialog-ok.png</file>
         <file>ui/icon/application-x-zerosize.svg</file>
+        <file>ui/icon/device-mounted.svg</file>
+        <file>ui/icon/device-unmounted.svg</file>
     </qresource>
     <qresource prefix="/">
         <file>lang/translate_en_US.qm</file>

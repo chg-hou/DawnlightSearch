@@ -62,7 +62,7 @@ QMimeData* MyQStandardItemModel::mimeData(const QModelIndexList& indexes) const
     return mimeData;
 }
 
-bool MyQStandardItemModel::dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent)
+bool MyQStandardItemModel::dropMimeData(const QMimeData *data, Qt::DropAction , int , int , const QModelIndex &)
 {
     qDebug()<<"text: "<<data->text();
     qDebug()<<"formats: "<<data->formats();

@@ -20,7 +20,7 @@ void MainWindow::refresh_table_uuid_from_db_slot(QList<QVariantList> rst){
             ui->tableWidget_uuid->insertRow(ui->tableWidget_uuid->rowCount());
             row = ui->tableWidget_uuid->rowCount()-1;
         }
-        bool uuid_excluded_flag = EXCLUDED_UUID.contains(varlist[UUID_HEADER.uuid].toString());
+        bool uuid_excluded_flag = HIDDEN_UUID.contains(varlist[UUID_HEADER.uuid].toString());
         for(int idx=0; idx< varlist.length();idx++){
             QVariant col = varlist[idx];
             //            if (col.isNull())
@@ -40,7 +40,7 @@ void MainWindow::refresh_table_uuid_from_db_slot(QList<QVariantList> rst){
                     newitem->setCheckState(Qt::Checked);
                 else
                     newitem->setCheckState(Qt::Unchecked);
-                newitem->setIcon(QIcon(QPixmap(":/ui/icon/tab-close-other.png")));
+                newitem->setIcon(device_unmounted_icon);
                 newitem->setData(Qt::DisplayRole,0);
                 // hack : hide text
                 QFont temp_font = newitem->font();
@@ -106,7 +106,7 @@ void MainWindow::refresh_table_uuid_mount_state_slot(){
     foreach (const Mnt_Info_Struct & device, Partition_Information::mnt_info) {
         QString uuid = device.uuid;
         long row = _find_row_number_of_uuid(uuid);
-        bool uuid_excluded_flag = EXCLUDED_UUID.contains(uuid);
+        bool uuid_excluded_flag = HIDDEN_UUID.contains(uuid);
 
         if(uuid == "")
         {
