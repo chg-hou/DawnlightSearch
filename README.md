@@ -1,6 +1,3 @@
-__This page is under construction...__
-__some parts are out of date__
-
 # DawnlightSearch
 
 A Linux version of [Everything Search Engine](https://www.voidtools.com/). Support **NTFS indexing**. Show instant results as you type.
@@ -8,15 +5,15 @@ A Linux version of [Everything Search Engine](https://www.voidtools.com/). Suppo
 __The app is still under development and not stable. Comments and pull requests are very appreciated.__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
-         
-<details>
-  <summary>
-   <a href="https://hosted.weblate.org/projects/dawnlightsearch/translations/">
-      <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/svg-badge.svg" alt="Translation status" >
-   </a>
- </summary> 
- <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg"  alt="Translation status"  >  
-</details>
+        
+<a href="https://hosted.weblate.org/projects/dawnlightsearch/translations/">
+<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/svg-badge.svg" alt="Translation status" >
+</a>
+<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg"  alt="Translation status"  >  
+
+## Translation contributors:
+
+(As I accidently modified the settings in weblate, history logs were deteled. Sorry for that.)
 
 ## Similar Everything-like Search Engine in Linux: 
 
