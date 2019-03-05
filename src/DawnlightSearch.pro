@@ -97,8 +97,12 @@ STATECHARTS +=
 # 3. translate .ts file in /lang
 # 4. click Tools > External > Linguist > Release
 TRANSLATIONS    =     \
-    lang/translate_en_US.ts \
+    lang/translate_nl.ts \
+    lang/translate_en.ts \
+    lang/translate_hu.ts \
+    lang/translate_nb_NO.ts \
     lang/translate_zh_CN.ts
+
 
 #DISTFILES += \
 #RESOURCES += \
@@ -143,9 +147,9 @@ DISTFILES += \
     model_chart_update_db_copy.qmodel \
     model_chart_query.qmodel \
     model_chart_start.qmodel \
-    lang/translate_en_US.qm \
+    lang/translate_en.qm \
     lang/translate_zh_CN.qm \
-    lang/translate_en_US.ts \
+    lang/translate_en.ts \
     lang/translate_zh_CN.ts
 
 # Recognized as shared library and won't run it by clicking
@@ -167,6 +171,7 @@ CONFIG(release, debug|release) {
     message( "release" )
     system( which upx | grep -e "upx" ) {
         message( "upx found" )
+#        # upx will break AppImage
 #        QMAKE_POST_LINK += upx -9 -v $${TARGET}
     }
     else  {

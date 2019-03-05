@@ -183,14 +183,21 @@ void  MainWindow::_change_language(QString lang){
     retranslate_whole_ui();
 }
 
+void  MainWindow::change_language_nl(){
+    _change_language("nl");
+}
 void  MainWindow::change_language_English(){
-    _change_language("en_US");
+    _change_language("en");
+}
+void  MainWindow::change_language_hu(){
+    _change_language("hu");
+}
+void  MainWindow::change_language_nb_NO(){
+    _change_language("nb_NO");
 }
 void  MainWindow::change_language_zh_CN(){
     _change_language("zh_CN");
 }
-
-
 
 void MainWindow::_toggle_use_MFT_parser(bool enable_MFT_parser){
     USE_MFT_PARSER  = enable_MFT_parser;

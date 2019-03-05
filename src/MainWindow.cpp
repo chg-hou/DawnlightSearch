@@ -783,8 +783,14 @@ void MainWindow::__init_connect_menu_action(){
 
     connect(ui->actionLanguage_Auto, SIGNAL(triggered(bool)),
             this, SLOT(change_language_auto()));
+    connect(ui->actionLanguage_Dutch, SIGNAL(triggered(bool)),
+            this, SLOT(change_language_nl()));
     connect(ui->actionLanguage_English, SIGNAL(triggered(bool)),
             this, SLOT(change_language_English()));
+    connect(ui->actionLanguage_Hungarian, SIGNAL(triggered(bool)),
+            this, SLOT(change_language_hu()));
+    connect(ui->actionLanguage_Norwegian_Bokmal, SIGNAL(triggered(bool)),
+            this, SLOT(change_language_nb_NO()));
     connect(ui->actionLanguage_Simplified_Chinese, SIGNAL(triggered(bool)),
             this, SLOT(change_language_zh_CN()));
 

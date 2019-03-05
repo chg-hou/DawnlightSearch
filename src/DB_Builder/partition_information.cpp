@@ -104,7 +104,7 @@ bool Partition_Information::refresh_state(){
     QProcess process;
     //  -s, --inverse        inverse dependencies
     //  -d, --nodeps         don't print slaves or holders
-    process.start(lsblk_prefix_path + "lsblk -o MOUNTPOINT,LABEL,UUID,FSTYPE,name,MAJ:MIN -J -s -d");
+    process.start(lsblk_prefix_path + "lsblk -o MOUNTPOINT,LABEL,UUID,PARTUUID,FSTYPE,name,MAJ:MIN -J -s -d");
     process.waitForFinished(-1); // will wait forever until finished
 
     QString stdout = process.readAllStandardOutput();
@@ -132,10 +132,11 @@ bool Partition_Information::refresh_state(){
             QJsonObject obj = val.toObject();
             QString path = obj["mountpoint"].toString();
             QString label = obj["label"].toString();
-            QString uuid = obj["uuid"].toString();
+            QString uuid = obj["uuid"].toString() +":"+ obj["partuuid"].toString();
             QString fstype = obj["fstype"].toString();
             QString name = obj["name"].toString();
 
+            qDebug( )<< path<<" "<<label<<" "<<uuid<<" "<<fstype<<" "<<name;
             if (EXCLUDED_MOUNT_PATH_RE.match(path).hasMatch())
             {
                 qDebug()<<" xxx reg match, lsblk skip xxx" <<  path;
@@ -192,9 +193,11 @@ bool Partition_Information::refresh_state(){
           // Drive: /, name: /dev/mapper/isw_bbigfacfdg_RADI_Vol1p5,type:  ext4
 //          qDebug()<<"symLinkTarget: "<<
 //                 QFileInfo(QString::fromLatin1(m->mnt_fsname)).symLinkTarget();
+          qDebug("Drive: %s,   name: %s,  type:  %s",
+                 m->mnt_dir, m->mnt_fsname,m->mnt_type );
           if (mount_path_set.contains(m->mnt_dir))
           {
-//              qDebug()<<"=============== included";
+              qDebug()<<"=============== included";
           }
           else
           {
@@ -204,8 +207,6 @@ bool Partition_Information::refresh_state(){
                   continue;
               }
               //              qDebug()<<"xxxxxxxxxxxx not included";
-              qDebug("Drive: %s,   name: %s,  type:  %s",
-                   m->mnt_dir, m->mnt_fsname,m->mnt_type );
               uuid_set << m->mnt_dir;
               mnt_info << Mnt_Info_Struct({
                                               m->mnt_dir,//path,

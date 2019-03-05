@@ -215,6 +215,9 @@ public slots:
     void _open_temp_db_path();
     void change_language_auto();
     void change_language_English();
+    void change_language_nl();
+    void change_language_hu();
+    void change_language_nb_NO();
     void change_language_zh_CN();
 
     void init_db_module_ready_connect_mainWindow_SLOT();

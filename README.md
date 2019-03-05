@@ -11,11 +11,11 @@ __The app is still under development and not stable. Comments and pull requests 
          
 <details>
   <summary>
-   <a href="https://www.transifex.com/a-195/dawnlightsearch/">
-      <img src="https://img.shields.io/badge/Translate-at%20Transifex-lightgrey.svg" >
+   <a href="https://hosted.weblate.org/projects/dawnlightsearch/translations/">
+      <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/svg-badge.svg" alt="Translation status" >
    </a>
  </summary> 
- <img src="https://www.transifex.com/projects/p/dawnlightsearch/resource/translate_ents/chart/image_png/" >  
+ <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg"  alt="Translation status"  >  
 </details>
 
 ## Similar Everything-like Search Engine in Linux: 

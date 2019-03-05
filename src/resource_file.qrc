@@ -28,7 +28,10 @@
         <file>ui/icon/device-unmounted.svg</file>
     </qresource>
     <qresource prefix="/">
-        <file>lang/translate_en_US.qm</file>
+        <file>lang/translate_en.qm</file>
         <file>lang/translate_zh_CN.qm</file>
+        <file>lang/translate_hu.qm</file>
+        <file>lang/translate_nb_NO.qm</file>
+        <file>lang/translate_nl.qm</file>
     </qresource>
 </RCC>

@@ -107,6 +107,9 @@ QMainWindow::separator:hover {
      </property>
      <addaction name="actionLanguage_Auto"/>
      <addaction name="actionLanguage_English"/>
+     <addaction name="actionLanguage_Dutch"/>
+     <addaction name="actionLanguage_Hungarian"/>
+     <addaction name="actionLanguage_Norwegian_Bokmal"/>
      <addaction name="actionLanguage_Simplified_Chinese"/>
     </widget>
     <addaction name="actionChange_excluded_folders"/>
@@ -900,6 +903,21 @@ QMainWindow::separator:hover {
    </property>
    <property name="text">
     <string>Too&amp;lbar Advanced Setting</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Hungarian">
+   <property name="text">
+    <string>Hungarian (Magyar nyelv) hu</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Norwegian_Bokmal">
+   <property name="text">
+    <string>Norwegian Bokmål (bokmål) nb_NO</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Dutch">
+   <property name="text">
+    <string>Dutch (Nederlands) nl</string>
    </property>
   </action>
  </widget>
