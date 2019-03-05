@@ -622,7 +622,7 @@ QMainWindow::separator:hover {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Use C++ MFT parser</string>
+    <string> ┗ &amp;Turn on C++ MFT parser</string>
    </property>
    <property name="statusTip">
     <string>Much faster than the Python parser</string>
