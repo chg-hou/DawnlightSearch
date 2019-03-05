@@ -2,7 +2,10 @@
 #define PARTITION_INFORMATION_H
 
 // #include <QFileInfoList>
-// #include <mntent.h>
+#include <mntent.h>
+#include <QFileInfo>
+#include <QDateTime>
+
 #include <QProcess>
 #include "globals.h"
 #include <QJsonDocument>
@@ -32,7 +35,7 @@
 //    char *mnt_dir;		/* Directory mounted on.  */
 //    char *mnt_type;		/* Type of filesystem: ufs, nfs, etc.  */
 //    char *mnt_opts;		/* Comma-separated options for fs.  */
-//    int mnt_freq;		/* Dump frequency (in days).  */
+//    int mnt_freq;		    /* Dump frequency (in days).  */
 //    int mnt_passno;		/* Pass number for `fsck'.  */
 //  };
 struct Mnt_Info_Struct
@@ -57,6 +60,11 @@ public:
     static QSet<QString> uuid_set;
     static bool lsblk_prefix_path_init;
     static QString lsblk_prefix_path;
+
+    static QFileInfo mtab_info;
+    static bool mtab_use_flag;
+    static QDateTime mtab_lastModified;
+
     Partition_Information();
 };
 
