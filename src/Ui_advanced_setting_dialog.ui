@@ -128,7 +128,7 @@
                </sizepolicy>
               </property>
               <property name="text">
-               <string>Query  Chunk  Size:</string>
+               <string>Query Chunk Size:</string>
               </property>
               <property name="scaledContents">
                <bool>false</bool>
@@ -548,7 +548,7 @@
           <item row="0" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Main Database File Name:</string>
+             <string>Main Database Filename:</string>
             </property>
            </widget>
           </item>
@@ -558,7 +558,7 @@
           <item row="0" column="2">
            <widget class="QToolButton" name="toolButton_Database_File_Name">
             <property name="text">
-             <string>...</string>
+             <string>…</string>
             </property>
             <property name="icon">
              <iconset resource="resource_file.qrc">
@@ -569,7 +569,7 @@
           <item row="1" column="0">
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Temp Database File Name:</string>
+             <string>Temp Database Filename:</string>
             </property>
            </widget>
           </item>
@@ -579,7 +579,7 @@
           <item row="1" column="2">
            <widget class="QToolButton" name="toolButton_Temp_Database_File_Name">
             <property name="text">
-             <string>...</string>
+             <string>…</string>
             </property>
             <property name="icon">
              <iconset resource="resource_file.qrc">
@@ -603,7 +603,7 @@
        <item>
         <widget class="QCheckBox" name="checkBox_compress_db_file">
          <property name="text">
-          <string>Compress  the database file (using zlib) to save disk space when programe is closed</string>
+          <string>Compress database file (using zlib) to save disk space when program is closed</string>
          </property>
         </widget>
        </item>
