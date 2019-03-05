@@ -158,7 +158,7 @@ QMainWindow::separator:hover {
     <bool>true</bool>
    </property>
    <property name="windowTitle">
-    <string>ToolBar</string>
+    <string>Toolbar</string>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonFollowStyle</enum>
@@ -282,7 +282,7 @@ QMainWindow::separator:hover {
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
-    <string>ToolBar Case Sensitive</string>
+    <string>Toolbar Case Sensitive</string>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonFollowStyle</enum>
@@ -297,7 +297,7 @@ QMainWindow::separator:hover {
   </widget>
   <widget class="QToolBar" name="toolBar_2">
    <property name="windowTitle">
-    <string>ToolBar Advanced Setting</string>
+    <string>Toolbar Advanced Setting</string>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonFollowStyle</enum>
@@ -559,7 +559,7 @@ QMainWindow::separator:hover {
            <item row="1" column="0">
             <widget class="QRadioButton" name="radioButton_3">
              <property name="text">
-              <string>Path/Name</string>
+              <string>Path/name</string>
              </property>
             </widget>
            </item>
@@ -573,14 +573,14 @@ QMainWindow::separator:hover {
            <item row="1" column="1">
             <widget class="QRadioButton" name="radioButton_4">
              <property name="text">
-              <string>De&amp;v/Path</string>
+              <string>De&amp;v/path</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
             <widget class="QRadioButton" name="radioButton_5">
              <property name="text">
-              <string>Dev/Path/Name</string>
+              <string>Dev/path/name</string>
              </property>
             </widget>
            </item>
@@ -595,7 +595,7 @@ QMainWindow::separator:hover {
   </widget>
   <action name="actionAbout">
    <property name="text">
-    <string>&amp;About...</string>
+    <string>&amp;About…</string>
    </property>
   </action>
   <action name="actionChange_excluded_folders">
@@ -606,12 +606,12 @@ QMainWindow::separator:hover {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>&amp;Set Excluded Folders...</string>
+    <string>&amp;Set Excluded Folders…</string>
    </property>
   </action>
   <action name="actionAbout_Qt">
    <property name="text">
-    <string>About &amp;Qt...</string>
+    <string>About &amp;Qt…</string>
    </property>
   </action>
   <action name="actionEnable_C_MFT_parser">
@@ -622,10 +622,10 @@ QMainWindow::separator:hover {
     <bool>false</bool>
    </property>
    <property name="text">
-    <string> ┗ &amp;Enable C++ MFT parser</string>
+    <string> ┗ &amp;Turn on C++ MFT parser</string>
    </property>
    <property name="statusTip">
-    <string>Much faster than python parser</string>
+    <string>Much faster than the Python parser</string>
    </property>
    <property name="visible">
     <bool>false</bool>
@@ -637,10 +637,10 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/application-exit.png</normaloff>:/icon/ui/icon/application-exit.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Exit...</string>
+    <string>&amp;Exit…</string>
    </property>
    <property name="toolTip">
-    <string>Exit application.</string>
+    <string>Exit the application.</string>
    </property>
   </action>
   <action name="actionUse_MFT_parser">
@@ -663,7 +663,7 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/system-run.png</normaloff>:/icon/ui/icon/system-run.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Advanced Settings...</string>
+    <string>&amp;Advanced Settings</string>
    </property>
   </action>
   <action name="actionOpen_setting_path">
@@ -788,12 +788,12 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/applications-internet.png</normaloff>:/icon/ui/icon/applications-internet.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Open Project Homepage...</string>
+    <string>&amp;Open Project Homepage…</string>
    </property>
   </action>
   <action name="actionLatest_Version">
    <property name="text">
-    <string>&amp;Latest Version...</string>
+    <string>&amp;Latest Version</string>
    </property>
   </action>
   <action name="actionCheck_Included">
@@ -822,7 +822,7 @@ QMainWindow::separator:hover {
      <normaloff>:/icon/ui/icon/DawnlightSearch.png</normaloff>:/icon/ui/icon/DawnlightSearch.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Search...</string>
+    <string>&amp;Search…</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+G</string>
@@ -894,7 +894,7 @@ QMainWindow::separator:hover {
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>T&amp;oolbar Case Snesitive</string>
+    <string>T&amp;oolbar Case Sensitive</string>
    </property>
   </action>
   <action name="actionShowView_Toolbar_Advanced_Setting">
