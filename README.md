@@ -9,7 +9,7 @@ __The app is still under development and not stable. Comments and pull requests 
 <a href="https://hosted.weblate.org/projects/dawnlightsearch/translations/">
 <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/svg-badge.svg" alt="Translation status" >
 </a>
-<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg"  alt="Translation status"  >  
+<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg?"  alt="Translation status"  >  
 
 ## Translation contributors:
 
@@ -108,13 +108,17 @@ Examples:
 |-|-|
 |From Source| [https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source](https://github.com/chg-hou/DawnlightSearch/wiki/Build-from-source)|
 |AppImage|([https://github.com/chg-hou/DawnlightSearch/releases](https://github.com/chg-hou/DawnlightSearch/releases))|
-|Snaps|(under review)|
+|Snaps|(fail to access lsblk)|
 |Flatpak|(fail to work)|
 
 
  - Qt5
 
  - kio-dev
+ 
+ - libsqlite3-dev
+ 
+ - util-linux
  
 ### TODO:
  - Auto indexing.
