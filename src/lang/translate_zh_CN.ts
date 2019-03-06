@@ -273,7 +273,7 @@
 &lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 
 &lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
 
 &lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
  &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;表达式&lt;/th&gt;&lt;th&gt;结果&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
@@ -356,7 +356,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Will tree walk all folders under the root path, no matter whether the subfolders are in the same devices as the root path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;遍历目录下所有文件夹，忽略是否与根目录在同一设备。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
         <source>Regular Expression to Exclude Mount Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>正则表达式（用于排除挂在点）：</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
@@ -416,27 +416,27 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>主题名称：</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains a &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt; Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;输入包含 &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; 文件夹名称。&lt;/p&gt;&lt;p&gt; &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;可能包含所需的主题。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
         <source>Fallback Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>备选主题名称：</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
         <source>FallbackThemeName was introduced in Qt 5.12.</source>
-        <translation type="unfinished"></translation>
+        <translation>该选项在Qt 5.12及后续版本可用。</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains an &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt;Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;输入包含 &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; 的文件夹名称。&lt;/p&gt;&lt;p&gt;&amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;可能包含所需的主题。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
@@ -488,7 +488,7 @@
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
         <oldsource>Setti&amp;ng</oldsource>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
@@ -551,12 +551,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="609"/>
         <source>&amp;Set Excluded Folders...</source>
-        <translation type="unfinished"></translation>
+        <translation>设置排除的目录...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <translation>使用MFT建立索引</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="666"/>
@@ -566,47 +566,47 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="675"/>
         <source>&amp;Open Settings File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>打开保存设置文件的目录</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索设置</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>工具栏</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="897"/>
         <source>T&amp;oolbar Case Snesitive</source>
-        <translation type="unfinished"></translation>
+        <translation>工具栏 大小写敏感</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>工具栏 高级设置</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>匈牙利语 （Magyar nyelv） hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation>挪威语 （bokmål） nb_NO</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation>荷兰语（Nederlands） nl</translation>
     </message>
     <message>
         <source>&amp;Change excluded folders</source>
@@ -1178,7 +1178,7 @@ Error message:
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Snap 兼容模式]</translation>
     </message>
 </context>
 <context>
@@ -1285,59 +1285,60 @@ Error message:
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
+        <translation>选中以搜索该设备。图标显示挂载状态。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>设备挂载路径。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
-        <translation type="unfinished"></translation>
+        <translation>卷标</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
+        <translation>通用唯一识别码（UUID）。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>该栏可编辑。您可以自定义设备别名。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
-        <translation type="unfinished"></translation>
+        <translation>文件系统类型。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
-        <translation type="unfinished"></translation>
+        <translation>设备名</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="75"/>
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation type="unfinished"></translation>
+        <translation>存储设备由主编号（major number）和副编号（minor number）表示，
+分别标识整个设备和设备内的分区。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>总条目数。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
+        <translation>选中时，点击“更新所有数据库”时即更新该设备。</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
         <source>Update progress</source>
-        <translation type="unfinished"></translation>
+        <translation>更新进度</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="103"/>
@@ -1347,27 +1348,27 @@ which are used to identify either the entire device or a partition within the de
     <message>
         <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
-        <translation type="unfinished"></translation>
+        <translation>数据库被锁定</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="262"/>
         <source>Appname: </source>
-        <translation type="unfinished"></translation>
+        <translation>程序名： </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="263"/>
         <source>PID: </source>
-        <translation type="unfinished"></translation>
+        <translation>PID： </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>主机名：</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警告</translation>
     </message>
 </context>
 </TS>
