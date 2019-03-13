@@ -65,7 +65,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="14"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Avanserte innstillinger</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="48"/>
@@ -75,43 +75,43 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="56"/>
         <source>Number of Threads Used for Querying: </source>
-        <translation type="unfinished"></translation>
+        <translation>Antall tråder brukt til spørring: </translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="64"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="657"/>
         <source>(Auto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(Auto)</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="69"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="74"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="79"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="84"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="89"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="94"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="117"/>
@@ -119,9 +119,8 @@
         <translation type="unfinished">Resultatgrense</translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
         <source>Query  Chunk  Size:</source>
-        <translation type="unfinished">Spørring  Oppdeling  Størrelse:</translation>
+        <translation type="obsolete">Spørring  Oppdeling  Størrelse:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="195"/>
@@ -131,7 +130,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="253"/>
         <source>Max Items in Table:</source>
-        <translation type="unfinished"></translation>
+        <translation>Maksimalt antall elementer i tabell:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="288"/>
@@ -155,7 +154,7 @@
         <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="967"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
@@ -217,7 +216,54 @@
 &lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 
 &lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Expression&lt;/th&gt;&lt;th&gt;Utdata&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;d&lt;/td&gt;&lt;td&gt;dagen som nummer, uten innledende null (1 to 31)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;dd&lt;/td&gt;&lt;td&gt;dagen som nummer, med innledende null (01 to 31)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;ddd&lt;/td&gt;&lt;td&gt;forkortet lokalisert navn (altså &apos;Man&apos; til &apos;Søn&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;langt lokalisert dagsnavn (altså &apos;Mandag&apos; til &apos;Søndag&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;måneden som nummer, uten innledende null (1-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;MM&lt;/td&gt;&lt;td&gt;måneden som nummer, med innledende null (01-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;MMM&lt;/td&gt;&lt;td&gt;forkortet lokalisert månedsnavn (altså &apos;Jan&apos; to &apos;Des&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;MMMM&lt;/td&gt;&lt;td&gt;langt lokalisert månedsnavn (altså &apos;Januar&apos; to &apos;Desember&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;yy&lt;/td&gt;&lt;td&gt;året som nummer med to siffer (00-99)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;yyyy&lt;/td&gt;&lt;td&gt;året som nummer med fire siffer&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+
+&lt;br/&gt;
+
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Expression&lt;/th&gt;&lt;th&gt;Utdata&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;h&lt;/td&gt;&lt;td&gt;timen uten innledende null (0 til 23 eller 1 til 12 i AM/PM-visning)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;hh&lt;/td&gt;&lt;td&gt;timen med innledende null (00 til 23 eller 01 til 12 i AM/PM-visning)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;timen uten innledende null (0 til 23, selv i AM/PM-visning)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;HH&lt;/td&gt;&lt;td&gt;timen med innledende null (00 til 23, selv i AM/PM-visning)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;m&lt;/td&gt;&lt;td&gt;minuttet uten innledende null (0 til 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;mm&lt;/td&gt;&lt;td&gt;minuttet med innledende null (00 til 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;s&lt;/td&gt;&lt;td&gt;sekundet uten innledende null (0 til 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ss&lt;/td&gt;&lt;td&gt;sekundet med innledende null (00 til 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;z&lt;/td&gt;&lt;td&gt;millisekundene uten innledende null (0 til 999)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;zzz&lt;/td&gt;&lt;td&gt;millisekundene med innledende null (000 til 999)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;AP eller A&lt;/td&gt;&lt;td&gt;tolk som AM/PM-tid. &lt;i&gt;AP&lt;/i&gt; må være enten &quot;AM&quot; eller &quot;PM&quot;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ap eller a&lt;/td&gt;&lt;td&gt;tolk som AM/PM-tid. &lt;i&gt;ap&lt;/i&gt; må være enten &quot;am&quot; eller &quot;pm&quot;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;br/&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+&lt;caption&gt;Examples:&lt;/caption&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Format&lt;/th&gt;&lt;th&gt;Inndata&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;dd.MM.yyyy&lt;/td&gt;&lt;td&gt;21.05.2001&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ddd MMMM d yy&lt;/td&gt;&lt;td&gt;Tue May 21 01&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;hh:mm:ss.zzz&lt;/td&gt;&lt;td&gt;14:13:09.042&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;h:m:s ap&lt;/td&gt;&lt;td&gt;2:13:9 pm&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
@@ -227,7 +273,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Database</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
@@ -235,130 +281,155 @@
         <translation type="unfinished">Databaseplassering</translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
         <source>Main Database File Name:</source>
-        <translation type="unfinished">Filnavn for hoveddatabase:</translation>
+        <translation type="obsolete">Filnavn for hoveddatabase:</translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">…</translation>
     </message>
     <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
         <source>Temp Database File Name:</source>
-        <translation type="unfinished">Filnavn for midlertidig database:</translation>
+        <translation type="obsolete">Filnavn for midlertidig database:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Will tree walk all folders under the root path, no matter whether the subfolders are in the same devices as the root path.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Vis forgreining av alle mapper under rotstien, uansett om undermappene er på samme enhet som rotstien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
+        <translation type="unfinished">Ignorer mapper på andre enheter</translation>
+    </message>
+    <message>
+        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
+        <translation type="obsolete">Pakk sammen databasefilen (ved bruk av zlib) for å lagre diskplass når programmet ikke er åpent</translation>
+    </message>
+    <message>
+        <source>Regular Expression to Exclude Mount Path:</source>
+        <translation type="vanished">Regulært uttrykk for å ekskludere monteringssti:</translation>
+    </message>
+    <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
+        <source>Query Chunk Size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
+        <source>Main Database Filename:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
+        <source>…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
+        <source>Temp Database Filename:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
-        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
+        <source>Compress database file (using zlib) to save disk space when program is closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
-        <source>Regular Expression to Exclude Mount Path:</source>
+        <source>Regular Expression for Excluding Mount Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
         <source>Result Table</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Resultattabell</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
         <source>Prefered Size Unit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Foretrukket størrelsesenhet:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
-        <translation type="unfinished"></translation>
+        <translation>TB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
-        <translation type="unfinished"></translation>
+        <translation>PB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Draktnavn:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains a &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt; Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skriv inn en mappe som inneholder en &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt;-fil.&lt;/p&gt;&lt;p&gt; Drakter kan finnes i &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
         <source>Fallback Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Navn på tilbakefallsdrakt:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
         <source>FallbackThemeName was introduced in Qt 5.12.</source>
-        <translation type="unfinished"></translation>
+        <translation>FallbackThemeName ble introdusert i Qt 5.12.</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains an &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt;Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Skriv inn en mappe som inneholder en &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt;-fil.&lt;/p&gt;&lt;p&gt;Drakter er å finne i &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
         <source>UUID Table</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UUID-tabell</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
         <source>Timer Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Tidsavbrudds-intervall</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="786"/>
         <source>Mount-state Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Monteringsstatus-oppdatering:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="851"/>
         <source>Rows Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Radoppdatering:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Databaseoppdatering:</translation>
     </message>
 </context>
 <context>
@@ -379,210 +450,296 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
         <source>Fi&amp;le</source>
-        <translation type="unfinished"></translation>
+        <translation>Fi&amp;l</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Innstillinger</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Språk</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="130"/>
+        <location filename="../Ui_mainwindow.ui" line="131"/>
         <source>Abo&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Om</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="140"/>
+        <location filename="../Ui_mainwindow.ui" line="141"/>
         <source>&amp;View</source>
+        <translation>&amp;Vis</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="162"/>
+        <source>Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="202"/>
-        <location filename="../Ui_mainwindow.ui" line="873"/>
+        <location filename="../Ui_mainwindow.ui" line="203"/>
+        <location filename="../Ui_mainwindow.ui" line="874"/>
         <source>&amp;Database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Database</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="257"/>
-        <location filename="../Ui_mainwindow.ui" line="881"/>
+        <location filename="../Ui_mainwindow.ui" line="258"/>
+        <location filename="../Ui_mainwindow.ui" line="882"/>
         <source>SQL &amp;Command Preview</source>
+        <translation>SQL-&amp;kommandoforhåndsvisning</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="286"/>
+        <source>Toolbar Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="328"/>
+        <location filename="../Ui_mainwindow.ui" line="301"/>
+        <source>Toolbar Advanced Setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="329"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>Sø&amp;k</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="402"/>
-        <location filename="../Ui_mainwindow.ui" line="518"/>
+        <location filename="../Ui_mainwindow.ui" line="403"/>
+        <location filename="../Ui_mainwindow.ui" line="519"/>
         <source>Case Sensitive</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="460"/>
+        <location filename="../Ui_mainwindow.ui" line="461"/>
         <source>Search Settin&amp;gs</source>
-        <translation type="unfinished"></translation>
+        <translation>Søkeinnstillin&amp;ger</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="552"/>
+        <location filename="../Ui_mainwindow.ui" line="553"/>
         <source>Na&amp;me</source>
+        <translation>Na&amp;vn</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="563"/>
+        <source>Path/name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="576"/>
+        <location filename="../Ui_mainwindow.ui" line="577"/>
+        <source>De&amp;v/path</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="584"/>
+        <source>Dev/path/name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="599"/>
+        <source>&amp;About…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="610"/>
+        <source>&amp;Set Excluded Folders…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="615"/>
+        <source>About &amp;Qt…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="626"/>
+        <source> ┗ &amp;Turn on C++ MFT parser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="629"/>
+        <source>Much faster than the Python parser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="641"/>
+        <source>&amp;Exit…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="644"/>
+        <source>Exit the application.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="667"/>
+        <source>&amp;Advanced Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="792"/>
+        <source>&amp;Open Project Homepage…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="797"/>
+        <source>&amp;Latest Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="826"/>
+        <source>&amp;Search…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="898"/>
+        <source>T&amp;oolbar Case Sensitive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="911"/>
+        <source>&amp;Hungarian (Magyar nyelv) hu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="916"/>
+        <source>&amp;Norwegian Bokmål (bokmål) nb_NO</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="921"/>
+        <source>&amp;Dutch (Nederlands) nl</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="926"/>
+        <source>Russian (русский язык) ru</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>De&amp;v/Path</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">De&amp;v/sti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="598"/>
         <source>&amp;About...</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&amp;Om…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="609"/>
         <source>&amp;Set Excluded Folders...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;Sett eksluderte mapper…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="614"/>
         <source>About &amp;Qt...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">Om &amp;Qt…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="625"/>
         <source> ┗ &amp;Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete"> ┗ &amp;Skru på C++ MFT-fortolker</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="640"/>
         <source>&amp;Exit...</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&amp;Avslutt…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="651"/>
+        <location filename="../Ui_mainwindow.ui" line="652"/>
         <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Bruk MFT-fortolker til å bygge indeks</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="666"/>
         <source>&amp;Advanced Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&amp;Avanserte innstillinger…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="675"/>
+        <location filename="../Ui_mainwindow.ui" line="676"/>
         <source>&amp;Open Settings File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Åpne innstillingsfilsti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="717"/>
+        <location filename="../Ui_mainwindow.ui" line="718"/>
         <source>Open &amp;Main DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Åpne &amp;hoved-DB-sti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="726"/>
+        <location filename="../Ui_mainwindow.ui" line="727"/>
         <source>Open Temp &amp;DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Åpne midlertidig &amp;DB-sti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="791"/>
         <source>&amp;Open Project Homepage...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;Åpne prosjekthjemmeside…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="796"/>
         <source>&amp;Latest Version...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;Seneste versjon…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="825"/>
         <source>&amp;Search...</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">&amp;Søk…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="836"/>
+        <location filename="../Ui_mainwindow.ui" line="837"/>
         <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(A&amp;uto)</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="841"/>
+        <location filename="../Ui_mainwindow.ui" line="842"/>
         <source>&amp;English</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Engelsk</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="846"/>
+        <location filename="../Ui_mainwindow.ui" line="847"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Simlified Chinese (Forenket kinesisk) zh_CN</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="849"/>
+        <location filename="../Ui_mainwindow.ui" line="850"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Simlified Chinese (Forenket kinesisk) zh_CN</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="857"/>
+        <location filename="../Ui_mainwindow.ui" line="858"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Søk</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="865"/>
+        <location filename="../Ui_mainwindow.ui" line="866"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;økeinnstillinger</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="889"/>
+        <location filename="../Ui_mainwindow.ui" line="890"/>
         <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verktøyslinje</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="897"/>
         <source>T&amp;oolbar Case Snesitive</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">V&amp;erktøyslinje versalsensitiv</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="905"/>
+        <location filename="../Ui_mainwindow.ui" line="906"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Avansert innstilling for verktøys&amp;linje</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Hungarian (Ungarsk) hu</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Norwegian Bokmål (bokmål) nb_NO</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Dutch (Hollandsk) nl</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="546"/>
+        <location filename="../Ui_mainwindow.ui" line="547"/>
         <source>Default Match Option</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="562"/>
-        <source>Path/Name</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="569"/>
+        <location filename="../Ui_mainwindow.ui" line="570"/>
         <source>Path</source>
         <translation>Sti</translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="583"/>
-        <source>Dev/Path/Name</source>
-        <translation></translation>
     </message>
     <message>
         <source>Setting</source>
@@ -597,32 +754,7 @@
         <translation type="vanished">Rediger</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="285"/>
-        <source>ToolBar Case Sensitive</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="161"/>
-        <source>ToolBar</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="300"/>
-        <source>ToolBar Advanced Setting</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="628"/>
-        <source>Much faster than python parser</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="643"/>
-        <source>Exit application.</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="654"/>
+        <location filename="../Ui_mainwindow.ui" line="655"/>
         <source>Only NTFS partition, faster than path walk</source>
         <translation></translation>
     </message>
@@ -635,17 +767,17 @@
         <translation type="vanished">Åpne innstillingssti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="690"/>
+        <location filename="../Ui_mainwindow.ui" line="691"/>
         <source>Show Location Table</source>
         <translation>Vis plasseringstabell</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="699"/>
+        <location filename="../Ui_mainwindow.ui" line="700"/>
         <source>Update DB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="708"/>
+        <location filename="../Ui_mainwindow.ui" line="709"/>
         <source>Stop Updating</source>
         <translation>Stopp oppdatering</translation>
     </message>
@@ -658,34 +790,34 @@
         <translation type="vanished">Åpne mindertidigDB-sti</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="735"/>
+        <location filename="../Ui_mainwindow.ui" line="736"/>
         <source>Show Search Setting</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="749"/>
-        <location filename="../Ui_mainwindow.ui" line="752"/>
+        <location filename="../Ui_mainwindow.ui" line="750"/>
+        <location filename="../Ui_mainwindow.ui" line="753"/>
         <source>Toggle Case Sensitive</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="757"/>
+        <location filename="../Ui_mainwindow.ui" line="758"/>
         <source>Hide</source>
         <translation>Skjul</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="762"/>
+        <location filename="../Ui_mainwindow.ui" line="763"/>
         <source>Show</source>
         <translation>Vis</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="770"/>
+        <location filename="../Ui_mainwindow.ui" line="771"/>
         <source>Show All</source>
         <translation>Vis alt</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="779"/>
-        <location filename="../Ui_mainwindow.ui" line="782"/>
+        <location filename="../Ui_mainwindow.ui" line="780"/>
+        <location filename="../Ui_mainwindow.ui" line="783"/>
         <source>Update DB (only selected)</source>
         <translation>Oppdater DB (kun valgte)</translation>
     </message>
@@ -694,22 +826,22 @@
         <translation type="obsolete">Siste versjon…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="801"/>
+        <location filename="../Ui_mainwindow.ui" line="802"/>
         <source>Check Included</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="806"/>
+        <location filename="../Ui_mainwindow.ui" line="807"/>
         <source>Uncheck Included</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="811"/>
+        <location filename="../Ui_mainwindow.ui" line="812"/>
         <source>Check Updatable</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="816"/>
+        <location filename="../Ui_mainwindow.ui" line="817"/>
         <source>Uncheck Updatable</source>
         <translation></translation>
     </message>
@@ -718,7 +850,7 @@
         <translation type="obsolete">Søk…</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="828"/>
+        <location filename="../Ui_mainwindow.ui" line="829"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
@@ -728,7 +860,7 @@
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="73"/>
         <source>All Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle kjernene</translation>
     </message>
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
@@ -748,7 +880,7 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Åpne</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
@@ -778,7 +910,7 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="287"/>
         <source>Move to trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Flytt til papirkurv</translation>
     </message>
     <message>
         <source>Move to ...</source>
@@ -843,17 +975,17 @@
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="220"/>
         <source> [Read Only Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Skrivebeskyttet modus]</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="222"/>
         <source>Ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Klar.</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Kompabilitetsmodus for festing til rutenett]</translation>
     </message>
 </context>
 <context>
@@ -960,89 +1092,90 @@
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Klikk for å søke på denne enheten. Ikonet indikerer monteringsstatus.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sti enheten er montert</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Enhetsetikett.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
+        <translation>Universelt unik identifikator (UUID).</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dette er en redigerbar kolonne. Du kan tilpasse enhetens alias.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Filsystemtype.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Enhetsnavn.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="75"/>
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hver lagringsenhet representeres av et stort tall, og en rekke mindre tall,
+som brukes til å identifisere enten hele enheten, eller en partisjon på den.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Totalt antall elementer i denne enheten.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Velg for å oppdatere denne enheten med &quot;Oppdater alle&quot;-knappen.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
         <source>Update progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Oppdateringsframdrift</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="103"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappe</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
-        <translation type="unfinished"></translation>
+        <translation>Database låst av</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="262"/>
         <source>Appname: </source>
-        <translation type="unfinished"></translation>
+        <translation>Programnavn: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="263"/>
         <source>PID: </source>
-        <translation type="unfinished"></translation>
+        <translation>PID: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertsnavn:</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Advarsel</translation>
     </message>
 </context>
 </TS>

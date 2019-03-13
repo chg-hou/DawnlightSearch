@@ -1,191 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
-<context>
-    <name>Dialog</name>
-    <message>
-        <source>Edit Excluded Folders</source>
-        <translation type="vanished">Uitgesloten mappen bewerken</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation type="vanished">Zoeken</translation>
-    </message>
-    <message>
-        <source>Result Limit</source>
-        <translation type="vanished">Resultaten beperken</translation>
-    </message>
-    <message>
-        <source>Query Limit:</source>
-        <translation type="vanished">Opvraaglimiet:</translation>
-    </message>
-    <message>
-        <source>Max Items in Table:</source>
-        <translation type="vanished">Max. aantal items in tabel:</translation>
-    </message>
-    <message>
-        <source>Search Option</source>
-        <translation type="vanished">Zoekoptie</translation>
-    </message>
-    <message>
-        <source>Instant Search</source>
-        <translation type="vanished">Direct zoeken</translation>
-    </message>
-    <message>
-        <source>Start Querying after Typing Finished:</source>
-        <translation type="vanished">Beginnen met zoeken na stoppen met typen:</translation>
-    </message>
-    <message>
-        <source>Press &quot;Enter&quot; to Search</source>
-        <translation type="vanished">Druk op &quot;Enter&quot; om te zoeken</translation>
-    </message>
-    <message>
-        <source>Date-time Format:</source>
-        <translation type="vanished">Datum- en tijdopmaak:</translation>
-    </message>
-    <message>
-        <source>Restore Sorting after New Row Inserted</source>
-        <translation type="vanished">Sortering herstellen na invoegen van nieuwe rij</translation>
-    </message>
-    <message>
-        <source>Database</source>
-        <translation type="vanished">Databank</translation>
-    </message>
-    <message>
-        <source>Database Location</source>
-        <translation type="vanished">Databank-locatie</translation>
-    </message>
-    <message>
-        <source>Main Database File Name:</source>
-        <translation type="vanished">Bestandsnaam van hoofddatabank:</translation>
-    </message>
-    <message>
-        <source>Temp Database File Name:</source>
-        <translation type="vanished">Bestandsnaam van tijdelijke databank:</translation>
-    </message>
-    <message>
-        <source>Ingore Folder in Different Devices</source>
-        <translation type="vanished">Map negeren als deze voorkomt op verschillende apparaten</translation>
-    </message>
-    <message>
-        <source>Result Table</source>
-        <translation type="vanished">Resultaattabel</translation>
-    </message>
-    <message>
-        <source>Prefered Size Unit:</source>
-        <translation type="vanished">Voorkeurseenheid voor grootte:</translation>
-    </message>
-    <message>
-        <source>(Auto)</source>
-        <translation type="vanished">(automatisch)</translation>
-    </message>
-    <message>
-        <source>UUID Table</source>
-        <translation type="vanished">UUID-tabel</translation>
-    </message>
-    <message>
-        <source>Timer Interval</source>
-        <translation type="vanished">Timer-tussenpoos</translation>
-    </message>
-    <message>
-        <source>Mount-state Update:</source>
-        <translation type="vanished">Bijwerken van aankoppelingsstatus:</translation>
-    </message>
-    <message>
-        <source>Rows Update:</source>
-        <translation type="vanished">Bijwerken van rijen:</translation>
-    </message>
-    <message>
-        <source>Database Update:</source>
-        <translation type="vanished">Bijwerken van databank:</translation>
-    </message>
-    <message>
-        <source>Advanced Settings</source>
-        <translation type="vanished">Geavanceerde instellingen</translation>
-    </message>
-</context>
+<TS version="2.1" language="ru">
 <context>
     <name>Dialog_Advanced_Setting</name>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="14"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished">Geavanceerde instellingen</translation>
+        <translation>Продвинутые настройки</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="48"/>
         <source>Search</source>
-        <translation type="unfinished">Zoeken</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="56"/>
         <source>Number of Threads Used for Querying: </source>
-        <translation type="unfinished"></translation>
+        <translation>Количество потоков для совершения запросов: </translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="64"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="657"/>
         <source>(Auto)</source>
-        <translation type="unfinished">(automatisch)</translation>
+        <translation>(Автоматически)</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="69"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="74"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="79"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="84"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="89"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="94"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="117"/>
         <source>Result Limit</source>
-        <translation type="unfinished">Resultaten beperken</translation>
+        <translation>Ограничение результатов</translation>
+    </message>
+    <message>
+        <source>Query  Chunk  Size:</source>
+        <translation type="vanished">Размер фрагментов запроса:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="195"/>
         <source>Query Limit:</source>
-        <translation type="unfinished">Opvraaglimiet:</translation>
+        <translation>Ограничение запросов:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="253"/>
         <source>Max Items in Table:</source>
-        <translation type="unfinished">Max. aantal items in tabel:</translation>
+        <translation>Максимальное количество в таблице:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="288"/>
         <source>Search Option</source>
-        <translation type="unfinished">Zoekoptie</translation>
+        <translation>Опции поиска</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="298"/>
         <source>Instant Search</source>
-        <translation type="unfinished">Direct zoeken</translation>
+        <translation>Мгновенный поиск</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="318"/>
         <source>Start Querying after Typing Finished:</source>
-        <translation type="unfinished">Beginnen met zoeken na stoppen met typen:</translation>
+        <translation>Начать поиск после завершения набора:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="356"/>
@@ -194,17 +95,17 @@
         <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="967"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>мс</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation type="unfinished">Druk op &quot;Enter&quot; om te zoeken</translation>
+        <translation>Нажмите &quot;Enter&quot; для поиска</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
         <source>Date-time Format:</source>
-        <translation type="unfinished">Datum- en tijdopmaak:</translation>
+        <translation>Формат даты и времени:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="402"/>
@@ -261,25 +162,29 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
         <source>Restore Sorting after New Row Inserted</source>
-        <translation type="unfinished">Sortering herstellen na invoegen van nieuwe rij</translation>
+        <translation>Сбрасывать сортировку после добавления новой строки</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
-        <translation type="unfinished">Databank</translation>
+        <translation>База данных</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
         <source>Database Location</source>
-        <translation type="unfinished">Databank-locatie</translation>
+        <translation>Расположение базы данных</translation>
     </message>
     <message>
         <source>Main Database File Name:</source>
-        <translation type="obsolete">Bestandsnaam van hoofddatabank:</translation>
+        <translation type="vanished">Имя файла главной базы данных:</translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="vanished">...</translation>
     </message>
     <message>
         <source>Temp Database File Name:</source>
-        <translation type="obsolete">Bestandsnaam van tijdelijke databank:</translation>
+        <translation type="vanished">Имя файла временной базы данных:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
@@ -289,7 +194,15 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
-        <translation type="unfinished">Map negeren als deze voorkomt op verschillende apparaten</translation>
+        <translation>Игнорировать папки на других устройствах</translation>
+    </message>
+    <message>
+        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
+        <translation type="vanished">Сжимать файл базы данных (с помощью zlib) для сохранения места на диске когда программа закрыта</translation>
+    </message>
+    <message>
+        <source>Regular Expression to Exclude Mount Path:</source>
+        <translation type="vanished">Регулярное выражение для исключение пути установки:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
@@ -325,92 +238,92 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
         <source>Result Table</source>
-        <translation type="unfinished">Resultaattabel</translation>
+        <translation>Таблица результатов</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
         <source>Prefered Size Unit:</source>
-        <translation type="unfinished">Voorkeurseenheid voor grootte:</translation>
+        <translation>Предпочитаемые размер блока:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>Б</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>КБ</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>МБ</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>ГБ</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
-        <translation type="unfinished"></translation>
+        <translation>ТБ</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
-        <translation type="unfinished"></translation>
+        <translation>ПБ</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Название темы:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains a &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt; Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Введите имя папки которая содержит файл &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt;&lt;/p&gt;&lt;p&gt; Темы доступны по пути &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
         <source>Fallback Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Название резервной темы:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
         <source>FallbackThemeName was introduced in Qt 5.12.</source>
-        <translation type="unfinished"></translation>
+        <translation>FallbackThemeName было добавлено в Qt 5.12.</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="746"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains an &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt;Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Введите имя папки которая содержит файл &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt;&lt;/p&gt;&lt;p&gt; Темы доступны по пути &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
         <source>UUID Table</source>
-        <translation type="unfinished">UUID-tabel</translation>
+        <translation>Таблица UUID</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
         <source>Timer Interval</source>
-        <translation type="unfinished">Timer-tussenpoos</translation>
+        <translation>Интервал таймера</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="786"/>
         <source>Mount-state Update:</source>
-        <translation type="unfinished">Bijwerken van aankoppelingsstatus:</translation>
+        <translation>Обновление состояния монтирования:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="851"/>
         <source>Rows Update:</source>
-        <translation type="unfinished">Bijwerken van rijen:</translation>
+        <translation>Обновление строк:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
-        <translation type="unfinished">Bijwerken van databank:</translation>
+        <translation>Обновление базы данных:</translation>
     </message>
 </context>
 <context>
@@ -418,7 +331,7 @@
     <message>
         <location filename="../Ui_edit_exclued_folder.ui" line="14"/>
         <source>Edit Excluded Folders</source>
-        <translation type="unfinished">Uitgesloten mappen bewerken</translation>
+        <translation>Редактирование исключенных папок</translation>
     </message>
 </context>
 <context>
@@ -426,7 +339,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="14"/>
         <source>Dawnlight Search</source>
-        <translation></translation>
+        <translation>Поиск Dawnlight</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
@@ -436,38 +349,123 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>Настройки</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Язык</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="131"/>
         <source>Abo&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>О пр&amp;ограмме</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="141"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="162"/>
-        <source>Toolbar</source>
-        <translation type="unfinished"></translation>
+        <source>ToolBar</source>
+        <translation type="vanished">Панель инструментов</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="203"/>
         <location filename="../Ui_mainwindow.ui" line="874"/>
         <source>&amp;Database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;База данных</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="258"/>
         <location filename="../Ui_mainwindow.ui" line="882"/>
         <source>SQL &amp;Command Preview</source>
+        <translation>Предпросмотр &amp;команд SQL</translation>
+    </message>
+    <message>
+        <source>ToolBar Advanced Setting</source>
+        <translation type="vanished">Продвинутые настройки панели инструментов</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="329"/>
+        <source>Sea&amp;rch</source>
+        <translation>По&amp;иск</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="403"/>
+        <location filename="../Ui_mainwindow.ui" line="519"/>
+        <source>Case Sensitive</source>
+        <translation>Чувствительно к регистру</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="461"/>
+        <source>Search Settin&amp;gs</source>
+        <translation>Наст&amp;ройки поиска</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="547"/>
+        <source>Default Match Option</source>
+        <translation>Параметр сравнения по умолчанию</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="553"/>
+        <source>Na&amp;me</source>
+        <translation>И&amp;мя</translation>
+    </message>
+    <message>
+        <source>Path/Name</source>
+        <translation type="vanished">Путь/Имя</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="570"/>
+        <source>Path</source>
+        <translation>Путь</translation>
+    </message>
+    <message>
+        <source>&amp;About...</source>
+        <translation type="vanished">&amp;О программе...</translation>
+    </message>
+    <message>
+        <source>&amp;Set Excluded Folders...</source>
+        <translation type="vanished">&amp;Выбрать исключения папок...</translation>
+    </message>
+    <message>
+        <source>About &amp;Qt...</source>
+        <translation type="vanished">О &amp;Qt...</translation>
+    </message>
+    <message>
+        <source> ┗ &amp;Enable C++ MFT parser</source>
+        <translation type="vanished"> ┗ &amp;Включить С++ MFT парсер</translation>
+    </message>
+    <message>
+        <source>Much faster than python parser</source>
+        <translation type="vanished">Намного быстрее, чем парсер Python</translation>
+    </message>
+    <message>
+        <source>&amp;Exit...</source>
+        <translation type="vanished">&amp;Выход...</translation>
+    </message>
+    <message>
+        <source>Exit application.</source>
+        <translation type="vanished">Выйти из приложения.</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="652"/>
+        <source>&amp;Use MFT Parser to Build Index</source>
+        <translation>&amp;Использовать парсер MFT для построения индекса</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="655"/>
+        <source>Only NTFS partition, faster than path walk</source>
+        <translation>Только NTFS разделы, быстрее чем рекурсивный поиск</translation>
+    </message>
+    <message>
+        <source>&amp;Advanced Settings...</source>
+        <translation type="vanished">&amp;Продвинутые настройки...</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="162"/>
+        <source>Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -478,27 +476,6 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="301"/>
         <source>Toolbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="329"/>
-        <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="403"/>
-        <location filename="../Ui_mainwindow.ui" line="519"/>
-        <source>Case Sensitive</source>
-        <translation>Hoofdlettergevoelig</translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="461"/>
-        <source>Search Settin&amp;gs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="553"/>
-        <source>Na&amp;me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -552,6 +529,88 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="667"/>
+        <source>&amp;Advanced Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="676"/>
+        <source>&amp;Open Settings File Path</source>
+        <translation>&amp;Открыть путь к файлу с настройками</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="691"/>
+        <source>Show Location Table</source>
+        <translation>Показать таблицу местоположения</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="700"/>
+        <source>Update DB</source>
+        <translation>Обновить БД</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="709"/>
+        <source>Stop Updating</source>
+        <translation>Остановить обновление</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="718"/>
+        <source>Open &amp;Main DB Path</source>
+        <translation>Открыть &amp;путь главной БД</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="727"/>
+        <source>Open Temp &amp;DB Path</source>
+        <translation>Открыть путь к &amp;временной БД</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="736"/>
+        <source>Show Search Setting</source>
+        <translation>Показать параметры поиска</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="750"/>
+        <location filename="../Ui_mainwindow.ui" line="753"/>
+        <source>Toggle Case Sensitive</source>
+        <translation>Чувствительность к регистру</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="758"/>
+        <source>Hide</source>
+        <translation>Скрыть</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="763"/>
+        <source>Show</source>
+        <translation>Показать</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="771"/>
+        <source>Show All</source>
+        <translation>Показать всё</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="780"/>
+        <location filename="../Ui_mainwindow.ui" line="783"/>
+        <source>Update DB (only selected)</source>
+        <translation>Обновить БД (только выбранную)</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="792"/>
+        <source>&amp;Open Project Homepage…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="797"/>
+        <source>&amp;Latest Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="826"/>
+        <source>&amp;Search…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../Ui_mainwindow.ui" line="898"/>
         <source>T&amp;oolbar Case Sensitive</source>
         <translation type="unfinished"></translation>
@@ -577,223 +636,85 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="652"/>
-        <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Open Project Homepage...</source>
+        <translation type="vanished">&amp;Открыть главную страницу проекта...</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="676"/>
-        <source>&amp;Open Settings File Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="718"/>
-        <source>Open &amp;Main DB Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="727"/>
-        <source>Open Temp &amp;DB Path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="837"/>
-        <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="842"/>
-        <source>&amp;English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="847"/>
-        <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="850"/>
-        <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="858"/>
-        <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="866"/>
-        <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="890"/>
-        <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="906"/>
-        <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>PushButton</source>
-        <translation type="vanished">Drukknop</translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="547"/>
-        <source>Default Match Option</source>
-        <translation>Standaard overeenkomstoptie</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation type="vanished">Naam</translation>
-    </message>
-    <message>
-        <source>Path/Name</source>
-        <translation type="vanished">Pad/Naam</translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="570"/>
-        <source>Path</source>
-        <translation>Pad</translation>
-    </message>
-    <message>
-        <source>Dev/Path</source>
-        <translation type="vanished">Dev/Pad</translation>
-    </message>
-    <message>
-        <source>Dev/Path/Name</source>
-        <translation type="vanished">Dev/Pad/Naam</translation>
-    </message>
-    <message>
-        <source>File</source>
-        <translation type="vanished">Bestand</translation>
-    </message>
-    <message>
-        <source>Setting</source>
-        <translation type="vanished">Instelling</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">Over</translation>
-    </message>
-    <message>
-        <source>Edit</source>
-        <translation type="vanished">Bewerken</translation>
-    </message>
-    <message>
-        <source>ToolBar Case Sensitive</source>
-        <translation type="vanished">Werkbalk hoofdlettergevoelig</translation>
-    </message>
-    <message>
-        <source>Database</source>
-        <translation type="vanished">Databank</translation>
-    </message>
-    <message>
-        <source>Results</source>
-        <translation type="vanished">Resultaten</translation>
-    </message>
-    <message>
-        <source>SQL Command Preview</source>
-        <translation type="vanished">SQL-opdrachtvoorbeeld</translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="655"/>
-        <source>Only NTFS partition, faster than path walk</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="667"/>
-        <source>&amp;Advanced Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="691"/>
-        <source>Show Location Table</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="700"/>
-        <source>Update DB</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="709"/>
-        <source>Stop Updating</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="736"/>
-        <source>Show Search Setting</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="750"/>
-        <location filename="../Ui_mainwindow.ui" line="753"/>
-        <source>Toggle Case Sensitive</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="758"/>
-        <source>Hide</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="763"/>
-        <source>Show</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="771"/>
-        <source>Show All</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="780"/>
-        <location filename="../Ui_mainwindow.ui" line="783"/>
-        <source>Update DB (only selected)</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="792"/>
-        <source>&amp;Open Project Homepage…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="797"/>
-        <source>&amp;Latest Version</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Latest Version...</source>
+        <translation type="vanished">&amp;Последняя версия...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="802"/>
         <source>Check Included</source>
-        <translation></translation>
+        <translation>Выбрать включенное</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="807"/>
         <source>Uncheck Included</source>
-        <translation></translation>
+        <translation>Очистить выбор</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="812"/>
         <source>Check Updatable</source>
-        <translation></translation>
+        <translation>Выбрать обновляемые</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="817"/>
         <source>Uncheck Updatable</source>
-        <translation></translation>
+        <translation>Отменить выбранные обновляемые</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="826"/>
-        <source>&amp;Search…</source>
-        <translation type="unfinished"></translation>
+        <source>&amp;Search...</source>
+        <translation type="vanished">&amp;Поиск...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="829"/>
         <source>Ctrl+G</source>
-        <translation></translation>
+        <translation>Ctrl+G</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="837"/>
+        <source>(A&amp;uto)</source>
+        <translation>(А&amp;втоматически)</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="842"/>
+        <source>&amp;English</source>
+        <translation>&amp;Английский</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="847"/>
+        <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
+        <translation>&amp;Упрощенный китайский (简体中文) zh_CN</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="850"/>
+        <source>Simplified Chinese (简体中文) zh_CN</source>
+        <translation>Упрощенный китайский (简体中文) zh_CN</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="858"/>
+        <source>&amp;Search</source>
+        <translation>&amp;Поиск</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="866"/>
+        <source>S&amp;earch Settings</source>
+        <translation>Н&amp;астройки поиска</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="890"/>
+        <source>&amp;Toolbar</source>
+        <translation>&amp;Панель инструментов</translation>
+    </message>
+    <message>
+        <source>T&amp;oolbar Case Snesitive</source>
+        <translation type="vanished">Ч&amp;увствительная к регистру панель инструментов</translation>
+    </message>
+    <message>
+        <location filename="../Ui_mainwindow.ui" line="906"/>
+        <source>Too&amp;lbar Advanced Setting</source>
+        <translation>Про&amp;двинутые настройки панели инструментов</translation>
     </message>
 </context>
 <context>
@@ -807,12 +728,12 @@
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="129"/>
         <source>Select Directory of Database File</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ui_change_excluded_folder_dialog.cpp" line="56"/>
         <source>Select Directory to Add</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -821,32 +742,32 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation>Bestand(en) openen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
         <source>Open path</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="268"/>
         <source>Copy ...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="270"/>
         <source>Copy fullpath</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="272"/>
         <source>Copy filename</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="274"/>
         <source>Copy path</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="287"/>
@@ -856,7 +777,7 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="293"/>
         <source>Delete</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -864,30 +785,30 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="380"/>
         <source>Message</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="381"/>
         <source>Are you sure to DELETE?</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>statusbar</name>
     <message>
-        <location filename="../MainWindow.cpp" line="735"/>
-        <source>Exclude folders from indexing.</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../MainWindow.cpp" line="280"/>
         <source>Loading...</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="735"/>
+        <source>Exclude folders from indexing.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="392"/>
         <source>Done.</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="220"/>
@@ -908,163 +829,6 @@
 <context>
     <name>ui</name>
     <message>
-        <location filename="../globals.cpp" line="100"/>
-        <source>Filename</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="101"/>
-        <source>Path</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="102"/>
-        <source>Size</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="104"/>
-        <source>Extension</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="105"/>
-        <source>Access Time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="106"/>
-        <source>Modify Time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="107"/>
-        <source>Change Time</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="48"/>
-        <source>Search</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="49"/>
-        <source>Mount Path</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="50"/>
-        <source>Label</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="51"/>
-        <source>UUID</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="52"/>
-        <source>Alias</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="53"/>
-        <source>FS Type</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="54"/>
-        <source>Dev name</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="55"/>
-        <source>Major Device Num</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="56"/>
-        <source>Minor Device Num</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="57"/>
-        <source>Items</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="58"/>
-        <source>Update</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="59"/>
-        <source>Progress</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="68"/>
-        <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="69"/>
-        <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="70"/>
-        <source>Device label.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="71"/>
-        <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="72"/>
-        <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="73"/>
-        <source>File system type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="74"/>
-        <source>Device name.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="75"/>
-        <location filename="../globals.cpp" line="76"/>
-        <source>Each storage device is represented by a major number and a range of minor numbers,
-which are used to identify either the entire device or a partition within the device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="77"/>
-        <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="78"/>
-        <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="79"/>
-        <source>Update progress</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../globals.cpp" line="103"/>
-        <source>Folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
         <translation type="unfinished"></translation>
@@ -1082,12 +846,169 @@ which are used to identify either the entire device or a partition within the de
     <message>
         <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя хоста:</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
+        <translation>Предупреждение</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="48"/>
+        <source>Search</source>
+        <translation>Поиск</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="49"/>
+        <source>Mount Path</source>
+        <translation>Путь монтирования</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="50"/>
+        <source>Label</source>
+        <translation>Название</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="51"/>
+        <source>UUID</source>
+        <translation>UUID</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="52"/>
+        <source>Alias</source>
+        <translation>Псевдоним</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="53"/>
+        <source>FS Type</source>
+        <translation>Тип файловой системы</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="54"/>
+        <source>Dev name</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="55"/>
+        <source>Major Device Num</source>
+        <translation>Номер главного устройства</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="56"/>
+        <source>Minor Device Num</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="57"/>
+        <source>Items</source>
+        <translation>Элементы</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="58"/>
+        <source>Update</source>
+        <translation>Обновить</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="59"/>
+        <source>Progress</source>
+        <translation>Прогресс</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="68"/>
+        <source>Check to search this device. The icon indicates the mount state.</source>
+        <translation>Выберите для поиска по этому устройству. Иконка показывает состояние монтирования.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="69"/>
+        <source>Path where the device is mounted.</source>
+        <translation>Путь монтирования устройства.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="70"/>
+        <source>Device label.</source>
+        <translation>Метка устройства.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="71"/>
+        <source>Universally unique identifier (UUID).</source>
+        <translation>Универсальный уникальный идентификатор (UUID).</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="72"/>
+        <source>This is a editable column. You may customize the alias of this device.</source>
+        <translation>Это изменяемая колонка. Вы можете настроить псевдоним данного устройства.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="73"/>
+        <source>File system type.</source>
+        <translation>Тип файловой системы.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="74"/>
+        <source>Device name.</source>
+        <translation>Имя устройства.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="75"/>
+        <location filename="../globals.cpp" line="76"/>
+        <source>Each storage device is represented by a major number and a range of minor numbers,
+which are used to identify either the entire device or a partition within the device.</source>
+        <translation>Каждое устройство хранения представлено главным числом и рядом дополнительных номеров, которые используются для идентификации самого устройства или его разделов.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="77"/>
+        <source>Total number of items in this device.</source>
+        <translation>Общее число элементов на этом устройстве.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="78"/>
+        <source>Check to update this device when click Update All button.</source>
+        <translation>Выберите для обновления этого устройства при нажатии кнопки &quot;Обновить все&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="79"/>
+        <source>Update progress</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="100"/>
+        <source>Filename</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="101"/>
+        <source>Path</source>
+        <translation type="unfinished">Путь</translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="102"/>
+        <source>Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="103"/>
+        <source>Folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="104"/>
+        <source>Extension</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="105"/>
+        <source>Access Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="106"/>
+        <source>Modify Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../globals.cpp" line="107"/>
+        <source>Change Time</source>
+        <translation>Изменить время</translation>
     </message>
 </context>
 </TS>

@@ -198,6 +198,9 @@ void  MainWindow::change_language_nb_NO(){
 void  MainWindow::change_language_zh_CN(){
     _change_language("zh_CN");
 }
+void  MainWindow::change_language_ru(){
+    _change_language("ru");
+}
 
 void MainWindow::_toggle_use_MFT_parser(bool enable_MFT_parser){
     USE_MFT_PARSER  = enable_MFT_parser;

@@ -97,12 +97,28 @@ STATECHARTS +=
 # 3. translate .ts file in /lang
 # 4. click Tools > External > Linguist > Release
 TRANSLATIONS    =     \
-    lang/translate_nl.ts \
+    lang/translate_bg.ts \
+    lang/translate_de.ts \
+    lang/translate_el.ts \
     lang/translate_en.ts \
+    lang/translate_es.ts \
+    lang/translate_fi.ts \
+    lang/translate_fr.ts \
+    lang/translate_gl.ts \
     lang/translate_hu.ts \
+    lang/translate_id.ts \
+    lang/translate_ja.ts \
+    lang/translate_lt.ts \
     lang/translate_nb_NO.ts \
+    lang/translate_nl.ts \
+    lang/translate_pl.ts \
+    lang/translate_pt.ts \
+    lang/translate_pt_BR.ts \
+    lang/translate_ru.ts \
+    lang/translate_sk.ts \
+    lang/translate_tr.ts \
+    lang/translate_uk.ts \
     lang/translate_zh_CN.ts
-
 
 #DISTFILES += \
 #RESOURCES += \
@@ -146,11 +162,11 @@ DISTFILES += \
     model_chart_update_db.qmodel \
     model_chart_update_db_copy.qmodel \
     model_chart_query.qmodel \
-    model_chart_start.qmodel \
-    lang/translate_en.qm \
-    lang/translate_zh_CN.qm \
-    lang/translate_en.ts \
-    lang/translate_zh_CN.ts
+    model_chart_start.qmodel
+#    lang/translate_en.qm \
+#    lang/translate_zh_CN.qm \
+#    lang/translate_en.ts \
+#    lang/translate_zh_CN.ts
 
 # Recognized as shared library and won't run it by clicking
 # Thanks revast@github for the solution
