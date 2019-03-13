@@ -11,9 +11,13 @@ __The app is still under development and not stable. Comments and pull requests 
 </a>
 <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg?"  alt="Translation status"  >  
 
-## Translation contributors:
+## Translation Contributors:
 
 (As I accidently modified the settings in weblate, history logs were deteled. Sorry for that.)
+
+|Language|Contributors|
+|-|-|
+|Russian|[lev4ukpavel2](https://github.com/lev4ukpavel2)|
 
 ## Similar Everything-like Search Engine in Linux: 
 
