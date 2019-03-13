@@ -154,6 +154,15 @@ bool Partition_Information::refresh_state(){
             min = list[1].toInt();
 
             uuid_set << uuid;
+
+            for(Mnt_Info_Struct tmp : mnt_info){
+                if (tmp.path!="" && path=="" && tmp.uuid.split(":").first()==uuid.split(":").first() )
+                {
+                    path = tmp.path;
+                    break;
+                }
+            }
+
             mnt_info << Mnt_Info_Struct({
                                             path,
                                             label,
