@@ -796,7 +796,7 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestand(en) openen</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
