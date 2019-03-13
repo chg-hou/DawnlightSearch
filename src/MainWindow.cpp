@@ -793,7 +793,8 @@ void MainWindow::__init_connect_menu_action(){
             this, SLOT(change_language_nb_NO()));
     connect(ui->actionLanguage_Simplified_Chinese, SIGNAL(triggered(bool)),
             this, SLOT(change_language_zh_CN()));
-
+    connect(ui->actionLanguage_Russian, SIGNAL(triggered(bool)),
+            this, SLOT(change_language_ru()));
 
     ui->comboBox_search->installEventFilter(this);
     ui->comboBox_search->lineEdit()->installEventFilter(this);

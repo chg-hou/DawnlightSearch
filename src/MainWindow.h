@@ -219,6 +219,7 @@ public slots:
     void change_language_hu();
     void change_language_nb_NO();
     void change_language_zh_CN();
+    void change_language_ru();
 
     void init_db_module_ready_connect_mainWindow_SLOT();
 

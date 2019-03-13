@@ -155,11 +155,13 @@ bool Partition_Information::refresh_state(){
 
             uuid_set << uuid;
 
-            for(Mnt_Info_Struct tmp : mnt_info){
-                if (tmp.path!="" && path=="" && tmp.uuid.split(":").first()==uuid.split(":").first() )
+            for(Mnt_Info_Struct& tmp : mnt_info){
+                if ( tmp.uuid.split(":").first()==uuid.split(":").first() )
                 {
-                    path = tmp.path;
-                    break;
+                    if (tmp.path!="" && path=="")
+                    {path = tmp.path;break;}
+                    if (path!="" && tmp.path=="")
+                    {tmp.path = path;break;}
                 }
             }
 

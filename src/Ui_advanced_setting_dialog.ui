@@ -612,7 +612,7 @@
          <item>
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Regular Expression to Exclude Mount Path:</string>
+            <string>Regular Expression for Excluding Mount Path:</string>
            </property>
           </widget>
          </item>

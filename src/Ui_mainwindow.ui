@@ -110,6 +110,7 @@ QMainWindow::separator:hover {
      <addaction name="actionLanguage_Dutch"/>
      <addaction name="actionLanguage_Hungarian"/>
      <addaction name="actionLanguage_Norwegian_Bokmal"/>
+     <addaction name="actionLanguage_Russian"/>
      <addaction name="actionLanguage_Simplified_Chinese"/>
     </widget>
     <addaction name="actionChange_excluded_folders"/>
@@ -907,17 +908,22 @@ QMainWindow::separator:hover {
   </action>
   <action name="actionLanguage_Hungarian">
    <property name="text">
-    <string>Hungarian (Magyar nyelv) hu</string>
+    <string>&amp;Hungarian (Magyar nyelv) hu</string>
    </property>
   </action>
   <action name="actionLanguage_Norwegian_Bokmal">
    <property name="text">
-    <string>Norwegian Bokmål (bokmål) nb_NO</string>
+    <string>&amp;Norwegian Bokmål (bokmål) nb_NO</string>
    </property>
   </action>
   <action name="actionLanguage_Dutch">
    <property name="text">
-    <string>Dutch (Nederlands) nl</string>
+    <string>&amp;Dutch (Nederlands) nl</string>
+   </property>
+  </action>
+  <action name="actionLanguage_Russian">
+   <property name="text">
+    <string>Russian (русский язык) ru</string>
    </property>
   </action>
  </widget>
