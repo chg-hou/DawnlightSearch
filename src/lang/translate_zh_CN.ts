@@ -175,8 +175,9 @@
         <translation>搜索限制</translation>
     </message>
     <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
         <source>Query  Chunk  Size:</source>
-        <translation type="vanished">查询分块大小：</translation>
+        <translation>查询分块大小：</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="195"/>
@@ -337,16 +338,20 @@
         <translation>数据库位置</translation>
     </message>
     <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
         <source>Main Database File Name:</source>
-        <translation type="vanished">主数据库文件名:</translation>
+        <translation>主数据库文件名:</translation>
     </message>
     <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
         <source>...</source>
-        <translation type="vanished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
+        <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
         <source>Temp Database File Name:</source>
-        <translation type="vanished">临时数据库文件名:</translation>
+        <translation>临时数据库文件名:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
@@ -359,43 +364,14 @@
         <translation>忽略位于不同设备的目录</translation>
     </message>
     <message>
-        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
-        <translation type="vanished">程序关闭后压缩数据库文件（使用zlib）以节省空间</translation>
-    </message>
-    <message>
-        <source>Regular Expression to Exclude Mount Path:</source>
-        <translation type="vanished">正则表达式（用于排除挂在点）：</translation>
-    </message>
-    <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
-        <source>Query Chunk Size:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
-        <source>Main Database Filename:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
-        <source>…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
-        <source>Temp Database Filename:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
-        <source>Compress database file (using zlib) to save disk space when program is closed</source>
-        <translation type="unfinished"></translation>
+        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
+        <translation>程序关闭后压缩数据库文件（使用zlib）以节省空间</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
-        <source>Regular Expression for Excluding Mount Path:</source>
-        <translation type="unfinished"></translation>
+        <source>Regular Expression to Exclude Mount Path:</source>
+        <translation>正则表达式（用于排除挂在点）：</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
@@ -520,239 +496,144 @@
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="131"/>
+        <location filename="../Ui_mainwindow.ui" line="130"/>
         <source>Abo&amp;ut</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="141"/>
+        <location filename="../Ui_mainwindow.ui" line="140"/>
         <source>&amp;View</source>
         <translation>查看</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="162"/>
-        <source>Toolbar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="203"/>
-        <location filename="../Ui_mainwindow.ui" line="874"/>
+        <location filename="../Ui_mainwindow.ui" line="202"/>
+        <location filename="../Ui_mainwindow.ui" line="873"/>
         <source>&amp;Database</source>
         <translation>数据库</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="258"/>
-        <location filename="../Ui_mainwindow.ui" line="882"/>
+        <location filename="../Ui_mainwindow.ui" line="257"/>
+        <location filename="../Ui_mainwindow.ui" line="881"/>
         <source>SQL &amp;Command Preview</source>
         <translation>SQL命令预览</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="286"/>
-        <source>Toolbar Case Sensitive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="301"/>
-        <source>Toolbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="329"/>
+        <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="403"/>
-        <location filename="../Ui_mainwindow.ui" line="519"/>
+        <location filename="../Ui_mainwindow.ui" line="402"/>
+        <location filename="../Ui_mainwindow.ui" line="518"/>
         <source>Case Sensitive</source>
         <translation>区分大小写</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="461"/>
+        <location filename="../Ui_mainwindow.ui" line="460"/>
         <source>Search Settin&amp;gs</source>
         <translation>搜索设置</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="553"/>
+        <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
         <translation>文件名</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="563"/>
-        <source>Path/name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="577"/>
-        <source>De&amp;v/path</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="584"/>
-        <source>Dev/path/name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="599"/>
-        <source>&amp;About…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="610"/>
-        <source>&amp;Set Excluded Folders…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="615"/>
-        <source>About &amp;Qt…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="626"/>
-        <source> ┗ &amp;Turn on C++ MFT parser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="629"/>
-        <source>Much faster than the Python parser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="641"/>
-        <source>&amp;Exit…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="644"/>
-        <source>Exit the application.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="898"/>
-        <source>T&amp;oolbar Case Sensitive</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="911"/>
-        <source>&amp;Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="916"/>
-        <source>&amp;Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="921"/>
-        <source>&amp;Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="926"/>
-        <source>Russian (русский язык) ru</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../Ui_mainwindow.ui" line="576"/>
         <source>De&amp;v/Path</source>
-        <translation type="vanished">设备/路径</translation>
+        <translation>设备/路径</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="598"/>
         <source>&amp;About...</source>
-        <translation type="vanished">关于...</translation>
+        <translation>关于...</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="609"/>
         <source>&amp;Set Excluded Folders...</source>
-        <translation type="vanished">设置排除的目录...</translation>
+        <translation>设置排除的目录...</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="652"/>
+        <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
         <translation>使用MFT建立索引</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="666"/>
         <source>&amp;Advanced Settings...</source>
-        <translation type="vanished">高级设置</translation>
+        <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="676"/>
+        <location filename="../Ui_mainwindow.ui" line="675"/>
         <source>&amp;Open Settings File Path</source>
         <translation>打开保存设置文件的目录</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="792"/>
-        <source>&amp;Open Project Homepage…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="797"/>
-        <source>&amp;Latest Version</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="826"/>
-        <source>&amp;Search…</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="858"/>
+        <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="866"/>
+        <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
         <translation>搜索设置</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="890"/>
+        <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
         <translation>工具栏</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="897"/>
         <source>T&amp;oolbar Case Snesitive</source>
-        <translation type="vanished">工具栏 大小写敏感</translation>
+        <translation>工具栏 大小写敏感</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="906"/>
+        <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
         <translation>工具栏 高级设置</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="vanished">匈牙利语 （Magyar nyelv） hu</translation>
+        <translation>匈牙利语 （Magyar nyelv） hu</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="vanished">挪威语 （bokmål） nb_NO</translation>
+        <translation>挪威语 （bokmål） nb_NO</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="vanished">荷兰语（Nederlands） nl</translation>
+        <translation>荷兰语（Nederlands） nl</translation>
     </message>
     <message>
         <source>&amp;Change excluded folders</source>
         <translation type="vanished">编辑被排除文件夹</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="614"/>
         <source>About &amp;Qt...</source>
-        <translation type="vanished">关于 Qt...</translation>
+        <translation>关于 Qt...</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="625"/>
         <source> ┗ &amp;Enable C++ MFT parser</source>
-        <translation type="vanished">┗ ━ 启用 C++ 版的MFT解析器</translation>
+        <translation>┗ ━ 启用 C++ 版的MFT解析器</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="640"/>
         <source>&amp;Exit...</source>
-        <translation type="vanished">退出...</translation>
+        <translation>退出...</translation>
     </message>
     <message>
         <source>&amp;Use MFT parser to build index</source>
         <translation type="vanished">使用MFT文件建立数据库</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="667"/>
         <source>&amp;Advanced Settings</source>
-        <translation>高级设置</translation>
+        <translation type="vanished">高级设置</translation>
     </message>
     <message>
         <source>&amp;Open Setting File Path</source>
@@ -763,34 +644,37 @@
         <translation type="vanished">打开设置文件目录</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="727"/>
+        <location filename="../Ui_mainwindow.ui" line="726"/>
         <source>Open Temp &amp;DB Path</source>
         <translation>打开临时数据库目录</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="791"/>
         <source>&amp;Open Project Homepage...</source>
-        <translation type="vanished">打开项目主页...</translation>
+        <translation>打开项目主页...</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="796"/>
         <source>&amp;Latest Version...</source>
-        <translation type="vanished">最新版本...</translation>
+        <translation>最新版本...</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="825"/>
         <source>&amp;Search...</source>
-        <translation type="vanished">搜索...</translation>
+        <translation>搜索...</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="837"/>
+        <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
         <translation>(自动)</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="842"/>
+        <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
         <translation>英文(English)</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="847"/>
+        <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
         <translation>简体中文 (Simplified Chinese) zh_CN</translation>
     </message>
@@ -799,7 +683,7 @@
         <translation type="vanished">PushButton</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="547"/>
+        <location filename="../Ui_mainwindow.ui" line="546"/>
         <source>Default Match Option</source>
         <translation>匹配选项</translation>
     </message>
@@ -808,11 +692,12 @@
         <translation type="vanished">文件名</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="562"/>
         <source>Path/Name</source>
-        <translation type="vanished">路径/文件名</translation>
+        <translation>路径/文件名</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="570"/>
+        <location filename="../Ui_mainwindow.ui" line="569"/>
         <source>Path</source>
         <translation>路径</translation>
     </message>
@@ -821,8 +706,9 @@
         <translation type="vanished">设备/路径</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="583"/>
         <source>Dev/Path/Name</source>
-        <translation type="vanished">设备/路径/文件名</translation>
+        <translation>设备/路径/文件名</translation>
     </message>
     <message>
         <source>File</source>
@@ -842,8 +728,9 @@
         <translation type="vanished">编辑</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="285"/>
         <source>ToolBar Case Sensitive</source>
-        <translation type="vanished">工具栏: 区分大小写</translation>
+        <translation>工具栏: 区分大小写</translation>
     </message>
     <message>
         <source>Database</source>
@@ -862,12 +749,14 @@
         <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;preee &lt;span style=&quot; font-weight:600;&quot;&gt;ENTER&lt;/span&gt; to submit sql query&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="161"/>
         <source>ToolBar</source>
-        <translation type="vanished">工具栏</translation>
+        <translation>工具栏</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="300"/>
         <source>ToolBar Advanced Setting</source>
-        <translation type="vanished">工具栏: 高级设置</translation>
+        <translation>工具栏: 高级设置</translation>
     </message>
     <message>
         <source>About...</source>
@@ -894,23 +783,25 @@
         <translation type="obsolete">┗ ━ 启用 C++ 版的MFT解析器</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="628"/>
         <source>Much faster than python parser</source>
-        <translation type="vanished">速度远快于python版</translation>
+        <translation>速度远快于python版</translation>
     </message>
     <message>
         <source>Exit...</source>
         <translation type="vanished">退出...</translation>
     </message>
     <message>
+        <location filename="../Ui_mainwindow.ui" line="643"/>
         <source>Exit application.</source>
-        <translation type="vanished">退出程序.</translation>
+        <translation>退出程序.</translation>
     </message>
     <message>
         <source>Use MFT parser to build index</source>
         <translation type="vanished">使用MFT文件建立数据库</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="655"/>
+        <location filename="../Ui_mainwindow.ui" line="654"/>
         <source>Only NTFS partition, faster than path walk</source>
         <translation>仅适用于NTFS分区，快于目录遍历</translation>
     </message>
@@ -923,22 +814,22 @@
         <translation type="vanished">打开设置文件目录</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="691"/>
+        <location filename="../Ui_mainwindow.ui" line="690"/>
         <source>Show Location Table</source>
         <translation>显示路径表</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="700"/>
+        <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
         <translation>刷新数据库</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="709"/>
+        <location filename="../Ui_mainwindow.ui" line="708"/>
         <source>Stop Updating</source>
         <translation>停止刷新</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="718"/>
+        <location filename="../Ui_mainwindow.ui" line="717"/>
         <source>Open &amp;Main DB Path</source>
         <translation>打开主数据库目录</translation>
     </message>
@@ -951,34 +842,34 @@
         <translation type="vanished">打开临时数据库目录</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="736"/>
+        <location filename="../Ui_mainwindow.ui" line="735"/>
         <source>Show Search Setting</source>
         <translation>显示搜索选项</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="750"/>
-        <location filename="../Ui_mainwindow.ui" line="753"/>
+        <location filename="../Ui_mainwindow.ui" line="749"/>
+        <location filename="../Ui_mainwindow.ui" line="752"/>
         <source>Toggle Case Sensitive</source>
         <translation>区分大小写</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="758"/>
+        <location filename="../Ui_mainwindow.ui" line="757"/>
         <source>Hide</source>
         <translation>隐藏</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="763"/>
+        <location filename="../Ui_mainwindow.ui" line="762"/>
         <source>Show</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="771"/>
+        <location filename="../Ui_mainwindow.ui" line="770"/>
         <source>Show All</source>
         <translation>显示全部</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="780"/>
-        <location filename="../Ui_mainwindow.ui" line="783"/>
+        <location filename="../Ui_mainwindow.ui" line="779"/>
+        <location filename="../Ui_mainwindow.ui" line="782"/>
         <source>Update DB (only selected)</source>
         <translation>刷新数据库(仅选中条目)</translation>
     </message>
@@ -991,22 +882,22 @@
         <translation type="vanished">最新版本...</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="802"/>
+        <location filename="../Ui_mainwindow.ui" line="801"/>
         <source>Check Included</source>
         <translation>搜索选中设备</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="807"/>
+        <location filename="../Ui_mainwindow.ui" line="806"/>
         <source>Uncheck Included</source>
         <translation>不搜索选中设备</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="812"/>
+        <location filename="../Ui_mainwindow.ui" line="811"/>
         <source>Check Updatable</source>
         <translation>勾选 (刷新数据库)</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="817"/>
+        <location filename="../Ui_mainwindow.ui" line="816"/>
         <source>Uncheck Updatable</source>
         <translation>反勾选 (刷新数据库)</translation>
     </message>
@@ -1015,7 +906,7 @@
         <translation type="vanished">搜索...</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="829"/>
+        <location filename="../Ui_mainwindow.ui" line="828"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
@@ -1040,7 +931,7 @@
         <translation type="vanished">英文(English)</translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="850"/>
+        <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
         <translation>简体中文 (Simplified Chinese) zh_CN</translation>
     </message>

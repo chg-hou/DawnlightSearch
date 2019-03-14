@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sk_SK">
+<TS version="2.1" language="sk">
 <context>
     <name>Dialog_Advanced_Setting</name>
     <message>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
-        <source>Query Chunk Size:</source>
+        <source>Query  Chunk  Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -177,18 +177,18 @@
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
-        <source>Main Database Filename:</source>
+        <source>Main Database File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
-        <source>…</source>
+        <source>...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
-        <source>Temp Database Filename:</source>
+        <source>Temp Database File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -203,12 +203,12 @@
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
-        <source>Compress database file (using zlib) to save disk space when program is closed</source>
+        <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
-        <source>Regular Expression for Excluding Mount Path:</source>
+        <source>Regular Expression to Exclude Mount Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -333,303 +333,298 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="131"/>
+        <location filename="../Ui_mainwindow.ui" line="130"/>
         <source>Abo&amp;ut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="141"/>
+        <location filename="../Ui_mainwindow.ui" line="140"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="162"/>
-        <source>Toolbar</source>
+        <location filename="../Ui_mainwindow.ui" line="161"/>
+        <source>ToolBar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="203"/>
-        <location filename="../Ui_mainwindow.ui" line="874"/>
+        <location filename="../Ui_mainwindow.ui" line="202"/>
+        <location filename="../Ui_mainwindow.ui" line="873"/>
         <source>&amp;Database</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="258"/>
-        <location filename="../Ui_mainwindow.ui" line="882"/>
+        <location filename="../Ui_mainwindow.ui" line="257"/>
+        <location filename="../Ui_mainwindow.ui" line="881"/>
         <source>SQL &amp;Command Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="286"/>
-        <source>Toolbar Case Sensitive</source>
+        <location filename="../Ui_mainwindow.ui" line="285"/>
+        <source>ToolBar Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="301"/>
-        <source>Toolbar Advanced Setting</source>
+        <location filename="../Ui_mainwindow.ui" line="300"/>
+        <source>ToolBar Advanced Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="329"/>
+        <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="403"/>
-        <location filename="../Ui_mainwindow.ui" line="519"/>
+        <location filename="../Ui_mainwindow.ui" line="402"/>
+        <location filename="../Ui_mainwindow.ui" line="518"/>
         <source>Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="461"/>
+        <location filename="../Ui_mainwindow.ui" line="460"/>
         <source>Search Settin&amp;gs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="547"/>
+        <location filename="../Ui_mainwindow.ui" line="546"/>
         <source>Default Match Option</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="553"/>
+        <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="563"/>
-        <source>Path/name</source>
+        <location filename="../Ui_mainwindow.ui" line="562"/>
+        <source>Path/Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="570"/>
+        <location filename="../Ui_mainwindow.ui" line="569"/>
         <source>Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="577"/>
-        <source>De&amp;v/path</source>
+        <location filename="../Ui_mainwindow.ui" line="576"/>
+        <source>De&amp;v/Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="584"/>
-        <source>Dev/path/name</source>
+        <location filename="../Ui_mainwindow.ui" line="583"/>
+        <source>Dev/Path/Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="599"/>
-        <source>&amp;About…</source>
+        <location filename="../Ui_mainwindow.ui" line="598"/>
+        <source>&amp;About...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="610"/>
-        <source>&amp;Set Excluded Folders…</source>
+        <location filename="../Ui_mainwindow.ui" line="609"/>
+        <source>&amp;Set Excluded Folders...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="615"/>
-        <source>About &amp;Qt…</source>
+        <location filename="../Ui_mainwindow.ui" line="614"/>
+        <source>About &amp;Qt...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="626"/>
-        <source> ┗ &amp;Turn on C++ MFT parser</source>
+        <location filename="../Ui_mainwindow.ui" line="625"/>
+        <source> ┗ &amp;Enable C++ MFT parser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="629"/>
-        <source>Much faster than the Python parser</source>
+        <location filename="../Ui_mainwindow.ui" line="628"/>
+        <source>Much faster than python parser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="641"/>
-        <source>&amp;Exit…</source>
+        <location filename="../Ui_mainwindow.ui" line="640"/>
+        <source>&amp;Exit...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="644"/>
-        <source>Exit the application.</source>
+        <location filename="../Ui_mainwindow.ui" line="643"/>
+        <source>Exit application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="652"/>
+        <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="655"/>
+        <location filename="../Ui_mainwindow.ui" line="654"/>
         <source>Only NTFS partition, faster than path walk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="667"/>
-        <source>&amp;Advanced Settings</source>
+        <location filename="../Ui_mainwindow.ui" line="666"/>
+        <source>&amp;Advanced Settings...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="676"/>
+        <location filename="../Ui_mainwindow.ui" line="675"/>
         <source>&amp;Open Settings File Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="691"/>
+        <location filename="../Ui_mainwindow.ui" line="690"/>
         <source>Show Location Table</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="700"/>
+        <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="709"/>
+        <location filename="../Ui_mainwindow.ui" line="708"/>
         <source>Stop Updating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="718"/>
+        <location filename="../Ui_mainwindow.ui" line="717"/>
         <source>Open &amp;Main DB Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="727"/>
+        <location filename="../Ui_mainwindow.ui" line="726"/>
         <source>Open Temp &amp;DB Path</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="736"/>
+        <location filename="../Ui_mainwindow.ui" line="735"/>
         <source>Show Search Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="750"/>
-        <location filename="../Ui_mainwindow.ui" line="753"/>
+        <location filename="../Ui_mainwindow.ui" line="749"/>
+        <location filename="../Ui_mainwindow.ui" line="752"/>
         <source>Toggle Case Sensitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="758"/>
+        <location filename="../Ui_mainwindow.ui" line="757"/>
         <source>Hide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="763"/>
+        <location filename="../Ui_mainwindow.ui" line="762"/>
         <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="771"/>
+        <location filename="../Ui_mainwindow.ui" line="770"/>
         <source>Show All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="780"/>
-        <location filename="../Ui_mainwindow.ui" line="783"/>
+        <location filename="../Ui_mainwindow.ui" line="779"/>
+        <location filename="../Ui_mainwindow.ui" line="782"/>
         <source>Update DB (only selected)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="792"/>
-        <source>&amp;Open Project Homepage…</source>
+        <location filename="../Ui_mainwindow.ui" line="791"/>
+        <source>&amp;Open Project Homepage...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="797"/>
-        <source>&amp;Latest Version</source>
+        <location filename="../Ui_mainwindow.ui" line="796"/>
+        <source>&amp;Latest Version...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="802"/>
+        <location filename="../Ui_mainwindow.ui" line="801"/>
         <source>Check Included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="807"/>
+        <location filename="../Ui_mainwindow.ui" line="806"/>
         <source>Uncheck Included</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="812"/>
+        <location filename="../Ui_mainwindow.ui" line="811"/>
         <source>Check Updatable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="817"/>
+        <location filename="../Ui_mainwindow.ui" line="816"/>
         <source>Uncheck Updatable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="826"/>
-        <source>&amp;Search…</source>
+        <location filename="../Ui_mainwindow.ui" line="825"/>
+        <source>&amp;Search...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="829"/>
+        <location filename="../Ui_mainwindow.ui" line="828"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="837"/>
+        <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="842"/>
+        <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="847"/>
+        <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="850"/>
+        <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="858"/>
+        <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="866"/>
+        <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="890"/>
+        <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="898"/>
-        <source>T&amp;oolbar Case Sensitive</source>
+        <location filename="../Ui_mainwindow.ui" line="897"/>
+        <source>T&amp;oolbar Case Snesitive</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="906"/>
+        <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="911"/>
-        <source>&amp;Hungarian (Magyar nyelv) hu</source>
+        <location filename="../Ui_mainwindow.ui" line="910"/>
+        <source>Hungarian (Magyar nyelv) hu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="916"/>
-        <source>&amp;Norwegian Bokmål (bokmål) nb_NO</source>
+        <location filename="../Ui_mainwindow.ui" line="915"/>
+        <source>Norwegian Bokmål (bokmål) nb_NO</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Ui_mainwindow.ui" line="921"/>
-        <source>&amp;Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../Ui_mainwindow.ui" line="926"/>
-        <source>Russian (русский язык) ru</source>
+        <location filename="../Ui_mainwindow.ui" line="920"/>
+        <source>Dutch (Nederlands) nl</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
