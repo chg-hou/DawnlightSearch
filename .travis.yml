@@ -21,7 +21,7 @@ before_install:
   - sudo ln -f -s /usr/bin/gcc-nm-4.8 /usr/bin/gcc-nm
   - sudo ln -f -s /usr/bin/gcc-ranlib-4.8 /usr/bin/gcc-ranlib
   - sudo ln -f -s /usr/bin/g++-4.8  /usr/bin/g++
-  - sudo apt-get -y install qt5-qmake libqt5sql5-sqlite
+  - sudo apt-get -y install qt5-qmake libqt5sql5-sqlite qttools5-dev-tools
 
   
 install:
@@ -34,6 +34,7 @@ before_script:
   
 script:
   - cd src
+  - lrelease DawnlightSearch.pro
   - qmake CONFIG+=release DawnlightSearch.pro
   - make -j$(nproc)
   - make clean
