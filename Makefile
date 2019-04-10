@@ -5,6 +5,7 @@ default:
 	@type lsblk
 	cd src ;\
 	export QT_SELECT=qt5 ;\
+	lrelease DawnlightSearch.pro ;\
 	qmake -qt=qt5 CONFIG+=release  DawnlightSearch.pro ;\
 	make ;\
 	make clean ;\
@@ -12,7 +13,7 @@ default:
 
 	
 install_ubuntu_dep:
-	sudo apt install qt5-qmake kio-dev libsqlite3-dev util-linux -y
+	sudo apt install qt5-qmake qttools5-dev-tools kio-dev libsqlite3-dev util-linux -y
 	
 	
 install:
