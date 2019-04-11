@@ -5,21 +5,33 @@ A Linux version of [Everything Search Engine](https://www.voidtools.com/). Suppo
 __The app is still under development and not stable. Comments and pull requests are very appreciated.__
 
 [![Build Status](https://travis-ci.org/chg-hou/DawnlightSearch.svg?branch=c%2B%2B-version)](https://travis-ci.org/chg-hou/DawnlightSearch)
-        
 <a href="https://hosted.weblate.org/projects/dawnlightsearch/translations/">
 <img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/svg-badge.svg" alt="Translation status" >
 </a>
-<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg?"  alt="Translation status"  >  
 
-## Translation Contributors:
+<img src="https://hosted.weblate.org/widgets/dawnlightsearch/-/translations/multi-auto.svg?"  alt="Translation status"   height="300" >  
+
+# Table of Contents
+1. [Translation Contributors](#translation-contributors)
+2. [Similar Everything-like Search Engine in Linux](#similar-tools)
+3. [Highlights](#highlights)
+4. [Interface](#interface)
+5. [Search Syntax](#syntax)
+6. [Installation](#installation)
+7. [TODO](#todo)
+
+## Translation Contributors<a name="translation-contributors"/>:
 
 (As I accidently modified the settings in weblate, history logs were deteled. Sorry for that.)
 
 |Language|Contributors|
 |-|-|
-|Russian|[lev4ukpavel2](https://github.com/lev4ukpavel2)|
+|Russian|[lev4ukpavel2 (Pavel Levchuk)](https://github.com/lev4ukpavel2)|
+|Norwegian Bokmål|[kingu (Allan Nordhøy)](https://hosted.weblate.org/user/kingu/)|
+|Ukrainian|[uievawkejf](https://hosted.weblate.org/user/uievawkejf/)|
+|Indonesian|[afandiyusuf (yusuf afandi)](https://hosted.weblate.org/user/afandiyusuf/)|
 
-## Similar Everything-like Search Engine in Linux: 
+## Similar Everything-like Search Engine in Linux<a name="similar-tools"/>: 
 
 (Ordered by first commit date)
 
@@ -35,7 +47,7 @@ __The app is still under development and not stable. Comments and pull requests 
 
  - Ubuntu 16.04 / 18.04
 
-## Highlights:
+## Highlights<a name="highlights"/>:
 
  - Instant search.
  - Support **wildcards** and **regular expressions**.
@@ -55,7 +67,7 @@ __The app is still under development and not stable. Comments and pull requests 
 
 --------------------------------
 
-### Interface:
+### Interface<a name="interface"/>:
 
 #### Database:
 
@@ -81,7 +93,7 @@ Partitions of differenct UUIDs will be stored seperatedly in the database. In ci
 3. Check to use the C++ MFT parser instead of the Python one. The C++ one is supposed to be much faster.
 
 
-#### Search Syntax:
+#### Search Syntax<a name="syntax"/>:
 
 
   Logical Operators   |  Description 
@@ -106,7 +118,7 @@ Examples:
 
 
 
-### Installation:
+### Installation<a name="installation"/>:
 
 |||
 |-|-|
@@ -124,7 +136,7 @@ Examples:
  
  - util-linux
  
-### TODO:
+### TODO<a name="todo"/>:
  - Auto indexing.
  - Monitor file system changes.
  - Index files in archives.
