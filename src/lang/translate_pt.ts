@@ -367,7 +367,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="300"/>
         <source>ToolBar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurações avançadas da barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="328"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="735"/>
         <source>Show Search Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar configuração de pesquisa</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="749"/>
@@ -610,7 +610,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuração avançada da &amp;barra de ferramentas</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
@@ -910,17 +910,17 @@ que são utilizados para identificar respetivamente o dispositivo e uma partiç�
     <message>
         <location filename="../globals.cpp" line="105"/>
         <source>Access Time</source>
-        <translation>Tempo de acesso</translation>
+        <translation>Data de acesso</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="106"/>
         <source>Modify Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de modificação</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="107"/>
         <source>Change Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de alteração</translation>
     </message>
 </context>
 </TS>
