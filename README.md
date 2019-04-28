@@ -30,6 +30,8 @@ __The app is still under development and not stable. Comments and pull requests 
 |Norwegian Bokmål|[kingu (Allan Nordhøy)](https://hosted.weblate.org/user/kingu/)|
 |Ukrainian|[uievawkejf](https://hosted.weblate.org/user/uievawkejf/)|
 |Indonesian|[afandiyusuf (yusuf afandi)](https://hosted.weblate.org/user/afandiyusuf/)|
+|Portuguese|[tonela (Rui Mendes)](https://hosted.weblate.org/user/tonela/)|
+|Spanish|[mavese (M.Veamonte)](https://hosted.weblate.org/user/mavese/)|
 
 ## Similar Everything-like Search Engine in Linux<a name="similar-tools"/>: 
 
