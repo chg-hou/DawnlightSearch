@@ -11,7 +11,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="48"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="56"/>
@@ -27,32 +27,32 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="69"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="74"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="79"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="84"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="89"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="94"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="117"/>
@@ -101,7 +101,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Pressione &quot;Enter&quot; para buscar</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
@@ -168,12 +168,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Banco de dados</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
         <source>Database Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Localização do banco de dados</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
@@ -224,32 +224,32 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
-        <translation type="unfinished"></translation>
+        <translation>TB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
-        <translation type="unfinished"></translation>
+        <translation>PB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
@@ -320,7 +320,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
         <source>Fi&amp;le</source>
-        <translation type="unfinished"></translation>
+        <translation>A&amp;rquivo</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
@@ -330,7 +330,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Língua</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="130"/>
@@ -351,7 +351,7 @@
         <location filename="../Ui_mainwindow.ui" line="202"/>
         <location filename="../Ui_mainwindow.ui" line="873"/>
         <source>&amp;Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Banco de &amp;dados</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="257"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>Busca&amp;r</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="402"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
-        <translation type="unfinished"></translation>
+        <translation>No&amp;me</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="562"/>
@@ -443,12 +443,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="640"/>
         <source>&amp;Exit...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sa&amp;ir...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="643"/>
         <source>Exit application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sair do aplicativo.</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="651"/>
@@ -478,12 +478,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
-        <translation type="unfinished"></translation>
+        <translation>Atualizar BD</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="708"/>
         <source>Stop Updating</source>
-        <translation type="unfinished"></translation>
+        <translation>Parar de atualizar</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="717"/>
@@ -535,7 +535,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="796"/>
         <source>&amp;Latest Version...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ú&amp;ltima versão...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="801"/>
@@ -560,7 +560,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="825"/>
         <source>&amp;Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Buscar...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="828"/>
@@ -570,27 +570,27 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(a&amp;utomático)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inglês</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinês &amp;simplificado (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>Chinês simplificado (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Buscar</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
@@ -615,17 +615,17 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>Húngaro (Magyar nyelv) hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmål norueguês (bokmål) nb_NO</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation>Neerlandês (Países Baixos) nl</translation>
     </message>
 </context>
 <context>
@@ -653,7 +653,7 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
@@ -683,12 +683,12 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="287"/>
         <source>Move to trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Mover para a lixeira</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="293"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Deletar</translation>
     </message>
 </context>
 <context>
@@ -696,7 +696,7 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="380"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Mensagem</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="381"/>
@@ -709,7 +709,7 @@
     <message>
         <location filename="../MainWindow.cpp" line="280"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Carregando...</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="735"/>
@@ -767,7 +767,7 @@
     <message>
         <location filename="../globals.cpp" line="48"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Buscar</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="49"/>
@@ -812,7 +812,7 @@
     <message>
         <location filename="../globals.cpp" line="57"/>
         <source>Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Itens</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="58"/>
@@ -822,7 +822,7 @@
     <message>
         <location filename="../globals.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progresso</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="68"/>
