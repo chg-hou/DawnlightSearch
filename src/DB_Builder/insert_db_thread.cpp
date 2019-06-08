@@ -213,7 +213,7 @@ void Insert_db_Thread::run(){
                     //TODO: set the correct path without mounted-dir  (further check)
                     cur.bindValue(1, current_dir.mid(root_path_name_length_to_skip));
 
-                    foreach (const QString& name, QDir(current_dir).entryList(QDir::AllEntries|QDir::NoDotAndDotDot)) {
+                    foreach (const QString& name, QDir(current_dir).entryList(QDir::AllEntries|QDir::NoDotAndDotDot|QDir::Hidden|QDir::System)) {
 
 
 
