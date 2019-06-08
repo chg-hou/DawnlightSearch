@@ -6,12 +6,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="14"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Erweiterte Einstellungen</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="48"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Suchen</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="56"/>
@@ -168,7 +168,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbank</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
@@ -184,7 +184,7 @@
         <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>…</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
@@ -219,7 +219,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
         <source>Prefered Size Unit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bevorzugte Größeneinheit:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
@@ -315,32 +315,32 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="14"/>
         <source>Dawnlight Search</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dawnlight Search</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
         <source>Fi&amp;le</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Datei</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Einstellungen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sprache</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="130"/>
         <source>Abo&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Info</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="140"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ansicht</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="161"/>
