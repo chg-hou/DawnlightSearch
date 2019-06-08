@@ -234,7 +234,7 @@ MainWindow::MainWindow(QWidget *parent) :
 int MainWindow::ini_after_show(){
     QSettings settings(QSettings::IniFormat,QSettings::UserScope,
                        ORGANIZATION_NAME,ALLICATION_NAME);
-    // If this is first time starting, pop adv setting
+    // If this is first time starting, pop adv setting   
     if (settings.value("First_time_start_up", true).toBool())
     {
         bool ok = Dialog_Advanced_Setting::getSettings();
@@ -243,6 +243,41 @@ int MainWindow::ini_after_show(){
 
             settings.setValue("First_time_start_up", false);
             settings.sync();
+
+            // detect .desktop
+            if (QFileInfo::exists( QDir::homePath() + "/.local/share/applications/dawnlightsearch.desktop" ) ||
+                QFileInfo::exists( "/usr/share/applications/dawnlightsearch.desktop") )
+            {
+                // .desktop exists, do nothing
+            }else{
+                int ret = QMessageBox::question(this, QCoreApplication::translate("dialog",".desktop not found"),
+                                               QCoreApplication::translate("dialog",
+                                                                           "The application is not integrated in the system menu.\n"
+                                                  "Do you want to create one?"),
+                                               QMessageBox::Cancel | QMessageBox::Ok,
+                                               QMessageBox::Cancel);
+                if (ret==QMessageBox::Ok)
+                {
+                    QDir icondir(QDir::homePath()+"/.local/share/icons/hicolor/128x128/apps/");
+                    if (!icondir.exists())icondir.mkpath(".");
+                    qDebug()<<QPixmap(":/icon/ui/icon/main.png").save(QDir::homePath()+"/.local/share/icons/hicolor/128x128/apps/dawnlightsearch.png");
+
+                    std::fstream fs;
+                    fs.open ((QDir::homePath() + "/.local/share/applications/dawnlightsearch.desktop").toStdString(),  std::fstream::out );
+                    fs << "[Desktop Entry]"<<std::endl;
+                    fs << "Name=Dawnlight Search"<<std::endl;
+                    fs << "Comment=Dawnlight Search Engine"<<std::endl;
+                    fs << "Exec=" << QCoreApplication::applicationFilePath().toStdString() <<std::endl;
+                    fs << "Icon=dawnlightsearch"<<std::endl;
+                    fs << "Type=Application"<<std::endl;
+                    fs << "StartupNotify=false"<<std::endl;
+                    fs << "Terminal=false"<<std::endl;
+                    fs << "Categories=Utility;"<<std::endl;
+                    fs.close();
+                }
+            }
+
+
             return APP_RESTART_CODE;
         }
         else{
@@ -564,6 +599,11 @@ void MainWindow::init_db_module_ready_connect_mainWindow_SLOT(){
     }
     connect(query_worker, SIGNAL(update_progress_SIGNAL(int,int)),
             this, SLOT(_on_update_progress_bar(int,int)));
+
+//    connect(db_object->insert_db_thread->file_watcher,SIGNAL(directoryChanged(QString)),
+//            db_object->insert_db_thread, SLOT(directory_changed_SLOT(QString)));
+//    connect(db_object->insert_db_thread->file_watcher,SIGNAL(fileChanged(QString)),
+//            db_object->insert_db_thread, SLOT(file_changed_SLOT(QString)));
 }
 
 
