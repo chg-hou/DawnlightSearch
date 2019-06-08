@@ -315,7 +315,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="14"/>
         <source>Dawnlight Search</source>
-        <translation type="unfinished">Dawnlight Search</translation>
+        <translation>Dawnlight Search</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
