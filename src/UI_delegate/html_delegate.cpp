@@ -103,7 +103,7 @@ QString HTMLDelegate::highlight_html(QString html, QSet<QPair<bool, QString> > &
             while(idx>=0)
             {
                 seg_list.append(QPair<int,int>( {idx,  len_word}  ));
-                idx = html.indexOf(word,idx+1);
+                idx = html.indexOf(word,idx+len_word);
             }
         }else
         {
@@ -112,7 +112,7 @@ QString HTMLDelegate::highlight_html(QString html, QSet<QPair<bool, QString> > &
             while(idx>=0)
             {
                 seg_list.append(QPair<int,int>( {idx,  len_word}  ));
-                idx = html_UPPER.indexOf(word_UPPER,idx+1);
+                idx = html_UPPER.indexOf(word_UPPER,idx+len_word);
             }
         }
     }
