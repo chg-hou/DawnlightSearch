@@ -287,9 +287,9 @@ void MainWindow::_on_tableview_context_menu_requested(QPoint){
                    QApplication::translate("menu","Move to trash"),
                                       this, SLOT(_on_tableview_context_menu_move_to_trash()));
     // TODO: trash files
-    trash_it->setDisabled(true);
+    // trash_it->setDisabled(true);
 
-    menu.addAction(QIcon(QPixmap(":/icon/ui/icon/application-exit.png")),
+    QAction * delete_it = menu.addAction(QIcon(QPixmap(":/icon/ui/icon/application-exit.png")),
                    QApplication::translate("menu","Delete"),
                                       this, SLOT(_on_tableview_context_menu_delete()));
 
@@ -366,29 +366,33 @@ void MainWindow::_on_tableview_context_menu_copy_path(){
 void MainWindow::_on_tableview_context_menu_move_to(){};
 void MainWindow::_on_tableview_context_menu_copy_to(){};
 void MainWindow::_on_tableview_context_menu_move_to_trash(){
-    // TODO:
     // https://api.kde.org/frameworks/kio/html/namespaceKIO.html#aac1528c9af76659d1e039453db0cba59
-
-};
-void MainWindow::_on_tableview_context_menu_delete(){
-    QStringList pathlist;
+    QList<QUrl> pathlist;
     for(const ResultTableRow  & row : get_tableview_selected())
-    {
-        pathlist << row.path;
-    }
+        pathlist << QUrl::fromLocalFile(row.fullpath);
+    qDebug()<<"move to trash"<<pathlist;
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this,  QApplication::translate("message","Message"),
+                         QApplication::translate("message","Are you sure to move file(s) to TRASH?"),
+                         QMessageBox::Yes| QMessageBox::No, QMessageBox::No
+                         );
+    if (reply != QMessageBox::Yes)
+        return;
+    KIO::trash(pathlist);
+    ui->statusBar->showMessage( QApplication::translate("statusbar","Done."),3000);
+};
+void MainWindow::_on_tableview_context_menu_delete(){    
+    QList<QUrl> pathlist;
+    for(const ResultTableRow  & row : get_tableview_selected())
+        pathlist << QUrl::fromLocalFile(row.fullpath);
+    qDebug()<<"move to trash"<<pathlist;
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this,  QApplication::translate("message","Message"),
                          QApplication::translate("message","Are you sure to DELETE?"),
                          QMessageBox::Yes| QMessageBox::No, QMessageBox::No
                          );
     if (reply != QMessageBox::Yes)
-    {
         return;
-    }
-    for (QString filename: pathlist)
-    {
-        QFile::remove(filename);
-    }
+    KIO::del(pathlist);
     ui->statusBar->showMessage( QApplication::translate("statusbar","Done."),3000);
-
 };

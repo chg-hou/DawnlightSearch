@@ -68,6 +68,8 @@ struct AppLauncher{
 #include <KF5/KIOWidgets/KFileItemActions>
 #include <KF5/KIOFileWidgets/KFileCopyToMenu>
 
+#include <KF5/KIOCore/KIO/CopyJob>
+#include <KF5/KIOCore/KIO/DeleteJob>
 #endif
 
 
