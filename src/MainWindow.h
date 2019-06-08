@@ -70,6 +70,8 @@ struct AppLauncher{
 
 #include <KF5/KIOCore/KIO/CopyJob>
 #include <KF5/KIOCore/KIO/DeleteJob>
+//#include <KIO/RenameDialog>
+#include <QInputDialog>
 #endif
 
 
@@ -184,6 +186,7 @@ public slots:
     void _on_tableview_context_menu_copy_path();
     void _on_tableview_context_menu_move_to();
     void _on_tableview_context_menu_copy_to();
+    void _on_tableview_context_menu_rename();
     void _on_tableview_context_menu_move_to_trash();
     void _on_tableview_context_menu_delete();
 

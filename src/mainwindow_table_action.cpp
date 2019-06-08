@@ -280,6 +280,17 @@ void MainWindow::_on_tableview_context_menu_requested(QPoint){
 
     menu.addMenu(copy_menu);
 
+    //===========================================================================
+    // rename, will be shown only when single item is selected.
+    if (selected_rows.length()==1)
+    {
+        menu.addSeparator();
+        QAction * rename_it = menu.addAction(QIcon(QPixmap(":/icon/ui/icon/document-edit.png")),
+                       QApplication::translate("menu","Rename"),
+                                          this, SLOT(_on_tableview_context_menu_rename()));
+
+    }
+
     //==============================================================================
     menu.addSeparator();
 
@@ -365,6 +376,38 @@ void MainWindow::_on_tableview_context_menu_copy_path(){
 
 void MainWindow::_on_tableview_context_menu_move_to(){};
 void MainWindow::_on_tableview_context_menu_copy_to(){};
+void MainWindow::_on_tableview_context_menu_rename(){
+    QList<QString> pathlist;
+    for(const ResultTableRow  & row : get_tableview_selected())
+        pathlist << row.fullpath;
+
+    QFile file(pathlist.first());
+    QFileInfo fileinfo(pathlist.first());
+    bool ok;
+    QString titletext = QApplication::translate("message","Rename");
+    while(True){
+        QString newname = QInputDialog::getText(this, titletext,
+                                            QApplication::translate("message","Input new name:"),
+                                            QLineEdit::Normal,
+                                            fileinfo.fileName(), &ok);
+        if (ok && !newname.isEmpty())
+        {
+            qDebug()<<"Rename "<< file.fileName() << " as: "<<QDir(fileinfo.path()).filePath(newname);
+            if (!file.rename( QDir(fileinfo.path()).filePath(newname) ))
+            {
+                titletext = QApplication::translate("message","Fail to rename as ")+newname ;
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
+        else
+            break;
+    }
+    return;
+};
 void MainWindow::_on_tableview_context_menu_move_to_trash(){
     // https://api.kde.org/frameworks/kio/html/namespaceKIO.html#aac1528c9af76659d1e039453db0cba59
     QList<QUrl> pathlist;
@@ -385,7 +428,7 @@ void MainWindow::_on_tableview_context_menu_delete(){
     QList<QUrl> pathlist;
     for(const ResultTableRow  & row : get_tableview_selected())
         pathlist << QUrl::fromLocalFile(row.fullpath);
-    qDebug()<<"move to trash"<<pathlist;
+    qDebug()<<"delete"<<pathlist;
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this,  QApplication::translate("message","Message"),
                          QApplication::translate("message","Are you sure to DELETE?"),

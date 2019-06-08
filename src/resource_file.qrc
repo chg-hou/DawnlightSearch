@@ -26,6 +26,7 @@
         <file>ui/icon/application-x-zerosize.svg</file>
         <file>ui/icon/device-mounted.svg</file>
         <file>ui/icon/device-unmounted.svg</file>
+        <file>ui/icon/document-edit.png</file>
     </qresource>
     <qresource prefix="/">
         <file>lang/translate_bg.qm</file>
