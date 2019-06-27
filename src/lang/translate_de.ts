@@ -16,78 +16,78 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="56"/>
         <source>Number of Threads Used for Querying: </source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl der Threads, die für die Abfrage verwendet werden: </translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="64"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="657"/>
         <source>(Auto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(automatisch)</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="69"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="74"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="79"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="84"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="89"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="94"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="117"/>
         <source>Result Limit</source>
-        <translation type="unfinished"></translation>
+        <translation>Ergebnisgrenze</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
         <source>Query  Chunk  Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfrage der Blockgröße:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="195"/>
         <source>Query Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfragegrenzwert:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="253"/>
         <source>Max Items in Table:</source>
-        <translation type="unfinished"></translation>
+        <translation>Max. Anzahl von Elemente in der Tabelle:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="288"/>
         <source>Search Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Sucheigenschaften</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="298"/>
         <source>Instant Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Sofortsuche</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="318"/>
         <source>Start Querying after Typing Finished:</source>
-        <translation type="unfinished"></translation>
+        <translation>Abfrage beginnen, nachdem die Eingabe beendet wurde:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="356"/>
@@ -96,17 +96,17 @@
         <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="967"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Eingabe drücken, um Suche zu beginnen</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
         <source>Date-time Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datum/Uhrzeit-Format:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="402"/>
@@ -163,7 +163,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
         <source>Restore Sorting after New Row Inserted</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortierung wiederherstellen, nachdem eine neue Zeile eingefügt wurde</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
@@ -173,12 +173,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
         <source>Database Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Speicherort der Datenbank</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
         <source>Main Database File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Name der Hauptdatenbankdatei:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
@@ -189,7 +189,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
         <source>Temp Database File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp. Dateiname der Datenbank:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
@@ -199,22 +199,22 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordner in unterschiedlichen Geräten ignorieren</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
         <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbankdatei (mit zlib) komprimieren, um beim Schließen der Anwendung Speicherplatz zu sparen</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
         <source>Regular Expression to Exclude Mount Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Regulärer Ausdruck zum Ausschluss des  Zuordnungspfades:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
         <source>Result Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Ergebnistabelle</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
@@ -224,37 +224,37 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>kB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
-        <translation type="unfinished"></translation>
+        <translation>TB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
-        <translation type="unfinished"></translation>
+        <translation>PB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Name des Themas:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
@@ -279,7 +279,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
         <source>UUID Table</source>
-        <translation type="unfinished"></translation>
+        <translation>UUID-Tabelle</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
@@ -294,12 +294,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="851"/>
         <source>Rows Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeilenaktualisierung:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbankaktualisierung:</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../Ui_edit_exclued_folder.ui" line="14"/>
         <source>Edit Excluded Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausgeschlossene Ordner bearbeiten</translation>
     </message>
 </context>
 <context>
@@ -345,115 +345,115 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="161"/>
         <source>ToolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolleiste</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="202"/>
         <location filename="../Ui_mainwindow.ui" line="873"/>
         <source>&amp;Database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Datenbank</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="257"/>
         <location filename="../Ui_mainwindow.ui" line="881"/>
         <source>SQL &amp;Command Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>SQL-&amp;Befehlsvorschau</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="285"/>
         <source>ToolBar Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolleiste • Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="300"/>
         <source>ToolBar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolleiste • Erweiterte Einstellung</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Suchen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="402"/>
         <location filename="../Ui_mainwindow.ui" line="518"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beachten</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="460"/>
         <source>Search Settin&amp;gs</source>
-        <translation type="unfinished"></translation>
+        <translation>Sucheinstellun&amp;gen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="546"/>
         <source>Default Match Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardabgleichsoption</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
-        <translation type="unfinished"></translation>
+        <translation>Na&amp;me</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="562"/>
         <source>Path/Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad/Name</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="569"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="576"/>
         <source>De&amp;v/Path</source>
-        <translation type="unfinished"></translation>
+        <translation>De&amp;v/Pfad</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="583"/>
         <source>Dev/Path/Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Dev/Pfad/Name</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="598"/>
         <source>&amp;About...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Über …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="609"/>
         <source>&amp;Set Excluded Folders...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ausgeschlossene Ordner festlegen …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="614"/>
         <source>About &amp;Qt...</source>
-        <translation type="unfinished"></translation>
+        <translation>Über &amp;Qt …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="625"/>
         <source> ┗ &amp;Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
+        <translation> ┗ &amp;C++ MFT-Analyse aktivieren</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="628"/>
         <source>Much faster than python parser</source>
-        <translation type="unfinished"></translation>
+        <translation>Viel schneller als Python-Analysator</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="640"/>
         <source>&amp;Exit...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Beenden …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="643"/>
         <source>Exit application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung beenden</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <translation>MFT-Analyse zum Aufbau des Index verwenden</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="654"/>
@@ -463,12 +463,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="666"/>
         <source>&amp;Advanced Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Erweiterte Einstellungen …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="675"/>
         <source>&amp;Open Settings File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dateipfad der Einstellungen öffnen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="690"/>
@@ -478,74 +478,74 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenbank aktualisieren</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="708"/>
         <source>Stop Updating</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisierung anhalten</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="717"/>
         <source>Open &amp;Main DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hauptdatenbankpfad öffnen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="726"/>
         <source>Open Temp &amp;DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Temp. &amp;Datenbankpfad öffnen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="735"/>
         <source>Show Search Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Sucheinstellungen anzeigen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="749"/>
         <location filename="../Ui_mainwindow.ui" line="752"/>
         <source>Toggle Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Groß-/Kleinschreibung beachten - aktivieren/deaktivieren</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="757"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausblenden</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="762"/>
         <source>Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzeigen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="770"/>
         <source>Show All</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle anzeigen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="779"/>
         <location filename="../Ui_mainwindow.ui" line="782"/>
         <source>Update DB (only selected)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nur ausgewählte Datenbanken aktualisieren</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="791"/>
         <source>&amp;Open Project Homepage...</source>
-        <translation type="unfinished"></translation>
+        <translation>Homepage des Projekts &amp;öffnen …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="796"/>
         <source>&amp;Latest Version...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Letzte Version …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="801"/>
         <source>Check Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfung enthalten</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="806"/>
         <source>Uncheck Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungeprüft enthalten</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="811"/>
@@ -560,47 +560,47 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="825"/>
         <source>&amp;Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Suchen …</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="828"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Strg+G</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(a&amp;utomatisch)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Englisch</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vereinfachtes Chinesisch (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>Vereinfachtes Chinesisch (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Suchen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>S&amp;ucheinstellungen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Symbolleiste</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="897"/>
@@ -610,12 +610,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbo&amp;lleiste • Erweiterte Einstellungen</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungarisch (Magyar nyelv) hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
