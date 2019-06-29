@@ -9,7 +9,11 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
         if (event->type() == QEvent::FocusOut)
             emit ui->comboBox_search->lineEdit()->returnPressed();
     }
-
+    if (AUTOFOCUS_SEARCH_WHEN_WIN_ACTIVATED && obj == ui->comboBox_search && event->type() == QEvent::WindowActivate)
+    {
+        qDebug()<<obj<<"QEvent::WindowActivate";
+        ui->comboBox_search->setFocus();
+    }
     //    if (obj == this && event->type() == QEvent::Resize)
     //    {
     //        QResizeEvent *resizeEvent = static_cast<QResizeEvent*>(event);

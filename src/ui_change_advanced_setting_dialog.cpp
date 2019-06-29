@@ -69,6 +69,9 @@ Dialog_Advanced_Setting::Dialog_Advanced_Setting(QWidget *parent):QDialog(parent
     else
         this->radioButton_enter_to_search->setChecked(true);
 
+    this->checkBox_autoFocus_when_win_activated->setChecked(
+                settings.value("Search/Auto_Focus_SearchBar_when_Window_Activated",True).toBool());
+
     comboBox_threads_for_querying->clear();
     comboBox_threads_for_querying->addItem(QApplication::translate("dialog","All Cores"));
     for(int i =0; i<QThread::idealThreadCount(); i++)
@@ -182,6 +185,9 @@ bool Dialog_Advanced_Setting::getSettings(QWidget * parent)
 
         INSTANT_SEARCH = dialog.radioButton_instant_search->isChecked();
         settings.setValue("Search/Instant_Search", dialog.radioButton_instant_search->isChecked());
+
+        AUTOFOCUS_SEARCH_WHEN_WIN_ACTIVATED = dialog.checkBox_autoFocus_when_win_activated->isChecked();
+        settings.setValue("Search/Auto_Focus_SearchBar_when_Window_Activated", AUTOFOCUS_SEARCH_WHEN_WIN_ACTIVATED);
 
         settings.setValue("Start_Querying_after_Typing_Finished",dialog.spinBox_lazy_query_interval->value());
         settings.setValue("Restor_Sort_after_New_Row_Inserted", dialog.spinBox_restor_sort_interval->value());

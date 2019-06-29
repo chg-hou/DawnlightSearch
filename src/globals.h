@@ -131,7 +131,7 @@ extern QSet<QPair<bool,QString >>  HIGHLIGHT_WORDS_PATH;
 extern  long MODEL_MAX_ITEMS;
 
 extern bool COMPRESS_DB_FILE ;
-
+extern bool AUTOFOCUS_SEARCH_WHEN_WIN_ACTIVATED;
 extern bool DB_READ_ONLY_FLAG;
 
 #ifdef SNAP_LSBLK_COMPATIBILITY_MODE
