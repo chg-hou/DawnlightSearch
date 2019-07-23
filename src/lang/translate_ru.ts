@@ -158,7 +158,54 @@
 &lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 
 &lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Выражение&lt;/th&gt;&lt;th&gt;Результат&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;д&lt;/td&gt;&lt;td&gt;номер дня без нуля в начале (1-31)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;дд&lt;/td&gt;&lt;td&gt;номер дня с нулём в начале (01-31)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;ддд&lt;/td&gt;&lt;td&gt;сокращённое название дня недели (с &quot;Пон&quot; по &quot;Вск&quot;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;дддд&lt;/td&gt;&lt;td&gt;полное название дня недели (с &quot;Понедельник&quot; по &quot;Воскресенье&quot;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;М&lt;/td&gt;&lt;td&gt;номер месяца без нуля в начале (1-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ММ&lt;/td&gt;&lt;td&gt;номер месяца с нулём в начале (01-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;МММ&lt;/td&gt;&lt;td&gt;сокращённое название месяца (с &quot;Янв&quot; по &quot;Дек&quot;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ММММ&lt;/td&gt;&lt;td&gt; полное название месяца (с &quot;Январь&quot; по &quot;Декабрь&quot;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;гг&lt;/td&gt;&lt;td&gt;год (последние две цифры) (00-99)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;гггг&lt;/td&gt;&lt;td&gt;год (полностью) &lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+
+&lt;br/&gt;
+
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Выражение&lt;/th&gt;&lt;th&gt;Результат&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;ч&lt;/td&gt;&lt;td&gt;часы без нуля в начале (0-23 или 1-12, если 12-часовой формат)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;чч&lt;/td&gt;&lt;td&gt;часы с нулём в начале (00-23 или 01-12, если 12-часовой формат)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;Ч&lt;/td&gt;&lt;td&gt;часы без нуля в начале (0-23, даже если 12-часовой формат)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ЧЧ&lt;/td&gt;&lt;td&gt;часы с нулём в начале (00-23, даже если 12-часовой формат)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;м&lt;/td&gt;&lt;td&gt;минуты без нуля в начале (0-59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;мм&lt;/td&gt;&lt;td&gt;минуты с нулём в начале (00-59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;с&lt;/td&gt;&lt;td&gt;секунды без нуля в начале (0-59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;сс&lt;/td&gt;&lt;td&gt;секунды с нулём в начале (00-59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;з&lt;/td&gt;&lt;td&gt;миллисекунды без нулей в начале (0-999)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ззз&lt;/td&gt;&lt;td&gt;миллисекунды с нулями в начале (000-999)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;AP или A&lt;/td&gt;&lt;td&gt;interpret as an AM/PM time. &lt;i&gt;AP&lt;/i&gt; must be either &quot;AM&quot; or &quot;PM&quot;.&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ap или a&lt;/td&gt;&lt;td&gt;Interpret as an AM/PM time. &lt;i&gt;ap&lt;/i&gt; must be either &quot;am&quot; or &quot;pm&quot;.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;br/&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+&lt;caption&gt;Примеры:&lt;/caption&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Формат&lt;/th&gt;&lt;th&gt;Ввод&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;дд.ММ.гггг&lt;/td&gt;&lt;td&gt;21.05.2001&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ддд ММММ д гг&lt;/td&gt;&lt;td&gt;Втр Май 21 01&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;чч:мм:сс.ззз&lt;/td&gt;&lt;td&gt;14:13:09.042&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ч:м:с ap&lt;/td&gt;&lt;td&gt;2:13:9 п.п.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
