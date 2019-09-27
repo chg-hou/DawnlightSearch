@@ -104,9 +104,15 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(_on_lineedit_enter_pressed()));
 
     //# search setting
+    if (settings.value("Search/Case_Sensitive", False).toBool())
+        ui->comboBox_search->completer()->setCaseSensitivity(Qt::CaseSensitive);
+    else
+        ui->comboBox_search->completer()->setCaseSensitivity(Qt::CaseInsensitive);
+
+    connect(ui->toolButton_casesensitive,SIGNAL(toggled(bool)),
+            this, SLOT(_on_toolbutton_casesensitive_toggled(bool)));
     connect(ui->actionCase_Sensitive,SIGNAL(triggered(bool)),
             this, SLOT(_on_toolbutton_casesensitive_toggled(bool)));
-
     ui->toolButton_casesensitive->setChecked(
                 settings.value("Search/Case_Sensitive", False).toBool()
                 );

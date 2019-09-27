@@ -4,6 +4,11 @@
 
 
 void MainWindow::_on_toolbutton_casesensitive_toggled(bool checked){
+    if (checked)
+        ui->comboBox_search->completer()->setCaseSensitivity(Qt::CaseSensitive);
+    else
+        ui->comboBox_search->completer()->setCaseSensitivity(Qt::CaseInsensitive);
+
     _Former_search_text = "";
     CASE_SENSTITIVE = checked;
     _on_lineedit_text_changed(lineEdit_search->text());
@@ -12,6 +17,13 @@ void MainWindow::_on_toolbutton_casesensitive_toggled(bool checked){
                        ORGANIZATION_NAME,ALLICATION_NAME);
     settings.setValue("Search/Case_Sensitive",CASE_SENSTITIVE);
     settings.sync();
+
+    ui->toolButton_casesensitive->blockSignals(true);
+    ui->actionCase_Sensitive->blockSignals(true);
+    ui->toolButton_casesensitive->setChecked(checked);
+    ui->actionCase_Sensitive->setChecked(checked);
+    ui->toolButton_casesensitive->blockSignals(false);
+    ui->actionCase_Sensitive->blockSignals(false);
 }
 
 void MainWindow::_on_match_option_changed(bool){

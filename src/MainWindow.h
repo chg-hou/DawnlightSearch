@@ -101,6 +101,7 @@ struct AppLauncher{
 #include <QClipboard>
 #include <QMessageBox>
 #include <QTranslator>
+#include <QCompleter>
 
 #include "DB_Builder/update_db_module.h"
 #include "QueryWorker/query_worker.h"
