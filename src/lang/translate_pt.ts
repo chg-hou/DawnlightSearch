@@ -458,7 +458,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="654"/>
         <source>Only NTFS partition, faster than path walk</source>
-        <translation type="unfinished"></translation>
+        <translation>Apenas a partição NTFS, mais rápida do que o caminho percorrido</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="666"/>
@@ -540,22 +540,22 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="801"/>
         <source>Check Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificação Incluída</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="806"/>
         <source>Uncheck Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarque Incluído</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="811"/>
         <source>Check Updatable</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificação Atualizável</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="816"/>
         <source>Uncheck Updatable</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarque atualizável</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="825"/>
@@ -565,7 +565,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="828"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="836"/>
@@ -734,7 +734,7 @@
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Modo de compatibilidade snap]</translation>
     </message>
 </context>
 <context>
