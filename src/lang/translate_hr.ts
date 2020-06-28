@@ -597,12 +597,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="812"/>
         <source>Check Updatable</source>
-        <translation>Označi nadogradive</translation>
+        <translation>Označi aktualizirajuće</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="817"/>
         <source>Uncheck Updatable</source>
-        <translation>Odznači nadogradive</translation>
+        <translation>Odznači aktualizirajuće</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="826"/>
