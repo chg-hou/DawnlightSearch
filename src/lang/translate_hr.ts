@@ -455,12 +455,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="577"/>
         <source>De&amp;v/path</source>
-        <translation>Raz&amp;voj/staza</translation>
+        <translation>&amp;Uređaj/staza</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="584"/>
         <source>Dev/path/name</source>
-        <translation>Razvoj/staza/ime</translation>
+        <translation>Uređaj/staza/ime</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="599"/>
