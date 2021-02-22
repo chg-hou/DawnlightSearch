@@ -158,7 +158,54 @@
 &lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
 
 &lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Expressão&lt;/th&gt;&lt;th&gt;Saída&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+141]&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt; o dia como número sem um zero inicial (1 a 31)&lt;/td&gt;&lt;/tr&gt;.
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;dd&lt;/td&gt;&lt;td&gt;o dia como número com um zero inicial (01 a 31)&lt;/td&gt;&lt;/tr&gt;
+356]&lt;td&gt;ddd&lt;/td&gt;&lt;td&gt;o nome abreviado do dia localizado (por exemplo, &apos;Mon&apos; a &apos;Sun&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;dddd&lt;/td&gt;&lt;td&gt;o longo nome do dia localizado (por exemplo, &apos;monday&apos; a &apos;subday&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt; o mês como número sem um zero inicial (1-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;MM&lt;/td&gt;&lt;td&gt; o mês como número com um zero inicial (01-12)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;MMM&lt;/td&gt;&lt;td&gt;o nome abreviado do mês localizado (por exemplo, &apos;Jan&apos; a &apos;Dec&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;MMMM&lt;/td&gt;&lt;td&gt; o longo nome do mês localizado (por exemplo, &apos;january&apos; a &apos;december&apos;). &lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;yy&lt;/td&gt;&lt;td&gt;ano como número de dois dígitos (00-99)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;yyyyy&lt;/td&gt;&lt;td&gt;o ano como número de quatro dígitos&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+
+&lt;br/&gt;
+
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Expressão&lt;/th&gt;&lt;th&gt;Saída&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;&lt;td&gt;h&lt;/td&gt;&lt;td&gt; a hora sem um zero inicial (0 a 23 ou 1 a 12 se AM/PM display)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;hh&lt;/td&gt;&lt;td&gt; a hora com um zero inicial (00 a 23 ou 01 a 12 se AM/PM display)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt; a hora sem um zero inicial (0 a 23, mesmo com display AM/PM)&lt;/td&gt;&lt;/tr&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;HH&lt;/td&gt;&lt;td&gt;a hora com um zero inicial (00 a 23, mesmo com display AM/PM)&lt;/td&gt;&lt;/tr&gt;.
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;m&lt;/td&gt;&lt;td&gt;o minuto sem um zero inicial (0 a 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;mm&lt;/td&gt;&lt;td&gt;minuto com um zero inicial (00 a 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt; segundo sem um zero inicial (0 a 59)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ss&lt;/td&gt;&lt;td&gt;segundo com um zero inicial (00 a 59)&lt;/td&gt;&lt;/tr&gt;.
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;z&lt;/td&gt;&lt;td&gt;os milissegundos sem zeros iniciais (0 a 999)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;zzz&lt;/td&gt;&lt;td&gt;os milissegundos com zeros à esquerda (000 a 999)&lt;/td&gt;&lt;/tr&gt;.
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;AP ou A&lt;/td&gt;&lt;td&gt;interpretam como um tempo AM (manhã)/PM (tarde). &lt;i&gt;AP&lt;/i&gt; deve ser ou &quot;AM&quot; ou &quot;PM&quot;.&lt;/td&gt;&lt;/tr&gt;&lt;/tr&gt;&lt;i&gt;AP&lt;/i&gt; deve ser ou &quot;AM&quot; ou &quot;PM&quot;.
+2576]&lt;td&gt;ap ou a&lt;/td&gt;&lt;td&gt;Interpretar como uma hora AM/PM. &lt;i&gt;ap&lt;/i&gt; deve ser ou &quot;am&quot; ou &quot;pm&quot;.&lt;/td&gt;&lt;/tr&gt;&lt;/tr&gt;&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;ap ou a&lt;/td&gt;&lt;td&gt;Interpretar como hora AM/PM.
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;br/&gt;
+
+&lt;div class=&quot;table&quot;&gt;&lt;table class=&quot;generic&quot;&gt;
+&lt;caption&gt;Exemplos:&lt;/caption&gt;
+ &lt;thead&gt;&lt;tr class=&quot;qt-style&quot;&gt;&lt;th&gt;Formato&lt;/th&gt;&lt;th&gt;Entrada&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;dd.MM.yyyy&lt;/td&gt;&lt;td&gt;21.05.2001&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;&lt;td&gt; ddd MMMM d yy&lt;/td&gt;&lt;td&gt; Ter 21 de Maio 01&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;odd&quot;&gt;&lt;td&gt;hh:mm:ss.zzz&lt;/td&gt;&lt;td&gt;14:13:09.042&lt;/td&gt;&lt;/tr&gt;
+&lt;tr valign=&quot;top&quot; class=&quot;even&quot;&gt;&lt;td&gt;h:m:s ap&lt;/td&gt;&lt;td&gt;2:13:9 pm&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+
+&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
