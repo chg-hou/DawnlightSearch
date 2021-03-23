@@ -101,7 +101,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation>Appuyer sur « Entrée » pour rechercher</translation>
+        <translation>Appuyer sur « Entrée » pour rechercher</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
