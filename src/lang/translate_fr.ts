@@ -101,7 +101,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation>Appuyer sur « Entrée » pour rechercher</translation>
+        <translation>Appuyer sur «&#xa0;Entrée&#xa0;» pour rechercher</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
@@ -219,7 +219,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
         <source>Prefered Size Unit:</source>
-        <translation>Unité de taille préférée :</translation>
+        <translation>Unité de taille préférée&#xa0;:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
@@ -254,7 +254,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation>Nom du thème :</translation>
+        <translation>Nom du thème&#xa0;:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
@@ -264,7 +264,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
         <source>Fallback Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom du thème de secours&#xa0;:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
@@ -299,7 +299,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
-        <translation>Mise à jour de la base de données :</translation>
+        <translation>Mise à jour de la base de données&#xa0;:</translation>
     </message>
 </context>
 <context>
