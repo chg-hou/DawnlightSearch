@@ -246,7 +246,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
-        <translation>Ignorar pasta em dispositivos diferentes</translation>
+        <translation>Ignorar pasta em aparelhos diferentes</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
@@ -844,17 +844,17 @@
     <message>
         <location filename="../globals.cpp" line="54"/>
         <source>Dev name</source>
-        <translation>Nome do dispositivo</translation>
+        <translation>Nome do aparelho</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="55"/>
         <source>Major Device Num</source>
-        <translation>Número grande do dispositivo</translation>
+        <translation>Número grande do aparelho</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="56"/>
         <source>Minor Device Num</source>
-        <translation>Número pequeno do dispositivo</translation>
+        <translation>Número pequeno do aparelho</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="57"/>
@@ -874,17 +874,17 @@
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation>Marque para pesquisar neste dispositivo. O ícone indica o estado da montagem.</translation>
+        <translation>Marque para pesquisar neste aparelho. O ícone indica o estado da montagem.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation>Caminho onde o dispositivo está montado.</translation>
+        <translation>Caminho onde o aparelho está montado.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
-        <translation>Etiqueta do dispositivo.</translation>
+        <translation>Etiqueta do aparelho.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="71"/>
@@ -894,7 +894,7 @@
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation>Isto é uma coluna editável. Pode personalizar um nome alternativo para este dispositivo.</translation>
+        <translation>Isto é uma coluna editável. Pode personalizar um nome alternativo para este aparelho.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
@@ -904,25 +904,25 @@
     <message>
         <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
-        <translation>Nome do dispositivo.</translation>
+        <translation>Nome do aparelho.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="75"/>
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation>Cada um dos dispositivos de armazenamento é representado por um número grande e um intervalo de números pequenos,
-que são utilizados para identificar respetivamente o dispositivo e uma partição no dispositivo.</translation>
+        <translation>Cada um dos aparelhos de armazenamento é representado por um número grande e um intervalo de números pequenos,
+que são utilizados para identificar respetivamente o aparelho e uma partição no aparelho.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation>Número total de itens neste dispositivo.</translation>
+        <translation>Número total de itens neste aparelho.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation>Marque para atualizar este dispositivo ao clicar no botão &quot;atualizar tudo&quot;.</translation>
+        <translation>Marque para atualizar este aparelho ao clicar no botão &quot;atualizar tudo&quot;.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
