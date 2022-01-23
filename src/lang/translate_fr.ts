@@ -259,7 +259,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type a folder which contains a &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt; file.&lt;/p&gt;&lt;p&gt; Themes may be available in &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Type de dossier qui conteint un fichier &lt;span style=&quot; color:#0109ea;&quot;&gt;index.theme&lt;/span&gt;.&lt;/p&gt;&lt;p&gt; Les thèmes peuvent ne pas être disponibles dans &amp;quot;&lt;a href=&quot;file:///usr/share/icons/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;/usr/share/icons&lt;/span&gt;&lt;/a&gt;&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="730"/>
@@ -269,7 +269,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="737"/>
         <source>FallbackThemeName was introduced in Qt 5.12.</source>
-        <translation type="unfinished"></translation>
+        <translation>FallbackThemeName a été introduit dans Qt 5.12.</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="746"/>
@@ -284,7 +284,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
         <source>Timer Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Intervalle du minuteur</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="786"/>
@@ -320,12 +320,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
         <source>Fi&amp;le</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fichier</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>Préfére&amp;nces</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
@@ -335,7 +335,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="130"/>
         <source>Abo&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>À &amp;propos</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="140"/>
@@ -357,7 +357,7 @@
         <location filename="../Ui_mainwindow.ui" line="257"/>
         <location filename="../Ui_mainwindow.ui" line="881"/>
         <source>SQL &amp;Command Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Aperçu de la &amp;commande SQL</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="285"/>
@@ -372,7 +372,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Recherche</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="402"/>
@@ -383,7 +383,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="460"/>
         <source>Search Settin&amp;gs</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechercher les ré&amp;glages</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="546"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
-        <translation type="unfinished"></translation>
+        <translation>No&amp;m</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="562"/>
@@ -433,7 +433,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="625"/>
         <source> ┗ &amp;Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
+        <translation> ┗ &amp;Active l&apos;interpréteur de C++ MFT</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="628"/>
@@ -453,12 +453,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Utiliser l&apos;interpréteur MFT pour construire l&apos;index</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="654"/>
         <source>Only NTFS partition, faster than path walk</source>
-        <translation type="unfinished"></translation>
+        <translation>Seulement les partitions NTFS, plus rapide que le parcourir le chemin</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="666"/>
@@ -468,17 +468,17 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="675"/>
         <source>&amp;Open Settings File Path</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ouvrir le chemin du fichier de préférences</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="690"/>
         <source>Show Location Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher le tableau des emplacements</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour la BDD</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="708"/>
@@ -488,12 +488,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="717"/>
         <source>Open &amp;Main DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le che&amp;min principal de la BDD</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="726"/>
         <source>Open Temp &amp;DB Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le chemin de la B&amp;DD temporaire</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="735"/>
@@ -525,7 +525,7 @@
         <location filename="../Ui_mainwindow.ui" line="779"/>
         <location filename="../Ui_mainwindow.ui" line="782"/>
         <source>Update DB (only selected)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour BDD (seulement pour la sélection)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="791"/>
@@ -540,12 +540,12 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="801"/>
         <source>Check Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Cocher les inclus</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="806"/>
         <source>Uncheck Included</source>
-        <translation type="unfinished"></translation>
+        <translation>Décocher les inclus</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="811"/>
@@ -570,7 +570,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(A&amp;uto)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="841"/>
@@ -595,7 +595,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>R&amp;echercher dans les préférences</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="889"/>
@@ -610,22 +610,22 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Préférences avancés de la barre d&apos;outi&amp;ls</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hongrois (Magyar nyelv) hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation>Norvégien (bokmål) nb_NO</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation>Hollandais (Pays-Bas) nl</translation>
     </message>
 </context>
 <context>
@@ -633,7 +633,7 @@
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="73"/>
         <source>All Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous les cœurs</translation>
     </message>
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
@@ -658,7 +658,7 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
         <source>Open path</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir le chemin</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="268"/>
@@ -734,7 +734,7 @@
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Mode de compatibilité Snap]</translation>
     </message>
 </context>
 <context>
@@ -772,7 +772,7 @@
     <message>
         <location filename="../globals.cpp" line="49"/>
         <source>Mount Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Monter le chemin</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="50"/>
@@ -792,27 +792,27 @@
     <message>
         <location filename="../globals.cpp" line="53"/>
         <source>FS Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de système de fichier</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="54"/>
         <source>Dev name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom dev</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="55"/>
         <source>Major Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Numéro majeur de l&apos;appareil</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="56"/>
         <source>Minor Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Numéro mineur de l&apos;appareil</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="57"/>
         <source>Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Éléments</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="58"/>
@@ -827,12 +827,12 @@
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cochez pour chercher cet appareil. L&apos;icône indique l&apos;état de montage.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le chemin vers l&apos;appareil monté.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
@@ -842,17 +842,17 @@
     <message>
         <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
+        <translation>Identifier unique universel (UUID).</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ceci est une colonne éditable. Vous pouvez personnaliser un raccourcis vers l&apos;appareil.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de système de fichier.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="74"/>
@@ -869,12 +869,12 @@ which are used to identify either the entire device or a partition within the de
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre total d&apos;éléments sur cet appareil.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cocher pour mettre à jour cet appareil en cliquant le bouton « Tout mettre à jour ».</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
@@ -914,12 +914,12 @@ which are used to identify either the entire device or a partition within the de
     <message>
         <location filename="../globals.cpp" line="106"/>
         <source>Modify Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Date de modification</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="107"/>
         <source>Change Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Changer date</translation>
     </message>
 </context>
 </TS>
