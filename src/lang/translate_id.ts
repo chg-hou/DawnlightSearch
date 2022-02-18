@@ -575,32 +575,32 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inggris</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cina Sederhana (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>Cina Sederhana (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cari</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;engaturan Pencarian</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bilah Alat</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="897"/>
@@ -610,22 +610,22 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;engaturan Lanjut Bilah Alat</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hungaria (Magyar nyelv) hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmål Norwegia (bokmål) nb_NO</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation>Belanda (Nederlands) nl</translation>
     </message>
 </context>
 <context>
@@ -639,12 +639,12 @@
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="129"/>
         <source>Select Directory of Database File</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih Direktori File Database</translation>
     </message>
     <message>
         <location filename="../ui_change_excluded_folder_dialog.cpp" line="56"/>
         <source>Select Directory to Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih Direktori untuk ditambah</translation>
     </message>
 </context>
 <context>
@@ -653,42 +653,42 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
         <source>Open path</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka jalur</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="268"/>
         <source>Copy ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin ...</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="270"/>
         <source>Copy fullpath</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin jalur lengkap</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="272"/>
         <source>Copy filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin nama file</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="274"/>
         <source>Copy path</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin jalur</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="287"/>
         <source>Move to trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Pindah ke sampah</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="293"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus</translation>
     </message>
 </context>
 <context>
@@ -696,12 +696,12 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="380"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesan</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="381"/>
         <source>Are you sure to DELETE?</source>
-        <translation type="unfinished"></translation>
+        <translation>Apakah Anda yakin untuk MENGHAPUS?</translation>
     </message>
 </context>
 <context>
@@ -709,32 +709,32 @@
     <message>
         <location filename="../MainWindow.cpp" line="280"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Memuat...</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="735"/>
         <source>Exclude folders from indexing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kecualikan folder dari pengindeksan.</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="392"/>
         <source>Done.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai.</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="220"/>
         <source> [Read Only Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Mode Hanya Baca]</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="222"/>
         <source>Ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Siap.</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Mode Kompatibilitas Snap]</translation>
     </message>
 </context>
 <context>
@@ -742,184 +742,185 @@
     <message>
         <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
-        <translation type="unfinished"></translation>
+        <translation>Database dikunci oleh</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="262"/>
         <source>Appname: </source>
-        <translation type="unfinished"></translation>
+        <translation>Nama aplikasi: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="263"/>
         <source>PID: </source>
-        <translation type="unfinished"></translation>
+        <translation>PID: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host:</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Peringatan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="48"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Cari</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="49"/>
         <source>Mount Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur Mount</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="50"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="51"/>
         <source>UUID</source>
-        <translation type="unfinished"></translation>
+        <translation>UUID</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="52"/>
         <source>Alias</source>
-        <translation type="unfinished"></translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="53"/>
         <source>FS Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipe FS</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="54"/>
         <source>Dev name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama Dev</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="55"/>
         <source>Major Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomor Perangkat Utama</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="56"/>
         <source>Minor Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomor Perangkat Minor</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="57"/>
         <source>Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Item</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="58"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Perbarui</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Kemajuan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
+        <translation>Centang untuk menelusuri perangkat ini. Ikon menunjukkan status pemasangan.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur tempat perangkat dipasang.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
-        <translation type="unfinished"></translation>
+        <translation>Label perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengidentifikasi unik universal (UUID).</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ini adalah kolom yang dapat diedit. Anda dapat menyesuaikan alias perangkat ini.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jenis sistem file.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="75"/>
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setiap perangkat penyimpanan diwakili oleh nomor utama dan berbagai nomor minor,
+yang digunakan untuk mengidentifikasi seluruh perangkat atau partisi di dalam perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jumlah total item di perangkat ini.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Centang untuk memperbarui perangkat ini ketika mengklik tombol Perbarui Semua.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
         <source>Update progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progress pembaruan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="100"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama file</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="101"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="102"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="103"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Folder</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="104"/>
         <source>Extension</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekstensi</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="105"/>
         <source>Access Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Waktu Akses</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="106"/>
         <source>Modify Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Waktu Ubah</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="107"/>
         <source>Change Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Ubah Waktu</translation>
     </message>
 </context>
 </TS>
