@@ -633,7 +633,7 @@
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="73"/>
         <source>All Cores</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Kerne</translation>
     </message>
     <message>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
@@ -658,12 +658,12 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
         <source>Open path</source>
-        <translation type="unfinished"></translation>
+        <translation>Pfad öffnen</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="268"/>
         <source>Copy ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieren ...</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="270"/>
