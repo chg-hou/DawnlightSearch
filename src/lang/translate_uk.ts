@@ -911,7 +911,8 @@
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation>Кожен пристрій зберігання представлений головним та кількома другорядними номерами, які використовуються для ідентифікації або власне пристрою, або його розділів.</translation>
+        <translation>Кожен пристрій зберігання представлений головним та кількома другорядними номерами,
+які використовуються для ідентифікації або власне пристрою, або його розділів.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
