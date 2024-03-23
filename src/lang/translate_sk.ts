@@ -6,7 +6,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="14"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Pokročilé nastavenia</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="48"/>

@@ -62,32 +62,32 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="131"/>
         <source>Query  Chunk  Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran Potongan Kueri:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="195"/>
         <source>Query Limit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Batas Kueri:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="253"/>
         <source>Max Items in Table:</source>
-        <translation type="unfinished"></translation>
+        <translation>Item Maks dalam Tabel:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="288"/>
         <source>Search Option</source>
-        <translation type="unfinished"></translation>
+        <translation>Opsi Pencarian</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="298"/>
         <source>Instant Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Pencarian Instan</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="318"/>
         <source>Start Querying after Typing Finished:</source>
-        <translation type="unfinished"></translation>
+        <translation>Mulai Membuat Kueri setelah selesai mengetik:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="356"/>
@@ -96,17 +96,17 @@
         <location filename="../Ui_advanced_setting_dialog.ui" line="902"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="967"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="383"/>
         <source>Press &quot;Enter&quot; to Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekan &quot;Enter&quot; untuk Mencari</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="395"/>
         <source>Date-time Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Format Tanggal-waktu:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="402"/>
@@ -163,33 +163,33 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="460"/>
         <source>Restore Sorting after New Row Inserted</source>
-        <translation type="unfinished"></translation>
+        <translation>Pulihkan Pengurutan setelah Baris Baru Disisipkan</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="539"/>
         <source>Database</source>
-        <translation type="unfinished"></translation>
+        <translation>Basisdata</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="545"/>
         <source>Database Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Lokasi Basisdata</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="551"/>
         <source>Main Database File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama Berkas Basis Data Utama:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="561"/>
         <location filename="../Ui_advanced_setting_dialog.ui" line="582"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="572"/>
         <source>Temp Database File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama Berkas Basis Data Temp:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="596"/>
@@ -199,12 +199,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="599"/>
         <source>Ingore Folder in Different Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Folder Ingore di Perangkat yang Berbeda</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="606"/>
         <source>Compress  the database file (using zlib) to save disk space when programe is closed</source>
-        <translation type="unfinished"></translation>
+        <translation>Kompres file basisdata (menggunakan zlib) untuk menghemat ruang disk saat program ditutup</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="615"/>
@@ -214,7 +214,7 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="641"/>
         <source>Result Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabel Hasil</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="649"/>
@@ -224,37 +224,37 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="662"/>
         <source>B</source>
-        <translation type="unfinished"></translation>
+        <translation>B</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="667"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="672"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="677"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="682"/>
         <source>TB</source>
-        <translation type="unfinished"></translation>
+        <translation>TB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="687"/>
         <source>PB</source>
-        <translation type="unfinished"></translation>
+        <translation>PB</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="712"/>
         <source>Theme Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama Tema:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="719"/>
@@ -279,12 +279,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="770"/>
         <source>UUID Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tabel UUID</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="778"/>
         <source>Timer Interval</source>
-        <translation type="unfinished"></translation>
+        <translation>Interval Pengatur Waktu</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="786"/>
@@ -294,12 +294,12 @@
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="851"/>
         <source>Rows Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pembaruan Baris:</translation>
     </message>
     <message>
         <location filename="../Ui_advanced_setting_dialog.ui" line="916"/>
         <source>Database Update:</source>
-        <translation type="unfinished"></translation>
+        <translation>Pembaruan Basisdata:</translation>
     </message>
 </context>
 <context>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../Ui_edit_exclued_folder.ui" line="14"/>
         <source>Edit Excluded Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit Folder yang Dikecualikan</translation>
     </message>
 </context>
 <context>
@@ -315,43 +315,43 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="14"/>
         <source>Dawnlight Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Dawnlight Search</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="96"/>
         <source>Fi&amp;le</source>
-        <translation type="unfinished"></translation>
+        <translation>Fi&amp;le</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="102"/>
         <source>Setti&amp;ngs</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengatu&amp;ran</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="106"/>
         <source>&amp;Language</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bahasa</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="130"/>
         <source>Abo&amp;ut</source>
-        <translation type="unfinished"></translation>
+        <translation>Tenta&amp;ng</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="140"/>
         <source>&amp;View</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tampilan</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="161"/>
         <source>ToolBar</source>
-        <translation type="unfinished"></translation>
+        <translation>Toolbar</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="202"/>
         <location filename="../Ui_mainwindow.ui" line="873"/>
         <source>&amp;Database</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Basisdata</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="257"/>
@@ -367,23 +367,23 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="300"/>
         <source>ToolBar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengaturan Lanjutan ToolBar</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="328"/>
         <source>Sea&amp;rch</source>
-        <translation type="unfinished"></translation>
+        <translation>Ca&amp;ri</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="402"/>
         <location filename="../Ui_mainwindow.ui" line="518"/>
         <source>Case Sensitive</source>
-        <translation type="unfinished"></translation>
+        <translation>Sensitif dengan huruf besar kecil</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="460"/>
         <source>Search Settin&amp;gs</source>
-        <translation type="unfinished"></translation>
+        <translation>Cari Pengatur&amp;an</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="546"/>
@@ -393,17 +393,17 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="552"/>
         <source>Na&amp;me</source>
-        <translation type="unfinished"></translation>
+        <translation>Na&amp;ma</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="562"/>
         <source>Path/Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur/Nama</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="569"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="576"/>
@@ -418,42 +418,42 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="598"/>
         <source>&amp;About...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tentang...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="609"/>
         <source>&amp;Set Excluded Folders...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Atur folder yang dikecualikan...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="614"/>
         <source>About &amp;Qt...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tentang &amp;Qt...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="625"/>
         <source> ┗ &amp;Enable C++ MFT parser</source>
-        <translation type="unfinished"></translation>
+        <translation> ┗ &amp;amp; Aktifkan parser MFT C++</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="628"/>
         <source>Much faster than python parser</source>
-        <translation type="unfinished"></translation>
+        <translation>Lebih cepat dari parser python</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="640"/>
         <source>&amp;Exit...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Keluar..</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="643"/>
         <source>Exit application.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keluar dari aplikasi.</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="651"/>
         <source>&amp;Use MFT Parser to Build Index</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gunakan MFT Parser untuk Membangun Indeks</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="654"/>
@@ -463,7 +463,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="666"/>
         <source>&amp;Advanced Settings...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pengaturan Lanjutan...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="675"/>
@@ -473,17 +473,17 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="690"/>
         <source>Show Location Table</source>
-        <translation type="unfinished"></translation>
+        <translation>Tunjukkan Tabel Lokasi</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="699"/>
         <source>Update DB</source>
-        <translation type="unfinished"></translation>
+        <translation>Perbarui DB</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="708"/>
         <source>Stop Updating</source>
-        <translation type="unfinished"></translation>
+        <translation>Hentikan Pembaruan</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="717"/>
@@ -498,7 +498,7 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="735"/>
         <source>Show Search Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan Pengaturan Pencarian</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="749"/>
@@ -509,33 +509,33 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="757"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembunyikan</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="762"/>
         <source>Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="770"/>
         <source>Show All</source>
-        <translation type="unfinished"></translation>
+        <translation>Tampilkan Semua</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="779"/>
         <location filename="../Ui_mainwindow.ui" line="782"/>
         <source>Update DB (only selected)</source>
-        <translation type="unfinished"></translation>
+        <translation>Perbarui DB (hanya yang dipilih)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="791"/>
         <source>&amp;Open Project Homepage...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Buka Beranda Proyek...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="796"/>
         <source>&amp;Latest Version...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Versi Terbaru...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="801"/>
@@ -550,57 +550,57 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="811"/>
         <source>Check Updatable</source>
-        <translation type="unfinished"></translation>
+        <translation>Periksa Updatable</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="816"/>
         <source>Uncheck Updatable</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus centang Updatable</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="825"/>
         <source>&amp;Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cari...</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="828"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="836"/>
         <source>(A&amp;uto)</source>
-        <translation type="unfinished"></translation>
+        <translation>(O&amp;tomatis)</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="841"/>
         <source>&amp;English</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Inggris</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="846"/>
         <source>&amp;Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cina Sederhana (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="849"/>
         <source>Simplified Chinese (简体中文) zh_CN</source>
-        <translation type="unfinished"></translation>
+        <translation>Cina Sederhana (简体中文) zh_CN</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="857"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cari</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="865"/>
         <source>S&amp;earch Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;engaturan Pencarian</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="889"/>
         <source>&amp;Toolbar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bilah Alat</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="897"/>
@@ -610,22 +610,22 @@
     <message>
         <location filename="../Ui_mainwindow.ui" line="905"/>
         <source>Too&amp;lbar Advanced Setting</source>
-        <translation type="unfinished"></translation>
+        <translation>P&amp;engaturan Lanjut Bilah Alat</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="910"/>
         <source>Hungarian (Magyar nyelv) hu</source>
-        <translation type="unfinished"></translation>
+        <translation>Hungaria (Magyar nyelv) hu</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="915"/>
         <source>Norwegian Bokmål (bokmål) nb_NO</source>
-        <translation type="unfinished"></translation>
+        <translation>Bokmål Norwegia (bokmål) nb_NO</translation>
     </message>
     <message>
         <location filename="../Ui_mainwindow.ui" line="920"/>
         <source>Dutch (Nederlands) nl</source>
-        <translation type="unfinished"></translation>
+        <translation>Belanda (Nederlands) nl</translation>
     </message>
 </context>
 <context>
@@ -639,12 +639,12 @@
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="118"/>
         <location filename="../ui_change_advanced_setting_dialog.cpp" line="129"/>
         <source>Select Directory of Database File</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih Direktori File Database</translation>
     </message>
     <message>
         <location filename="../ui_change_excluded_folder_dialog.cpp" line="56"/>
         <source>Select Directory to Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilih Direktori untuk ditambah</translation>
     </message>
 </context>
 <context>
@@ -653,42 +653,42 @@
         <location filename="../mainwindow_table_action.cpp" line="156"/>
         <location filename="../mainwindow_table_action.cpp" line="250"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="261"/>
         <source>Open path</source>
-        <translation type="unfinished"></translation>
+        <translation>Buka jalur</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="268"/>
         <source>Copy ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin ...</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="270"/>
         <source>Copy fullpath</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin jalur lengkap</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="272"/>
         <source>Copy filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin nama file</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="274"/>
         <source>Copy path</source>
-        <translation type="unfinished"></translation>
+        <translation>Salin jalur</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="287"/>
         <source>Move to trash</source>
-        <translation type="unfinished"></translation>
+        <translation>Pindah ke sampah</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="293"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Hapus</translation>
     </message>
 </context>
 <context>
@@ -696,12 +696,12 @@
     <message>
         <location filename="../mainwindow_table_action.cpp" line="380"/>
         <source>Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesan</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="381"/>
         <source>Are you sure to DELETE?</source>
-        <translation type="unfinished"></translation>
+        <translation>Apakah Anda yakin untuk MENGHAPUS?</translation>
     </message>
 </context>
 <context>
@@ -709,32 +709,32 @@
     <message>
         <location filename="../MainWindow.cpp" line="280"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Memuat...</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="735"/>
         <source>Exclude folders from indexing.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kecualikan folder dari pengindeksan.</translation>
     </message>
     <message>
         <location filename="../mainwindow_table_action.cpp" line="392"/>
         <source>Done.</source>
-        <translation type="unfinished"></translation>
+        <translation>Selesai.</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="220"/>
         <source> [Read Only Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Mode Hanya Baca]</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="222"/>
         <source>Ready.</source>
-        <translation type="unfinished"></translation>
+        <translation>Siap.</translation>
     </message>
     <message>
         <location filename="../mainwindow_uuid_table_slots.cpp" line="226"/>
         <source> [Snap Compatibility Mode]</source>
-        <translation type="unfinished"></translation>
+        <translation> [Mode Kompatibilitas Snap]</translation>
     </message>
 </context>
 <context>
@@ -742,184 +742,185 @@
     <message>
         <location filename="../MainWindow.cpp" line="261"/>
         <source>Database is locked by</source>
-        <translation type="unfinished"></translation>
+        <translation>Database dikunci oleh</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="262"/>
         <source>Appname: </source>
-        <translation type="unfinished"></translation>
+        <translation>Nama aplikasi: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="263"/>
         <source>PID: </source>
-        <translation type="unfinished"></translation>
+        <translation>PID: </translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="264"/>
         <source>Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama host:</translation>
     </message>
     <message>
         <location filename="../MainWindow.cpp" line="268"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Peringatan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="48"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Cari</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="49"/>
         <source>Mount Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur Mount</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="50"/>
         <source>Label</source>
-        <translation type="unfinished"></translation>
+        <translation>Label</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="51"/>
         <source>UUID</source>
-        <translation type="unfinished"></translation>
+        <translation>UUID</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="52"/>
         <source>Alias</source>
-        <translation type="unfinished"></translation>
+        <translation>Alias</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="53"/>
         <source>FS Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipe FS</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="54"/>
         <source>Dev name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama Dev</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="55"/>
         <source>Major Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomor Perangkat Utama</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="56"/>
         <source>Minor Device Num</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomor Perangkat Minor</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="57"/>
         <source>Items</source>
-        <translation type="unfinished"></translation>
+        <translation>Item</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="58"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Perbarui</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="59"/>
         <source>Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Kemajuan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="68"/>
         <source>Check to search this device. The icon indicates the mount state.</source>
-        <translation type="unfinished"></translation>
+        <translation>Centang untuk menelusuri perangkat ini. Ikon menunjukkan status pemasangan.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="69"/>
         <source>Path where the device is mounted.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur tempat perangkat dipasang.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="70"/>
         <source>Device label.</source>
-        <translation type="unfinished"></translation>
+        <translation>Label perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="71"/>
         <source>Universally unique identifier (UUID).</source>
-        <translation type="unfinished"></translation>
+        <translation>Pengidentifikasi unik universal (UUID).</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="72"/>
         <source>This is a editable column. You may customize the alias of this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ini adalah kolom yang dapat diedit. Anda dapat menyesuaikan alias perangkat ini.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="73"/>
         <source>File system type.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jenis sistem file.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="74"/>
         <source>Device name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="75"/>
         <location filename="../globals.cpp" line="76"/>
         <source>Each storage device is represented by a major number and a range of minor numbers,
 which are used to identify either the entire device or a partition within the device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Setiap perangkat penyimpanan diwakili oleh nomor utama dan berbagai nomor minor,
+yang digunakan untuk mengidentifikasi seluruh perangkat atau partisi di dalam perangkat.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="77"/>
         <source>Total number of items in this device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jumlah total item di perangkat ini.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="78"/>
         <source>Check to update this device when click Update All button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Centang untuk memperbarui perangkat ini ketika mengklik tombol Perbarui Semua.</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="79"/>
         <source>Update progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Progress pembaruan</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="100"/>
         <source>Filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Nama file</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="101"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Jalur</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="102"/>
         <source>Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukuran</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="103"/>
         <source>Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Folder</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="104"/>
         <source>Extension</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekstensi</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="105"/>
         <source>Access Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Waktu Akses</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="106"/>
         <source>Modify Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Waktu Ubah</translation>
     </message>
     <message>
         <location filename="../globals.cpp" line="107"/>
         <source>Change Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Ubah Waktu</translation>
     </message>
 </context>
 </TS>
